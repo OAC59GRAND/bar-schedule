@@ -6,17 +6,30 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bar Schedule">
-<title>Bar TV Schedule</title>
+<title>Bar TV Schedule — Live</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:24px;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:18px;-webkit-tap-highlight-color:transparent}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#040b16;border-bottom:3px solid #f59e0b;position:sticky;top:0;z-index:100}
 .bar-brand{font-size:26px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
 .topbar-right{display:flex;align-items:center;gap:14px}
 .clock{font-size:30px;font-weight:800;letter-spacing:1px;text-align:right}
 .datestr{font-size:14px;color:#475569;letter-spacing:1px;text-align:right}
+
+.sync-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:#0a1929;border-bottom:1px solid #132a45;font-size:14px;color:#64748b;letter-spacing:.5px;flex-wrap:wrap;gap:6px}
+.sync-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sync-dot{width:9px;height:9px;border-radius:50%;background:#475569;flex-shrink:0}
+.sync-dot.ok{background:#22c55e}
+.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
+.sync-dot.err{background:#ef4444}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.src-pill{font-size:12px;font-weight:700;padding:2px 7px;border-radius:3px;background:#0d1f38;color:#64748b}
+.src-pill.ok{color:#22c55e;background:rgba(34,197,94,.1)}
+.src-pill.err{color:#ef4444;background:rgba(239,68,68,.1)}
+.refresh-now-btn{background:#0d1f38;border:1px solid #1e3a5f;color:#94a3b8;padding:5px 14px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;-webkit-appearance:none}
+.refresh-now-btn:hover{background:#132a45;color:#cbd5e1}
 
 .day-selector{display:flex;gap:4px;padding:10px 16px;background:#0a1929;border-bottom:1px solid #132a45;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .day-selector::-webkit-scrollbar{display:none}
@@ -27,81 +40,76 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .day-btn.active .day-name{color:#000}
 .day-num{font-size:24px;font-weight:900;color:#f1f5f9;line-height:1.1}
 .day-btn.active .day-num{color:#000}
-.day-tag{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:9px}
+.day-tag{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:13px}
 .day-btn.active .day-tag{color:#7c2d12}
 
 .view-toggle{display:flex;gap:2px;padding:8px 16px 0;background:#040b16}
-.vtab{padding:7px 16px;font-size:20px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
+.vtab{padding:9px 18px;font-size:18px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
 .vtab.active{background:#38bdf8;color:#000}
 
 .featured-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;background:#040b16;border-bottom:1px solid #0d1e35}
-.feat-card{border-radius:6px;padding:9px 11px;border-left:4px solid;position:relative;overflow:hidden}
+.feat-card{border-radius:6px;padding:12px 14px;border-left:4px solid;position:relative;overflow:hidden}
 .feat-card.worldcup{background:linear-gradient(135deg,rgba(220,38,38,.18),rgba(245,158,11,.12));border-color:#ef4444}
 .feat-card.giants{background:rgba(255,90,20,.12);border-color:#ff5a14}
 .feat-card.warriors{background:rgba(29,99,229,.14);border-color:#1D63E5}
 .feat-card.valkyries{background:rgba(59,130,246,.14);border-color:#38bdf8}
-.feat-eyebrow{font-size:18px;font-weight:800;letter-spacing:2px;opacity:.7;text-transform:uppercase;margin-bottom:2px}
-.feat-title{font-size:18px;font-weight:900;line-height:1.1;color:#f1f5f9}
-.feat-sub{font-size:14px;color:#94a3b8;margin-top:2px;line-height:1.4}
-.feat-ch{font-size:14px;font-weight:700;color:#cbd5e1;margin-top:4px;background:rgba(255,255,255,.06);display:inline-block;padding:2px 6px;border-radius:3px}
+.feat-eyebrow{font-size:14px;font-weight:800;letter-spacing:2px;opacity:.75;text-transform:uppercase;margin-bottom:3px}
+.feat-title{font-size:19px;font-weight:900;line-height:1.15;color:#f1f5f9}
+.feat-sub{font-size:14px;color:#94a3b8;margin-top:3px;line-height:1.4}
+.feat-live{position:absolute;top:8px;right:10px;font-size:11px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);padding:2px 7px;border-radius:3px;letter-spacing:1px}
 
 .tabs{display:flex;gap:2px;padding:8px 16px 0;background:#040b16;border-bottom:1px solid #0d1e35;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{padding:7px 14px;font-size:20px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
+.tab{padding:9px 16px;font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
 .tab.active{background:#f59e0b;color:#000}
 
-.content{padding:12px 16px;display:none}
+.content{padding:14px 16px;display:none}
 .content.active{display:block}
 
-.section-hd{font-size:14px;font-weight:800;letter-spacing:3px;color:#334155;text-transform:uppercase;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:8px}
-.section-hd span{background:#f59e0b;color:#000;padding:1px 7px;border-radius:3px;font-size:18px}
+.section-hd{font-size:14px;font-weight:800;letter-spacing:3px;color:#64748b;text-transform:uppercase;margin:12px 0 8px;padding-bottom:6px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.section-hd span{background:#f59e0b;color:#000;padding:2px 8px;border-radius:3px;font-size:12px}
 
-.sched{display:grid;grid-template-columns:90px 1fr}
-.stime{font-size:22px;font-weight:700;color:#334155;padding:7px 6px 7px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:1px}
-.stime .now-arrow{color:#ef4444;font-size:14px}
-.sevents{padding:5px 0 5px 10px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:5px}
+.sched{display:grid;grid-template-columns:100px 1fr}
+.stime{font-size:18px;font-weight:700;color:#475569;padding:8px 8px 8px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:2px}
+.stime .now-arrow{color:#ef4444;font-size:13px;font-weight:800}
+.sevents{padding:6px 0 6px 12px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:6px}
 
-.chip{border-left:3px solid;border-radius:4px;padding:8px 12px;flex:1;min-width:200px;max-width:calc(50% - 3px);position:relative}
-.chip-src{font-size:13px;font-weight:800;letter-spacing:1.5px;opacity:.65;margin-bottom:1px;text-transform:uppercase}
-.chip-title{font-size:17px;font-weight:800;line-height:1.1;color:#f1f5f9}
-.chip-sub{font-size:14px;color:#475569;margin-top:1px}
-.chip-ch{font-size:14px;font-weight:700;color:#cbd5e1;margin-top:3px;background:rgba(255,255,255,.06);display:inline-block;padding:1px 6px;border-radius:3px}
+.chip{border-left:3px solid;border-radius:5px;padding:8px 12px;flex:1;min-width:220px;max-width:calc(50% - 3px);position:relative}
+.chip-src{font-size:12px;font-weight:800;letter-spacing:1.5px;opacity:.7;margin-bottom:2px;text-transform:uppercase}
+.chip-title{font-size:18px;font-weight:800;line-height:1.2;color:#f1f5f9}
+.chip-sub{font-size:14px;color:#64748b;margin-top:2px}
+.chip.live-tag::after{content:"LIVE";position:absolute;top:6px;right:8px;font-size:10px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);padding:1px 5px;border-radius:3px;letter-spacing:1px}
+.chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.1)}
 .chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
-.chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.12)}
 .chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
 .chip.gsv-highlight{border-color:#38bdf8;background:rgba(56,189,248,.1)}
 .chip.womens{border-color:#a855f7;background:rgba(168,85,247,.08)}
-.chip.c-dtv{border-color:#f59e0b;background:rgba(245,158,11,.07)}
-.chip.c-espn{border-color:#ef4444;background:rgba(239,68,68,.07)}
-.chip.c-peacock{border-color:#818cf8;background:rgba(129,140,248,.07)}
-.chip.c-paramount{border-color:#38bdf8;background:rgba(56,189,248,.07)}
-.chip.c-apple{border-color:#94a3b8;background:rgba(148,163,184,.07)}
+.chip.c-espn{border-color:#ef4444;background:rgba(239,68,68,.06)}
 
-.w-badge{font-size:12px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:1px 4px;border-radius:2px;margin-left:4px}
+.w-badge{font-size:11px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.35);padding:1px 5px;border-radius:3px;margin-left:6px}
 
-.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:160px}
-.week-day-head{background:#0d1f38;padding:7px 8px;text-align:center;border-bottom:1px solid #132a45}
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:180px}
+.week-day-head{background:#0d1f38;padding:8px;text-align:center;border-bottom:1px solid #132a45}
 .week-day-head.today{background:#f59e0b}
 .week-day-head .wd-name{font-size:14px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
 .week-day-head.today .wd-name{color:#000}
-.week-day-head .wd-num{font-size:22px;font-weight:900;color:#f1f5f9}
+.week-day-head .wd-num{font-size:20px;font-weight:900;color:#f1f5f9}
 .week-day-head.today .wd-num{color:#000}
-.week-day-body{padding:6px;display:flex;flex-direction:column;gap:5px}
-.week-event{border-left:3px solid;border-radius:3px;padding:4px 6px;font-size:20px}
-.week-event-time{font-size:18px;font-weight:800;color:#64748b;letter-spacing:.5px}
-.week-event-title{font-size:20px;font-weight:800;color:#f1f5f9;line-height:1.2;margin-top:1px}
-.week-event-ch{font-size:18px;color:#94a3b8;margin-top:2px;font-weight:700}
-.week-empty{font-size:14px;color:#1e293b;text-align:center;padding:10px 0}
+.week-day-body{padding:8px;display:flex;flex-direction:column;gap:6px}
+.week-event{border-left:3px solid;border-radius:4px;padding:6px 8px;font-size:14px}
+.week-event-time{font-size:12px;font-weight:800;color:#64748b;letter-spacing:.5px}
+.week-event-title{font-size:14px;font-weight:800;color:#f1f5f9;line-height:1.25;margin-top:2px}
+.week-empty{font-size:13px;color:#1e293b;text-align:center;padding:14px 0}
 @media (max-width:900px){
   .week-grid{grid-template-columns:1fr;gap:8px}
   .week-day-col{min-height:auto}
 }
 
-.legend{display:flex;gap:10px;flex-wrap:wrap;padding:8px 16px;background:#040b16;border-top:1px solid #0d1e35}
-.leg{display:flex;align-items:center;gap:4px;font-size:18px;font-weight:700;letter-spacing:1px;color:#334155;text-transform:uppercase}
-.ldot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
-.refresh-bar{text-align:right;padding:4px 16px 8px;font-size:18px;color:#132a45;letter-spacing:1px;background:#040b16}
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 16px;background:#040b16;border-top:1px solid #0d1e35}
+.leg{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;letter-spacing:1px;color:#475569;text-transform:uppercase}
+.ldot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.refresh-bar{text-align:right;padding:6px 16px 10px;font-size:13px;color:#1e3a5f;letter-spacing:1px;background:#040b16}
 
 @media (max-width: 768px) {
   .featured-strip{grid-template-columns:repeat(2,1fr)}
@@ -121,6 +129,15 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
   </div>
 </div>
 
+<div class="sync-bar">
+  <div class="sync-status">
+    <div class="sync-dot" id="sync-dot"></div>
+    <span id="sync-text">Connecting to live data…</span>
+    <span id="src-pills"></span>
+  </div>
+  <button class="refresh-now-btn" onclick="manualRefresh()">↻ Refresh now</button>
+</div>
+
 <div class="day-selector" id="day-selector"></div>
 
 <div class="view-toggle">
@@ -130,147 +147,156 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 
 <div id="day-view">
   <div class="featured-strip" id="featured-strip"></div>
-
   <div class="tabs">
     <button class="tab active" onclick="switchTab('all',this)">All Day</button>
     <button class="tab" onclick="switchTab('women',this)">♀ Women's</button>
     <button class="tab" onclick="switchTab('worldcup',this)">🏆 World Cup</button>
   </div>
-
   <div id="tab-all" class="content active"><div id="grid-all"></div></div>
   <div id="tab-women" class="content"><div id="grid-women"></div></div>
   <div id="tab-worldcup" class="content"><div id="grid-worldcup"></div></div>
 </div>
 
-<div id="week-view" class="content" style="padding:12px 16px">
-  <div class="section-hd">7-Day Outlook <span>Game times & channels</span></div>
+<div id="week-view" class="content" style="padding:14px 16px">
+  <div class="section-hd">7-Day Outlook <span>Live from ESPN</span></div>
   <div class="week-grid" id="week-grid"></div>
 </div>
 
 <div class="legend">
-  <div class="leg"><div class="ldot" style="background:#f59e0b"></div>DirecTV XTRA</div>
-  <div class="leg"><div class="ldot" style="background:#ef4444"></div>ESPN/ESPN+</div>
-  <div class="leg"><div class="ldot" style="background:#818cf8"></div>Peacock</div>
-  <div class="leg"><div class="ldot" style="background:#38bdf8"></div>Paramount+</div>
-  <div class="leg"><div class="ldot" style="background:#94a3b8"></div>Apple TV+</div>
+  <div class="leg"><div class="ldot" style="background:#ef4444"></div>ESPN / Live Sports</div>
   <div class="leg"><div class="ldot" style="background:#a855f7"></div>Women's</div>
+  <div class="leg" style="color:#ef4444"><div class="ldot" style="background:#ef4444"></div>Live Now</div>
+  <div class="leg" style="margin-left:auto">Times shown in Pacific</div>
 </div>
-<div class="refresh-bar" id="rts">Schedule fixed for the week — game times and channels confirmed</div>
+<div class="refresh-bar" id="rts">Connecting…</div>
 
 <script>
-/* ===================== VERIFIED SCHEDULE DATA ===================== */
-/* Game times and channels confirmed from MLB.com, WNBA.com, and official 2026 World Cup TV listings. */
-/* No live score data — this version focuses purely on accurate times and channels, refreshed weekly. */
+/* ============== LIVE DATA LAYER — direct fetch, no proxy ============== */
+const LEAGUES = [
+  {key:'mlb',  espn:'baseball/mlb',      label:'MLB',      women:false},
+  {key:'nba',  espn:'basketball/nba',    label:'NBA',      women:false},
+  {key:'wnba', espn:'basketball/wnba',   label:'WNBA',     women:true},
+  {key:'nhl',  espn:'hockey/nhl',        label:'NHL',      women:false},
+  {key:'wc',   espn:'soccer/fifa.world', label:'World Cup',women:false},
+  {key:'nwsl', espn:'soccer/usa.nwsl',   label:'NWSL',     women:true},
+  {key:'mls',  espn:'soccer/usa.1',      label:'MLS',      women:false},
+];
 
-const CH = {
-  ESPN:'Ch 206', ESPN2:'Ch 209', ESPNU:'Ch 208',
-  'NFL Net':'Ch 212', 'MLB Net':'Ch 213', 'NHL Net':'Ch 215', 'NBA TV':'Ch 216',
-  'Golf Ch':'Ch 218', FS1:'Ch 219', 'CBS Sports Net':'Ch 221',
-  TNT:'Ch 245', TBS:'Ch 247',
-  'FOX local':'Ch 398 (FOX)', 'ABC local':'Ch 396 (ABC)', 'NBC local':'Ch 392 (NBC)',
-  Peacock:'Peacock app', 'Apple TV+':'Apple TV+ app', 'ESPN+':'ESPN+ app',
-  'NBCSBA':'NBC Sports Bay Area'
-};
-function ch(c){ return CH[c] || c; }
-
-const srcLabel={directv:'DirecTV XTRA',espn:'ESPN / ESPN+',peacock:'Peacock',paramount:'Paramount+',apple:'Apple TV+'};
-
-const timeLabel={6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
-const ALL_HOURS = Array.from({length:18},(_,i)=>i+6);
-
-// dayOffset: 0 = Mon Jun 15 (today), 1 = Tue Jun 16, ... 6 = Sun Jun 21
-// Keyed by actual calendar date (YYYY-MM-DD), not by offset.
-// This ensures the schedule shows the correct day no matter when the page is loaded.
-const weekSchedule = {
-  "2026-06-15": [ // Mon Jun 15 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT
-    {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
-    {h:7, src:'espn', title:'NWSL Soccer', sub:'Morning match', ch:'ESPN2', hl:'w'},
-    {h:8, src:'directv', title:'MLB This Morning', sub:'News & highlights', ch:'MLB Net'},
-    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Cape Verde', sub:'Group H · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
-    {h:10, src:'directv', title:'LPGA Golf', sub:"Women's tour event", ch:'Golf Ch', hl:'w'},
-    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Egypt', sub:'Group G · Seattle · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Round coverage', ch:'CBS Sports Net'},
-    {h:14, src:'directv', title:'WNBA Basketball', sub:'Afternoon tip-off', ch:'ESPN2', hl:'w'},
-    {h:15, src:'directv', title:'🏆 World Cup: Saudi Arabia vs Uruguay', sub:'Group H · Miami · 3:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:18, src:'directv', title:'🏀 GS Valkyries vs LA Sparks', sub:'WNBA · Final 78-58 W', ch:'ESPN2', hl:'gsv'},
-    {h:18, src:'directv', title:'🏆 World Cup: Iran vs New Zealand', sub:'Group G · LA Stadium · 6:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-16": [ // Tue Jun 16 PT — 4 World Cup matches: 12PM, 3PM, 6PM, 9PM PT (Jordan's World Cup debut tonight!)
-    {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
-    {h:12, src:'directv', title:'🏆 World Cup: France vs Senegal', sub:'Group I · East Rutherford · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Iraq vs Norway', sub:'Group I · Foxborough · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:18, src:'directv', title:'WNBA Primetime', sub:'ESPN2 matchup', ch:'ESPN2', hl:'w'},
-    {h:18, src:'directv', title:'🏆 World Cup: Argentina vs Algeria', sub:'Group J · Kansas City · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:21, src:'directv', title:"🏆 World Cup: Austria vs Jordan", sub:"Group J · Santa Clara · 9:00 PM PT · Jordan's World Cup debut", ch:'FOX local', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-17": [ // Wed Jun 17 PT — 4 World Cup matches: 10AM, 1PM, 4PM, 7PM PT
-    {h:9, src:'directv', title:'🏆 World Cup: Portugal vs DR Congo', sub:'Group K · Houston · 10:00 AM PT', ch:'FOX local', hl:'wcu'},
-    {h:12, src:'directv', title:'🏆 World Cup: England vs Croatia', sub:'Group L · Arlington · 1:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Ghana vs Panama', sub:'Group L · Toronto · 4:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:18, src:'directv', title:'🏆 World Cup: Uzbekistan vs Colombia', sub:'Group K · Mexico City · 7:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:19, src:'directv', title:'🏀 GS Valkyries vs Dallas Wings', sub:'WNBA · Home game · 7:00 PM PT', ch:'ESPN2', hl:'gsv'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-18": [ // Thu Jun 18 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT
-    {h:9, src:'directv', title:'🏆 World Cup: Czechia vs South Africa', sub:'Group A · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
-    {h:12, src:'directv', title:'🏆 World Cup: Switzerland vs Bosnia', sub:'Group B · Inglewood · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Canada vs Qatar', sub:'Group B · Vancouver · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:18, src:'directv', title:'WNBA: Atlanta vs Indiana', sub:'Live coverage', ch:'ESPN2', hl:'w'},
-    {h:18, src:'directv', title:'🏆 World Cup: Mexico vs South Korea', sub:'Group A · Zapopan · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-19": [ // Fri Jun 19 PT — 3 World Cup matches: 12PM, 3PM, 6PM PT
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'7:40 AM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:12, src:'directv', title:'🏆 World Cup: USA vs Australia', sub:'Group D · Seattle · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:15, src:'directv', title:'🏆 World Cup: Scotland vs Morocco', sub:'Group C · Foxborough · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:18, src:'directv', title:'🏀 GS Valkyries vs Minnesota Lynx', sub:'WNBA · Home game · 7:00 PM PT', ch:'ESPN2', hl:'gsv'},
-    {h:18, src:'directv', title:'🏆 World Cup: Brazil vs Haiti', sub:'Group C · Philadelphia · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-20": [ // Sat Jun 20 PT — 5 World Cup matches: 10AM, 1PM, 5PM PT, plus TWO 9PM PT late games
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:10 AM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:9, src:'directv', title:'🏆 World Cup: Netherlands vs Sweden', sub:'Group F · Houston · 10:00 AM PT', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Saturday round', ch:'CBS Sports Net'},
-    {h:13, src:'directv', title:'🏆 World Cup: Germany vs Ivory Coast', sub:'1:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:17, src:'directv', title:'WNBA: Atlanta vs Phoenix', sub:'Live tip-off', ch:'ESPN2', hl:'w'},
-    {h:17, src:'directv', title:'🏆 World Cup: Ecuador vs Curacao', sub:'5:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:21, src:'directv', title:'🏆 World Cup: Turkiye vs Paraguay', sub:'Group D · San Francisco Bay Area · 9:00 PM PT', ch:'FOX local', hl:'wcu'},
-    {h:21, src:'directv', title:'🏆 World Cup: Tunisia vs Japan', sub:'Group F · Monterrey · 9:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-  "2026-06-21": [ // Sun Jun 21 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT (no late-night carryover today)
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'7:40 AM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Saudi Arabia', sub:'Group H · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
-    {h:12, src:'directv', title:'🏀 GS Valkyries @ Las Vegas Aces', sub:'WNBA · 1:00 PM PT', ch:'ESPN2', hl:'gsv'},
-    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Iran', sub:'Group G · Inglewood · 12:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:15, src:'directv', title:'🏆 World Cup: Uruguay vs Cape Verde', sub:'Group H · Miami · 3:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:18, src:'directv', title:'🏆 World Cup: New Zealand vs Egypt', sub:'Group G · Vancouver · 6:00 PM PT', ch:'FS1', hl:'wcu'},
-    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
-  ],
-};
-
-function hlClass(ev){
-  if(ev.hl==='wcu') return 'wcu-highlight';
-  if(ev.hl==='sf') return 'sf-highlight';
-  if(ev.hl==='gsw') return 'gsw-highlight';
-  if(ev.hl==='gsv') return 'gsv-highlight';
-  if(ev.hl==='w') return 'womens';
-  return 'c-dtv';
+function fmtDateForEspn(d){
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return `${y}${m}${day}`;
 }
-function wBadge(ev){ return (ev.hl==='w'||ev.hl==='gsv')?'<span class="w-badge">WOMEN</span>':''; }
+function dateKey(d){
+  return fmtDateForEspn(d).replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+}
+
+async function fetchEspn(espnPath, dateStr){
+  const url = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('HTTP '+res.status);
+  return await res.json();
+}
+
+function parseEvent(ev, leagueLabel, isWomen){
+  try{
+    const comp = ev.competitions[0];
+    const home = comp.competitors.find(c=>c.homeAway==='home');
+    const away = comp.competitors.find(c=>c.homeAway==='away');
+    const status = ev.status.type.state; // 'pre','in','post'
+    const dt = new Date(ev.date); // ESPN returns UTC ISO; browser converts to local (Pacific) automatically
+    return {
+      league: leagueLabel,
+      isWomen,
+      home: home.team.shortDisplayName || home.team.abbreviation,
+      away: away.team.shortDisplayName || away.team.abbreviation,
+      homeFull: home.team.displayName || '',
+      awayFull: away.team.displayName || '',
+      homeScore: home.score!==undefined ? parseInt(home.score) : null,
+      awayScore: away.score!==undefined ? parseInt(away.score) : null,
+      status,
+      statusDetail: ev.status.type.shortDetail || ev.status.type.description || '',
+      hour: dt.getHours(),
+      dateObj: dt,
+      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
+      venue: comp.venue ? comp.venue.fullName : '',
+    };
+  }catch(e){ return null; }
+}
+
+const dataCache = {}; // keyed by ESPN-queried-date-string -> { league_key: [...] }
+const sourceStatus = {}; // keyed by league key -> 'ok' | 'err'
+
+// ESPN scoreboard returns games for one "ESPN date", but because game times convert
+// to Pacific, a single Pacific calendar day can span two ESPN dates (late-night ET games
+// roll to the next ESPN date but stay on the same Pacific evening, and early Pacific-morning
+// games may belong to the previous ESPN date). To be safe we fetch a 2-day ESPN window
+// (the requested date AND the next date) and then bucket every game by its REAL Pacific date.
+async function loadEspnWindow(centerDate){
+  const d0 = new Date(centerDate); d0.setDate(d0.getDate()-1);
+  const d1 = new Date(centerDate);
+  const d2 = new Date(centerDate); d2.setDate(d2.getDate()+1);
+  const espnDates = [fmtDateForEspn(d0), fmtDateForEspn(d1), fmtDateForEspn(d2)];
+
+  const merged = {}; // pacificDateKey -> { leagueKey: [events] }
+
+  await Promise.all(LEAGUES.map(async lg=>{
+    sourceStatus[lg.key] = 'loading';
+    let anySuccess = false;
+    for(const eDate of espnDates){
+      const cacheKey = lg.key+'_'+eDate;
+      let events;
+      if(dataCache[cacheKey]){
+        events = dataCache[cacheKey];
+      } else {
+        try{
+          const json = await fetchEspn(lg.espn, eDate);
+          events = (json && json.events) ? json.events.map(ev=>parseEvent(ev, lg.label, lg.women)).filter(Boolean) : [];
+          dataCache[cacheKey] = events;
+          anySuccess = true;
+        }catch(e){
+          events = null; // mark failure distinctly from "no games"
+        }
+      }
+      if(events){
+        events.forEach(ev=>{
+          const pk = dateKey(ev.dateObj);
+          if(!merged[pk]) merged[pk] = {};
+          if(!merged[pk][lg.key]) merged[pk][lg.key] = [];
+          // avoid duplicate entries if same game appears in overlapping fetches
+          if(!merged[pk][lg.key].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
+            merged[pk][lg.key].push(ev);
+          }
+        });
+      }
+    }
+    sourceStatus[lg.key] = anySuccess ? 'ok' : 'err';
+  }));
+
+  return merged;
+}
+
+function setSyncStatus(state, text){
+  document.getElementById('sync-dot').className = 'sync-dot ' + state;
+  document.getElementById('sync-text').textContent = text;
+  const pillsHtml = LEAGUES.map(lg=>{
+    const st = sourceStatus[lg.key] || 'loading';
+    return `<span class="src-pill ${st}">${lg.label}</span>`;
+  }).join(' ');
+  document.getElementById('src-pills').innerHTML = pillsHtml;
+}
+
+async function manualRefresh(){
+  Object.keys(dataCache).forEach(k=>delete dataCache[k]);
+  await initialLoad();
+}
+
+/* ============== UI BUILDING ============== */
+const timeLabel={0:'12 AM',1:'1 AM',2:'2 AM',3:'3 AM',4:'4 AM',5:'5 AM',6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
+const ALL_HOURS = Array.from({length:18},(_,i)=>i+6); // 6 AM - 11 PM
 
 let currentDayOffset = 0;
 let currentView = 'day';
+let mergedByDate = {}; // populated by loadEspnWindow, keyed by pacific date string
 
 function getDayDate(offset){
   const d = new Date();
@@ -278,114 +304,133 @@ function getDayDate(offset){
   return d;
 }
 
-function dateKey(d){
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,'0');
-  const day = String(d.getDate()).padStart(2,'0');
-  return `${y}-${m}-${day}`;
+function flattenEvents(dayData){
+  const out=[];
+  Object.entries(dayData||{}).forEach(([key,events])=>{
+    events.forEach(e=>out.push(e));
+  });
+  return out.sort((a,b)=>a.hour-b.hour);
 }
 
+function chipClass(ev){
+  if(ev.league==='World Cup') return 'wcu-highlight';
+  if(ev.isWomen) return 'womens';
+  return 'c-espn';
+}
+
+function isGiants(ev){ return ev.homeFull.includes('Giants')||ev.awayFull.includes('Giants'); }
+function isWarriors(ev){ return ev.homeFull.includes('Warriors')||ev.awayFull.includes('Warriors'); }
+function isValkyries(ev){ return ev.homeFull.includes('Valkyries')||ev.awayFull.includes('Valkyries'); }
+
 function buildChip(ev){
-  const cls = hlClass(ev);
-  const wb = wBadge(ev);
-  return `<div class="chip ${cls}">
-    <div class="chip-src">${srcLabel[ev.src]||ev.src}${wb}</div>
-    <div class="chip-title">${ev.title}</div>
-    <div class="chip-sub">${ev.sub}</div>
-    <div class="chip-ch">${ch(ev.ch)}</div>
+  const live = ev.status==='in' ? ' live-tag' : '';
+  let cls = chipClass(ev);
+  if(isGiants(ev)) cls='sf-highlight';
+  if(isValkyries(ev)) cls='gsv-highlight';
+  const wb = (ev.isWomen||isValkyries(ev)) ? '<span class="w-badge">WOMEN</span>' : '';
+  const scoreStr = (ev.homeScore!==null && ev.awayScore!==null && (ev.status==='in'||ev.status==='post'))
+    ? `${ev.away} ${ev.awayScore} @ ${ev.homeScore} ${ev.home}`
+    : `${ev.away} @ ${ev.home}`;
+  return `<div class="chip ${cls}${live}">
+    <div class="chip-src">${ev.league}${wb}</div>
+    <div class="chip-title">${scoreStr}</div>
+    <div class="chip-sub">${ev.timeStr} · ${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
   </div>`;
 }
 
-function buildScheduleGrid(daySchedule, isToday){
+function buildScheduleGrid(events, isToday){
   const nowH = new Date().getHours();
   let html = '<div class="sched">';
   ALL_HOURS.forEach(h=>{
-    const evs = daySchedule.filter(e=>e.h===h);
+    const evs = events.filter(e=>e.hour===h);
     const isNow = isToday && h===nowH;
     html += `<div class="stime">${isNow?'<span class="now-arrow">▶ NOW</span>':''}<span>${timeLabel[h]}</span></div>
-    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:22px;padding:4px">—</div>'}</div>`;
+    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:18px;padding:6px">—</div>'}</div>`;
   });
   return html+'</div>';
 }
 
-function buildFeaturedStrip(daySchedule){
-  const wc = daySchedule.filter(e=>e.hl==='wcu');
-  const sf = daySchedule.find(e=>e.hl==='sf');
-  const gsv = daySchedule.find(e=>e.hl==='gsv');
+function buildFeaturedStrip(dayData, isToday){
+  const wc = (dayData.wc)||[];
+  const mlb = (dayData.mlb)||[];
+  const nba = (dayData.nba)||[];
+  const wnba = (dayData.wnba)||[];
+
+  const sfGame = mlb.find(isGiants);
+  const gswGame = nba.find(isWarriors);
+  const gsvGame = wnba.find(isValkyries);
 
   const wcCard = `<div class="feat-card worldcup">
-    <div class="feat-eyebrow">🏆 FIFA World Cup 2026 (Pacific Time)</div>
+    ${wc.length && isToday?'<div class="feat-live">TODAY</div>':''}
+    <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
-    <div class="feat-sub">${wc.slice(0,4).map(g=>`${timeLabel[g.h]}: ${g.title.replace('🏆 World Cup: ','')}`).join('<br>')||'No matches today'}</div>
-    <div class="feat-ch">${wc.length?ch(wc[0].ch):'—'}</div>
+    <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
   </div>`;
 
   const sfCard = `<div class="feat-card giants">
     <div class="feat-eyebrow">⚾ SF Giants</div>
-    <div class="feat-title">${sf? sf.title.replace('⚾ ','') : 'No game today'}</div>
-    <div class="feat-sub">${sf? sf.sub : 'Check next game day'}</div>
-    <div class="feat-ch">${sf?ch(sf.ch):'—'}</div>
+    <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game'}</div>
+    <div class="feat-sub">${sfGame? sfGame.timeStr+' · '+sfGame.statusDetail+(sfGame.homeScore!==null&&sfGame.status!=='pre'?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check next game day'}</div>
   </div>`;
 
   const gswCard = `<div class="feat-card warriors">
     <div class="feat-eyebrow">🏀 Golden State Warriors</div>
-    <div class="feat-title">Off-Season</div>
-    <div class="feat-sub">Missed playoffs · lost play-in to PHX<br>NBA Draft coverage on NBA TV</div>
-    <div class="feat-ch">${ch('NBA TV')}</div>
+    <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game'}</div>
+    <div class="feat-sub">${gswGame? gswGame.timeStr+' · '+gswGame.statusDetail : 'Off-season'}</div>
   </div>`;
 
   const gsvCard = `<div class="feat-card valkyries">
+    ${gsvGame && gsvGame.status==='in' ? '<div class="feat-live">LIVE NOW</div>' : ''}
     <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
-    <div class="feat-title">${gsv? gsv.title.replace('🏀 ','') : 'No game today'}</div>
-    <div class="feat-sub">${gsv? gsv.sub : 'Check next game day'}</div>
-    <div class="feat-ch">${gsv?ch(gsv.ch):'—'}</div>
+    <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game'}</div>
+    <div class="feat-sub">${gsvGame? gsvGame.timeStr+' · '+gsvGame.statusDetail+(gsvGame.homeScore!==null&&gsvGame.status!=='pre'?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check next game day'}</div>
   </div>`;
 
   return wcCard+sfCard+gswCard+gsvCard;
 }
 
-function buildWorldCupPanel(daySchedule, dateObj){
-  const wc = daySchedule.filter(e=>e.hl==='wcu');
-  if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches scheduled this day.</div>';
+function buildWorldCupPanel(dayData, dateObj){
+  const wc = (dayData.wc)||[];
+  if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches found for this day.</div>';
   let html = `<div class="section-hd">🏆 FIFA World Cup 2026 — ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</div>
-  <div style="background:#0a1929;border:1px solid #1e3a5f;border-radius:6px;padding:12px 14px;margin-bottom:10px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">`;
+  <div style="background:#0a1929;border:1px solid #1e3a5f;border-radius:6px;padding:14px 16px;margin-bottom:10px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">`;
   const colors=['#ef4444','#f59e0b','#818cf8','#38bdf8'];
   wc.forEach((g,i)=>{
-    html+=`<div style="background:#060f1d;border-radius:4px;padding:10px 12px;border-left:3px solid ${colors[i%4]}">
-      <div style="font-size:18px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${timeLabel[g.h]} PT</div>
-      <div style="font-size:20px;font-weight:900;margin:3px 0">${g.title.replace('🏆 World Cup: ','')}</div>
-      <div style="font-size:14px;color:#64748b">${g.sub}</div>
-      <div style="margin-top:4px"><span class="chip-ch">${ch(g.ch)}</span></div>
+    const scoreStr=(g.homeScore!==null&&g.status!=='pre')?`${g.away} ${g.awayScore} - ${g.homeScore} ${g.home}`:`${g.away} vs ${g.home}`;
+    html+=`<div style="background:#060f1d;border-radius:5px;padding:12px 14px;border-left:3px solid ${colors[i%4]}">
+      <div style="font-size:13px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
+      <div style="font-size:19px;font-weight:900;margin:4px 0">${scoreStr}</div>
+      <div style="font-size:14px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
     </div>`;
   });
   html+='</div></div>';
   return html;
 }
 
-function buildWomenPanel(daySchedule){
-  const evs = daySchedule.filter(e=>e.hl==='w'||e.hl==='gsv');
-  if(!evs.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events scheduled this day.</div>';
-  let html='<div class="section-hd">Women\'s Sports This Day <span style="background:#a855f7">ALL WOMEN</span></div><div class="sched">';
-  evs.forEach(e=>{
-    html+=`<div class="stime"><span>${timeLabel[e.h]}</span></div><div class="sevents">${buildChip(e)}</div>`;
+function buildWomenPanel(dayData){
+  const all = flattenEvents(dayData).filter(e=>e.isWomen||isValkyries(e));
+  if(!all.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events found for this day.</div>';
+  let html='<div class="section-hd">Women\'s Sports This Day <span>ALL WOMEN</span></div><div class="sched">';
+  all.forEach(e=>{
+    html+=`<div class="stime"><span>${timeLabel[e.hour]}</span></div><div class="sevents">${buildChip(e)}</div>`;
   });
   return html+'</div>';
 }
 
-function renderDayView(){
-  const dateObj = getDayDate(currentDayOffset);
-  const daySchedule = weekSchedule[dateKey(dateObj)] || [];
+async function renderDayView(){
   const isToday = currentDayOffset===0;
+  const dateObj = getDayDate(currentDayOffset);
+  const dk = dateKey(dateObj);
+  const dayData = mergedByDate[dk] || {};
+  const events = flattenEvents(dayData);
 
-  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(daySchedule);
-  document.getElementById('grid-all').innerHTML = buildScheduleGrid(daySchedule, isToday);
-  document.getElementById('grid-women').innerHTML = buildWomenPanel(daySchedule);
-  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(daySchedule, dateObj);
+  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(dayData, isToday);
+  document.getElementById('grid-all').innerHTML = buildScheduleGrid(events, isToday);
+  document.getElementById('grid-women').innerHTML = buildWomenPanel(dayData);
+  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(dayData, dateObj);
 
-  document.getElementById('rts').textContent = isToday
-    ? `Today, ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · All times Pacific · Game times and channels confirmed`
-    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · All times Pacific · Game times and channels confirmed`;
+  document.getElementById('rts').textContent = `${isToday?'Today':dateObj.toLocaleDateString('en-US',{weekday:'long'})}, ${dateObj.toLocaleDateString('en-US',{month:'long',day:'numeric'})} · All times Pacific`;
 }
 
 function buildWeekView(){
@@ -393,9 +438,11 @@ function buildWeekView(){
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const daySchedule = (weekSchedule[dateKey(d)]||[]).slice().sort((a,b)=>a.h-b.h);
-    const highlights = daySchedule.filter(e=>e.hl).slice(0,6);
-    const toShow = highlights.length ? highlights : daySchedule.slice(0,6);
+    const dk = dateKey(d);
+    const dayData = mergedByDate[dk] || {};
+    const events = flattenEvents(dayData);
+    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||isGiants(e)||isWarriors(e)||isValkyries(e)).slice(0,6);
+    const toShow = highlights.length ? highlights : events.slice(0,6);
 
     html += `<div class="week-day-col">
       <div class="week-day-head${isToday?' today':''}">
@@ -404,14 +451,14 @@ function buildWeekView(){
       </div>
       <div class="week-day-body">`;
     if(toShow.length===0){
-      html += '<div class="week-empty">No events</div>';
+      html += '<div class="week-empty">No events found</div>';
     } else {
       toShow.forEach(e=>{
-        const cls = hlClass(e);
+        const cls = isGiants(e)?'sf-highlight':isValkyries(e)?'gsv-highlight':chipClass(e);
+        const scoreStr=(e.homeScore!==null&&e.status!=='pre')?`${e.away} ${e.awayScore}-${e.homeScore} ${e.home}`:`${e.away} vs ${e.home}`;
         html += `<div class="week-event ${cls}">
-          <div class="week-event-time">${timeLabel[e.h]}</div>
-          <div class="week-event-title">${e.title}</div>
-          <div class="week-event-ch">${ch(e.ch)}</div>
+          <div class="week-event-time">${e.timeStr} · ${e.league}</div>
+          <div class="week-event-title">${scoreStr}</div>
         </div>`;
       });
     }
@@ -426,7 +473,8 @@ function buildDaySelector(){
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const hasWC = (weekSchedule[dateKey(d)]||[]).some(e=>e.hl==='wcu');
+    const dk = dateKey(d);
+    const hasWC = mergedByDate[dk] && (mergedByDate[dk].wc||[]).length>0;
     html += `<button class="day-btn${i===currentDayOffset?' active':''}" onclick="selectDay(${i})">
       <div class="day-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
       <div class="day-num">${d.getDate()}</div>
@@ -436,10 +484,11 @@ function buildDaySelector(){
   el.innerHTML = html;
 }
 
-function selectDay(offset){
+async function selectDay(offset){
   currentDayOffset = offset;
   buildDaySelector();
-  renderDayView();
+  await renderDayView();
+  if(currentView==='week') buildWeekView();
 }
 
 function setView(view){
@@ -465,10 +514,49 @@ function updateClock(){
   document.getElementById('dstr').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
 }
 
-buildDaySelector();
-renderDayView();
+async function initialLoad(){
+  setSyncStatus('loading','Connecting to live data…');
+  buildDaySelector();
+  try{
+    // Load a window covering all 7 days we display (today through +6, with ±1 day buffer baked into loadEspnWindow)
+    const allMerges = await Promise.all(
+      Array.from({length:7},(_,i)=>getDayDate(i)).map(d=>loadEspnWindow(d))
+    );
+    mergedByDate = {};
+    allMerges.forEach(m=>{
+      Object.entries(m).forEach(([dk,leagues])=>{
+        if(!mergedByDate[dk]) mergedByDate[dk] = {};
+        Object.entries(leagues).forEach(([lk,evs])=>{
+          if(!mergedByDate[dk][lk]) mergedByDate[dk][lk] = [];
+          evs.forEach(ev=>{
+            if(!mergedByDate[dk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
+              mergedByDate[dk][lk].push(ev);
+            }
+          });
+        });
+      });
+    });
+
+    const failedCount = Object.values(sourceStatus).filter(s=>s==='err').length;
+    if(failedCount===0){
+      setSyncStatus('ok','Live data connected');
+    } else if(failedCount < LEAGUES.length){
+      setSyncStatus('err', `${LEAGUES.length-failedCount}/${LEAGUES.length} sources connected`);
+    } else {
+      setSyncStatus('err','Could not reach live data — check Wi-Fi or try Refresh');
+    }
+    buildDaySelector();
+    await renderDayView();
+    if(currentView==='week') buildWeekView();
+  }catch(e){
+    setSyncStatus('err','Connection error — tap Refresh to retry');
+  }
+}
+
+initialLoad();
 updateClock();
 setInterval(updateClock,1000);
+setInterval(()=>{ manualRefresh(); }, 90000); // refresh live scores every 90s
 </script>
 </body>
 </html>

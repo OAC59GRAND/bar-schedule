@@ -10,28 +10,28 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:14px;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:24px;-webkit-tap-highlight-color:transparent}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#040b16;border-bottom:3px solid #f59e0b;position:sticky;top:0;z-index:100}
-.bar-brand{font-size:20px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
+.bar-brand{font-size:26px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
 .topbar-right{display:flex;align-items:center;gap:14px}
-.clock{font-size:22px;font-weight:800;letter-spacing:1px;text-align:right}
-.datestr{font-size:9px;color:#475569;letter-spacing:1px;text-align:right}
+.clock{font-size:30px;font-weight:800;letter-spacing:1px;text-align:right}
+.datestr{font-size:14px;color:#475569;letter-spacing:1px;text-align:right}
 
 .day-selector{display:flex;gap:4px;padding:10px 16px;background:#0a1929;border-bottom:1px solid #132a45;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .day-selector::-webkit-scrollbar{display:none}
-.day-btn{flex-shrink:0;min-width:64px;padding:8px 6px;border-radius:6px;border:1px solid #132a45;background:#060f1d;cursor:pointer;text-align:center;transition:all .15s;-webkit-appearance:none}
+.day-btn{flex-shrink:0;min-width:84px;padding:10px 8px;border-radius:6px;border:1px solid #132a45;background:#060f1d;cursor:pointer;text-align:center;transition:all .15s;-webkit-appearance:none}
 .day-btn.active{background:#f59e0b;border-color:#f59e0b}
 .day-btn:hover:not(.active){background:#0d1f38}
-.day-name{font-size:9px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
+.day-name{font-size:14px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
 .day-btn.active .day-name{color:#000}
-.day-num{font-size:18px;font-weight:900;color:#f1f5f9;line-height:1.1}
+.day-num{font-size:24px;font-weight:900;color:#f1f5f9;line-height:1.1}
 .day-btn.active .day-num{color:#000}
-.day-tag{font-size:7px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:9px}
+.day-tag{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:9px}
 .day-btn.active .day-tag{color:#7c2d12}
 
 .view-toggle{display:flex;gap:2px;padding:8px 16px 0;background:#040b16}
-.vtab{padding:7px 16px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
+.vtab{padding:7px 16px;font-size:20px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
 .vtab.active{background:#38bdf8;color:#000}
 
 .featured-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;background:#040b16;border-bottom:1px solid #0d1e35}
@@ -40,32 +40,32 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .feat-card.giants{background:rgba(255,90,20,.12);border-color:#ff5a14}
 .feat-card.warriors{background:rgba(29,99,229,.14);border-color:#1D63E5}
 .feat-card.valkyries{background:rgba(59,130,246,.14);border-color:#38bdf8}
-.feat-eyebrow{font-size:8px;font-weight:800;letter-spacing:2px;opacity:.7;text-transform:uppercase;margin-bottom:2px}
-.feat-title{font-size:13px;font-weight:900;line-height:1.1;color:#f1f5f9}
-.feat-sub{font-size:9px;color:#94a3b8;margin-top:2px;line-height:1.4}
-.feat-ch{font-size:9px;font-weight:700;color:#cbd5e1;margin-top:4px;background:rgba(255,255,255,.06);display:inline-block;padding:2px 6px;border-radius:3px}
+.feat-eyebrow{font-size:18px;font-weight:800;letter-spacing:2px;opacity:.7;text-transform:uppercase;margin-bottom:2px}
+.feat-title{font-size:18px;font-weight:900;line-height:1.1;color:#f1f5f9}
+.feat-sub{font-size:14px;color:#94a3b8;margin-top:2px;line-height:1.4}
+.feat-ch{font-size:14px;font-weight:700;color:#cbd5e1;margin-top:4px;background:rgba(255,255,255,.06);display:inline-block;padding:2px 6px;border-radius:3px}
 
 .tabs{display:flex;gap:2px;padding:8px 16px 0;background:#040b16;border-bottom:1px solid #0d1e35;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{padding:7px 14px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
+.tab{padding:7px 14px;font-size:20px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
 .tab.active{background:#f59e0b;color:#000}
 
 .content{padding:12px 16px;display:none}
 .content.active{display:block}
 
-.section-hd{font-size:9px;font-weight:800;letter-spacing:3px;color:#334155;text-transform:uppercase;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:8px}
-.section-hd span{background:#f59e0b;color:#000;padding:1px 7px;border-radius:3px;font-size:8px}
+.section-hd{font-size:14px;font-weight:800;letter-spacing:3px;color:#334155;text-transform:uppercase;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:8px}
+.section-hd span{background:#f59e0b;color:#000;padding:1px 7px;border-radius:3px;font-size:18px}
 
-.sched{display:grid;grid-template-columns:68px 1fr}
-.stime{font-size:11px;font-weight:700;color:#334155;padding:7px 6px 7px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:1px}
-.stime .now-arrow{color:#ef4444;font-size:9px}
+.sched{display:grid;grid-template-columns:90px 1fr}
+.stime{font-size:22px;font-weight:700;color:#334155;padding:7px 6px 7px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:1px}
+.stime .now-arrow{color:#ef4444;font-size:14px}
 .sevents{padding:5px 0 5px 10px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:5px}
 
-.chip{border-left:3px solid;border-radius:4px;padding:4px 8px;flex:1;min-width:140px;max-width:calc(50% - 3px);position:relative}
-.chip-src{font-size:7px;font-weight:800;letter-spacing:1.5px;opacity:.65;margin-bottom:1px;text-transform:uppercase}
-.chip-title{font-size:12px;font-weight:800;line-height:1.1;color:#f1f5f9}
-.chip-sub{font-size:9px;color:#475569;margin-top:1px}
-.chip-ch{font-size:9px;font-weight:700;color:#cbd5e1;margin-top:3px;background:rgba(255,255,255,.06);display:inline-block;padding:1px 6px;border-radius:3px}
+.chip{border-left:3px solid;border-radius:4px;padding:8px 12px;flex:1;min-width:200px;max-width:calc(50% - 3px);position:relative}
+.chip-src{font-size:13px;font-weight:800;letter-spacing:1.5px;opacity:.65;margin-bottom:1px;text-transform:uppercase}
+.chip-title{font-size:17px;font-weight:800;line-height:1.1;color:#f1f5f9}
+.chip-sub{font-size:14px;color:#475569;margin-top:1px}
+.chip-ch{font-size:14px;font-weight:700;color:#cbd5e1;margin-top:3px;background:rgba(255,255,255,.06);display:inline-block;padding:1px 6px;border-radius:3px}
 .chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
 .chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.12)}
 .chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
@@ -77,31 +77,31 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .chip.c-paramount{border-color:#38bdf8;background:rgba(56,189,248,.07)}
 .chip.c-apple{border-color:#94a3b8;background:rgba(148,163,184,.07)}
 
-.w-badge{font-size:7px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:1px 4px;border-radius:2px;margin-left:4px}
+.w-badge{font-size:12px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:1px 4px;border-radius:2px;margin-left:4px}
 
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:160px}
 .week-day-head{background:#0d1f38;padding:7px 8px;text-align:center;border-bottom:1px solid #132a45}
 .week-day-head.today{background:#f59e0b}
-.week-day-head .wd-name{font-size:9px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
+.week-day-head .wd-name{font-size:14px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
 .week-day-head.today .wd-name{color:#000}
-.week-day-head .wd-num{font-size:16px;font-weight:900;color:#f1f5f9}
+.week-day-head .wd-num{font-size:22px;font-weight:900;color:#f1f5f9}
 .week-day-head.today .wd-num{color:#000}
 .week-day-body{padding:6px;display:flex;flex-direction:column;gap:5px}
-.week-event{border-left:3px solid;border-radius:3px;padding:4px 6px;font-size:10px}
-.week-event-time{font-size:8px;font-weight:800;color:#64748b;letter-spacing:.5px}
-.week-event-title{font-size:10px;font-weight:800;color:#f1f5f9;line-height:1.2;margin-top:1px}
-.week-event-ch{font-size:8px;color:#94a3b8;margin-top:2px;font-weight:700}
-.week-empty{font-size:9px;color:#1e293b;text-align:center;padding:10px 0}
+.week-event{border-left:3px solid;border-radius:3px;padding:4px 6px;font-size:20px}
+.week-event-time{font-size:18px;font-weight:800;color:#64748b;letter-spacing:.5px}
+.week-event-title{font-size:20px;font-weight:800;color:#f1f5f9;line-height:1.2;margin-top:1px}
+.week-event-ch{font-size:18px;color:#94a3b8;margin-top:2px;font-weight:700}
+.week-empty{font-size:14px;color:#1e293b;text-align:center;padding:10px 0}
 @media (max-width:900px){
   .week-grid{grid-template-columns:1fr;gap:8px}
   .week-day-col{min-height:auto}
 }
 
 .legend{display:flex;gap:10px;flex-wrap:wrap;padding:8px 16px;background:#040b16;border-top:1px solid #0d1e35}
-.leg{display:flex;align-items:center;gap:4px;font-size:8px;font-weight:700;letter-spacing:1px;color:#334155;text-transform:uppercase}
+.leg{display:flex;align-items:center;gap:4px;font-size:18px;font-weight:700;letter-spacing:1px;color:#334155;text-transform:uppercase}
 .ldot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
-.refresh-bar{text-align:right;padding:4px 16px 8px;font-size:8px;color:#132a45;letter-spacing:1px;background:#040b16}
+.refresh-bar{text-align:right;padding:4px 16px 8px;font-size:18px;color:#132a45;letter-spacing:1px;background:#040b16}
 
 @media (max-width: 768px) {
   .featured-strip{grid-template-columns:repeat(2,1fr)}
@@ -179,78 +179,82 @@ const timeLabel={6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'1
 const ALL_HOURS = Array.from({length:18},(_,i)=>i+6);
 
 // dayOffset: 0 = Mon Jun 15 (today), 1 = Tue Jun 16, ... 6 = Sun Jun 21
+// Keyed by actual calendar date (YYYY-MM-DD), not by offset.
+// This ensures the schedule shows the correct day no matter when the page is loaded.
 const weekSchedule = {
-  0: [ // Mon Jun 15
+  "2026-06-15": [ // Mon Jun 15 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT
     {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
     {h:7, src:'espn', title:'NWSL Soccer', sub:'Morning match', ch:'ESPN2', hl:'w'},
     {h:8, src:'directv', title:'MLB This Morning', sub:'News & highlights', ch:'MLB Net'},
-    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Cape Verde', sub:'Group H · Atlanta', ch:'FOX local', hl:'wcu'},
+    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Cape Verde', sub:'Group H · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
     {h:10, src:'directv', title:'LPGA Golf', sub:"Women's tour event", ch:'Golf Ch', hl:'w'},
-    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Egypt', sub:'Group G · Seattle', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Egypt', sub:'Group G · Seattle · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Round coverage', ch:'CBS Sports Net'},
     {h:14, src:'directv', title:'WNBA Basketball', sub:'Afternoon tip-off', ch:'ESPN2', hl:'w'},
-    {h:15, src:'directv', title:'🏆 World Cup: Saudi Arabia vs Uruguay', sub:'Group H · Miami', ch:'FS1', hl:'wcu'},
+    {h:15, src:'directv', title:'🏆 World Cup: Saudi Arabia vs Uruguay', sub:'Group H · Miami · 3:00 PM PT', ch:'FS1', hl:'wcu'},
     {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
     {h:18, src:'directv', title:'🏀 GS Valkyries vs LA Sparks', sub:'WNBA · Final 78-58 W', ch:'ESPN2', hl:'gsv'},
-    {h:20, src:'directv', title:'🏆 World Cup: Iran vs New Zealand', sub:'Group G · LA Stadium', ch:'FS1', hl:'wcu'},
+    {h:18, src:'directv', title:'🏆 World Cup: Iran vs New Zealand', sub:'Group G · LA Stadium · 6:00 PM PT', ch:'FS1', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  1: [ // Tue Jun 16
+  "2026-06-16": [ // Tue Jun 16 PT — 4 World Cup matches: 12PM, 3PM, 6PM, 9PM PT (Jordan's World Cup debut tonight!)
     {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
-    {h:12, src:'directv', title:'🏆 World Cup: France vs Senegal', sub:'Group I · East Rutherford', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Iraq vs Norway', sub:'Group I · Foxborough', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: France vs Senegal', sub:'Group I · East Rutherford · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Iraq vs Norway', sub:'Group I · Foxborough · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
     {h:18, src:'directv', title:'WNBA Primetime', sub:'ESPN2 matchup', ch:'ESPN2', hl:'w'},
-    {h:20, src:'directv', title:'🏆 World Cup: Argentina vs Algeria', sub:'Group J · Kansas City', ch:'FOX local', hl:'wcu'},
+    {h:18, src:'directv', title:'🏆 World Cup: Argentina vs Algeria', sub:'Group J · Kansas City · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:21, src:'directv', title:"🏆 World Cup: Austria vs Jordan", sub:"Group J · Santa Clara · 9:00 PM PT · Jordan's World Cup debut", ch:'FOX local', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  2: [ // Wed Jun 17
-    {h:9, src:'directv', title:'🏆 World Cup: Portugal vs DR Congo', sub:'Group K · Houston', ch:'FOX local', hl:'wcu'},
-    {h:12, src:'directv', title:'🏆 World Cup: England vs Croatia', sub:'Group L · Arlington', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Ghana vs Panama', sub:'Group L · Toronto', ch:'FOX local', hl:'wcu'},
+  "2026-06-17": [ // Wed Jun 17 PT — 4 World Cup matches: 10AM, 1PM, 4PM, 7PM PT
+    {h:9, src:'directv', title:'🏆 World Cup: Portugal vs DR Congo', sub:'Group K · Houston · 10:00 AM PT', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: England vs Croatia', sub:'Group L · Arlington · 1:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Ghana vs Panama', sub:'Group L · Toronto · 4:00 PM PT', ch:'FS1', hl:'wcu'},
     {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:19, src:'directv', title:'🏆 World Cup: Uzbekistan vs Colombia', sub:'Group K · Mexico City', ch:'FS1', hl:'wcu'},
-    {h:19, src:'directv', title:'🏀 GS Valkyries vs Dallas Wings', sub:'WNBA · Home game', ch:'ESPN2', hl:'gsv'},
+    {h:18, src:'directv', title:'🏆 World Cup: Uzbekistan vs Colombia', sub:'Group K · Mexico City · 7:00 PM PT', ch:'FS1', hl:'wcu'},
+    {h:19, src:'directv', title:'🏀 GS Valkyries vs Dallas Wings', sub:'WNBA · Home game · 7:00 PM PT', ch:'ESPN2', hl:'gsv'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  3: [ // Thu Jun 18
-    {h:9, src:'directv', title:'🏆 World Cup: Czechia vs South Africa', sub:'Group A · Atlanta', ch:'FOX local', hl:'wcu'},
-    {h:12, src:'directv', title:'🏆 World Cup: Switzerland vs Bosnia', sub:'Group B · Inglewood', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
-    {h:15, src:'directv', title:'🏆 World Cup: Canada vs Qatar', sub:'Group B · Vancouver', ch:'FOX local', hl:'wcu'},
+  "2026-06-18": [ // Thu Jun 18 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT
+    {h:9, src:'directv', title:'🏆 World Cup: Czechia vs South Africa', sub:'Group A · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: Switzerland vs Bosnia', sub:'Group B · Inglewood · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'1:15 PM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Canada vs Qatar', sub:'Group B · Vancouver · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
     {h:18, src:'directv', title:'WNBA: Atlanta vs Indiana', sub:'Live coverage', ch:'ESPN2', hl:'w'},
-    {h:21, src:'directv', title:'🏆 World Cup: Mexico vs South Korea', sub:'Group A · Zapopan', ch:'FOX local', hl:'wcu'},
+    {h:18, src:'directv', title:'🏆 World Cup: Mexico vs South Korea', sub:'Group A · Zapopan · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  4: [ // Fri Jun 19
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:40 AM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:12, src:'directv', title:'🏆 World Cup: USA vs Australia', sub:'Group D · Seattle', ch:'FOX local', hl:'wcu'},
-    {h:15, src:'directv', title:'🏆 World Cup: Scotland vs Morocco', sub:'Group C', ch:'FOX local', hl:'wcu'},
+  "2026-06-19": [ // Fri Jun 19 PT — 3 World Cup matches: 12PM, 3PM, 6PM PT
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'7:40 AM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:12, src:'directv', title:'🏆 World Cup: USA vs Australia', sub:'Group D · Seattle · 12:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:15, src:'directv', title:'🏆 World Cup: Scotland vs Morocco', sub:'Group C · Foxborough · 3:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
-    {h:19, src:'directv', title:'🏀 GS Valkyries vs Minnesota Lynx', sub:'WNBA · Home game', ch:'ESPN2', hl:'gsv'},
-    {h:21, src:'directv', title:'🏆 World Cup: Brazil vs Haiti', sub:'Group C', ch:'FOX local', hl:'wcu'},
+    {h:18, src:'directv', title:'🏀 GS Valkyries vs Minnesota Lynx', sub:'WNBA · Home game · 7:00 PM PT', ch:'ESPN2', hl:'gsv'},
+    {h:18, src:'directv', title:'🏆 World Cup: Brazil vs Haiti', sub:'Group C · Philadelphia · 6:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  5: [ // Sat Jun 20
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'1:10 PM ET start', ch:'NBCSBA', hl:'sf'},
-    {h:10, src:'directv', title:'🏆 World Cup: Netherlands vs Sweden', sub:'Group F', ch:'FOX local', hl:'wcu'},
+  "2026-06-20": [ // Sat Jun 20 PT — 5 World Cup matches: 10AM, 1PM, 5PM PT, plus TWO 9PM PT late games
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:10 AM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:9, src:'directv', title:'🏆 World Cup: Netherlands vs Sweden', sub:'Group F · Houston · 10:00 AM PT', ch:'FOX local', hl:'wcu'},
     {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Saturday round', ch:'CBS Sports Net'},
-    {h:13, src:'directv', title:'🏆 World Cup: Germany vs Ivory Coast', sub:'Group E', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'🏆 World Cup: Germany vs Ivory Coast', sub:'1:00 PM PT', ch:'FOX local', hl:'wcu'},
     {h:17, src:'directv', title:'WNBA: Atlanta vs Phoenix', sub:'Live tip-off', ch:'ESPN2', hl:'w'},
-    {h:18, src:'directv', title:'🏆 World Cup: Ecuador vs Curacao', sub:'Group E', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'🏆 World Cup: Ecuador vs Curacao', sub:'5:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:21, src:'directv', title:'🏆 World Cup: Turkiye vs Paraguay', sub:'Group D · San Francisco Bay Area · 9:00 PM PT', ch:'FOX local', hl:'wcu'},
+    {h:21, src:'directv', title:'🏆 World Cup: Tunisia vs Japan', sub:'Group F · Monterrey · 9:00 PM PT', ch:'FS1', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
-  6: [ // Sun Jun 21
-    {h:7, src:'directv', title:'🏆 World Cup: Tunisia vs Japan', sub:'Group F', ch:'FOX local', hl:'wcu'},
-    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:40 AM PT start', ch:'NBCSBA', hl:'sf'},
-    {h:12, src:'directv', title:'🏆 World Cup: Spain vs Saudi Arabia', sub:'Group H · Atlanta', ch:'FOX local', hl:'wcu'},
-    {h:13, src:'directv', title:'🏀 GS Valkyries @ Las Vegas Aces', sub:'WNBA · 1:00 PM PT', ch:'ESPN2', hl:'gsv'},
-    {h:15, src:'directv', title:'🏆 World Cup: Belgium vs Iran', sub:'Group G', ch:'FOX local', hl:'wcu'},
-    {h:18, src:'directv', title:'🏆 World Cup: Uruguay vs Cape Verde', sub:'Group H · Miami', ch:'FS1', hl:'wcu'},
-    {h:21, src:'directv', title:'🏆 World Cup: New Zealand vs Egypt', sub:'Group G', ch:'FOX local', hl:'wcu'},
+  "2026-06-21": [ // Sun Jun 21 PT — 4 World Cup matches: 9AM, 12PM, 3PM, 6PM PT (no late-night carryover today)
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'7:40 AM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Saudi Arabia', sub:'Group H · Atlanta · 9:00 AM PT', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏀 GS Valkyries @ Las Vegas Aces', sub:'WNBA · 1:00 PM PT', ch:'ESPN2', hl:'gsv'},
+    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Iran', sub:'Group G · Inglewood · 12:00 PM PT', ch:'FS1', hl:'wcu'},
+    {h:15, src:'directv', title:'🏆 World Cup: Uruguay vs Cape Verde', sub:'Group H · Miami · 3:00 PM PT', ch:'FS1', hl:'wcu'},
+    {h:18, src:'directv', title:'🏆 World Cup: New Zealand vs Egypt', sub:'Group G · Vancouver · 6:00 PM PT', ch:'FS1', hl:'wcu'},
     {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
   ],
 };
@@ -274,6 +278,13 @@ function getDayDate(offset){
   return d;
 }
 
+function dateKey(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
 function buildChip(ev){
   const cls = hlClass(ev);
   const wb = wBadge(ev);
@@ -292,7 +303,7 @@ function buildScheduleGrid(daySchedule, isToday){
     const evs = daySchedule.filter(e=>e.h===h);
     const isNow = isToday && h===nowH;
     html += `<div class="stime">${isNow?'<span class="now-arrow">▶ NOW</span>':''}<span>${timeLabel[h]}</span></div>
-    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:11px;padding:4px">—</div>'}</div>`;
+    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:22px;padding:4px">—</div>'}</div>`;
   });
   return html+'</div>';
 }
@@ -303,7 +314,7 @@ function buildFeaturedStrip(daySchedule){
   const gsv = daySchedule.find(e=>e.hl==='gsv');
 
   const wcCard = `<div class="feat-card worldcup">
-    <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
+    <div class="feat-eyebrow">🏆 FIFA World Cup 2026 (Pacific Time)</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
     <div class="feat-sub">${wc.slice(0,4).map(g=>`${timeLabel[g.h]}: ${g.title.replace('🏆 World Cup: ','')}`).join('<br>')||'No matches today'}</div>
     <div class="feat-ch">${wc.length?ch(wc[0].ch):'—'}</div>
@@ -342,9 +353,9 @@ function buildWorldCupPanel(daySchedule, dateObj){
   const colors=['#ef4444','#f59e0b','#818cf8','#38bdf8'];
   wc.forEach((g,i)=>{
     html+=`<div style="background:#060f1d;border-radius:4px;padding:10px 12px;border-left:3px solid ${colors[i%4]}">
-      <div style="font-size:8px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${timeLabel[g.h]} PT</div>
-      <div style="font-size:15px;font-weight:900;margin:3px 0">${g.title.replace('🏆 World Cup: ','')}</div>
-      <div style="font-size:9px;color:#64748b">${g.sub}</div>
+      <div style="font-size:18px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${timeLabel[g.h]} PT</div>
+      <div style="font-size:20px;font-weight:900;margin:3px 0">${g.title.replace('🏆 World Cup: ','')}</div>
+      <div style="font-size:14px;color:#64748b">${g.sub}</div>
       <div style="margin-top:4px"><span class="chip-ch">${ch(g.ch)}</span></div>
     </div>`;
   });
@@ -363,8 +374,8 @@ function buildWomenPanel(daySchedule){
 }
 
 function renderDayView(){
-  const daySchedule = weekSchedule[currentDayOffset] || [];
   const dateObj = getDayDate(currentDayOffset);
+  const daySchedule = weekSchedule[dateKey(dateObj)] || [];
   const isToday = currentDayOffset===0;
 
   document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(daySchedule);
@@ -373,8 +384,8 @@ function renderDayView(){
   document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(daySchedule, dateObj);
 
   document.getElementById('rts').textContent = isToday
-    ? `Today, ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · Game times and channels confirmed`
-    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · Game times and channels confirmed`;
+    ? `Today, ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · All times Pacific · Game times and channels confirmed`
+    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · All times Pacific · Game times and channels confirmed`;
 }
 
 function buildWeekView(){
@@ -382,7 +393,7 @@ function buildWeekView(){
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const daySchedule = (weekSchedule[i]||[]).slice().sort((a,b)=>a.h-b.h);
+    const daySchedule = (weekSchedule[dateKey(d)]||[]).slice().sort((a,b)=>a.h-b.h);
     const highlights = daySchedule.filter(e=>e.hl).slice(0,6);
     const toShow = highlights.length ? highlights : daySchedule.slice(0,6);
 
@@ -415,7 +426,7 @@ function buildDaySelector(){
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const hasWC = (weekSchedule[i]||[]).some(e=>e.hl==='wcu');
+    const hasWC = (weekSchedule[dateKey(d)]||[]).some(e=>e.hl==='wcu');
     html += `<button class="day-btn${i===currentDayOffset?' active':''}" onclick="selectDay(${i})">
       <div class="day-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
       <div class="day-num">${d.getDate()}</div>

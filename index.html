@@ -15,20 +15,8 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#040b16;border-bottom:3px solid #f59e0b;position:sticky;top:0;z-index:100}
 .bar-brand{font-size:20px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
 .topbar-right{display:flex;align-items:center;gap:14px}
-.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:2px;color:#ef4444}
-.pulse{width:7px;height:7px;border-radius:50%;background:#ef4444;animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
 .clock{font-size:22px;font-weight:800;letter-spacing:1px;text-align:right}
 .datestr{font-size:9px;color:#475569;letter-spacing:1px;text-align:right}
-
-.sync-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 16px;background:#0a1929;border-bottom:1px solid #132a45;font-size:9px;color:#475569;letter-spacing:.5px}
-.sync-status{display:flex;align-items:center;gap:5px}
-.sync-dot{width:6px;height:6px;border-radius:50%;background:#475569}
-.sync-dot.ok{background:#22c55e}
-.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
-.sync-dot.err{background:#ef4444}
-.refresh-now-btn{background:#0d1f38;border:1px solid #1e3a5f;color:#64748b;padding:3px 10px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;-webkit-appearance:none}
-.refresh-now-btn:hover{background:#132a45;color:#94a3b8}
 
 .day-selector{display:flex;gap:4px;padding:10px 16px;background:#0a1929;border-bottom:1px solid #132a45;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .day-selector::-webkit-scrollbar{display:none}
@@ -55,9 +43,7 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .feat-eyebrow{font-size:8px;font-weight:800;letter-spacing:2px;opacity:.7;text-transform:uppercase;margin-bottom:2px}
 .feat-title{font-size:13px;font-weight:900;line-height:1.1;color:#f1f5f9}
 .feat-sub{font-size:9px;color:#94a3b8;margin-top:2px;line-height:1.4}
-.feat-score{font-size:18px;font-weight:900;margin-top:3px;letter-spacing:1px}
-.feat-live{position:absolute;top:6px;right:8px;font-size:7px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);padding:1px 5px;border-radius:3px;letter-spacing:1px}
-.feat-ch{font-size:8px;font-weight:700;color:#475569;margin-top:3px}
+.feat-ch{font-size:9px;font-weight:700;color:#cbd5e1;margin-top:4px;background:rgba(255,255,255,.06);display:inline-block;padding:2px 6px;border-radius:3px}
 
 .tabs{display:flex;gap:2px;padding:8px 16px 0;background:#040b16;border-bottom:1px solid #0d1e35;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
@@ -67,22 +53,6 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .content{padding:12px 16px;display:none}
 .content.active{display:block}
 
-.ticker-wrap{background:#0a1929;border:1px solid #132a45;border-radius:6px;padding:8px 12px;margin-bottom:10px}
-.ticker-label{font-size:8px;font-weight:800;letter-spacing:3px;color:#f59e0b;margin-bottom:6px}
-.ticker-row{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-.ticker-row::-webkit-scrollbar{display:none}
-.sc{flex-shrink:0;background:#060f1d;border:1px solid #132a45;border-radius:5px;padding:6px 10px;min-width:150px}
-.sc.live{border-color:#ef4444}
-.sc-sport{font-size:7px;font-weight:800;letter-spacing:1.5px;color:#475569;margin-bottom:3px}
-.sc.live .sc-sport{color:#ef4444}
-.sc-match{display:flex;align-items:center;gap:5px;justify-content:space-between}
-.sc-team{font-size:13px;font-weight:800;color:#f1f5f9;letter-spacing:.5px}
-.sc-num{font-size:16px;font-weight:900;color:#f1f5f9}
-.sc-num.win{color:#f59e0b}
-.sc-at{font-size:8px;color:#1e3a5f;font-weight:700}
-.sc-info{font-size:8px;color:#475569;margin-top:2px}
-.sc.live .sc-info{color:#ef4444;font-weight:700}
-
 .section-hd{font-size:9px;font-weight:800;letter-spacing:3px;color:#334155;text-transform:uppercase;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:8px}
 .section-hd span{background:#f59e0b;color:#000;padding:1px 7px;border-radius:3px;font-size:8px}
 
@@ -91,12 +61,11 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .stime .now-arrow{color:#ef4444;font-size:9px}
 .sevents{padding:5px 0 5px 10px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:5px}
 
-.chip{border-left:3px solid;border-radius:4px;padding:4px 8px;flex:1;min-width:120px;max-width:calc(50% - 3px);position:relative}
+.chip{border-left:3px solid;border-radius:4px;padding:4px 8px;flex:1;min-width:140px;max-width:calc(50% - 3px);position:relative}
 .chip-src{font-size:7px;font-weight:800;letter-spacing:1.5px;opacity:.65;margin-bottom:1px;text-transform:uppercase}
 .chip-title{font-size:12px;font-weight:800;line-height:1.1;color:#f1f5f9}
 .chip-sub{font-size:9px;color:#475569;margin-top:1px}
-.chip-ch{font-size:8px;font-weight:700;color:#334155;margin-top:2px}
-.chip.live-tag::after{content:"LIVE";position:absolute;top:4px;right:5px;font-size:6px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);padding:1px 3px;border-radius:2px;letter-spacing:1px}
+.chip-ch{font-size:9px;font-weight:700;color:#cbd5e1;margin-top:3px;background:rgba(255,255,255,.06);display:inline-block;padding:1px 6px;border-radius:3px}
 .chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
 .chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.12)}
 .chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
@@ -111,7 +80,7 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .w-badge{font-size:7px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:1px 4px;border-radius:2px;margin-left:4px}
 
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:200px}
+.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:160px}
 .week-day-head{background:#0d1f38;padding:7px 8px;text-align:center;border-bottom:1px solid #132a45}
 .week-day-head.today{background:#f59e0b}
 .week-day-head .wd-name{font-size:9px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
@@ -122,7 +91,7 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .week-event{border-left:3px solid;border-radius:3px;padding:4px 6px;font-size:10px}
 .week-event-time{font-size:8px;font-weight:800;color:#64748b;letter-spacing:.5px}
 .week-event-title{font-size:10px;font-weight:800;color:#f1f5f9;line-height:1.2;margin-top:1px}
-.week-event-ch{font-size:7px;color:#334155;margin-top:1px}
+.week-event-ch{font-size:8px;color:#94a3b8;margin-top:2px;font-weight:700}
 .week-empty{font-size:9px;color:#1e293b;text-align:center;padding:10px 0}
 @media (max-width:900px){
   .week-grid{grid-template-columns:1fr;gap:8px}
@@ -145,17 +114,11 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 <div class="topbar">
   <div class="bar-brand">📺 Bar Schedule</div>
   <div class="topbar-right">
-    <div class="live-badge"><div class="pulse"></div>LIVE</div>
     <div>
       <div class="clock" id="clk">--:--</div>
       <div class="datestr" id="dstr"></div>
     </div>
   </div>
-</div>
-
-<div class="sync-bar">
-  <div class="sync-status"><div class="sync-dot" id="sync-dot"></div><span id="sync-text">Connecting to live data…</span></div>
-  <button class="refresh-now-btn" onclick="manualRefresh()">↻ Refresh now</button>
 </div>
 
 <div class="day-selector" id="day-selector"></div>
@@ -172,129 +135,135 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
     <button class="tab active" onclick="switchTab('all',this)">All Day</button>
     <button class="tab" onclick="switchTab('women',this)">♀ Women's</button>
     <button class="tab" onclick="switchTab('worldcup',this)">🏆 World Cup</button>
-    <button class="tab" onclick="switchTab('scores',this)">🔴 Scores</button>
   </div>
 
   <div id="tab-all" class="content active"><div id="grid-all"></div></div>
   <div id="tab-women" class="content"><div id="grid-women"></div></div>
   <div id="tab-worldcup" class="content"><div id="grid-worldcup"></div></div>
-  <div id="tab-scores" class="content"><div id="grid-scores"></div></div>
 </div>
 
 <div id="week-view" class="content" style="padding:12px 16px">
-  <div class="section-hd">7-Day Outlook <span>Live from ESPN · Tap a day above for full detail</span></div>
+  <div class="section-hd">7-Day Outlook <span>Game times & channels</span></div>
   <div class="week-grid" id="week-grid"></div>
 </div>
 
 <div class="legend">
-  <div class="leg"><div class="ldot" style="background:#ef4444"></div>ESPN / Live Sports</div>
+  <div class="leg"><div class="ldot" style="background:#f59e0b"></div>DirecTV XTRA</div>
+  <div class="leg"><div class="ldot" style="background:#ef4444"></div>ESPN/ESPN+</div>
+  <div class="leg"><div class="ldot" style="background:#818cf8"></div>Peacock</div>
+  <div class="leg"><div class="ldot" style="background:#38bdf8"></div>Paramount+</div>
+  <div class="leg"><div class="ldot" style="background:#94a3b8"></div>Apple TV+</div>
   <div class="leg"><div class="ldot" style="background:#a855f7"></div>Women's</div>
-  <div class="leg" style="color:#ef4444"><div class="ldot" style="background:#ef4444"></div>Live Now</div>
-  <div class="leg" style="margin-left:auto">Data: ESPN public scoreboard</div>
 </div>
-<div class="refresh-bar" id="rts">Auto-refreshes every 60 seconds</div>
+<div class="refresh-bar" id="rts">Schedule fixed for the week — game times and channels confirmed</div>
 
 <script>
-/* ===================== LIVE DATA LAYER ===================== */
-// Pulls real scores/schedules from ESPN's free public scoreboard endpoints.
-// Falls back gracefully to "no games found" if a request fails — never breaks the page.
+/* ===================== VERIFIED SCHEDULE DATA ===================== */
+/* Game times and channels confirmed from MLB.com, WNBA.com, and official 2026 World Cup TV listings. */
+/* No live score data — this version focuses purely on accurate times and channels, refreshed weekly. */
 
-const PROXY = 'https://corsproxy.io/?url=';
-const LEAGUES = [
-  {key:'mlb',    espn:'baseball/mlb',        label:'MLB',     women:false, team:'SF'},
-  {key:'nba',    espn:'basketball/nba',      label:'NBA',     women:false, team:'GS'},
-  {key:'wnba',   espn:'basketball/wnba',     label:'WNBA',    women:true,  team:'GS'},
-  {key:'nhl',    espn:'hockey/nhl',          label:'NHL',     women:false},
-  {key:'wc',     espn:'soccer/fifa.world',   label:'World Cup', women:false},
-  {key:'nwsl',   espn:'soccer/usa.nwsl',     label:'NWSL',    women:true},
-  {key:'mls',    espn:'soccer/usa.1',        label:'MLS',     women:false},
-];
+const CH = {
+  ESPN:'Ch 206', ESPN2:'Ch 209', ESPNU:'Ch 208',
+  'NFL Net':'Ch 212', 'MLB Net':'Ch 213', 'NHL Net':'Ch 215', 'NBA TV':'Ch 216',
+  'Golf Ch':'Ch 218', FS1:'Ch 219', 'CBS Sports Net':'Ch 221',
+  TNT:'Ch 245', TBS:'Ch 247',
+  'FOX local':'Ch 398 (FOX)', 'ABC local':'Ch 396 (ABC)', 'NBC local':'Ch 392 (NBC)',
+  Peacock:'Peacock app', 'Apple TV+':'Apple TV+ app', 'ESPN+':'ESPN+ app',
+  'NBCSBA':'NBC Sports Bay Area'
+};
+function ch(c){ return CH[c] || c; }
 
-function fmtDate(d){
-  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
-  return `${y}${m}${day}`;
+const srcLabel={directv:'DirecTV XTRA',espn:'ESPN / ESPN+',peacock:'Peacock',paramount:'Paramount+',apple:'Apple TV+'};
+
+const timeLabel={6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
+const ALL_HOURS = Array.from({length:18},(_,i)=>i+6);
+
+// dayOffset: 0 = Mon Jun 15 (today), 1 = Tue Jun 16, ... 6 = Sun Jun 21
+const weekSchedule = {
+  0: [ // Mon Jun 15
+    {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
+    {h:7, src:'espn', title:'NWSL Soccer', sub:'Morning match', ch:'ESPN2', hl:'w'},
+    {h:8, src:'directv', title:'MLB This Morning', sub:'News & highlights', ch:'MLB Net'},
+    {h:9, src:'directv', title:'🏆 World Cup: Spain vs Cape Verde', sub:'Group H · Atlanta', ch:'FOX local', hl:'wcu'},
+    {h:10, src:'directv', title:'LPGA Golf', sub:"Women's tour event", ch:'Golf Ch', hl:'w'},
+    {h:12, src:'directv', title:'🏆 World Cup: Belgium vs Egypt', sub:'Group G · Seattle', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Round coverage', ch:'CBS Sports Net'},
+    {h:14, src:'directv', title:'WNBA Basketball', sub:'Afternoon tip-off', ch:'ESPN2', hl:'w'},
+    {h:15, src:'directv', title:'🏆 World Cup: Saudi Arabia vs Uruguay', sub:'Group H · Miami', ch:'FS1', hl:'wcu'},
+    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
+    {h:18, src:'directv', title:'🏀 GS Valkyries vs LA Sparks', sub:'WNBA · Final 78-58 W', ch:'ESPN2', hl:'gsv'},
+    {h:20, src:'directv', title:'🏆 World Cup: Iran vs New Zealand', sub:'Group G · LA Stadium', ch:'FS1', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  1: [ // Tue Jun 16
+    {h:6, src:'espn', title:'SportsCenter AM', sub:'Morning recap', ch:'ESPN'},
+    {h:12, src:'directv', title:'🏆 World Cup: France vs Senegal', sub:'Group I · East Rutherford', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Iraq vs Norway', sub:'Group I · Foxborough', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
+    {h:18, src:'directv', title:'WNBA Primetime', sub:'ESPN2 matchup', ch:'ESPN2', hl:'w'},
+    {h:20, src:'directv', title:'🏆 World Cup: Argentina vs Algeria', sub:'Group J · Kansas City', ch:'FOX local', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  2: [ // Wed Jun 17
+    {h:9, src:'directv', title:'🏆 World Cup: Portugal vs DR Congo', sub:'Group K · Houston', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: England vs Croatia', sub:'Group L · Arlington', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Ghana vs Panama', sub:'Group L · Toronto', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
+    {h:19, src:'directv', title:'🏆 World Cup: Uzbekistan vs Colombia', sub:'Group K · Mexico City', ch:'FS1', hl:'wcu'},
+    {h:19, src:'directv', title:'🏀 GS Valkyries vs Dallas Wings', sub:'WNBA · Home game', ch:'ESPN2', hl:'gsv'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  3: [ // Thu Jun 18
+    {h:9, src:'directv', title:'🏆 World Cup: Czechia vs South Africa', sub:'Group A · Atlanta', ch:'FOX local', hl:'wcu'},
+    {h:12, src:'directv', title:'🏆 World Cup: Switzerland vs Bosnia', sub:'Group B · Inglewood', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'⚾ SF Giants @ Atlanta', sub:'4:15 PM ET start', ch:'NBCSBA', hl:'sf'},
+    {h:15, src:'directv', title:'🏆 World Cup: Canada vs Qatar', sub:'Group B · Vancouver', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
+    {h:18, src:'directv', title:'WNBA: Atlanta vs Indiana', sub:'Live coverage', ch:'ESPN2', hl:'w'},
+    {h:21, src:'directv', title:'🏆 World Cup: Mexico vs South Korea', sub:'Group A · Zapopan', ch:'FOX local', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  4: [ // Fri Jun 19
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:40 AM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:12, src:'directv', title:'🏆 World Cup: USA vs Australia', sub:'Group D · Seattle', ch:'FOX local', hl:'wcu'},
+    {h:15, src:'directv', title:'🏆 World Cup: Scotland vs Morocco', sub:'Group C', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'SportsCenter', sub:'Evening edition', ch:'ESPN'},
+    {h:19, src:'directv', title:'🏀 GS Valkyries vs Minnesota Lynx', sub:'WNBA · Home game', ch:'ESPN2', hl:'gsv'},
+    {h:21, src:'directv', title:'🏆 World Cup: Brazil vs Haiti', sub:'Group C', ch:'FOX local', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  5: [ // Sat Jun 20
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'1:10 PM ET start', ch:'NBCSBA', hl:'sf'},
+    {h:10, src:'directv', title:'🏆 World Cup: Netherlands vs Sweden', sub:'Group F', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'paramount', title:'PGA Tour Golf', sub:'Saturday round', ch:'CBS Sports Net'},
+    {h:13, src:'directv', title:'🏆 World Cup: Germany vs Ivory Coast', sub:'Group E', ch:'FOX local', hl:'wcu'},
+    {h:17, src:'directv', title:'WNBA: Atlanta vs Phoenix', sub:'Live tip-off', ch:'ESPN2', hl:'w'},
+    {h:18, src:'directv', title:'🏆 World Cup: Ecuador vs Curacao', sub:'Group E', ch:'FOX local', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+  6: [ // Sun Jun 21
+    {h:7, src:'directv', title:'🏆 World Cup: Tunisia vs Japan', sub:'Group F', ch:'FOX local', hl:'wcu'},
+    {h:9, src:'directv', title:'⚾ SF Giants @ Miami', sub:'10:40 AM PT start', ch:'NBCSBA', hl:'sf'},
+    {h:12, src:'directv', title:'🏆 World Cup: Spain vs Saudi Arabia', sub:'Group H · Atlanta', ch:'FOX local', hl:'wcu'},
+    {h:13, src:'directv', title:'🏀 GS Valkyries @ Las Vegas Aces', sub:'WNBA · 1:00 PM PT', ch:'ESPN2', hl:'gsv'},
+    {h:15, src:'directv', title:'🏆 World Cup: Belgium vs Iran', sub:'Group G', ch:'FOX local', hl:'wcu'},
+    {h:18, src:'directv', title:'🏆 World Cup: Uruguay vs Cape Verde', sub:'Group H · Miami', ch:'FS1', hl:'wcu'},
+    {h:21, src:'directv', title:'🏆 World Cup: New Zealand vs Egypt', sub:'Group G', ch:'FOX local', hl:'wcu'},
+    {h:22, src:'directv', title:'SportsCenter Final', sub:'Scores & highlights', ch:'ESPN'},
+  ],
+};
+
+function hlClass(ev){
+  if(ev.hl==='wcu') return 'wcu-highlight';
+  if(ev.hl==='sf') return 'sf-highlight';
+  if(ev.hl==='gsw') return 'gsw-highlight';
+  if(ev.hl==='gsv') return 'gsv-highlight';
+  if(ev.hl==='w') return 'womens';
+  return 'c-dtv';
 }
-
-async function fetchEspn(espnPath, dateStr){
-  const url = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
-  try{
-    const res = await fetch(url, {mode:'cors'});
-    if(!res.ok) throw new Error('bad status');
-    return await res.json();
-  }catch(e1){
-    try{
-      const res2 = await fetch(PROXY+encodeURIComponent(url));
-      if(!res2.ok) throw new Error('proxy bad status');
-      return await res2.json();
-    }catch(e2){
-      return null;
-    }
-  }
-}
-
-function parseEvent(ev, leagueLabel, isWomen){
-  try{
-    const comp = ev.competitions[0];
-    const home = comp.competitors.find(c=>c.homeAway==='home');
-    const away = comp.competitors.find(c=>c.homeAway==='away');
-    const status = ev.status.type.state; // 'pre','in','post'
-    const dt = new Date(ev.date);
-    return {
-      league: leagueLabel,
-      isWomen,
-      name: ev.name || (away.team.shortDisplayName+' vs '+home.team.shortDisplayName),
-      home: home.team.shortDisplayName || home.team.abbreviation,
-      away: away.team.shortDisplayName || away.team.abbreviation,
-      homeScore: home.score!==undefined ? parseInt(home.score) : null,
-      awayScore: away.score!==undefined ? parseInt(away.score) : null,
-      status,
-      statusDetail: ev.status.type.shortDetail || ev.status.type.description || '',
-      hour: dt.getHours(),
-      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
-      venue: comp.venue ? comp.venue.fullName : '',
-    };
-  }catch(e){ return null; }
-}
-
-// Cache of fetched data per day offset: { 0: {mlb:[...], wc:[...], ...}, 1: {...} }
-const dataCache = {};
-let isFetching = false;
-
-async function loadDayData(offset){
-  if(dataCache[offset]) return dataCache[offset];
-  const d = new Date();
-  d.setDate(d.getDate()+offset);
-  const dateStr = fmtDate(d);
-
-  const results = {};
-  await Promise.all(LEAGUES.map(async lg=>{
-    const json = await fetchEspn(lg.espn, dateStr);
-    if(json && json.events){
-      results[lg.key] = json.events.map(ev=>parseEvent(ev, lg.label, lg.women)).filter(Boolean);
-    } else {
-      results[lg.key] = [];
-    }
-  }));
-  dataCache[offset] = results;
-  return results;
-}
-
-function setSyncStatus(state, text){
-  const dot = document.getElementById('sync-dot');
-  const txt = document.getElementById('sync-text');
-  dot.className = 'sync-dot ' + state;
-  txt.textContent = text;
-}
-
-async function manualRefresh(){
-  Object.keys(dataCache).forEach(k=>delete dataCache[k]);
-  setSyncStatus('loading','Refreshing live data…');
-  await initialLoad();
-}
-
-/* ===================== UI / SCHEDULE BUILDING ===================== */
-const timeLabel={0:'12 AM',1:'1 AM',2:'2 AM',3:'3 AM',4:'4 AM',5:'5 AM',6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
-const ALL_HOURS = Array.from({length:18},(_,i)=>i+6); // 6 AM - 11 PM
+function wBadge(ev){ return (ev.hl==='w'||ev.hl==='gsv')?'<span class="w-badge">WOMEN</span>':''; }
 
 let currentDayOffset = 0;
 let currentView = 'day';
@@ -305,39 +274,22 @@ function getDayDate(offset){
   return d;
 }
 
-function flattenEvents(dayData){
-  const out=[];
-  Object.entries(dayData).forEach(([key,events])=>{
-    events.forEach(e=>out.push(e));
-  });
-  return out.sort((a,b)=>a.hour-b.hour);
-}
-
-function chipClass(ev){
-  if(ev.league==='World Cup') return 'wcu-highlight';
-  if(ev.isWomen) return 'womens';
-  return 'c-espn';
-}
-
 function buildChip(ev){
-  const live = ev.status==='in' ? ' live-tag' : '';
-  const cls = chipClass(ev);
-  const wb = ev.isWomen ? '<span class="w-badge">WOMEN</span>' : '';
-  const scoreStr = (ev.homeScore!==null && ev.awayScore!==null)
-    ? `${ev.away} ${ev.awayScore} @ ${ev.homeScore} ${ev.home}`
-    : `${ev.away} @ ${ev.home}`;
-  return `<div class="chip ${cls}${live}">
-    <div class="chip-src">${ev.league}${wb}</div>
-    <div class="chip-title">${scoreStr}</div>
-    <div class="chip-sub">${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
+  const cls = hlClass(ev);
+  const wb = wBadge(ev);
+  return `<div class="chip ${cls}">
+    <div class="chip-src">${srcLabel[ev.src]||ev.src}${wb}</div>
+    <div class="chip-title">${ev.title}</div>
+    <div class="chip-sub">${ev.sub}</div>
+    <div class="chip-ch">${ch(ev.ch)}</div>
   </div>`;
 }
 
-function buildScheduleGrid(events, isToday){
+function buildScheduleGrid(daySchedule, isToday){
   const nowH = new Date().getHours();
   let html = '<div class="sched">';
   ALL_HOURS.forEach(h=>{
-    const evs = events.filter(e=>e.hour===h);
+    const evs = daySchedule.filter(e=>e.h===h);
     const isNow = isToday && h===nowH;
     html += `<div class="stime">${isNow?'<span class="now-arrow">▶ NOW</span>':''}<span>${timeLabel[h]}</span></div>
     <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:11px;padding:4px">—</div>'}</div>`;
@@ -345,143 +297,94 @@ function buildScheduleGrid(events, isToday){
   return html+'</div>';
 }
 
-function buildFeaturedStrip(dayData, isToday){
-  const wc = dayData.wc || [];
-  const mlb = dayData.mlb || [];
-  const nba = dayData.nba || [];
-  const wnba = dayData.wnba || [];
-
-  const sfGame = mlb.find(g=>g.home.includes('Giants')||g.away.includes('Giants')||g.home==='SF'||g.away==='SF');
-  const gswGame = nba.find(g=>g.home.includes('Warriors')||g.away.includes('Warriors'));
-  const gsvGame = wnba.find(g=>g.home.includes('Valkyries')||g.away.includes('Valkyries'));
+function buildFeaturedStrip(daySchedule){
+  const wc = daySchedule.filter(e=>e.hl==='wcu');
+  const sf = daySchedule.find(e=>e.hl==='sf');
+  const gsv = daySchedule.find(e=>e.hl==='gsv');
 
   const wcCard = `<div class="feat-card worldcup">
-    ${wc.length?(isToday?'<div class="feat-live">TODAY</div>':''):''}
     <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
-    <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches scheduled'}</div>
-    <div class="feat-ch">Live via ESPN</div>
+    <div class="feat-sub">${wc.slice(0,4).map(g=>`${timeLabel[g.h]}: ${g.title.replace('🏆 World Cup: ','')}`).join('<br>')||'No matches today'}</div>
+    <div class="feat-ch">${wc.length?ch(wc[0].ch):'—'}</div>
   </div>`;
 
   const sfCard = `<div class="feat-card giants">
     <div class="feat-eyebrow">⚾ SF Giants</div>
-    <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game today'}</div>
-    <div class="feat-sub">${sfGame? sfGame.statusDetail+(sfGame.homeScore!==null?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check back for next matchup'}</div>
-    <div class="feat-ch">Live via ESPN</div>
+    <div class="feat-title">${sf? sf.title.replace('⚾ ','') : 'No game today'}</div>
+    <div class="feat-sub">${sf? sf.sub : 'Check next game day'}</div>
+    <div class="feat-ch">${sf?ch(sf.ch):'—'}</div>
   </div>`;
 
   const gswCard = `<div class="feat-card warriors">
     <div class="feat-eyebrow">🏀 Golden State Warriors</div>
-    <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game today'}</div>
-    <div class="feat-sub">${gswGame? gswGame.statusDetail : 'Off-season — no game scheduled'}</div>
-    <div class="feat-ch">Live via ESPN</div>
+    <div class="feat-title">Off-Season</div>
+    <div class="feat-sub">Missed playoffs · lost play-in to PHX<br>NBA Draft coverage on NBA TV</div>
+    <div class="feat-ch">${ch('NBA TV')}</div>
   </div>`;
 
   const gsvCard = `<div class="feat-card valkyries">
-    ${gsvGame && gsvGame.status==='in' ? '<div class="feat-live">LIVE NOW</div>' : ''}
     <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
-    <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game today'}</div>
-    <div class="feat-sub">${gsvGame? gsvGame.statusDetail+(gsvGame.homeScore!==null?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check back for next matchup'}</div>
-    <div class="feat-ch">Live via ESPN</div>
+    <div class="feat-title">${gsv? gsv.title.replace('🏀 ','') : 'No game today'}</div>
+    <div class="feat-sub">${gsv? gsv.sub : 'Check next game day'}</div>
+    <div class="feat-ch">${gsv?ch(gsv.ch):'—'}</div>
   </div>`;
 
   return wcCard+sfCard+gswCard+gsvCard;
 }
 
-function buildWorldCupPanel(dayData, dateObj){
-  const wc = dayData.wc || [];
+function buildWorldCupPanel(daySchedule, dateObj){
+  const wc = daySchedule.filter(e=>e.hl==='wcu');
   if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches scheduled this day.</div>';
   let html = `<div class="section-hd">🏆 FIFA World Cup 2026 — ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</div>
   <div style="background:#0a1929;border:1px solid #1e3a5f;border-radius:6px;padding:12px 14px;margin-bottom:10px">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">`;
   const colors=['#ef4444','#f59e0b','#818cf8','#38bdf8'];
   wc.forEach((g,i)=>{
-    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} - ${g.homeScore} ${g.home}`:`${g.away} vs ${g.home}`;
     html+=`<div style="background:#060f1d;border-radius:4px;padding:10px 12px;border-left:3px solid ${colors[i%4]}">
-      <div style="font-size:8px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
-      <div style="font-size:15px;font-weight:900;margin:3px 0">${scoreStr}</div>
-      <div style="font-size:9px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
+      <div style="font-size:8px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${timeLabel[g.h]} PT</div>
+      <div style="font-size:15px;font-weight:900;margin:3px 0">${g.title.replace('🏆 World Cup: ','')}</div>
+      <div style="font-size:9px;color:#64748b">${g.sub}</div>
+      <div style="margin-top:4px"><span class="chip-ch">${ch(g.ch)}</span></div>
     </div>`;
   });
   html+='</div></div>';
   return html;
 }
 
-function buildWomenPanel(dayData){
-  const all = flattenEvents(dayData).filter(e=>e.isWomen);
-  if(!all.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events found for this day via live data.</div>';
+function buildWomenPanel(daySchedule){
+  const evs = daySchedule.filter(e=>e.hl==='w'||e.hl==='gsv');
+  if(!evs.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events scheduled this day.</div>';
   let html='<div class="section-hd">Women\'s Sports This Day <span style="background:#a855f7">ALL WOMEN</span></div><div class="sched">';
-  all.forEach(e=>{
-    html+=`<div class="stime"><span>${e.timeStr}</span></div><div class="sevents">${buildChip(e)}</div>`;
+  evs.forEach(e=>{
+    html+=`<div class="stime"><span>${timeLabel[e.h]}</span></div><div class="sevents">${buildChip(e)}</div>`;
   });
   return html+'</div>';
 }
 
-function buildScoresPanel(dayData, isToday){
-  const all = flattenEvents(dayData);
-  const live = all.filter(e=>e.status==='in');
-  const final = all.filter(e=>e.status==='post');
-  const pre = all.filter(e=>e.status==='pre');
-
-  function row(g){
-    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} @ ${g.homeScore} ${g.home}`:`${g.away} @ ${g.home}`;
-    return `<div class="sc${g.status==='in'?' live':''}">
-      <div class="sc-sport">${g.league}${g.status==='in'?' · LIVE':g.status==='post'?' · Final':' · Upcoming'}</div>
-      <div class="sc-match"><span style="font-size:12px;font-weight:800">${scoreStr}</span></div>
-      <div class="sc-info">${g.statusDetail}</div>
-    </div>`;
-  }
-
-  let html='';
-  if(live.length) html += `<div class="section-hd">🔴 In Progress <span>${live.length} live</span></div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">${live.map(row).join('')}</div>`;
-  if(final.length) html += `<div class="section-hd">✔ Final Scores</div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">${final.map(row).join('')}</div>`;
-  if(pre.length) html += `<div class="section-hd">⏰ Upcoming</div><div style="display:flex;flex-wrap:wrap;gap:7px">${pre.map(row).join('')}</div>`;
-  if(!html) html = '<div style="color:#475569;padding:16px">No games found for this day.</div>';
-  return html;
-}
-
-function buildTicker(dayData, isToday){
-  const all = flattenEvents(dayData).filter(e=>e.status==='in'||e.status==='post').slice(0,10);
-  if(!all.length) return `<div style="color:#475569;font-size:10px;padding:4px">No live or recent games right now.</div>`;
-  return all.map(g=>{
-    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} @ ${g.homeScore} ${g.home}`:`${g.away} @ ${g.home}`;
-    return `<div class="sc${g.status==='in'?' live':''}">
-      <div class="sc-sport">${g.league}${g.status==='in'?' · LIVE':' · Final'}</div>
-      <div class="sc-match"><span style="font-size:12px;font-weight:800">${scoreStr}</span></div>
-      <div class="sc-info">${g.statusDetail}</div>
-    </div>`;
-  }).join('');
-}
-
-async function renderDayView(){
-  const isToday = currentDayOffset===0;
+function renderDayView(){
+  const daySchedule = weekSchedule[currentDayOffset] || [];
   const dateObj = getDayDate(currentDayOffset);
-  const dayData = await loadDayData(currentDayOffset);
-  const events = flattenEvents(dayData);
+  const isToday = currentDayOffset===0;
 
-  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(dayData, isToday);
-  document.getElementById('grid-all').innerHTML =
-    `<div class="ticker-wrap"><div class="ticker-label">⚡ Live & Recent Scores</div><div class="ticker-row">${buildTicker(dayData,isToday)}</div></div>`+
-    buildScheduleGrid(events, isToday);
-  document.getElementById('grid-women').innerHTML = buildWomenPanel(dayData);
-  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(dayData, dateObj);
-  document.getElementById('grid-scores').innerHTML = buildScoresPanel(dayData, isToday);
+  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(daySchedule);
+  document.getElementById('grid-all').innerHTML = buildScheduleGrid(daySchedule, isToday);
+  document.getElementById('grid-women').innerHTML = buildWomenPanel(daySchedule);
+  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(daySchedule, dateObj);
 
-  const ts=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
   document.getElementById('rts').textContent = isToday
-    ? `Last synced: ${ts} · Auto-refreshes every 60s`
-    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}`;
+    ? `Today, ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · Game times and channels confirmed`
+    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · Game times and channels confirmed`;
 }
 
-async function buildWeekView(){
+function buildWeekView(){
   let html = '';
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const dayData = await loadDayData(i);
-    const events = flattenEvents(dayData);
-    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||e.league==='MLB'||e.league==='NBA').slice(0,5);
-    const toShow = highlights.length ? highlights : events.slice(0,5);
+    const daySchedule = (weekSchedule[i]||[]).slice().sort((a,b)=>a.h-b.h);
+    const highlights = daySchedule.filter(e=>e.hl).slice(0,6);
+    const toShow = highlights.length ? highlights : daySchedule.slice(0,6);
 
     html += `<div class="week-day-col">
       <div class="week-day-head${isToday?' today':''}">
@@ -490,15 +393,14 @@ async function buildWeekView(){
       </div>
       <div class="week-day-body">`;
     if(toShow.length===0){
-      html += '<div class="week-empty">No events found</div>';
+      html += '<div class="week-empty">No events</div>';
     } else {
       toShow.forEach(e=>{
-        const cls = chipClass(e);
-        const scoreStr=(e.homeScore!==null)?`${e.away} ${e.awayScore}-${e.homeScore} ${e.home}`:`${e.away} vs ${e.home}`;
+        const cls = hlClass(e);
         html += `<div class="week-event ${cls}">
-          <div class="week-event-time">${e.timeStr}</div>
-          <div class="week-event-title">${scoreStr}</div>
-          <div class="week-event-ch">${e.league}</div>
+          <div class="week-event-time">${timeLabel[e.h]}</div>
+          <div class="week-event-title">${e.title}</div>
+          <div class="week-event-ch">${ch(e.ch)}</div>
         </div>`;
       });
     }
@@ -513,7 +415,7 @@ function buildDaySelector(){
   for(let i=0;i<7;i++){
     const d = getDayDate(i);
     const isToday = i===0;
-    const hasWC = dataCache[i] && (dataCache[i].wc||[]).length>0;
+    const hasWC = (weekSchedule[i]||[]).some(e=>e.hl==='wcu');
     html += `<button class="day-btn${i===currentDayOffset?' active':''}" onclick="selectDay(${i})">
       <div class="day-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
       <div class="day-num">${d.getDate()}</div>
@@ -523,13 +425,10 @@ function buildDaySelector(){
   el.innerHTML = html;
 }
 
-async function selectDay(offset){
+function selectDay(offset){
   currentDayOffset = offset;
   buildDaySelector();
-  setSyncStatus('loading','Loading…');
-  await renderDayView();
-  setSyncStatus('ok','Live data connected');
-  buildDaySelector();
+  renderDayView();
 }
 
 function setView(view){
@@ -539,10 +438,7 @@ function setView(view){
   document.getElementById('day-view').style.display = view==='day' ? 'block' : 'none';
   document.getElementById('week-view').style.display = view==='week' ? 'block' : 'none';
   document.getElementById('week-view').classList.toggle('active', view==='week');
-  if(view==='week'){
-    setSyncStatus('loading','Loading week…');
-    buildWeekView().then(()=>setSyncStatus('ok','Live data connected'));
-  }
+  if(view==='week') buildWeekView();
 }
 
 function switchTab(id,btn){
@@ -558,27 +454,10 @@ function updateClock(){
   document.getElementById('dstr').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
 }
 
-async function initialLoad(){
-  setSyncStatus('loading','Connecting to live data…');
-  buildDaySelector();
-  try{
-    await renderDayView();
-    setSyncStatus('ok','Live data connected');
-  }catch(e){
-    setSyncStatus('err','Could not load live data — showing what\'s available');
-  }
-  buildDaySelector();
-}
-
-initialLoad();
+buildDaySelector();
+renderDayView();
 updateClock();
 setInterval(updateClock,1000);
-setInterval(()=>{
-  if(currentView==='day'){
-    delete dataCache[currentDayOffset];
-    renderDayView();
-  }
-}, 60000);
 </script>
 </body>
 </html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bar Schedule">
+<title>Bar TV Schedule</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:14px;-webkit-tap-highlight-color:transparent}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#040b16;border-bottom:3px solid #f59e0b;position:sticky;top:0;z-index:100}
+.bar-brand{font-size:20px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:2px;color:#ef4444}
+.pulse{width:7px;height:7px;border-radius:50%;background:#ef4444;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.clock{font-size:22px;font-weight:800;letter-spacing:1px;text-align:right}
+.datestr{font-size:9px;color:#475569;letter-spacing:1px;text-align:right}
+
+.sync-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 16px;background:#0a1929;border-bottom:1px solid #132a45;font-size:9px;color:#475569;letter-spacing:.5px}
+.sync-status{display:flex;align-items:center;gap:5px}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:#475569}
+.sync-dot.ok{background:#22c55e}
+.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
+.sync-dot.err{background:#ef4444}
+.refresh-now-btn{background:#0d1f38;border:1px solid #1e3a5f;color:#64748b;padding:3px 10px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;cursor:pointer;-webkit-appearance:none}
+.refresh-now-btn:hover{background:#132a45;color:#94a3b8}
+
+.day-selector{display:flex;gap:4px;padding:10px 16px;background:#0a1929;border-bottom:1px solid #132a45;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.day-selector::-webkit-scrollbar{display:none}
+.day-btn{flex-shrink:0;min-width:64px;padding:8px 6px;border-radius:6px;border:1px solid #132a45;background:#060f1d;cursor:pointer;text-align:center;transition:all .15s;-webkit-appearance:none}
+.day-btn.active{background:#f59e0b;border-color:#f59e0b}
+.day-btn:hover:not(.active){background:#0d1f38}
+.day-name{font-size:9px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
+.day-btn.active .day-name{color:#000}
+.day-num{font-size:18px;font-weight:900;color:#f1f5f9;line-height:1.1}
+.day-btn.active .day-num{color:#000}
+.day-tag{font-size:7px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:9px}
+.day-btn.active .day-tag{color:#7c2d12}
+
+.view-toggle{display:flex;gap:2px;padding:8px 16px 0;background:#040b16}
+.vtab{padding:7px 16px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
+.vtab.active{background:#38bdf8;color:#000}
+
+.featured-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;background:#040b16;border-bottom:1px solid #0d1e35}
+.feat-card{border-radius:6px;padding:9px 11px;border-left:4px solid;position:relative;overflow:hidden}
+.feat-card.worldcup{background:linear-gradient(135deg,rgba(220,38,38,.18),rgba(245,158,11,.12));border-color:#ef4444}
+.feat-card.giants{background:rgba(255,90,20,.12);border-color:#ff5a14}
+.feat-card.warriors{background:rgba(29,99,229,.14);border-color:#1D63E5}
+.feat-card.valkyries{background:rgba(59,130,246,.14);border-color:#38bdf8}
+.feat-eyebrow{font-size:8px;font-weight:800;letter-spacing:2px;opacity:.7;text-transform:uppercase;margin-bottom:2px}
+.feat-title{font-size:13px;font-weight:900;line-height:1.1;color:#f1f5f9}
+.feat-sub{font-size:9px;color:#94a3b8;margin-top:2px;line-height:1.4}
+.feat-score{font-size:18px;font-weight:900;margin-top:3px;letter-spacing:1px}
+.feat-live{position:absolute;top:6px;right:8px;font-size:7px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);padding:1px 5px;border-radius:3px;letter-spacing:1px}
+.feat-ch{font-size:8px;font-weight:700;color:#475569;margin-top:3px}
+
+.tabs{display:flex;gap:2px;padding:8px 16px 0;background:#040b16;border-bottom:1px solid #0d1e35;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:7px 14px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
+.tab.active{background:#f59e0b;color:#000}
+
+.content{padding:12px 16px;display:none}
+.content.active{display:block}
+
+.ticker-wrap{background:#0a1929;border:1px solid #132a45;border-radius:6px;padding:8px 12px;margin-bottom:10px}
+.ticker-label{font-size:8px;font-weight:800;letter-spacing:3px;color:#f59e0b;margin-bottom:6px}
+.ticker-row{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.ticker-row::-webkit-scrollbar{display:none}
+.sc{flex-shrink:0;background:#060f1d;border:1px solid #132a45;border-radius:5px;padding:6px 10px;min-width:150px}
+.sc.live{border-color:#ef4444}
+.sc-sport{font-size:7px;font-weight:800;letter-spacing:1.5px;color:#475569;margin-bottom:3px}
+.sc.live .sc-sport{color:#ef4444}
+.sc-match{display:flex;align-items:center;gap:5px;justify-content:space-between}
+.sc-team{font-size:13px;font-weight:800;color:#f1f5f9;letter-spacing:.5px}
+.sc-num{font-size:16px;font-weight:900;color:#f1f5f9}
+.sc-num.win{color:#f59e0b}
+.sc-at{font-size:8px;color:#1e3a5f;font-weight:700}
+.sc-info{font-size:8px;color:#475569;margin-top:2px}
+.sc.live .sc-info{color:#ef4444;font-weight:700}
+
+.section-hd{font-size:9px;font-weight:800;letter-spacing:3px;color:#334155;text-transform:uppercase;margin:10px 0 6px;padding-bottom:5px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:8px}
+.section-hd span{background:#f59e0b;color:#000;padding:1px 7px;border-radius:3px;font-size:8px}
+
+.sched{display:grid;grid-template-columns:68px 1fr}
+.stime{font-size:11px;font-weight:700;color:#334155;padding:7px 6px 7px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:1px}
+.stime .now-arrow{color:#ef4444;font-size:9px}
+.sevents{padding:5px 0 5px 10px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:5px}
+
+.chip{border-left:3px solid;border-radius:4px;padding:4px 8px;flex:1;min-width:120px;max-width:calc(50% - 3px);position:relative}
+.chip-src{font-size:7px;font-weight:800;letter-spacing:1.5px;opacity:.65;margin-bottom:1px;text-transform:uppercase}
+.chip-title{font-size:12px;font-weight:800;line-height:1.1;color:#f1f5f9}
+.chip-sub{font-size:9px;color:#475569;margin-top:1px}
+.chip-ch{font-size:8px;font-weight:700;color:#334155;margin-top:2px}
+.chip.live-tag::after{content:"LIVE";position:absolute;top:4px;right:5px;font-size:6px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);padding:1px 3px;border-radius:2px;letter-spacing:1px}
+.chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
+.chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.12)}
+.chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
+.chip.gsv-highlight{border-color:#38bdf8;background:rgba(56,189,248,.1)}
+.chip.womens{border-color:#a855f7;background:rgba(168,85,247,.08)}
+.chip.c-dtv{border-color:#f59e0b;background:rgba(245,158,11,.07)}
+.chip.c-espn{border-color:#ef4444;background:rgba(239,68,68,.07)}
+.chip.c-peacock{border-color:#818cf8;background:rgba(129,140,248,.07)}
+.chip.c-paramount{border-color:#38bdf8;background:rgba(56,189,248,.07)}
+.chip.c-apple{border-color:#94a3b8;background:rgba(148,163,184,.07)}
+
+.w-badge{font-size:7px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);padding:1px 4px;border-radius:2px;margin-left:4px}
+
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:200px}
+.week-day-head{background:#0d1f38;padding:7px 8px;text-align:center;border-bottom:1px solid #132a45}
+.week-day-head.today{background:#f59e0b}
+.week-day-head .wd-name{font-size:9px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
+.week-day-head.today .wd-name{color:#000}
+.week-day-head .wd-num{font-size:16px;font-weight:900;color:#f1f5f9}
+.week-day-head.today .wd-num{color:#000}
+.week-day-body{padding:6px;display:flex;flex-direction:column;gap:5px}
+.week-event{border-left:3px solid;border-radius:3px;padding:4px 6px;font-size:10px}
+.week-event-time{font-size:8px;font-weight:800;color:#64748b;letter-spacing:.5px}
+.week-event-title{font-size:10px;font-weight:800;color:#f1f5f9;line-height:1.2;margin-top:1px}
+.week-event-ch{font-size:7px;color:#334155;margin-top:1px}
+.week-empty{font-size:9px;color:#1e293b;text-align:center;padding:10px 0}
+@media (max-width:900px){
+  .week-grid{grid-template-columns:1fr;gap:8px}
+  .week-day-col{min-height:auto}
+}
+
+.legend{display:flex;gap:10px;flex-wrap:wrap;padding:8px 16px;background:#040b16;border-top:1px solid #0d1e35}
+.leg{display:flex;align-items:center;gap:4px;font-size:8px;font-weight:700;letter-spacing:1px;color:#334155;text-transform:uppercase}
+.ldot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+.refresh-bar{text-align:right;padding:4px 16px 8px;font-size:8px;color:#132a45;letter-spacing:1px;background:#040b16}
+
+@media (max-width: 768px) {
+  .featured-strip{grid-template-columns:repeat(2,1fr)}
+  .chip{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="bar-brand">📺 Bar Schedule</div>
+  <div class="topbar-right">
+    <div class="live-badge"><div class="pulse"></div>LIVE</div>
+    <div>
+      <div class="clock" id="clk">--:--</div>
+      <div class="datestr" id="dstr"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sync-bar">
+  <div class="sync-status"><div class="sync-dot" id="sync-dot"></div><span id="sync-text">Connecting to live data…</span></div>
+  <button class="refresh-now-btn" onclick="manualRefresh()">↻ Refresh now</button>
+</div>
+
+<div class="day-selector" id="day-selector"></div>
+
+<div class="view-toggle">
+  <button class="vtab active" id="vtab-day" onclick="setView('day')">📋 Day View</button>
+  <button class="vtab" id="vtab-week" onclick="setView('week')">📅 Week View</button>
+</div>
+
+<div id="day-view">
+  <div class="featured-strip" id="featured-strip"></div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('all',this)">All Day</button>
+    <button class="tab" onclick="switchTab('women',this)">♀ Women's</button>
+    <button class="tab" onclick="switchTab('worldcup',this)">🏆 World Cup</button>
+    <button class="tab" onclick="switchTab('scores',this)">🔴 Scores</button>
+  </div>
+
+  <div id="tab-all" class="content active"><div id="grid-all"></div></div>
+  <div id="tab-women" class="content"><div id="grid-women"></div></div>
+  <div id="tab-worldcup" class="content"><div id="grid-worldcup"></div></div>
+  <div id="tab-scores" class="content"><div id="grid-scores"></div></div>
+</div>
+
+<div id="week-view" class="content" style="padding:12px 16px">
+  <div class="section-hd">7-Day Outlook <span>Live from ESPN · Tap a day above for full detail</span></div>
+  <div class="week-grid" id="week-grid"></div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="ldot" style="background:#ef4444"></div>ESPN / Live Sports</div>
+  <div class="leg"><div class="ldot" style="background:#a855f7"></div>Women's</div>
+  <div class="leg" style="color:#ef4444"><div class="ldot" style="background:#ef4444"></div>Live Now</div>
+  <div class="leg" style="margin-left:auto">Data: ESPN public scoreboard</div>
+</div>
+<div class="refresh-bar" id="rts">Auto-refreshes every 60 seconds</div>
+
+<script>
+/* ===================== LIVE DATA LAYER ===================== */
+// Pulls real scores/schedules from ESPN's free public scoreboard endpoints.
+// Falls back gracefully to "no games found" if a request fails — never breaks the page.
+
+const PROXY = 'https://corsproxy.io/?url=';
+const LEAGUES = [
+  {key:'mlb',    espn:'baseball/mlb',        label:'MLB',     women:false, team:'SF'},
+  {key:'nba',    espn:'basketball/nba',      label:'NBA',     women:false, team:'GS'},
+  {key:'wnba',   espn:'basketball/wnba',     label:'WNBA',    women:true,  team:'GS'},
+  {key:'nhl',    espn:'hockey/nhl',          label:'NHL',     women:false},
+  {key:'wc',     espn:'soccer/fifa.world',   label:'World Cup', women:false},
+  {key:'nwsl',   espn:'soccer/usa.nwsl',     label:'NWSL',    women:true},
+  {key:'mls',    espn:'soccer/usa.1',        label:'MLS',     women:false},
+];
+
+function fmtDate(d){
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return `${y}${m}${day}`;
+}
+
+async function fetchEspn(espnPath, dateStr){
+  const url = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
+  try{
+    const res = await fetch(url, {mode:'cors'});
+    if(!res.ok) throw new Error('bad status');
+    return await res.json();
+  }catch(e1){
+    try{
+      const res2 = await fetch(PROXY+encodeURIComponent(url));
+      if(!res2.ok) throw new Error('proxy bad status');
+      return await res2.json();
+    }catch(e2){
+      return null;
+    }
+  }
+}
+
+function parseEvent(ev, leagueLabel, isWomen){
+  try{
+    const comp = ev.competitions[0];
+    const home = comp.competitors.find(c=>c.homeAway==='home');
+    const away = comp.competitors.find(c=>c.homeAway==='away');
+    const status = ev.status.type.state; // 'pre','in','post'
+    const dt = new Date(ev.date);
+    return {
+      league: leagueLabel,
+      isWomen,
+      name: ev.name || (away.team.shortDisplayName+' vs '+home.team.shortDisplayName),
+      home: home.team.shortDisplayName || home.team.abbreviation,
+      away: away.team.shortDisplayName || away.team.abbreviation,
+      homeScore: home.score!==undefined ? parseInt(home.score) : null,
+      awayScore: away.score!==undefined ? parseInt(away.score) : null,
+      status,
+      statusDetail: ev.status.type.shortDetail || ev.status.type.description || '',
+      hour: dt.getHours(),
+      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
+      venue: comp.venue ? comp.venue.fullName : '',
+    };
+  }catch(e){ return null; }
+}
+
+// Cache of fetched data per day offset: { 0: {mlb:[...], wc:[...], ...}, 1: {...} }
+const dataCache = {};
+let isFetching = false;
+
+async function loadDayData(offset){
+  if(dataCache[offset]) return dataCache[offset];
+  const d = new Date();
+  d.setDate(d.getDate()+offset);
+  const dateStr = fmtDate(d);
+
+  const results = {};
+  await Promise.all(LEAGUES.map(async lg=>{
+    const json = await fetchEspn(lg.espn, dateStr);
+    if(json && json.events){
+      results[lg.key] = json.events.map(ev=>parseEvent(ev, lg.label, lg.women)).filter(Boolean);
+    } else {
+      results[lg.key] = [];
+    }
+  }));
+  dataCache[offset] = results;
+  return results;
+}
+
+function setSyncStatus(state, text){
+  const dot = document.getElementById('sync-dot');
+  const txt = document.getElementById('sync-text');
+  dot.className = 'sync-dot ' + state;
+  txt.textContent = text;
+}
+
+async function manualRefresh(){
+  Object.keys(dataCache).forEach(k=>delete dataCache[k]);
+  setSyncStatus('loading','Refreshing live data…');
+  await initialLoad();
+}
+
+/* ===================== UI / SCHEDULE BUILDING ===================== */
+const timeLabel={0:'12 AM',1:'1 AM',2:'2 AM',3:'3 AM',4:'4 AM',5:'5 AM',6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
+const ALL_HOURS = Array.from({length:18},(_,i)=>i+6); // 6 AM - 11 PM
+
+let currentDayOffset = 0;
+let currentView = 'day';
+
+function getDayDate(offset){
+  const d = new Date();
+  d.setDate(d.getDate()+offset);
+  return d;
+}
+
+function flattenEvents(dayData){
+  const out=[];
+  Object.entries(dayData).forEach(([key,events])=>{
+    events.forEach(e=>out.push(e));
+  });
+  return out.sort((a,b)=>a.hour-b.hour);
+}
+
+function chipClass(ev){
+  if(ev.league==='World Cup') return 'wcu-highlight';
+  if(ev.isWomen) return 'womens';
+  return 'c-espn';
+}
+
+function buildChip(ev){
+  const live = ev.status==='in' ? ' live-tag' : '';
+  const cls = chipClass(ev);
+  const wb = ev.isWomen ? '<span class="w-badge">WOMEN</span>' : '';
+  const scoreStr = (ev.homeScore!==null && ev.awayScore!==null)
+    ? `${ev.away} ${ev.awayScore} @ ${ev.homeScore} ${ev.home}`
+    : `${ev.away} @ ${ev.home}`;
+  return `<div class="chip ${cls}${live}">
+    <div class="chip-src">${ev.league}${wb}</div>
+    <div class="chip-title">${scoreStr}</div>
+    <div class="chip-sub">${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
+  </div>`;
+}
+
+function buildScheduleGrid(events, isToday){
+  const nowH = new Date().getHours();
+  let html = '<div class="sched">';
+  ALL_HOURS.forEach(h=>{
+    const evs = events.filter(e=>e.hour===h);
+    const isNow = isToday && h===nowH;
+    html += `<div class="stime">${isNow?'<span class="now-arrow">▶ NOW</span>':''}<span>${timeLabel[h]}</span></div>
+    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:11px;padding:4px">—</div>'}</div>`;
+  });
+  return html+'</div>';
+}
+
+function buildFeaturedStrip(dayData, isToday){
+  const wc = dayData.wc || [];
+  const mlb = dayData.mlb || [];
+  const nba = dayData.nba || [];
+  const wnba = dayData.wnba || [];
+
+  const sfGame = mlb.find(g=>g.home.includes('Giants')||g.away.includes('Giants')||g.home==='SF'||g.away==='SF');
+  const gswGame = nba.find(g=>g.home.includes('Warriors')||g.away.includes('Warriors'));
+  const gsvGame = wnba.find(g=>g.home.includes('Valkyries')||g.away.includes('Valkyries'));
+
+  const wcCard = `<div class="feat-card worldcup">
+    ${wc.length?(isToday?'<div class="feat-live">TODAY</div>':''):''}
+    <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
+    <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
+    <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches scheduled'}</div>
+    <div class="feat-ch">Live via ESPN</div>
+  </div>`;
+
+  const sfCard = `<div class="feat-card giants">
+    <div class="feat-eyebrow">⚾ SF Giants</div>
+    <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game today'}</div>
+    <div class="feat-sub">${sfGame? sfGame.statusDetail+(sfGame.homeScore!==null?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check back for next matchup'}</div>
+    <div class="feat-ch">Live via ESPN</div>
+  </div>`;
+
+  const gswCard = `<div class="feat-card warriors">
+    <div class="feat-eyebrow">🏀 Golden State Warriors</div>
+    <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game today'}</div>
+    <div class="feat-sub">${gswGame? gswGame.statusDetail : 'Off-season — no game scheduled'}</div>
+    <div class="feat-ch">Live via ESPN</div>
+  </div>`;
+
+  const gsvCard = `<div class="feat-card valkyries">
+    ${gsvGame && gsvGame.status==='in' ? '<div class="feat-live">LIVE NOW</div>' : ''}
+    <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
+    <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game today'}</div>
+    <div class="feat-sub">${gsvGame? gsvGame.statusDetail+(gsvGame.homeScore!==null?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check back for next matchup'}</div>
+    <div class="feat-ch">Live via ESPN</div>
+  </div>`;
+
+  return wcCard+sfCard+gswCard+gsvCard;
+}
+
+function buildWorldCupPanel(dayData, dateObj){
+  const wc = dayData.wc || [];
+  if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches scheduled this day.</div>';
+  let html = `<div class="section-hd">🏆 FIFA World Cup 2026 — ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</div>
+  <div style="background:#0a1929;border:1px solid #1e3a5f;border-radius:6px;padding:12px 14px;margin-bottom:10px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">`;
+  const colors=['#ef4444','#f59e0b','#818cf8','#38bdf8'];
+  wc.forEach((g,i)=>{
+    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} - ${g.homeScore} ${g.home}`:`${g.away} vs ${g.home}`;
+    html+=`<div style="background:#060f1d;border-radius:4px;padding:10px 12px;border-left:3px solid ${colors[i%4]}">
+      <div style="font-size:8px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
+      <div style="font-size:15px;font-weight:900;margin:3px 0">${scoreStr}</div>
+      <div style="font-size:9px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
+    </div>`;
+  });
+  html+='</div></div>';
+  return html;
+}
+
+function buildWomenPanel(dayData){
+  const all = flattenEvents(dayData).filter(e=>e.isWomen);
+  if(!all.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events found for this day via live data.</div>';
+  let html='<div class="section-hd">Women\'s Sports This Day <span style="background:#a855f7">ALL WOMEN</span></div><div class="sched">';
+  all.forEach(e=>{
+    html+=`<div class="stime"><span>${e.timeStr}</span></div><div class="sevents">${buildChip(e)}</div>`;
+  });
+  return html+'</div>';
+}
+
+function buildScoresPanel(dayData, isToday){
+  const all = flattenEvents(dayData);
+  const live = all.filter(e=>e.status==='in');
+  const final = all.filter(e=>e.status==='post');
+  const pre = all.filter(e=>e.status==='pre');
+
+  function row(g){
+    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} @ ${g.homeScore} ${g.home}`:`${g.away} @ ${g.home}`;
+    return `<div class="sc${g.status==='in'?' live':''}">
+      <div class="sc-sport">${g.league}${g.status==='in'?' · LIVE':g.status==='post'?' · Final':' · Upcoming'}</div>
+      <div class="sc-match"><span style="font-size:12px;font-weight:800">${scoreStr}</span></div>
+      <div class="sc-info">${g.statusDetail}</div>
+    </div>`;
+  }
+
+  let html='';
+  if(live.length) html += `<div class="section-hd">🔴 In Progress <span>${live.length} live</span></div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">${live.map(row).join('')}</div>`;
+  if(final.length) html += `<div class="section-hd">✔ Final Scores</div><div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">${final.map(row).join('')}</div>`;
+  if(pre.length) html += `<div class="section-hd">⏰ Upcoming</div><div style="display:flex;flex-wrap:wrap;gap:7px">${pre.map(row).join('')}</div>`;
+  if(!html) html = '<div style="color:#475569;padding:16px">No games found for this day.</div>';
+  return html;
+}
+
+function buildTicker(dayData, isToday){
+  const all = flattenEvents(dayData).filter(e=>e.status==='in'||e.status==='post').slice(0,10);
+  if(!all.length) return `<div style="color:#475569;font-size:10px;padding:4px">No live or recent games right now.</div>`;
+  return all.map(g=>{
+    const scoreStr=(g.homeScore!==null)?`${g.away} ${g.awayScore} @ ${g.homeScore} ${g.home}`:`${g.away} @ ${g.home}`;
+    return `<div class="sc${g.status==='in'?' live':''}">
+      <div class="sc-sport">${g.league}${g.status==='in'?' · LIVE':' · Final'}</div>
+      <div class="sc-match"><span style="font-size:12px;font-weight:800">${scoreStr}</span></div>
+      <div class="sc-info">${g.statusDetail}</div>
+    </div>`;
+  }).join('');
+}
+
+async function renderDayView(){
+  const isToday = currentDayOffset===0;
+  const dateObj = getDayDate(currentDayOffset);
+  const dayData = await loadDayData(currentDayOffset);
+  const events = flattenEvents(dayData);
+
+  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(dayData, isToday);
+  document.getElementById('grid-all').innerHTML =
+    `<div class="ticker-wrap"><div class="ticker-label">⚡ Live & Recent Scores</div><div class="ticker-row">${buildTicker(dayData,isToday)}</div></div>`+
+    buildScheduleGrid(events, isToday);
+  document.getElementById('grid-women').innerHTML = buildWomenPanel(dayData);
+  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(dayData, dateObj);
+  document.getElementById('grid-scores').innerHTML = buildScoresPanel(dayData, isToday);
+
+  const ts=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('rts').textContent = isToday
+    ? `Last synced: ${ts} · Auto-refreshes every 60s`
+    : `Viewing ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}`;
+}
+
+async function buildWeekView(){
+  let html = '';
+  for(let i=0;i<7;i++){
+    const d = getDayDate(i);
+    const isToday = i===0;
+    const dayData = await loadDayData(i);
+    const events = flattenEvents(dayData);
+    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||e.league==='MLB'||e.league==='NBA').slice(0,5);
+    const toShow = highlights.length ? highlights : events.slice(0,5);
+
+    html += `<div class="week-day-col">
+      <div class="week-day-head${isToday?' today':''}">
+        <div class="wd-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
+        <div class="wd-num">${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+      </div>
+      <div class="week-day-body">`;
+    if(toShow.length===0){
+      html += '<div class="week-empty">No events found</div>';
+    } else {
+      toShow.forEach(e=>{
+        const cls = chipClass(e);
+        const scoreStr=(e.homeScore!==null)?`${e.away} ${e.awayScore}-${e.homeScore} ${e.home}`:`${e.away} vs ${e.home}`;
+        html += `<div class="week-event ${cls}">
+          <div class="week-event-time">${e.timeStr}</div>
+          <div class="week-event-title">${scoreStr}</div>
+          <div class="week-event-ch">${e.league}</div>
+        </div>`;
+      });
+    }
+    html += '</div></div>';
+  }
+  document.getElementById('week-grid').innerHTML = html;
+}
+
+function buildDaySelector(){
+  const el = document.getElementById('day-selector');
+  let html = '';
+  for(let i=0;i<7;i++){
+    const d = getDayDate(i);
+    const isToday = i===0;
+    const hasWC = dataCache[i] && (dataCache[i].wc||[]).length>0;
+    html += `<button class="day-btn${i===currentDayOffset?' active':''}" onclick="selectDay(${i})">
+      <div class="day-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
+      <div class="day-num">${d.getDate()}</div>
+      <div class="day-tag">${hasWC?'⚽ WC':''}</div>
+    </button>`;
+  }
+  el.innerHTML = html;
+}
+
+async function selectDay(offset){
+  currentDayOffset = offset;
+  buildDaySelector();
+  setSyncStatus('loading','Loading…');
+  await renderDayView();
+  setSyncStatus('ok','Live data connected');
+  buildDaySelector();
+}
+
+function setView(view){
+  currentView = view;
+  document.getElementById('vtab-day').classList.toggle('active', view==='day');
+  document.getElementById('vtab-week').classList.toggle('active', view==='week');
+  document.getElementById('day-view').style.display = view==='day' ? 'block' : 'none';
+  document.getElementById('week-view').style.display = view==='week' ? 'block' : 'none';
+  document.getElementById('week-view').classList.toggle('active', view==='week');
+  if(view==='week'){
+    setSyncStatus('loading','Loading week…');
+    buildWeekView().then(()=>setSyncStatus('ok','Live data connected'));
+  }
+}
+
+function switchTab(id,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#day-view .content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+function updateClock(){
+  const n=new Date();
+  document.getElementById('clk').textContent=n.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('dstr').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
+}
+
+async function initialLoad(){
+  setSyncStatus('loading','Connecting to live data…');
+  buildDaySelector();
+  try{
+    await renderDayView();
+    setSyncStatus('ok','Live data connected');
+  }catch(e){
+    setSyncStatus('err','Could not load live data — showing what\'s available');
+  }
+  buildDaySelector();
+}
+
+initialLoad();
+updateClock();
+setInterval(updateClock,1000);
+setInterval(()=>{
+  if(currentView==='day'){
+    delete dataCache[currentDayOffset];
+    renderDayView();
+  }
+}, 60000);
+</script>
+</body>
+</html>

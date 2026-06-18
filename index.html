@@ -190,28 +190,52 @@ const LEAGUES = [
   {key:'nba',  espn:'basketball/nba',    label:'NBA',      women:false},
   {key:'wnba', espn:'basketball/wnba',   label:'WNBA',     women:true},
   {key:'nhl',  espn:'hockey/nhl',        label:'NHL',      women:false},
+  {key:'pga',  espn:'golf/pga',          label:'PGA Tour', women:false},
+  {key:'lpga', espn:'golf/lpga',         label:'LPGA Tour',women:true},
   {key:'wc',   espn:'soccer/fifa.world', label:'World Cup',women:false},
   {key:'nwsl', espn:'soccer/usa.nwsl',   label:'NWSL',     women:true},
   {key:'mls',  espn:'soccer/usa.1',      label:'MLS',      women:false},
 ];
 
+// DirecTV XTRA channel numbers — shown alongside every game card
+const DIRECTV_CH = {
+  'ESPN':        '206', 'ESPN2':       '209', 'ESPNU':       '208',
+  'ESPN+':       'streaming', 'ESPNews':    '207',
+  'ABC':         '396', 'NBC':         '392', 'CBS':         '388 (local)',
+  'FOX':         '398', 'FS1':         '219', 'FS2':         '618',
+  'TNT':         '245', 'TBS':         '247', 'truTV':       '246',
+  'NFL Network': '212', 'NFL RedZone': '217',
+  'MLB Network': '213', 'NHL Network': '215', 'NBA TV':      '216',
+  'Golf Channel':'218', 'CBS Sports Network':'221',
+  'NBC Sports':  '220', 'USA Network': '242',
+  'Telemundo':   '404', 'Universo':    '406',
+  'Peacock':     'Peacock app', 'Paramount+': 'Paramount+ app',
+  'Prime Video': 'Amazon app',  'Amazon':    'Amazon app',
+  'Apple TV+':   'Apple TV+ app', 'ESPN+':  'ESPN+ app',
+};
+function getChannel(rawName){
+  if(!rawName) return null;
+  for(const [name, num] of Object.entries(DIRECTV_CH)){
+    if(rawName.toLowerCase().includes(name.toLowerCase())) return num;
+  }
+  return null;
+}
+
 // Maps ESPN's raw broadcast network name to one of the user's actual subscriptions.
-// "DirecTV XTRA" covers any standard cable/satellite channel (ESPN, ABC, FOX, TNT, etc).
-// Anything not on this list still gets shown, just generically labeled.
 const BROADCAST_MAP = [
-  {match:/peacock/i,            app:'Peacock',        cls:'src-peacock'},
-  {match:/paramount|^cbs$/i,    app:'Paramount+',     cls:'src-paramount'},
-  {match:/espn\+/i,             app:'ESPN+',          cls:'src-espn-plus'},
+  {match:/peacock/i,            app:'Peacock',            cls:'src-peacock'},
+  {match:/paramount|^cbs$/i,   app:'Paramount+',          cls:'src-paramount'},
+  {match:/espn\+/i,             app:'ESPN+',              cls:'src-espn-plus'},
   {match:/prime video|amazon/i, app:'Amazon Prime Video', cls:'src-amazon'},
-  {match:/apple/i,              app:'Apple TV+',      cls:'src-apple'},
-  {match:/espn|abc|fox|fs1|tnt|tbs|truTV|nbc|telemundo|usa|ion/i, app:'DirecTV XTRA', cls:'src-dtv'},
+  {match:/apple/i,              app:'Apple TV+',          cls:'src-apple'},
+  {match:/espn|abc|fox|fs1|fs2|tnt|tbs|truTV|nbc|telemundo|usa|ion|golf channel|cbs sports network/i, app:'DirecTV XTRA', cls:'src-dtv'},
 ];
 function mapBroadcast(rawName){
-  if(!rawName) return {app:'Check listings', cls:'src-dtv'};
+  if(!rawName) return {app:'Check listings', cls:'src-dtv', ch:null};
   for(const rule of BROADCAST_MAP){
-    if(rule.match.test(rawName)) return {app:rule.app, cls:rule.cls};
+    if(rule.match.test(rawName)) return {app:rule.app, cls:rule.cls, ch:getChannel(rawName)};
   }
-  return {app:rawName, cls:'src-dtv'};
+  return {app:rawName, cls:'src-dtv', ch:getChannel(rawName)};
 }
 
 function fmtDateForEspn(d){
@@ -268,6 +292,7 @@ function parseEvent(ev, leagueLabel, isWomen){
       broadcastApp: broadcastInfo.app,
       broadcastCls: broadcastInfo.cls,
       broadcastRaw: rawBroadcast,
+      broadcastCh:  broadcastInfo.ch,
     };
   }catch(e){ return null; }
 }
@@ -384,7 +409,7 @@ function buildChip(ev){
     <div class="chip-src">${ev.league}${wb}</div>
     <div class="chip-title">${scoreStr}</div>
     <div class="chip-sub">${ev.timeStr} · ${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
-    <div class="chip-app ${ev.broadcastCls}">📺 ${ev.broadcastApp}</div>
+    <div class="chip-app ${ev.broadcastCls}">📺 ${ev.broadcastApp}${ev.broadcastCh?' · Ch '+ev.broadcastCh:''}</div>
   </div>`;
 }
 
@@ -415,21 +440,21 @@ function buildFeaturedStrip(dayData, isToday){
     <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
     <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
-    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}">📺 ${wc[0].broadcastApp}</div>`:''}
+    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}">📺 ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
   </div>`;
 
   const sfCard = `<div class="feat-card giants">
     <div class="feat-eyebrow">⚾ SF Giants</div>
     <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game'}</div>
     <div class="feat-sub">${sfGame? sfGame.timeStr+' · '+sfGame.statusDetail+(sfGame.homeScore!==null&&sfGame.status!=='pre'?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${sfGame?`<div class="chip-app ${sfGame.broadcastCls}">📺 ${sfGame.broadcastApp}</div>`:''}
+    ${sfGame?`<div class="chip-app ${sfGame.broadcastCls}">📺 ${sfGame.broadcastApp}${sfGame.broadcastCh?' · Ch '+sfGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   const gswCard = `<div class="feat-card warriors">
     <div class="feat-eyebrow">🏀 Golden State Warriors</div>
     <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game'}</div>
     <div class="feat-sub">${gswGame? gswGame.timeStr+' · '+gswGame.statusDetail : 'Off-season'}</div>
-    ${gswGame?`<div class="chip-app ${gswGame.broadcastCls}">📺 ${gswGame.broadcastApp}</div>`:''}
+    ${gswGame?`<div class="chip-app ${gswGame.broadcastCls}">📺 ${gswGame.broadcastApp}${gswGame.broadcastCh?' · Ch '+gswGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   const gsvCard = `<div class="feat-card valkyries">
@@ -437,7 +462,7 @@ function buildFeaturedStrip(dayData, isToday){
     <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
     <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game'}</div>
     <div class="feat-sub">${gsvGame? gsvGame.timeStr+' · '+gsvGame.statusDetail+(gsvGame.homeScore!==null&&gsvGame.status!=='pre'?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${gsvGame?`<div class="chip-app ${gsvGame.broadcastCls}">📺 ${gsvGame.broadcastApp}</div>`:''}
+    ${gsvGame?`<div class="chip-app ${gsvGame.broadcastCls}">📺 ${gsvGame.broadcastApp}${gsvGame.broadcastCh?' · Ch '+gsvGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   return wcCard+sfCard+gswCard+gsvCard;
@@ -456,7 +481,7 @@ function buildWorldCupPanel(dayData, dateObj){
       <div style="font-size:13px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
       <div style="font-size:19px;font-weight:900;margin:4px 0">${scoreStr}</div>
       <div style="font-size:14px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
-      <div class="chip-app ${g.broadcastCls}" style="margin-top:6px">📺 ${g.broadcastApp}</div>
+      <div class="chip-app ${g.broadcastCls}" style="margin-top:6px">📺 ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}</div>
     </div>`;
   });
   html+='</div></div>';

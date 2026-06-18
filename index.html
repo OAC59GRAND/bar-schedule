@@ -94,7 +94,7 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .chip-app.src-paramount{background:rgba(56,189,248,.18);color:#7dd3fc}
 .chip-app.src-espn-plus{background:rgba(239,68,68,.18);color:#fca5a5}
 .chip-app.src-amazon{background:rgba(34,211,238,.18);color:#67e8f9}
-.chip-app.src-apple{background:rgba(148,163,184,.18);color:#cbd5e1}
+.chip-app.src-mlbtv{background:rgba(59,130,246,.18);color:#93c5fd}
 
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
 .week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:180px}
@@ -199,19 +199,23 @@ const LEAGUES = [
 
 // DirecTV XTRA channel numbers — shown alongside every game card
 const DIRECTV_CH = {
-  'ESPN':        '206', 'ESPN2':       '209', 'ESPNU':       '208',
-  'ESPN+':       'streaming', 'ESPNews':    '207',
-  'ABC':         '396', 'NBC':         '392', 'CBS':         '388 (local)',
-  'FOX':         '398', 'FS1':         '219', 'FS2':         '618',
-  'TNT':         '245', 'TBS':         '247', 'truTV':       '246',
-  'NFL Network': '212', 'NFL RedZone': '217',
-  'MLB Network': '213', 'NHL Network': '215', 'NBA TV':      '216',
-  'Golf Channel':'218', 'CBS Sports Network':'221',
-  'NBC Sports':  '220', 'USA Network': '242',
-  'Telemundo':   '404', 'Universo':    '406',
-  'Peacock':     'Peacock app', 'Paramount+': 'Paramount+ app',
-  'Prime Video': 'Amazon app',  'Amazon':    'Amazon app',
-  'Apple TV+':   'Apple TV+ app', 'ESPN+':  'ESPN+ app',
+  'ESPN':                '206', 'ESPN2':              '209', 'ESPNU':       '208',
+  'ESPN+':               'streaming', 'ESPNews':      '207',
+  'ABC':                 '396', 'NBC':                '392', 'CBS':         '388 (local)',
+  'FOX':                 '398', 'FS1':                '219', 'FS2':         '618',
+  'TNT':                 '245', 'TBS':                '247', 'truTV':       '246',
+  'NFL Network':         '212', 'NFL RedZone':        '217',
+  'MLB Network':         '213', 'NHL Network':        '215', 'NBA TV':      '216',
+  'Golf Channel':        '218', 'CBS Sports Network': '221',
+  'NBC Sports':          '220', 'NBCSN':              '220', 'USA Network':        '242',
+  'Telemundo':           '404', 'Universo':           '406',
+  // Regional Sports Networks
+  'NBC Sports Bay Area': '693', 'NBCS Bay Area':      '693', 'NBCSBA': '693',
+  'NBC Sports California':'693', 'Bally Sports':      '676', 'Root Sports': '687',
+  // Streaming — no DirecTV channel number
+  'Peacock':     'Peacock app',   'Paramount+':  'Paramount+ app',
+  'Prime Video': 'Amazon app',    'Amazon':      'Amazon app',
+  'Apple TV+':   'Apple TV+ app', 'MLB.TV':      'MLB.TV (streaming)',
 };
 function getChannel(rawName){
   if(!rawName) return null;
@@ -221,17 +225,26 @@ function getChannel(rawName){
   return null;
 }
 
-// Maps ESPN's raw broadcast network name to one of the user's actual subscriptions.
+// Maps ESPN broadcast name to user's actual subscription/channel
 const BROADCAST_MAP = [
-  {match:/peacock/i,            app:'Peacock',            cls:'src-peacock'},
-  {match:/paramount|^cbs$/i,   app:'Paramount+',          cls:'src-paramount'},
-  {match:/espn\+/i,             app:'ESPN+',              cls:'src-espn-plus'},
-  {match:/prime video|amazon/i, app:'Amazon Prime Video', cls:'src-amazon'},
-  {match:/apple/i,              app:'Apple TV+',          cls:'src-apple'},
-  {match:/espn|abc|fox|fs1|fs2|tnt|tbs|truTV|nbc|telemundo|usa|ion|golf channel|cbs sports network/i, app:'DirecTV XTRA', cls:'src-dtv'},
+  {match:/peacock/i,             app:'Peacock',            cls:'src-peacock'},
+  {match:/paramount|^cbs$/i,    app:'Paramount+',          cls:'src-paramount'},
+  {match:/espn\+/i,              app:'ESPN+',              cls:'src-espn-plus'},
+  {match:/prime video|amazon/i,  app:'Amazon Prime Video', cls:'src-amazon'},
+  {match:/apple/i,               app:'Apple TV+',          cls:'src-apple'},
+  {match:/mlb\.?tv/i,           app:'MLB.TV',             cls:'src-mlbtv'},
+  {match:/espn|abc|fox|fs1|fs2|tnt|tbs|truTV|nbc|telemundo|usa|ion|golf channel|cbs sports network|bally|root sports/i, app:'DirecTV XTRA', cls:'src-dtv'},
 ];
-function mapBroadcast(rawName){
-  if(!rawName) return {app:'Check listings', cls:'src-dtv', ch:null};
+// isGiantsGame flag: when ESPN returns MLB.TV for a Giants game,
+// the real over-the-air channel is NBC Sports Bay Area Ch 693.
+function mapBroadcast(rawName, isGiantsGame){
+  if(!rawName){
+    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693'};
+    return {app:'Check listings', cls:'src-dtv', ch:null};
+  }
+  if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
+    return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693'};
+  }
   for(const rule of BROADCAST_MAP){
     if(rule.match.test(rawName)) return {app:rule.app, cls:rule.cls, ch:getChannel(rawName)};
   }
@@ -272,7 +285,8 @@ function parseEvent(ev, leagueLabel, isWomen){
         rawBroadcast = comp.geoBroadcasts[0].media?.shortName || null;
       }
     }catch(e){ rawBroadcast = null; }
-    const broadcastInfo = mapBroadcast(rawBroadcast);
+    const isGiantsGame = !!(home.team.displayName?.includes('Giants') || away.team.displayName?.includes('Giants'));
+    const broadcastInfo = mapBroadcast(rawBroadcast, isGiantsGame);
 
     return {
       league: leagueLabel,
@@ -361,6 +375,7 @@ function setSyncStatus(state, text){
 
 async function manualRefresh(){
   Object.keys(dataCache).forEach(k=>delete dataCache[k]);
+  mergedByDate = {};
   await initialLoad();
 }
 
@@ -594,6 +609,87 @@ function updateClock(){
   document.getElementById('dstr').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
 }
 
+// SUPPLEMENTAL EVENTS — hardcoded for events not on ESPN's API
+// (US Open is on NBC/USA Network/NBCSN/Peacock, not ESPN, so ESPN's golf endpoint won't return it)
+// Format mirrors a parsed ESPN event so it slots into the same display logic.
+// All times are Pacific. Update weekly as needed.
+const SUPPLEMENTAL = [
+  // ── US Open Golf, Shinnecock Hills ──────────────────────────────────────
+  // Thu Jun 18 PT: USA Network 3:30am–2pm PT, then NBCSN+Peacock 2–5pm PT
+  {dateKey:'2026-06-18', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 1', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 1 · Shinnecock Hills', hour:4,
+   timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastRaw:'USA Network'},
+  {dateKey:'2026-06-18', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 1', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 1 Late · Peacock & NBCSN', hour:14,
+   timeStr:'2:00 PM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null,
+   broadcastRaw:'Peacock'},
+  // Fri Jun 19 PT: NBCSN+Peacock 3:30am–10:30am PT, NBC+Peacock 10:30am–4:30pm PT
+  {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 2', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 2 Morning · NBCSN & Peacock', hour:4,
+   timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null,
+   broadcastRaw:'NBCSN / Peacock'},
+  {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 2', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 2 Afternoon · NBC & Peacock', hour:11,
+   timeStr:'10:30 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastRaw:'NBC'},
+  // Sat Jun 20 PT: USA Network 7am–9am PT, NBC+Peacock 9am–5pm PT
+  {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 3', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 3 Early · USA Network', hour:7,
+   timeStr:'7:00 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastRaw:'USA Network'},
+  {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 3', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Round 3 · NBC & Peacock', hour:9,
+   timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastRaw:'NBC'},
+  // Sun Jun 21 PT: USA Network 6am–9am PT, NBC+Peacock 9am–4pm PT
+  {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 4 - Final', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Final Round Early · USA Network', hour:6,
+   timeStr:'6:00 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastRaw:'USA Network'},
+  {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
+   home:'US Open', away:'Round 4 - Final', homeFull:'', awayFull:'',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'Final Round · NBC & Peacock', hour:9,
+   timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastRaw:'NBC'},
+];
+
+function injectSupplemental(){
+  SUPPLEMENTAL.forEach(ev=>{
+    const dk = ev.dateKey;
+    if(!mergedByDate[dk]) mergedByDate[dk] = {};
+    if(!mergedByDate[dk]['supplemental']) mergedByDate[dk]['supplemental'] = [];
+    // avoid duplicates on refresh
+    const exists = mergedByDate[dk]['supplemental'].some(
+      e=>e.league===ev.league && e.hour===ev.hour && e.statusDetail===ev.statusDetail
+    );
+    if(!exists) mergedByDate[dk]['supplemental'].push(ev);
+  });
+}
+
 async function initialLoad(){
   setSyncStatus('loading','Connecting to live data…');
   buildDaySelector();
@@ -616,6 +712,7 @@ async function initialLoad(){
         });
       });
     });
+    injectSupplemental(); // Add events not on ESPN (US Open, NASCAR on Peacock, etc.)
 
     const failedCount = Object.values(sourceStatus).filter(s=>s==='err').length;
     if(failedCount===0){

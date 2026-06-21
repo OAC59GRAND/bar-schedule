@@ -95,6 +95,8 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .chip-app.src-espn-plus{background:rgba(239,68,68,.18);color:#fca5a5}
 .chip-app.src-amazon{background:rgba(34,211,238,.18);color:#67e8f9}
 .chip-app.src-mlbtv{background:rgba(59,130,246,.18);color:#93c5fd}
+.chip-app.src-notpkg{background:rgba(239,68,68,.22);color:#fecaca;border:1px solid rgba(239,68,68,.5)}
+.chip-app.src-unknown{background:rgba(100,116,139,.2);color:#94a3b8;border:1px dashed rgba(148,163,184,.4)}
 
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
 .week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:180px}
@@ -179,6 +181,9 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
   <div class="leg"><div class="ldot" style="background:#cbd5e1"></div>Apple TV+</div>
   <div class="leg"><div class="ldot" style="background:#a855f7"></div>Women's</div>
   <div class="leg" style="color:#ef4444"><div class="ldot" style="background:#ef4444"></div>Live Now</div>
+  <div class="leg">📺 In your package</div>
+  <div class="leg" style="color:#fca5a5">🚫 Not in your package</div>
+  <div class="leg" style="color:#94a3b8">❓ Check listings</div>
   <div class="leg" style="margin-left:auto">Times shown in Pacific</div>
 </div>
 <div class="refresh-bar" id="rts">Connecting…</div>
@@ -198,25 +203,42 @@ const LEAGUES = [
 ];
 
 // DirecTV XTRA channel numbers — shown alongside every game card
+// Channels confirmed included in the bar's DirecTV XTRA package.
+// XTRA tier includes: ESPN family, national broadcast (ABC/NBC/FOX/CBS via locals),
+// TNT/TBS/truTV, NFL Network, MLB/NHL/NBA Network, Golf Channel, USA Network,
+// CBS Sports Network, NBC Sports national + regional (RSNs), Telemundo/Universo.
+// NOT included: ION, Tennis Channel, FloSports/FloSoftball/etc, Willow, Sling-exclusive add-ons.
 const DIRECTV_CH = {
   'ESPN':                '206', 'ESPN2':              '209', 'ESPNU':       '208',
-  'ESPN+':               'streaming', 'ESPNews':      '207',
+  'ESPNews':              '207',
   'ABC':                 '396', 'NBC':                '392', 'CBS':         '388 (local)',
   'FOX':                 '398', 'FS1':                '219', 'FS2':         '618',
   'TNT':                 '245', 'TBS':                '247', 'truTV':       '246',
   'NFL Network':         '212', 'NFL RedZone':        '217',
   'MLB Network':         '213', 'NHL Network':        '215', 'NBA TV':      '216',
   'Golf Channel':        '218', 'CBS Sports Network': '221',
-  'NBC Sports':          '220', 'NBCSN':              '220', 'USA Network':        '242',
+  'NBC Sports':          '220', 'NBCSN':              '220', 'USA Network': '242',
   'Telemundo':           '404', 'Universo':           '406',
   // Regional Sports Networks
-  'NBC Sports Bay Area': '693', 'NBCS Bay Area':      '693', 'NBCSBA': '693',
-  'NBC Sports California':'693', 'Bally Sports':      '676', 'Root Sports': '687',
-  // Streaming — no DirecTV channel number
-  'Peacock':     'Peacock app',   'Paramount+':  'Paramount+ app',
-  'Prime Video': 'Amazon app',    'Amazon':      'Amazon app',
-  'Apple TV+':   'Apple TV+ app', 'MLB.TV':      'MLB.TV (streaming)',
+  'NBC Sports Bay Area': '693', 'NBCS Bay Area':      '693', 'NBCSBA':      '693',
+  'NBC Sports California':'693','Bally Sports':       '676', 'Root Sports': '687',
 };
+// Streaming apps the bar actually subscribes to (no DirecTV channel number — opened via app)
+const STREAMING_APPS = {
+  'Peacock':     'Peacock app',
+  'Paramount+':  'Paramount+ app',
+  'Prime Video': 'Amazon app',  'Amazon': 'Amazon app',
+  'Apple TV+':   'Apple TV+ app',
+  'ESPN+':       'ESPN+ app',
+  'MLB.TV':      'MLB.TV (not subscribed — use NBC Sports Bay Area for Giants)',
+};
+// Known networks NOT in the bar's package — flagged instead of silently mislabeled
+const NOT_IN_PACKAGE = [
+  'ion', 'tennis channel', 'flosports', 'flosoftball', 'flobaseball', 'flohoops',
+  'flowrestling', 'willow', 'sec network+', 'acc network extra', 'big ten plus',
+  'victory+', 'youtube', 'fubo',
+];
+
 function getChannel(rawName){
   if(!rawName) return null;
   for(const [name, num] of Object.entries(DIRECTV_CH)){
@@ -225,30 +247,47 @@ function getChannel(rawName){
   return null;
 }
 
-// Maps ESPN broadcast name to user's actual subscription/channel
-const BROADCAST_MAP = [
-  {match:/peacock/i,             app:'Peacock',            cls:'src-peacock'},
-  {match:/paramount|^cbs$/i,    app:'Paramount+',          cls:'src-paramount'},
-  {match:/espn\+/i,              app:'ESPN+',              cls:'src-espn-plus'},
-  {match:/prime video|amazon/i,  app:'Amazon Prime Video', cls:'src-amazon'},
-  {match:/apple/i,               app:'Apple TV+',          cls:'src-apple'},
-  {match:/mlb\.?tv/i,           app:'MLB.TV',             cls:'src-mlbtv'},
-  {match:/espn|abc|fox|fs1|fs2|tnt|tbs|truTV|nbc|telemundo|usa|ion|golf channel|cbs sports network|bally|root sports/i, app:'DirecTV XTRA', cls:'src-dtv'},
-];
-// isGiantsGame flag: when ESPN returns MLB.TV for a Giants game,
-// the real over-the-air channel is NBC Sports Bay Area Ch 693.
+function isNotInPackage(rawName){
+  if(!rawName) return false;
+  const lower = rawName.toLowerCase();
+  return NOT_IN_PACKAGE.some(n=>lower.includes(n));
+}
+
+// Maps ESPN broadcast name to the bar's actual subscription/channel, with explicit
+// package-coverage checking — anything not confirmed in DIRECTV_CH or STREAMING_APPS
+// gets flagged "Not in your package" rather than silently assumed to be DirecTV XTRA.
 function mapBroadcast(rawName, isGiantsGame){
+  // Giants-specific fallback: MLB.TV / blank broadcast → NBC Sports Bay Area (confirmed in package)
   if(!rawName){
-    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693'};
-    return {app:'Check listings', cls:'src-dtv', ch:null};
+    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
+    return {app:'Check listings', cls:'src-unknown', ch:null, inPackage:null};
   }
   if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
-    return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693'};
+    return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
   }
-  for(const rule of BROADCAST_MAP){
-    if(rule.match.test(rawName)) return {app:rule.app, cls:rule.cls, ch:getChannel(rawName)};
+
+  // Explicitly not in package
+  if(isNotInPackage(rawName)){
+    return {app:rawName, cls:'src-notpkg', ch:null, inPackage:false};
   }
-  return {app:rawName, cls:'src-dtv', ch:getChannel(rawName)};
+
+  // Streaming apps the bar subscribes to
+  for(const [key, label] of Object.entries(STREAMING_APPS)){
+    if(rawName.toLowerCase().includes(key.toLowerCase())){
+      const clsMap = {Peacock:'src-peacock', 'Paramount+':'src-paramount', 'Prime Video':'src-amazon', Amazon:'src-amazon', 'Apple TV+':'src-apple', 'ESPN+':'src-espn-plus'};
+      const cls = Object.entries(clsMap).find(([k])=>rawName.toLowerCase().includes(k.toLowerCase()))?.[1] || 'src-dtv';
+      return {app:label, cls, ch:null, inPackage: !label.includes('not subscribed')};
+    }
+  }
+
+  // DirecTV XTRA channel — confirmed in DIRECTV_CH map
+  const ch = getChannel(rawName);
+  if(ch){
+    return {app:'DirecTV XTRA', cls:'src-dtv', ch, inPackage:true};
+  }
+
+  // Unrecognized network — don't assume, flag it
+  return {app:rawName, cls:'src-unknown', ch:null, inPackage:null};
 }
 
 function fmtDateForEspn(d){
@@ -307,6 +346,7 @@ function parseEvent(ev, leagueLabel, isWomen){
       broadcastCls: broadcastInfo.cls,
       broadcastRaw: rawBroadcast,
       broadcastCh:  broadcastInfo.ch,
+      inPackage:    broadcastInfo.inPackage,
     };
   }catch(e){ return null; }
 }
@@ -411,6 +451,12 @@ function isGiants(ev){ return ev.homeFull.includes('Giants')||ev.awayFull.includ
 function isWarriors(ev){ return ev.homeFull.includes('Warriors')||ev.awayFull.includes('Warriors'); }
 function isValkyries(ev){ return ev.homeFull.includes('Valkyries')||ev.awayFull.includes('Valkyries'); }
 
+function pkgIcon(inPackage){
+  if(inPackage===true) return '📺';
+  if(inPackage===false) return '🚫';
+  return '❓';
+}
+
 function buildChip(ev){
   const live = ev.status==='in' ? ' live-tag' : '';
   let cls = chipClass(ev);
@@ -424,7 +470,7 @@ function buildChip(ev){
     <div class="chip-src">${ev.league}${wb}</div>
     <div class="chip-title">${scoreStr}</div>
     <div class="chip-sub">${ev.timeStr} · ${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
-    <div class="chip-app ${ev.broadcastCls}">📺 ${ev.broadcastApp}${ev.broadcastCh?' · Ch '+ev.broadcastCh:''}</div>
+    <div class="chip-app ${ev.broadcastCls}">${pkgIcon(ev.inPackage)} ${ev.broadcastApp}${ev.broadcastCh?' · Ch '+ev.broadcastCh:''}${ev.inPackage===false?' · NOT IN YOUR PACKAGE':ev.inPackage===null?' · check listings':''}</div>
   </div>`;
 }
 
@@ -455,21 +501,21 @@ function buildFeaturedStrip(dayData, isToday){
     <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
     <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
-    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}">📺 ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
+    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}">${pkgIcon(wc[0].inPackage)} ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
   </div>`;
 
   const sfCard = `<div class="feat-card giants">
     <div class="feat-eyebrow">⚾ SF Giants</div>
     <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game'}</div>
     <div class="feat-sub">${sfGame? sfGame.timeStr+' · '+sfGame.statusDetail+(sfGame.homeScore!==null&&sfGame.status!=='pre'?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${sfGame?`<div class="chip-app ${sfGame.broadcastCls}">📺 ${sfGame.broadcastApp}${sfGame.broadcastCh?' · Ch '+sfGame.broadcastCh:''}</div>`:''}
+    ${sfGame?`<div class="chip-app ${sfGame.broadcastCls}">${pkgIcon(sfGame.inPackage)} ${sfGame.broadcastApp}${sfGame.broadcastCh?' · Ch '+sfGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   const gswCard = `<div class="feat-card warriors">
     <div class="feat-eyebrow">🏀 Golden State Warriors</div>
     <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game'}</div>
     <div class="feat-sub">${gswGame? gswGame.timeStr+' · '+gswGame.statusDetail : 'Off-season'}</div>
-    ${gswGame?`<div class="chip-app ${gswGame.broadcastCls}">📺 ${gswGame.broadcastApp}${gswGame.broadcastCh?' · Ch '+gswGame.broadcastCh:''}</div>`:''}
+    ${gswGame?`<div class="chip-app ${gswGame.broadcastCls}">${pkgIcon(gswGame.inPackage)} ${gswGame.broadcastApp}${gswGame.broadcastCh?' · Ch '+gswGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   const gsvCard = `<div class="feat-card valkyries">
@@ -477,7 +523,7 @@ function buildFeaturedStrip(dayData, isToday){
     <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
     <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game'}</div>
     <div class="feat-sub">${gsvGame? gsvGame.timeStr+' · '+gsvGame.statusDetail+(gsvGame.homeScore!==null&&gsvGame.status!=='pre'?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${gsvGame?`<div class="chip-app ${gsvGame.broadcastCls}">📺 ${gsvGame.broadcastApp}${gsvGame.broadcastCh?' · Ch '+gsvGame.broadcastCh:''}</div>`:''}
+    ${gsvGame?`<div class="chip-app ${gsvGame.broadcastCls}">${pkgIcon(gsvGame.inPackage)} ${gsvGame.broadcastApp}${gsvGame.broadcastCh?' · Ch '+gsvGame.broadcastCh:''}</div>`:''}
   </div>`;
 
   return wcCard+sfCard+gswCard+gsvCard;
@@ -496,7 +542,7 @@ function buildWorldCupPanel(dayData, dateObj){
       <div style="font-size:13px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
       <div style="font-size:19px;font-weight:900;margin:4px 0">${scoreStr}</div>
       <div style="font-size:14px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
-      <div class="chip-app ${g.broadcastCls}" style="margin-top:6px">📺 ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}</div>
+      <div class="chip-app ${g.broadcastCls}" style="margin-top:6px">${pkgIcon(g.inPackage)} ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}${g.inPackage===false?' · NOT IN YOUR PACKAGE':''}</div>
     </div>`;
   });
   html+='</div></div>';
@@ -621,14 +667,14 @@ const SUPPLEMENTAL = [
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 1 · Shinnecock Hills', hour:4,
    timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
    broadcastRaw:'USA Network'},
   {dateKey:'2026-06-18', league:'US Open Golf', isWomen:false,
    home:'US Open', away:'Round 1', homeFull:'', awayFull:'',
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 1 Late · Peacock & NBCSN', hour:14,
    timeStr:'2:00 PM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null,
+   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null, inPackage:true,
    broadcastRaw:'Peacock'},
   // Fri Jun 19 PT: NBCSN+Peacock 3:30am–10:30am PT, NBC+Peacock 10:30am–4:30pm PT
   {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
@@ -636,14 +682,14 @@ const SUPPLEMENTAL = [
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 2 Morning · NBCSN & Peacock', hour:4,
    timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null,
+   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null, inPackage:true,
    broadcastRaw:'NBCSN / Peacock'},
   {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
    home:'US Open', away:'Round 2', homeFull:'', awayFull:'',
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 2 Afternoon · NBC & Peacock', hour:11,
    timeStr:'10:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
    broadcastRaw:'NBC'},
   // Sat Jun 20 PT: USA Network 7am–9am PT, NBC+Peacock 9am–5pm PT
   {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
@@ -651,14 +697,14 @@ const SUPPLEMENTAL = [
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 3 Early · USA Network', hour:7,
    timeStr:'7:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
    broadcastRaw:'USA Network'},
   {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
    home:'US Open', away:'Round 3', homeFull:'', awayFull:'',
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Round 3 · NBC & Peacock', hour:9,
    timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
    broadcastRaw:'NBC'},
   // Sun Jun 21 PT: USA Network 6am–9am PT, NBC+Peacock 9am–4pm PT
   {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
@@ -666,15 +712,26 @@ const SUPPLEMENTAL = [
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Final Round Early · USA Network', hour:6,
    timeStr:'6:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
    broadcastRaw:'USA Network'},
   {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
    home:'US Open', away:'Round 4 - Final', homeFull:'', awayFull:'',
    homeScore:null, awayScore:null, status:'pre',
    statusDetail:'Final Round · NBC & Peacock', hour:9,
    timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
    broadcastRaw:'NBC'},
+
+  // ── WNFC IX Cup Championship — Women's professional tackle football ────
+  // Sun Jun 21 PT: 1:00 PM PT (4:00 PM ET) on ESPN2, Ford Center at The Star, Frisco TX
+  {dateKey:'2026-06-21', league:'WNFC Football', isWomen:true,
+   home:'San Diego Rebellion', away:'Texas Elite Spartans',
+   homeFull:'San Diego Rebellion', awayFull:'Texas Elite Spartans',
+   homeScore:null, awayScore:null, status:'pre',
+   statusDetail:'IX Cup Championship · Defending champs Spartans seek 6th title', hour:13,
+   timeStr:'1:00 PM', venue:'Ford Center at The Star, Frisco TX',
+   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'209', inPackage:true,
+   broadcastRaw:'ESPN2'},
 ];
 
 function injectSupplemental(){

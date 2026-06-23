@@ -212,7 +212,7 @@ const DIRECTV_CH = {
   'ESPN':                '206', 'ESPN2':              '209', 'ESPNU':       '208',
   'ESPNews':              '207',
   'ABC':                 '396', 'NBC':                '392', 'CBS':         '388 (local)',
-  'FOX':                 '398', 'FS1':                '219', 'FS2':         '618',
+  'FOX':                 '398', 'FOX local':           '398', 'FS1':         '219', 'FS2':         '618',
   'TNT':                 '245', 'TBS':                '247', 'truTV':       '246',
   'NFL Network':         '212', 'NFL RedZone':        '217',
   'MLB Network':         '213', 'NHL Network':        '215', 'NBA TV':      '216',
@@ -471,6 +471,7 @@ function buildChip(ev){
     <div class="chip-title">${scoreStr}</div>
     <div class="chip-sub">${ev.timeStr} · ${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
     <div class="chip-app ${ev.broadcastCls}">${pkgIcon(ev.inPackage)} ${ev.broadcastApp}${ev.broadcastCh?' · Ch '+ev.broadcastCh:''}${ev.inPackage===false?' · NOT IN YOUR PACKAGE':ev.inPackage===null?' · check listings':''}</div>
+    ${ev.league==='World Cup'?`<div class="chip-app src-dtv" style="margin-top:3px">🇪🇸 Telemundo · Ch 404 · Peacock</div>`:''}
   </div>`;
 }
 
@@ -500,8 +501,9 @@ function buildFeaturedStrip(dayData, isToday){
     ${wc.length && isToday?'<div class="feat-live">TODAY</div>':''}
     <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
     <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
-    <div class="feat-sub">${wc.slice(0,4).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
-    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}">${pkgIcon(wc[0].inPackage)} ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
+    <div class="feat-sub">${wc.slice(0,3).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
+    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}" style="margin-top:4px">${pkgIcon(wc[0].inPackage)} ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
+    ${wc.length?`<div class="chip-app src-dtv" style="margin-top:3px">🇪🇸 Telemundo Ch 404 · Peacock</div>`:''}
   </div>`;
 
   const sfCard = `<div class="feat-card giants">
@@ -529,6 +531,19 @@ function buildFeaturedStrip(dayData, isToday){
   return wcCard+sfCard+gswCard+gsvCard;
 }
 
+function wcSpanish(g){
+  // Determine Spanish channel: 92 matches on Telemundo Ch 404, 12 simultaneous group-stage matches on Universo Ch 406.
+  // All 104 available on Peacock in Spanish (bar already subscribes).
+  // We default to Telemundo unless ESPN data tells us otherwise — safe for the vast majority of matches.
+  const raw = g.broadcastRaw || '';
+  const univMatch = /universo/i.test(raw);
+  const tvCh = univMatch ? 'Universo · Ch 406' : 'Telemundo · Ch 404';
+  return `<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">
+    <div class="chip-app src-dtv">🇪🇸 ${tvCh}</div>
+    <div class="chip-app src-peacock">🇪🇸 Peacock (streaming)</div>
+  </div>`;
+}
+
 function buildWorldCupPanel(dayData, dateObj){
   const wc = (dayData.wc)||[];
   if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches found for this day.</div>';
@@ -542,7 +557,10 @@ function buildWorldCupPanel(dayData, dateObj){
       <div style="font-size:13px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
       <div style="font-size:19px;font-weight:900;margin:4px 0">${scoreStr}</div>
       <div style="font-size:14px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
-      <div class="chip-app ${g.broadcastCls}" style="margin-top:6px">${pkgIcon(g.inPackage)} ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}${g.inPackage===false?' · NOT IN YOUR PACKAGE':''}</div>
+      <div style="margin-top:6px;font-size:12px;font-weight:700;color:#475569;letter-spacing:1px">🇬🇧 ENGLISH</div>
+      <div class="chip-app ${g.broadcastCls}" style="margin-top:3px">${pkgIcon(g.inPackage)} ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}${g.inPackage===false?' · NOT IN YOUR PACKAGE':''}</div>
+      <div style="margin-top:6px;font-size:12px;font-weight:700;color:#475569;letter-spacing:1px">🇪🇸 ESPAÑOL</div>
+      ${wcSpanish(g)}
     </div>`;
   });
   html+='</div></div>';

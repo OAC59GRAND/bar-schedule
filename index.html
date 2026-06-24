@@ -83,6 +83,7 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
 .chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
 .chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
 .chip.gsv-highlight{border-color:#38bdf8;background:rgba(56,189,248,.1)}
+.chip.roots-highlight{border-color:#2d7a3a;background:rgba(45,122,58,.1)}
 .chip.womens{border-color:#a855f7;background:rgba(168,85,247,.08)}
 .chip.c-espn{border-color:#ef4444;background:rgba(239,68,68,.06)}
 
@@ -200,7 +201,11 @@ const LEAGUES = [
   {key:'wc',   espn:'soccer/fifa.world', label:'World Cup',women:false},
   {key:'nwsl', espn:'soccer/usa.nwsl',   label:'NWSL',     women:true},
   {key:'mls',  espn:'soccer/usa.1',      label:'MLS',      women:false},
+  {key:'atp',  espn:'tennis/atp',          label:'Tennis',   women:false},
+  {key:'wta',  espn:'tennis/wta',          label:'Tennis',   women:true},
+  {key:'roots',espn:'soccer/usa.usl.1',    label:'USL',      women:false},
 ];
+
 
 // DirecTV XTRA channel numbers — shown alongside every game card
 // Channels confirmed included in the bar's DirecTV XTRA package.
@@ -450,6 +455,8 @@ function chipClass(ev){
 function isGiants(ev){ return ev.homeFull.includes('Giants')||ev.awayFull.includes('Giants'); }
 function isWarriors(ev){ return ev.homeFull.includes('Warriors')||ev.awayFull.includes('Warriors'); }
 function isValkyries(ev){ return ev.homeFull.includes('Valkyries')||ev.awayFull.includes('Valkyries'); }
+function isRoots(ev){ return ev.homeFull.includes('Oakland Roots')||ev.awayFull.includes('Oakland Roots')||ev.homeFull.includes('Roots SC')||ev.awayFull.includes('Roots SC'); }
+function isTennis(ev){ return ev.league==='Tennis'; }
 
 function pkgIcon(inPackage){
   if(inPackage===true) return '📺';
@@ -462,6 +469,8 @@ function buildChip(ev){
   let cls = chipClass(ev);
   if(isGiants(ev)) cls='sf-highlight';
   if(isValkyries(ev)) cls='gsv-highlight';
+  if(isRoots(ev)) cls='roots-highlight';
+  if(isTennis(ev)) cls='c-espn';
   const wb = (ev.isWomen||isValkyries(ev)) ? '<span class="w-badge">WOMEN</span>' : '';
   const scoreStr = (ev.homeScore!==null && ev.awayScore!==null && (ev.status==='in'||ev.status==='post'))
     ? `${ev.away} ${ev.awayScore} @ ${ev.homeScore} ${ev.home}`
@@ -496,6 +505,9 @@ function buildFeaturedStrip(dayData, isToday){
   const sfGame = mlb.find(isGiants);
   const gswGame = nba.find(isWarriors);
   const gsvGame = wnba.find(isValkyries);
+  const allEvents = flattenEvents(dayData);
+  const rootsGame = allEvents.find(isRoots);
+  const tennisEvs = allEvents.filter(isTennis).slice(0,2);
 
   const wcCard = `<div class="feat-card worldcup">
     ${wc.length && isToday?'<div class="feat-live">TODAY</div>':''}
@@ -568,7 +580,7 @@ function buildWorldCupPanel(dayData, dateObj){
 }
 
 function buildWomenPanel(dayData){
-  const all = flattenEvents(dayData).filter(e=>e.isWomen||isValkyries(e));
+  const all = flattenEvents(dayData).filter(e=>e.isWomen||isValkyries(e)||isRoots(e));
   if(!all.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events found for this day.</div>';
   let html='<div class="section-hd">Women\'s Sports This Day <span>ALL WOMEN</span></div><div class="sched">';
   all.forEach(e=>{
@@ -600,7 +612,7 @@ function buildWeekView(){
     const dk = dateKey(d);
     const dayData = mergedByDate[dk] || {};
     const events = flattenEvents(dayData);
-    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||isGiants(e)||isWarriors(e)||isValkyries(e)).slice(0,6);
+    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||isGiants(e)||isWarriors(e)||isValkyries(e)||isRoots(e)).slice(0,6);
     const toShow = highlights.length ? highlights : events.slice(0,6);
 
     html += `<div class="week-day-col">
@@ -613,7 +625,7 @@ function buildWeekView(){
       html += '<div class="week-empty">No events found</div>';
     } else {
       toShow.forEach(e=>{
-        const cls = isGiants(e)?'sf-highlight':isValkyries(e)?'gsv-highlight':chipClass(e);
+        const cls = isGiants(e)?'sf-highlight':isValkyries(e)?'gsv-highlight':isRoots(e)?'roots-highlight':chipClass(e);
         const scoreStr=(e.homeScore!==null&&e.status!=='pre')?`${e.away} ${e.awayScore}-${e.homeScore} ${e.home}`:`${e.away} vs ${e.home}`;
         html += `<div class="week-event ${cls}">
           <div class="week-event-time">${e.timeStr} · ${e.league}</div>
@@ -752,8 +764,28 @@ const SUPPLEMENTAL = [
    broadcastRaw:'ESPN2'},
 ];
 
+const WIMBLEDON_SUPP = [
+  // Wimbledon 2026 — June 29 to July 12 — ESPN exclusive US rights
+  // Coverage starts ~6AM PT daily. Men's Final also on ABC.
+  {dateKey:'2026-06-29',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'First Round — Opening Day',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
+  {dateKey:'2026-06-30',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'First Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
+  {dateKey:'2026-07-01',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Second Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
+  {dateKey:'2026-07-02',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Second Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
+  {dateKey:'2026-07-03',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Third Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-04',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Third Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-05',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Fourth Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-06',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Fourth Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-07',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Quarter-Finals',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-08',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Quarter-Finals Continue',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-09',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Women's Semi-Finals",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-10',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Men's Semi-Finals",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-11',league:'Wimbledon',isWomen:true, home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Women's Final · All England Club",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
+  {dateKey:'2026-07-12',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Men's Final · Also on ABC",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN / ABC'},
+];
+
+
 function injectSupplemental(){
-  SUPPLEMENTAL.forEach(ev=>{
+  [...SUPPLEMENTAL, ...WIMBLEDON_SUPP].forEach(ev=>{
     const dk = ev.dateKey;
     if(!mergedByDate[dk]) mergedByDate[dk] = {};
     if(!mergedByDate[dk]['supplemental']) mergedByDate[dk]['supplemental'] = [];

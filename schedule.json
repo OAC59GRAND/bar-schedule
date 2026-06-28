@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-28T00:57:16.251Z",
+  "generated": "2026-06-28T01:03:15.184Z",
   "days": {
     "2026-06-27": [
       {
@@ -162,7 +162,7 @@
         "homeScore": 1,
         "awayScore": 3,
         "status": "in",
-        "statusDetail": "End 6th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-06-27T23:05Z",
         "venue": "Oriole Park at Camden Yards",
         "broadcast": "MLB.TV"
@@ -190,7 +190,7 @@
         "homeFull": "Milwaukee Brewers",
         "awayFull": "Chicago Cubs",
         "homeScore": 2,
-        "awayScore": 6,
+        "awayScore": 7,
         "status": "in",
         "statusDetail": "Top 7th",
         "isoDate": "2026-06-27T23:10Z",
@@ -207,7 +207,7 @@
         "homeScore": 2,
         "awayScore": 3,
         "status": "in",
-        "statusDetail": "Bot 6th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-06-27T23:10Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"
@@ -219,7 +219,7 @@
         "away": "Marlins",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Miami Marlins",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 4,
         "status": "in",
         "statusDetail": "Bot 6th",
@@ -237,7 +237,7 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "65'",
+        "statusDetail": "71'",
         "isoDate": "2026-06-27T23:30Z",
         "venue": "Hard Rock Stadium",
         "broadcast": "FOX"
@@ -249,10 +249,10 @@
         "away": "Uzbekistan",
         "homeFull": "Congo DR",
         "awayFull": "Uzbekistan",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 1,
         "status": "in",
-        "statusDetail": "63'",
+        "statusDetail": "70'",
         "isoDate": "2026-06-27T23:30Z",
         "venue": "Mercedes-Benz Stadium",
         "broadcast": "FS1"
@@ -266,10 +266,10 @@
         "away": "Sparks",
         "homeFull": "Indiana Fever",
         "awayFull": "Los Angeles Sparks",
-        "homeScore": 51,
-        "awayScore": 31,
+        "homeScore": 57,
+        "awayScore": 37,
         "status": "in",
-        "statusDetail": "2:24 - 2nd",
+        "statusDetail": "Halftime",
         "isoDate": "2026-06-28T00:00Z",
         "venue": "Gainbridge Fieldhouse",
         "broadcast": "CBS"
@@ -282,7 +282,7 @@
         "homeFull": "San Diego Padres",
         "awayFull": "Los Angeles Dodgers",
         "homeScore": 0,
-        "awayScore": 0,
+        "awayScore": 1,
         "status": "in",
         "statusDetail": "Top 2nd",
         "isoDate": "2026-06-28T00:40Z",

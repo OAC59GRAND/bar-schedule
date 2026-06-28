@@ -5,11 +5,16 @@ on:
     - cron: '0 * * * *'   # runs every hour automatically
   workflow_dispatch:        # also lets you run it manually from GitHub
 
+permissions:
+  contents: write           # required to push schedule.json back to the repo
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Fetch ESPN schedule data
         run: |
@@ -32,7 +37,7 @@ jobs:
             {espn:'soccer/usa.usl.1',  label:'USL',       women:false},
           ];
 
-          function fetch(url) {
+          function fetchJson(url) {
             return new Promise((resolve, reject) => {
               https.get(url, {
                 headers: {
@@ -44,7 +49,7 @@ jobs:
                 res.on('data', chunk => data += chunk);
                 res.on('end', () => {
                   try { resolve(JSON.parse(data)); }
-                  catch(e) { reject(e); }
+                  catch(e) { reject(new Error('JSON parse failed: ' + e.message)); }
                 });
               }).on('error', reject);
             });
@@ -61,12 +66,11 @@ jobs:
           async function main() {
             const result = {};
 
-            // Fetch 7 days worth of data (today through +6)
-            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+            for (let dayOffset = 0; dayOffset < 8; dayOffset++) {
               const targetDate = new Date();
               targetDate.setDate(targetDate.getDate() + dayOffset);
 
-              // Fetch prev/current/next ESPN date to handle PT/ET boundary
+              // Fetch prev/current/next ESPN date to catch PT/ET boundary games
               const espnDates = [-1, 0, 1].map(i => {
                 const d = new Date(targetDate);
                 d.setDate(d.getDate() + i);
@@ -77,7 +81,7 @@ jobs:
                 for (const dateStr of espnDates) {
                   try {
                     const url = `https://site.api.espn.com/apis/site/v2/sports/${lg.espn}/scoreboard?dates=${dateStr}`;
-                    const json = await fetch(url);
+                    const json = await fetchJson(url);
 
                     for (const ev of (json.events || [])) {
                       try {
@@ -85,9 +89,8 @@ jobs:
                         const home = comp.competitors.find(c => c.homeAway === 'home');
                         const away = comp.competitors.find(c => c.homeAway === 'away');
                         const dt = new Date(ev.date);
-                        const pacificDate = dk(dt);  // stored in UTC but display logic handles PT
+                        const pacificDate = dk(dt);
 
-                        // Read broadcast
                         let rawBroadcast = null;
                         try {
                           if (comp.broadcasts && comp.broadcasts.length)
@@ -97,24 +100,22 @@ jobs:
                         } catch(e) {}
 
                         const event = {
-                          league: lg.label,
-                          isWomen: lg.women,
-                          home: home.team.shortDisplayName || home.team.abbreviation,
-                          away: away.team.shortDisplayName || away.team.abbreviation,
-                          homeFull: home.team.displayName || '',
-                          awayFull: away.team.displayName || '',
-                          homeScore: home.score !== undefined ? parseInt(home.score) : null,
-                          awayScore: away.score !== undefined ? parseInt(away.score) : null,
-                          status: ev.status.type.state,
+                          league:       lg.label,
+                          isWomen:      lg.women,
+                          home:         home.team.shortDisplayName || home.team.abbreviation,
+                          away:         away.team.shortDisplayName || away.team.abbreviation,
+                          homeFull:     home.team.displayName || '',
+                          awayFull:     away.team.displayName || '',
+                          homeScore:    home.score !== undefined ? parseInt(home.score) : null,
+                          awayScore:    away.score !== undefined ? parseInt(away.score) : null,
+                          status:       ev.status.type.state,
                           statusDetail: ev.status.type.shortDetail || '',
-                          isoDate: ev.date,
-                          venue: comp.venue ? comp.venue.fullName : '',
-                          broadcast: rawBroadcast,
+                          isoDate:      ev.date,
+                          venue:        comp.venue ? comp.venue.fullName : '',
+                          broadcast:    rawBroadcast,
                         };
 
                         if (!result[pacificDate]) result[pacificDate] = [];
-
-                        // Deduplicate
                         const dup = result[pacificDate].some(e =>
                           e.home === event.home && e.away === event.away && e.isoDate === event.isoDate
                         );
@@ -122,13 +123,13 @@ jobs:
                       } catch(e) {}
                     }
                   } catch(e) {
-                    console.warn(`Failed: ${lg.espn} / ${dateStr}:`, e.message);
+                    console.warn(`Skipped ${lg.espn}/${dateStr}: ${e.message}`);
                   }
                 }
               }
             }
 
-            // Sort each day's events by time
+            // Sort each day by time
             for (const date of Object.keys(result)) {
               result[date].sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
             }
@@ -139,17 +140,18 @@ jobs:
             };
 
             fs.writeFileSync('schedule.json', JSON.stringify(output, null, 2));
-            console.log('Written schedule.json —', Object.keys(result).length, 'days,',
-              Object.values(result).reduce((s,d) => s + d.length, 0), 'total events');
+
+            const totalEvents = Object.values(result).reduce((s, d) => s + d.length, 0);
+            console.log(`Written schedule.json: ${Object.keys(result).length} days, ${totalEvents} total events`);
           }
 
-          main().catch(e => { console.error(e); process.exit(1); });
+          main().catch(e => { console.error('Fatal:', e); process.exit(1); });
           SCRIPT
 
-      - name: Commit and push
+      - name: Commit and push schedule.json
         run: |
           git config user.name "OAC Schedule Bot"
-          git config user.email "schedule-bot@oac59grand.github.io"
+          git config user.email "actions@github.com"
           git add schedule.json
           git diff --staged --quiet || git commit -m "Auto-update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push

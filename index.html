@@ -213,20 +213,36 @@ const LEAGUES = [
 // TNT/TBS/truTV, NFL Network, MLB/NHL/NBA Network, Golf Channel, USA Network,
 // CBS Sports Network, NBC Sports national + regional (RSNs), Telemundo/Universo.
 // NOT included: ION, Tennis Channel, FloSports/FloSoftball/etc, Willow, Sling-exclusive add-ons.
+// ── DIRECTV CHANNEL NUMBERS — Oakland / SF Bay Area market ──────────────────
+// Local broadcast channels (FOX, ABC, NBC, CBS) use their over-the-air virtual
+// channel numbers on DirecTV — these are specific to the Bay Area market.
+// National cable channels are the same nationwide.
 const DIRECTV_CH = {
-  'ESPN':                '206', 'ESPN2':              '209', 'ESPNU':       '208',
-  'ESPNews':              '207',
-  'ABC':                 '396', 'NBC':                '392', 'CBS':         '388 (local)',
-  'FOX':                 '398', 'FOX local':           '398', 'FS1':         '219', 'FS2':         '618',
-  'TNT':                 '245', 'TBS':                '247', 'truTV':       '246',
-  'NFL Network':         '212', 'NFL RedZone':        '217',
-  'MLB Network':         '213', 'NHL Network':        '215', 'NBA TV':      '216',
-  'Golf Channel':        '218', 'CBS Sports Network': '221',
-  'NBC Sports':          '220', 'NBCSN':              '220', 'USA Network': '242',
-  'Telemundo':           '404', 'Universo':           '406',
-  // Regional Sports Networks
-  'NBC Sports Bay Area': '693', 'NBCS Bay Area':      '693', 'NBCSBA':      '693',
-  'NBC Sports California':'693','Bally Sports':       '676', 'Root Sports': '687',
+  // ── LOCAL BROADCAST (Bay Area DirecTV) ─────────────────────────────────
+  'FOX':                 '2',    // KTVU Fox 2 Oakland
+  'KTVU':                '2',
+  'CBS':                 '5',    // KPIX CBS 5 San Francisco
+  'KPIX':                '5',
+  'ABC':                 '7',    // KGO ABC 7 San Francisco
+  'KGO':                 '7',
+  'NBC':                 '11',   // KNTV NBC Bay Area
+  'KNTV':                '11',
+  'Telemundo':           '48',   // KSTS Telemundo Bay Area
+  'Universo':            '476',  // Universo (DirecTV national)
+  // ── NATIONAL CABLE (same nationwide) ────────────────────────────────────
+  'ESPN':                '206',  'ESPN2':          '209',
+  'ESPNU':               '208',  'ESPNews':        '207',
+  'FS1':                 '219',  'FS2':            '618',
+  'TNT':                 '245',  'TBS':            '247',  'truTV':     '246',
+  'NFL Network':         '212',  'NFL RedZone':    '217',
+  'MLB Network':         '213',  'NHL Network':    '215',  'NBA TV':    '216',
+  'Golf Channel':        '218',  'CBS Sports Network': '221',
+  'NBC Sports':          '220',  'NBCSN':          '220',  'USA Network':'242',
+  'Tele':                '48',   // ESPN returns "Tele" for Telemundo
+  // ── REGIONAL SPORTS NETWORKS (Bay Area) ─────────────────────────────────
+  'NBC Sports Bay Area': '693',  'NBCS Bay Area':  '693',
+  'NBC Sports California':'693', 'NBCSBA':         '693',
+  'Bally Sports':        '676',  'Root Sports':    '687',
 };
 // Streaming apps the bar actually subscribes to (no DirecTV channel number — opened via app)
 const STREAMING_APPS = {
@@ -261,10 +277,11 @@ function isNotInPackage(rawName){
 // Maps ESPN broadcast name to the bar's actual subscription/channel, with explicit
 // package-coverage checking — anything not confirmed in DIRECTV_CH or STREAMING_APPS
 // gets flagged "Not in your package" rather than silently assumed to be DirecTV XTRA.
-function mapBroadcast(rawName, isGiantsGame){
+function mapBroadcast(rawName, isGiantsGame, isRootsGame){
   // Giants-specific fallback: MLB.TV / blank broadcast → NBC Sports Bay Area (confirmed in package)
   if(!rawName){
     if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
+    if(isRootsGame) return {app:'ESPN+', cls:'src-espn', ch:'ESPN+ app', inPackage:true};
     return {app:'Check listings', cls:'src-unknown', ch:null, inPackage:null};
   }
   if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
@@ -330,7 +347,8 @@ function parseEvent(ev, leagueLabel, isWomen){
       }
     }catch(e){ rawBroadcast = null; }
     const isGiantsGame = !!(home.team.displayName?.includes('Giants') || away.team.displayName?.includes('Giants'));
-    const broadcastInfo = mapBroadcast(rawBroadcast, isGiantsGame);
+    const isRootsGame = !!(home.team.displayName?.includes('Roots') || away.team.displayName?.includes('Roots') || (ev && ev.league === 'USL'));
+    const broadcastInfo = mapBroadcast(rawBroadcast, isGiantsGame, isRootsGame);
 
     return {
       league: leagueLabel,
@@ -754,6 +772,39 @@ const SUPPLEMENTAL = [
 
   // ── WNFC IX Cup Championship — Women's professional tackle football ────
   // Sun Jun 21 PT: 1:00 PM PT (4:00 PM ET) on ESPN2, Ford Center at The Star, Frisco TX
+
+  // ── OAKLAND ROOTS SC 2026 Upcoming Schedule ──────────────────────────────
+  // From oaklandrootssc.com — most games on ESPN+ streaming
+  // National broadcast games (CBS Sports Net Ch 221) noted where confirmed
+  {dateKey:'2026-06-17',league:'Oakland Roots SC',isWomen:false,
+   home:'Oakland Roots',away:'TBD',homeFull:'Oakland Roots',awayFull:'',
+   homeScore:null,awayScore:null,status:'pre',
+   statusDetail:'USL Championship · 12:00 PM PT · Home · Laney College',hour:12,
+   timeStr:'12:00 PM',venue:'Laney College Stadium, Oakland',
+   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
+   broadcastRaw:'ESPN+'},
+  {dateKey:'2026-06-20',league:'Oakland Roots SC',isWomen:false,
+   home:'TBD',away:'Oakland Roots',homeFull:'',awayFull:'Oakland Roots',
+   homeScore:null,awayScore:null,status:'pre',
+   statusDetail:'USL Championship · 7:30 PM PT · Away',hour:19,
+   timeStr:'7:30 PM',venue:'Away',
+   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
+   broadcastRaw:'ESPN+'},
+  {dateKey:'2026-07-04',league:'Oakland Roots SC',isWomen:false,
+   home:'Oakland Roots',away:'TBD',homeFull:'Oakland Roots',awayFull:'',
+   homeScore:null,awayScore:null,status:'pre',
+   statusDetail:'USL Championship · 6:30 PM PT · Home · Independence Day Match',hour:18,
+   timeStr:'6:30 PM',venue:'Laney College Stadium, Oakland',
+   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
+   broadcastRaw:'ESPN+'},
+  {dateKey:'2026-07-22',league:'Oakland Roots SC',isWomen:false,
+   home:'TBD',away:'Oakland Roots',homeFull:'',awayFull:'Oakland Roots',
+   homeScore:null,awayScore:null,status:'pre',
+   statusDetail:'USL Championship · 4:00 PM PT · Away',hour:16,
+   timeStr:'4:00 PM',venue:'Away',
+   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
+   broadcastRaw:'ESPN+'},
+
   {dateKey:'2026-06-21', league:'WNFC Football', isWomen:true,
    home:'San Diego Rebellion', away:'Texas Elite Spartans',
    homeFull:'San Diego Rebellion', awayFull:'Texas Elite Spartans',

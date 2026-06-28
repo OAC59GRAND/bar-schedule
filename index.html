@@ -162,10 +162,12 @@ html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Con
     <button class="tab active" onclick="switchTab('all',this)">All Day</button>
     <button class="tab" onclick="switchTab('women',this)">♀ Women's</button>
     <button class="tab" onclick="switchTab('worldcup',this)">🏆 World Cup</button>
+    <button class="tab" onclick="switchTab('scores',this)">🔴 Scores</button>
   </div>
   <div id="tab-all" class="content active"><div id="grid-all"></div></div>
   <div id="tab-women" class="content"><div id="grid-women"></div></div>
   <div id="tab-worldcup" class="content"><div id="grid-worldcup"></div></div>
+  <div id="tab-scores" class="content"><div id="grid-scores"></div></div>
 </div>
 
 <div id="week-view" class="content" style="padding:14px 16px">
@@ -320,11 +322,28 @@ function dateKey(d){
   return fmtDateForEspn(d).replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
 }
 
+// CORS proxy fallback — tries direct first, then two free proxies
+// Important for reliability: if ESPN blocks a direct request on the iPad,
+// these fallbacks keep the schedule loading automatically.
+const _PROXIES = [
+  u => u,
+  u => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+];
+let _workingProxy = 0;
+
 async function fetchEspn(espnPath, dateStr){
-  const url = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
-  const res = await fetch(url);
-  if(!res.ok) throw new Error('HTTP '+res.status);
-  return await res.json();
+  const base = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
+  for(let i=_workingProxy; i<_PROXIES.length; i++){
+    try{
+      const res = await fetch(_PROXIES[i](base), {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const j = await res.json();
+      _workingProxy = i; // remember what worked
+      return j;
+    }catch(e){}
+  }
+  throw new Error('all proxies failed');
 }
 
 function parseEvent(ev, leagueLabel, isWomen){
@@ -607,6 +626,44 @@ function buildWomenPanel(dayData){
   return html+'</div>';
 }
 
+
+function buildScoresPanel(dayData, isToday){
+  const all = flattenEvents(dayData);
+  const live  = all.filter(e=>e.status==='in');
+  const final = all.filter(e=>e.status==='post');
+  const pre   = all.filter(e=>e.status==='pre');
+
+  function row(g){
+    const aW = g.awayScore > g.homeScore;
+    const hW = g.homeScore > g.awayScore;
+    const score = (g.homeScore!==null) 
+      ? `${g.awayScore} – ${g.homeScore}`
+      : 'vs';
+    return `<div style="flex-shrink:0;background:#0a1929;border:1px solid #132a45;border-radius:5px;padding:8px 12px;min-width:160px" class="${g.status==='in'?'sc live':'sc'}">
+      <div style="font-size:9px;font-weight:800;letter-spacing:1.5px;color:${g.status==='in'?'#ef4444':'#475569'};margin-bottom:4px">${g.league}${g.status==='in'?' · LIVE':g.status==='post'?' · Final':' · Upcoming'}</div>
+      <div style="font-size:14px;font-weight:800;color:#f1f5f9">${g.away} ${score} ${g.home}</div>
+      <div style="font-size:9px;color:#475569;margin-top:3px">${g.statusDetail}</div>
+    </div>`;
+  }
+
+  if(!all.length) return '<div style="color:#475569;padding:20px;text-align:center;font-size:14px">No games found for this day.</div>';
+
+  let html = '';
+  if(live.length){
+    html += `<div class="section-hd">🔴 In Progress <span>${live.length} live</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">${live.map(row).join('')}</div>`;
+  }
+  if(final.length){
+    html += `<div class="section-hd">✔ Final Scores</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">${final.map(row).join('')}</div>`;
+  }
+  if(pre.length){
+    html += `<div class="section-hd">⏰ Upcoming</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">${pre.map(row).join('')}</div>`;
+  }
+  return html;
+}
+
 async function renderDayView(){
   const isToday = currentDayOffset===0;
   const dateObj = getDayDate(currentDayOffset);
@@ -618,6 +675,7 @@ async function renderDayView(){
   document.getElementById('grid-all').innerHTML = buildScheduleGrid(events, isToday);
   document.getElementById('grid-women').innerHTML = buildWomenPanel(dayData);
   document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(dayData, dateObj);
+  document.getElementById('grid-scores').innerHTML = buildScoresPanel(dayData, isToday);
 
   document.getElementById('rts').textContent = `${isToday?'Today':dateObj.toLocaleDateString('en-US',{weekday:'long'})}, ${dateObj.toLocaleDateString('en-US',{month:'long',day:'numeric'})} · All times Pacific`;
 }

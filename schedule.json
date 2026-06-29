@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-29T12:50:23.627Z",
+  "generated": "2026-06-29T19:25:31.581Z",
   "days": {
     "2026-06-28": [
       {
@@ -311,10 +311,10 @@
         "away": "Japan",
         "homeFull": "Brazil",
         "awayFull": "Japan",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-06-29T17:00Z",
         "venue": "NRG Stadium",
         "broadcast": "FOX"
@@ -2314,9 +2314,9 @@
       {
         "league": "World Cup",
         "isWomen": false,
-        "home": "RD32 W4",
+        "home": "Brazil",
         "away": "RD32 W6",
-        "homeFull": "Round of 32 4 Winner",
+        "homeFull": "Brazil",
         "awayFull": "Round of 32 6 Winner",
         "homeScore": 0,
         "awayScore": 0,

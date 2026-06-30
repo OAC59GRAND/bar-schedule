@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-30T11:30:18.275Z",
+  "generated": "2026-06-30T18:24:09.178Z",
   "days": {
     "2026-06-29": [
       {
@@ -252,9 +252,9 @@
         "homeFull": "Ivory Coast",
         "awayFull": "Norway",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "64'",
         "isoDate": "2026-06-30T17:00Z",
         "venue": "AT&T Stadium",
         "broadcast": "FOX"
@@ -2808,7 +2808,7 @@
         "statusDetail": "7/8 - 7:00 PM EDT",
         "isoDate": "2026-07-08T23:00Z",
         "venue": "Coca-Cola Coliseum",
-        "broadcast": "KPIX+"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "USL",

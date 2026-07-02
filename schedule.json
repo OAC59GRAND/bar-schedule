@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-02T11:12:11.456Z",
+  "generated": "2026-07-02T18:17:50.535Z",
   "days": {
     "2026-07-01": [
       {
@@ -266,10 +266,10 @@
         "away": "Pirates",
         "homeFull": "Philadelphia Phillies",
         "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/2 - 12:35 PM EDT",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 5th",
         "isoDate": "2026-07-02T16:35Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -282,9 +282,9 @@
         "homeFull": "Milwaukee Brewers",
         "awayFull": "Cincinnati Reds",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/2 - 2:10 PM EDT",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Mid 1st",
         "isoDate": "2026-07-02T18:10Z",
         "venue": "American Family Field",
         "broadcast": "MLB.TV"
@@ -562,21 +562,6 @@
         "broadcast": "MLB.TV"
       },
       {
-        "league": "USL",
-        "isWomen": false,
-        "home": "Loudoun",
-        "away": "Sporting JAX",
-        "homeFull": "Loudoun United FC",
-        "awayFull": "Sporting JAX",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-03T23:00Z",
-        "venue": "Segra Field",
-        "broadcast": "ESPN+"
-      },
-      {
         "league": "MLB",
         "isWomen": false,
         "home": "Yankees",
@@ -650,6 +635,21 @@
         "isoDate": "2026-07-03T23:30Z",
         "venue": "Barclays Center",
         "broadcast": "ION"
+      },
+      {
+        "league": "USL",
+        "isWomen": false,
+        "home": "Loudoun",
+        "away": "Sporting JAX",
+        "homeFull": "Loudoun United FC",
+        "awayFull": "Sporting JAX",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-07-03T23:30Z",
+        "venue": "Segra Field",
+        "broadcast": "ESPN+"
       }
     ],
     "2026-07-04": [

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-03T10:11:41.847Z",
+  "generated": "2026-07-03T16:16:27.792Z",
   "days": {
     "2026-07-02": [
       {
@@ -712,21 +712,6 @@
         "broadcast": "ESPN+"
       },
       {
-        "league": "NWSL",
-        "isWomen": true,
-        "home": "North Carolina",
-        "away": "Seattle",
-        "homeFull": "North Carolina Courage",
-        "awayFull": "Seattle Reign FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-04T22:30Z",
-        "venue": "WakeMed Soccer Park",
-        "broadcast": "ION"
-      },
-      {
         "league": "USL",
         "isWomen": false,
         "home": "Pittsburgh",
@@ -785,6 +770,21 @@
         "isoDate": "2026-07-04T23:10Z",
         "venue": "Daikin Park",
         "broadcast": "MLB.TV"
+      },
+      {
+        "league": "NWSL",
+        "isWomen": true,
+        "home": "North Carolina",
+        "away": "Seattle",
+        "homeFull": "North Carolina Courage",
+        "awayFull": "Seattle Reign FC",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-07-04T23:30Z",
+        "venue": "WakeMed Soccer Park",
+        "broadcast": "ION"
       },
       {
         "league": "USL",

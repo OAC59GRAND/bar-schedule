@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-03T16:16:27.792Z",
+  "generated": "2026-07-03T20:42:55.829Z",
   "days": {
     "2026-07-02": [
       {
@@ -251,10 +251,10 @@
         "away": "Egypt",
         "homeFull": "Australia",
         "awayFull": "Egypt",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "AET-pens",
         "isoDate": "2026-07-03T18:00Z",
         "venue": "AT&T Stadium",
         "broadcast": "FOX"
@@ -268,8 +268,8 @@
         "awayFull": "St. Louis Cardinals",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/3 - 4:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-03T20:05Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"

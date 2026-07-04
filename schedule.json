@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-04T11:58:41.077Z",
+  "generated": "2026-07-04T15:47:45.791Z",
   "days": {
     "2026-07-03": [
       {
@@ -341,10 +341,10 @@
         "away": "Pirates",
         "homeFull": "Washington Nationals",
         "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/4 - 11:05 AM EDT",
+        "homeScore": 1,
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-07-04T15:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"

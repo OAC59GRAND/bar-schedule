@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06T13:03:09.044Z",
+  "generated": "2026-07-06T20:58:53.325Z",
   "days": {
     "2026-07-05": [
       {
@@ -194,7 +194,7 @@
         "status": "post",
         "statusDetail": "Final",
         "isoDate": "2026-07-05T20:00Z",
-        "venue": "Chase Field",
+        "venue": "Chase Field (NH)",
         "broadcast": "Peacock"
       },
       {
@@ -356,10 +356,10 @@
         "away": "Phillies",
         "homeFull": "Kansas City Royals",
         "awayFull": "Philadelphia Phillies",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/6 - 2:10 PM EDT",
+        "homeScore": 13,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Top 8th",
         "isoDate": "2026-07-06T18:10Z",
         "venue": "Kauffman Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -372,9 +372,9 @@
         "homeFull": "Portugal",
         "awayFull": "Spain",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "90'+6'",
         "isoDate": "2026-07-06T19:00Z",
         "venue": "AT&T Stadium",
         "broadcast": "FOX"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T10:15:15.100Z",
+  "generated": "2026-07-07T18:33:23.025Z",
   "days": {
     "2026-07-06": [
       {
@@ -206,10 +206,10 @@
         "away": "Egypt",
         "homeFull": "Argentina",
         "awayFull": "Egypt",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-07T16:00Z",
         "venue": "Mercedes-Benz Stadium",
         "broadcast": "FOX"
@@ -221,10 +221,10 @@
         "away": "Brewers",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 0,
+        "homeScore": 2,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 2:15 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-07T18:15Z",
         "venue": "Busch Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -1712,9 +1712,9 @@
       {
         "league": "World Cup",
         "isWomen": false,
-        "home": "RD16 W7",
+        "home": "Argentina",
         "away": "RD16 W8",
-        "homeFull": "Round of 16 7 Winner",
+        "homeFull": "Argentina",
         "awayFull": "Round of 16 8 Winner",
         "homeScore": 0,
         "awayScore": 0,
@@ -2131,7 +2131,7 @@
         "statusDetail": "7/14 - 7:00 PM EDT",
         "isoDate": "2026-07-14T23:00Z",
         "venue": "Coca-Cola Coliseum",
-        "broadcast": "MNMT"
+        "broadcast": "WNBA League Pass"
       }
     ],
     "2026-07-15": [

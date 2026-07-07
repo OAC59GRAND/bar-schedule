@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T18:33:23.025Z",
+  "generated": "2026-07-07T22:43:01.915Z",
   "days": {
     "2026-07-06": [
       {
@@ -221,10 +221,10 @@
         "away": "Brewers",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 2nd",
+        "homeScore": 3,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-07T18:15Z",
         "venue": "Busch Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -238,8 +238,8 @@
         "awayFull": "Colombia",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "Pens",
         "isoDate": "2026-07-07T20:00Z",
         "venue": "BC Place",
         "broadcast": "FOX"
@@ -253,8 +253,8 @@
         "awayFull": "Chicago Cubs",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 6:35 PM EDT",
+        "status": "in",
+        "statusDetail": "Rain Delay, Top 1st",
         "isoDate": "2026-07-07T22:35Z",
         "venue": "Oriole Park at Camden Yards",
         "broadcast": "MLB.TV"
@@ -268,8 +268,8 @@
         "awayFull": "Athletics",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 1st",
         "isoDate": "2026-07-07T22:40Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -283,8 +283,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 1st",
         "isoDate": "2026-07-07T22:40Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -298,8 +298,8 @@
         "awayFull": "New York Yankees",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 1st",
         "isoDate": "2026-07-07T22:40Z",
         "venue": "Tropicana Field",
         "broadcast": "MLB.TV"
@@ -313,8 +313,8 @@
         "awayFull": "Seattle Mariners",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/7 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 1st",
         "isoDate": "2026-07-07T22:40Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"

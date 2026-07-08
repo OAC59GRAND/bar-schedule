@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-08T15:54:51.882Z",
+  "generated": "2026-07-08T20:41:01.374Z",
   "days": {
     "2026-07-07": [
       {
@@ -312,9 +312,9 @@
         "homeFull": "San Francisco Giants",
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/8 - 3:45 PM EDT",
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-07-08T19:45Z",
         "venue": "Oracle Park",
         "broadcast": "ESPN Unlmtd"

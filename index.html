@@ -215,12 +215,11 @@ const LEAGUES = [
 // TNT/TBS/truTV, NFL Network, MLB/NHL/NBA Network, Golf Channel, USA Network,
 // CBS Sports Network, NBC Sports national + regional (RSNs), Telemundo/Universo.
 // NOT included: ION, Tennis Channel, FloSports/FloSoftball/etc, Willow, Sling-exclusive add-ons.
-// ── DIRECTV CHANNEL NUMBERS — Oakland / SF Bay Area market ──────────────────
-// Local broadcast channels (FOX, ABC, NBC, CBS) use their over-the-air virtual
-// channel numbers on DirecTV — these are specific to the Bay Area market.
+// ── DIRECTV CHANNEL NUMBERS -- Oakland / SF Bay Area market ──────────────────
+// Local broadcast channels use Bay Area over-the-air virtual channel numbers.
 // National cable channels are the same nationwide.
 const DIRECTV_CH = {
-  // ── LOCAL BROADCAST (Bay Area DirecTV) ─────────────────────────────────
+  // -- LOCAL BROADCAST (Bay Area DirecTV) ──────────────────────────────────
   'FOX':                 '2',    // KTVU Fox 2 Oakland
   'KTVU':                '2',
   'CBS':                 '5',    // KPIX CBS 5 San Francisco
@@ -230,21 +229,32 @@ const DIRECTV_CH = {
   'NBC':                 '11',   // KNTV NBC Bay Area
   'KNTV':                '11',
   'Telemundo':           '48',   // KSTS Telemundo Bay Area
-  'Universo':            '476',  // Universo (DirecTV national)
-  // ── NATIONAL CABLE (same nationwide) ────────────────────────────────────
+  'Tele':                '48',   // ESPN API short name for Telemundo
+  'Universo':            '476',
+  // -- NATIONAL CABLE (same nationwide) ─────────────────────────────────────
   'ESPN':                '206',  'ESPN2':          '209',
   'ESPNU':               '208',  'ESPNews':        '207',
+  'ESPN Unlmtd':         '206',  // ESPN Unlimited maps to ESPN Ch 206
   'FS1':                 '219',  'FS2':            '618',
   'TNT':                 '245',  'TBS':            '247',  'truTV':     '246',
   'NFL Network':         '212',  'NFL RedZone':    '217',
   'MLB Network':         '213',  'NHL Network':    '215',  'NBA TV':    '216',
   'Golf Channel':        '218',  'CBS Sports Network': '221',
-  'NBC Sports':          '220',  'NBCSN':          '220',  'USA Network':'242',
-  'Tele':                '48',   // ESPN returns "Tele" for Telemundo
-  // ── REGIONAL SPORTS NETWORKS (Bay Area) ─────────────────────────────────
+  'NBC Sports':          '220',  'NBCSN':          '220',
+  'USA Network':         '242',  'USA Net':        '242',  // ESPN returns "USA Net"
+  // -- REGIONAL SPORTS NETWORKS (Bay Area) ──────────────────────────────────
   'NBC Sports Bay Area': '693',  'NBCS Bay Area':  '693',
   'NBC Sports California':'693', 'NBCSBA':         '693',
   'Bally Sports':        '676',  'Root Sports':    '687',
+  // -- STREAMING (in your package -- no DirecTV channel number) ─────────────
+  'MLB.TV':              'MLB.TV app',       // NOW IN PACKAGE -- show as streaming
+  'WNBA League Pass':    'WNBA League Pass app',
+  'ESPN+':               'ESPN+ app',
+  'Peacock':             'Peacock app',
+  'Paramount+':          'Paramount+ app',
+  'Prime Video':         'Amazon app',
+  'Amazon':              'Amazon app',
+  'Apple TV+':           'Apple TV+ app',
 };
 // Streaming apps the bar actually subscribes to (no DirecTV channel number — opened via app)
 const STREAMING_APPS = {
@@ -257,9 +267,10 @@ const STREAMING_APPS = {
 };
 // Known networks NOT in the bar's package — flagged instead of silently mislabeled
 const NOT_IN_PACKAGE = [
-  'ion', 'tennis channel', 'flosports', 'flosoftball', 'flobaseball', 'flohoops',
-  'flowrestling', 'willow', 'sec network+', 'acc network extra', 'big ten plus',
-  'victory+', 'youtube', 'fubo',
+  // These networks are confirmed NOT in the bar's package
+  /\bion\b/i, /tennis.?ch/i, /\bflo\b/i, /willow/i,
+  /victory\+/i, /\bfubo\b/i,
+  // WNBA League Pass is streaming-only -- show it but flag as streaming app
 ];
 
 function getChannel(rawName){
@@ -280,37 +291,53 @@ function isNotInPackage(rawName){
 // package-coverage checking — anything not confirmed in DIRECTV_CH or STREAMING_APPS
 // gets flagged "Not in your package" rather than silently assumed to be DirecTV XTRA.
 function mapBroadcast(rawName, isGiantsGame, isRootsGame){
-  // Giants-specific fallback: MLB.TV / blank broadcast → NBC Sports Bay Area (confirmed in package)
+  // Giants: NBC Sports Bay Area is primary broadcast even when ESPN shows MLB.TV
   if(!rawName){
     if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
-    if(isRootsGame) return {app:'ESPN+', cls:'src-espn', ch:'ESPN+ app', inPackage:true};
+    if(isRootsGame)  return {app:'ESPN+', cls:'src-espn', ch:'ESPN+ app', inPackage:true};
     return {app:'Check listings', cls:'src-unknown', ch:null, inPackage:null};
   }
+  // Giants on MLB.TV -- show NBCSBA as primary channel
   if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
-    return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
+    return {app:'NBC Sports Bay Area + MLB.TV', cls:'src-dtv', ch:'693', inPackage:true};
   }
-
+  // MLB.TV -- NOW IN PACKAGE, show as streaming app
+  if(/mlb\.?tv/i.test(rawName)){
+    return {app:'MLB.TV', cls:'src-dtv', ch:'MLB.TV app', inPackage:true};
+  }
+  // ESPN Unlimited = ESPN Ch 206
+  if(/espn.?unl/i.test(rawName)){
+    return {app:'DirecTV XTRA', cls:'src-dtv', ch:'206', inPackage:true};
+  }
+  // WNBA League Pass -- streaming, in package
+  if(/wnba.?league|league.?pass/i.test(rawName)){
+    return {app:'WNBA League Pass', cls:'src-dtv', ch:'WNBA app', inPackage:true};
+  }
+  // USA Net = USA Network Ch 242
+  if(/^usa.?net$/i.test(rawName)){
+    return {app:'DirecTV XTRA', cls:'src-dtv', ch:'242', inPackage:true};
+  }
   // Explicitly not in package
   if(isNotInPackage(rawName)){
     return {app:rawName, cls:'src-notpkg', ch:null, inPackage:false};
   }
-
   // Streaming apps the bar subscribes to
-  for(const [key, label] of Object.entries(STREAMING_APPS)){
-    if(rawName.toLowerCase().includes(key.toLowerCase())){
-      const clsMap = {Peacock:'src-peacock', 'Paramount+':'src-paramount', 'Prime Video':'src-amazon', Amazon:'src-amazon', 'Apple TV+':'src-apple', 'ESPN+':'src-espn-plus'};
-      const cls = Object.entries(clsMap).find(([k])=>rawName.toLowerCase().includes(k.toLowerCase()))?.[1] || 'src-dtv';
-      return {app:label, cls, ch:null, inPackage: !label.includes('not subscribed')};
-    }
+  const streamMap = [
+    {re:/peacock/i,             app:'Peacock',            cls:'src-peacock', ch:null},
+    {re:/paramount/i,           app:'Paramount+',         cls:'src-paramount', ch:null},
+    {re:/espn\+|espnplus/i,    app:'ESPN+',              cls:'src-espn', ch:null},
+    {re:/prime.?video|amazon/i, app:'Amazon Prime Video', cls:'src-amazon', ch:null},
+    {re:/apple/i,               app:'Apple TV+',          cls:'src-apple', ch:null},
+  ];
+  for(const s of streamMap){
+    if(s.re.test(rawName)) return {...s, inPackage:true};
   }
-
-  // DirecTV XTRA channel — confirmed in DIRECTV_CH map
+  // DirecTV XTRA cable channel -- look up channel number
   const ch = getChannel(rawName);
   if(ch){
     return {app:'DirecTV XTRA', cls:'src-dtv', ch, inPackage:true};
   }
-
-  // Unrecognized network — don't assume, flag it
+  // Unrecognized -- flag as unknown
   return {app:rawName, cls:'src-unknown', ch:null, inPackage:null};
 }
 

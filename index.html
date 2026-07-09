@@ -256,6 +256,82 @@ const DIRECTV_CH = {
   'Amazon':              'Amazon app',
   'Apple TV+':           'Apple TV+ app',
 };
+
+
+// ── MLB TEAM-SPECIFIC DIRECTV CHANNELS (2026) ────────────────────────────────
+// When ESPN returns "MLB.TV" we look up the actual DirecTV channel by team name.
+// Source: DirecTV official announcements, MLB.com channel finders, March 2026.
+const MLB_TEAM_CH = {
+  // SF Bay Area RSNs
+  'San Francisco Giants':   {ch:'693', net:'NBC Sports Bay Area'},
+  'Giants':                 {ch:'693', net:'NBC Sports Bay Area'},
+  'Athletics':              {ch:'438', net:'NBC Sports California'},
+  // National RSNs still on DirecTV
+  'Baltimore Orioles':      {ch:'640', net:'MASN'},
+  'Orioles':                {ch:'640', net:'MASN'},
+  'Boston Red Sox':         {ch:'628', net:'NESN'},
+  'Red Sox':                {ch:'628', net:'NESN'},
+  'Los Angeles Dodgers':    {ch:'691', net:'Spectrum SportsNet LA'},
+  'Dodgers':                {ch:'691', net:'Spectrum SportsNet LA'},
+  'New York Mets':          {ch:'635', net:'SportsNet NY'},
+  'Mets':                   {ch:'635', net:'SportsNet NY'},
+  'New York Yankees':       {ch:'yankees', net:'YES Network'},  // YES varies by market
+  'Yankees':                {ch:'638', net:'YES Network'},
+  'Pittsburgh Pirates':     {ch:'637', net:'SportsNet Pittsburgh'},
+  'Pirates':                {ch:'637', net:'SportsNet Pittsburgh'},
+  // MLB-operated team channels (new 2026)
+  'Cincinnati Reds':        {ch:'672', net:'Reds.TV'},
+  'Reds':                   {ch:'672', net:'Reds.TV'},
+  'Detroit Tigers':         {ch:'672', net:'Detroit SportsNet'},
+  'Tigers':                 {ch:'672', net:'Detroit SportsNet'},
+  'Kansas City Royals':     {ch:'671', net:'Royals.TV'},
+  'Royals':                 {ch:'671', net:'Royals.TV'},
+  'Miami Marlins':          {ch:'677', net:'Marlins.TV'},
+  'Marlins':                {ch:'677', net:'Marlins.TV'},
+  'Milwaukee Brewers':      {ch:'670', net:'Brewers.TV'},
+  'Brewers':                {ch:'670', net:'Brewers.TV'},
+  'Seattle Mariners':       {ch:'678', net:'Mariners.TV'},
+  'Mariners':               {ch:'678', net:'Mariners.TV'},
+  'St. Louis Cardinals':    {ch:'672', net:'Cardinals.TV'},
+  'Cardinals':              {ch:'672', net:'Cardinals.TV'},
+  'Tampa Bay Rays':         {ch:'679', net:'Rays.TV'},
+  'Rays':                   {ch:'679', net:'Rays.TV'},
+  'Washington Nationals':   {ch:'641', net:'Nationals.TV'},
+  'Nationals':              {ch:'641', net:'Nationals.TV'},
+  // Previous MLB-operated channels
+  'San Diego Padres':       {ch:'686', net:'Padres.TV'},
+  'Padres':                 {ch:'686', net:'Padres.TV'},
+  'Arizona Diamondbacks':   {ch:'686', net:'DBACKS.TV'},
+  'Diamondbacks':           {ch:'686', net:'DBACKS.TV'},
+  'Colorado Rockies':       {ch:'683', net:'Rockies.TV'},
+  'Rockies':                {ch:'683', net:'Rockies.TV'},
+  'Cleveland Guardians':    {ch:'676', net:'Guardians.TV'},
+  'Guardians':              {ch:'676', net:'Guardians.TV'},
+  'Minnesota Twins':        {ch:'675', net:'Twins.TV'},
+  'Twins':                  {ch:'675', net:'Twins.TV'},
+  // Other RSNs
+  'Texas Rangers':          {ch:'677', net:'Rangers Sports Network'},
+  'Rangers':                {ch:'677', net:'Rangers Sports Network'},
+  'Chicago White Sox':      {ch:'672', net:'Chicago Sports Network'},
+  'White Sox':              {ch:'672', net:'Chicago Sports Network'},
+  'Chicago Cubs':           {ch:'672', net:'Marquee Sports Network'},
+  'Cubs':                   {ch:'672', net:'Marquee Sports Network'},
+  'Houston Astros':         {ch:'676', net:'Space City Home Network'},
+  'Astros':                 {ch:'676', net:'Space City Home Network'},
+  // Out-of-market/streaming only via MLB.TV (Ch 1250-1279) or MLB Extra Innings (720-749)
+  // These are the default for any team not listed above
+};
+
+function getMlbTeamChannel(homeFull, awayFull) {
+  // Check home team first (in-market game is on home RSN)
+  const home = MLB_TEAM_CH[homeFull] || MLB_TEAM_CH[homeFull.split(' ').pop()];
+  if (home) return home;
+  const away = MLB_TEAM_CH[awayFull] || MLB_TEAM_CH[awayFull.split(' ').pop()];
+  if (away) return away;
+  // Out-of-market game -- MLB Extra Innings or MLB.TV
+  return {ch:'MLB.TV / Ch 720-749', net:'MLB.TV / Extra Innings'};
+}
+
 // Streaming apps the bar actually subscribes to (no DirecTV channel number — opened via app)
 const STREAMING_APPS = {
   'Peacock':     'Peacock app',
@@ -301,9 +377,10 @@ function mapBroadcast(rawName, isGiantsGame, isRootsGame){
   if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
     return {app:'NBC Sports Bay Area + MLB.TV', cls:'src-dtv', ch:'693', inPackage:true};
   }
-  // MLB.TV -- NOW IN PACKAGE, show as streaming app
+  // MLB.TV -- look up actual DirecTV channel by team name
   if(/mlb\.?tv/i.test(rawName)){
-    return {app:'MLB.TV', cls:'src-dtv', ch:'MLB.TV app', inPackage:true};
+    // channel looked up at render time via getMlbTeamChannel() -- see buildChip()
+    return {app:'MLB.TV', cls:'src-dtv', ch:'__MLB_LOOKUP__', inPackage:true};
   }
   // ESPN Unlimited = ESPN Ch 206
   if(/espn.?unl/i.test(rawName)){
@@ -529,6 +606,11 @@ function pkgIcon(inPackage){
 }
 
 function buildChip(ev){
+  // Resolve MLB team-specific DirecTV channel when ESPN returns generic MLB.TV
+  if(ev.broadcastCh === '__MLB_LOOKUP__'){
+    const teamInfo = getMlbTeamChannel(ev.homeFull||ev.home, ev.awayFull||ev.away);
+    ev = {...ev, broadcastApp: teamInfo.net, broadcastCh: 'Ch '+teamInfo.ch};
+  }
   const live = ev.status==='in' ? ' live-tag' : '';
   let cls = chipClass(ev);
   if(isGiants(ev)) cls='sf-highlight';

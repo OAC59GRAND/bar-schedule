@@ -243,8 +243,8 @@ const DIRECTV_CH = {
   'NBC Sports':          '220',  'NBCSN':          '220',
   'USA Network':         '242',  'USA Net':        '242',  // ESPN returns "USA Net"
   // -- REGIONAL SPORTS NETWORKS (Bay Area) ──────────────────────────────────
-  'NBC Sports Bay Area': '693',  'NBCS Bay Area':  '693',
-  'NBC Sports California':'693', 'NBCSBA':         '693',
+  'NBC Sports Bay Area': '696',  'NBCS Bay Area':  '696',
+  'NBC Sports California':'693', 'NBCSBA':         '696',
   'Bally Sports':        '676',  'Root Sports':    '687',
   // -- STREAMING (in your package -- no DirecTV channel number) ─────────────
   'MLB.TV':              'MLB.TV app',       // NOW IN PACKAGE -- show as streaming
@@ -259,67 +259,61 @@ const DIRECTV_CH = {
 
 
 // ── MLB TEAM-SPECIFIC DIRECTV CHANNELS (2026) ────────────────────────────────
-// When ESPN returns "MLB.TV" we look up the actual DirecTV channel by team name.
-// Source: DirecTV official announcements, MLB.com channel finders, March 2026.
+// Confirmed from DirecTV official Sports Pack channel lineup, effective 2026.
+// RSNs are in the 600-699 block on satellite. MLB Extra Innings: Ch 720-749.
+// NBC Sports Bay Area (Giants) = Ch 696. NBC Sports California (A's) = Ch 698.
 const MLB_TEAM_CH = {
-  // SF Bay Area RSNs
-  'San Francisco Giants':   {ch:'693', net:'NBC Sports Bay Area'},
-  'Giants':                 {ch:'693', net:'NBC Sports Bay Area'},
-  'Athletics':              {ch:'438', net:'NBC Sports California'},
-  // National RSNs still on DirecTV
-  'Baltimore Orioles':      {ch:'640', net:'MASN'},
-  'Orioles':                {ch:'640', net:'MASN'},
-  'Boston Red Sox':         {ch:'628', net:'NESN'},
-  'Red Sox':                {ch:'628', net:'NESN'},
-  'Los Angeles Dodgers':    {ch:'691', net:'Spectrum SportsNet LA'},
-  'Dodgers':                {ch:'691', net:'Spectrum SportsNet LA'},
-  'New York Mets':          {ch:'635', net:'SportsNet NY'},
-  'Mets':                   {ch:'635', net:'SportsNet NY'},
-  'New York Yankees':       {ch:'yankees', net:'YES Network'},  // YES varies by market
-  'Yankees':                {ch:'638', net:'YES Network'},
-  'Pittsburgh Pirates':     {ch:'637', net:'SportsNet Pittsburgh'},
-  'Pirates':                {ch:'637', net:'SportsNet Pittsburgh'},
-  // MLB-operated team channels (new 2026)
-  'Cincinnati Reds':        {ch:'672', net:'Reds.TV'},
-  'Reds':                   {ch:'672', net:'Reds.TV'},
-  'Detroit Tigers':         {ch:'672', net:'Detroit SportsNet'},
-  'Tigers':                 {ch:'672', net:'Detroit SportsNet'},
-  'Kansas City Royals':     {ch:'671', net:'Royals.TV'},
-  'Royals':                 {ch:'671', net:'Royals.TV'},
-  'Miami Marlins':          {ch:'677', net:'Marlins.TV'},
-  'Marlins':                {ch:'677', net:'Marlins.TV'},
-  'Milwaukee Brewers':      {ch:'670', net:'Brewers.TV'},
-  'Brewers':                {ch:'670', net:'Brewers.TV'},
-  'Seattle Mariners':       {ch:'678', net:'Mariners.TV'},
-  'Mariners':               {ch:'678', net:'Mariners.TV'},
-  'St. Louis Cardinals':    {ch:'672', net:'Cardinals.TV'},
-  'Cardinals':              {ch:'672', net:'Cardinals.TV'},
-  'Tampa Bay Rays':         {ch:'679', net:'Rays.TV'},
-  'Rays':                   {ch:'679', net:'Rays.TV'},
-  'Washington Nationals':   {ch:'641', net:'Nationals.TV'},
-  'Nationals':              {ch:'641', net:'Nationals.TV'},
-  // Previous MLB-operated channels
-  'San Diego Padres':       {ch:'686', net:'Padres.TV'},
-  'Padres':                 {ch:'686', net:'Padres.TV'},
-  'Arizona Diamondbacks':   {ch:'686', net:'DBACKS.TV'},
-  'Diamondbacks':           {ch:'686', net:'DBACKS.TV'},
-  'Colorado Rockies':       {ch:'683', net:'Rockies.TV'},
-  'Rockies':                {ch:'683', net:'Rockies.TV'},
-  'Cleveland Guardians':    {ch:'676', net:'Guardians.TV'},
-  'Guardians':              {ch:'676', net:'Guardians.TV'},
-  'Minnesota Twins':        {ch:'675', net:'Twins.TV'},
-  'Twins':                  {ch:'675', net:'Twins.TV'},
-  // Other RSNs
-  'Texas Rangers':          {ch:'677', net:'Rangers Sports Network'},
-  'Rangers':                {ch:'677', net:'Rangers Sports Network'},
-  'Chicago White Sox':      {ch:'672', net:'Chicago Sports Network'},
-  'White Sox':              {ch:'672', net:'Chicago Sports Network'},
-  'Chicago Cubs':           {ch:'672', net:'Marquee Sports Network'},
-  'Cubs':                   {ch:'672', net:'Marquee Sports Network'},
-  'Houston Astros':         {ch:'676', net:'Space City Home Network'},
-  'Astros':                 {ch:'676', net:'Space City Home Network'},
-  // Out-of-market/streaming only via MLB.TV (Ch 1250-1279) or MLB Extra Innings (720-749)
-  // These are the default for any team not listed above
+  'San Francisco Giants': {ch:'696', net:'NBC Sports Bay Area'},
+  'Giants': {ch:'696', net:'NBC Sports Bay Area'},
+  'Athletics': {ch:'698', net:'NBC Sports California'},
+  'Baltimore Orioles': {ch:'640', net:'MASN'},
+  'Orioles': {ch:'640', net:'MASN'},
+  'Boston Red Sox': {ch:'628', net:'NESN'},
+  'Red Sox': {ch:'628', net:'NESN'},
+  'Los Angeles Dodgers': {ch:'690', net:'Spectrum SportsNet LA'},
+  'Dodgers': {ch:'690', net:'Spectrum SportsNet LA'},
+  'New York Mets': {ch:'639', net:'SNY'},
+  'Mets': {ch:'639', net:'SNY'},
+  'New York Yankees': {ch:'631', net:'YES Network'},
+  'Yankees': {ch:'631', net:'YES Network'},
+  'Pittsburgh Pirates': {ch:'659', net:'SportsNet Pittsburgh'},
+  'Pirates': {ch:'659', net:'SportsNet Pittsburgh'},
+  'Houston Astros': {ch:'674', net:'Space City Home Network'},
+  'Astros': {ch:'674', net:'Space City Home Network'},
+  'Chicago Cubs': {ch:'664', net:'Marquee Sports Network'},
+  'Cubs': {ch:'664', net:'Marquee Sports Network'},
+  'Cincinnati Reds': {ch:'671', net:'Reds.TV'},
+  'Reds': {ch:'671', net:'Reds.TV'},
+  'Detroit Tigers': {ch:'676', net:'Detroit SportsNet'},
+  'Tigers': {ch:'676', net:'Detroit SportsNet'},
+  'Kansas City Royals': {ch:'672', net:'Royals.TV'},
+  'Royals': {ch:'672', net:'Royals.TV'},
+  'Miami Marlins': {ch:'678', net:'Marlins.TV'},
+  'Marlins': {ch:'678', net:'Marlins.TV'},
+  'Milwaukee Brewers': {ch:'670', net:'Brewers.TV'},
+  'Brewers': {ch:'670', net:'Brewers.TV'},
+  'Seattle Mariners': {ch:'679', net:'Mariners.TV'},
+  'Mariners': {ch:'679', net:'Mariners.TV'},
+  'St. Louis Cardinals': {ch:'677', net:'Cardinals.TV'},
+  'Cardinals': {ch:'677', net:'Cardinals.TV'},
+  'Tampa Bay Rays': {ch:'680', net:'Rays.TV'},
+  'Rays': {ch:'680', net:'Rays.TV'},
+  'Washington Nationals': {ch:'641', net:'Nationals.TV'},
+  'Nationals': {ch:'641', net:'Nationals.TV'},
+  'San Diego Padres': {ch:'686', net:'Padres.TV'},
+  'Padres': {ch:'686', net:'Padres.TV'},
+  'Arizona Diamondbacks': {ch:'686', net:'DBACKS.TV'},
+  'Diamondbacks': {ch:'686', net:'DBACKS.TV'},
+  'Colorado Rockies': {ch:'683', net:'Rockies.TV'},
+  'Rockies': {ch:'683', net:'Rockies.TV'},
+  'Cleveland Guardians': {ch:'676', net:'Guardians.TV'},
+  'Guardians': {ch:'676', net:'Guardians.TV'},
+  'Minnesota Twins': {ch:'675', net:'Twins.TV'},
+  'Twins': {ch:'675', net:'Twins.TV'},
+  'Texas Rangers': {ch:'677', net:'Rangers Sports Network'},
+  'Rangers': {ch:'677', net:'Rangers Sports Network'},
+  'Chicago White Sox': {ch:'672', net:'Chicago Sports Network'},
+  'White Sox': {ch:'672', net:'Chicago Sports Network'},
 };
 
 function getMlbTeamChannel(homeFull, awayFull) {
@@ -369,13 +363,13 @@ function isNotInPackage(rawName){
 function mapBroadcast(rawName, isGiantsGame, isRootsGame){
   // Giants: NBC Sports Bay Area is primary broadcast even when ESPN shows MLB.TV
   if(!rawName){
-    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'693', inPackage:true};
+    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'696', inPackage:true};
     if(isRootsGame)  return {app:'ESPN+', cls:'src-espn', ch:'ESPN+ app', inPackage:true};
     return {app:'Check listings', cls:'src-unknown', ch:null, inPackage:null};
   }
   // Giants on MLB.TV -- show NBCSBA as primary channel
   if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
-    return {app:'NBC Sports Bay Area + MLB.TV', cls:'src-dtv', ch:'693', inPackage:true};
+    return {app:'NBC Sports Bay Area + MLB.TV', cls:'src-dtv', ch:'696', inPackage:true};
   }
   // MLB.TV -- look up actual DirecTV channel by team name
   if(/mlb\.?tv/i.test(rawName)){

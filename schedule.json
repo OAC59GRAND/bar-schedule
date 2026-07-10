@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-10T17:30:08.463Z",
+  "generated": "2026-07-10T21:39:21.989Z",
   "days": {
     "2026-07-09": [
       {
@@ -266,10 +266,10 @@
         "away": "Belgium",
         "homeFull": "Spain",
         "awayFull": "Belgium",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-10T19:00Z",
         "venue": "SoFi Stadium",
         "broadcast": "FOX"
@@ -1306,9 +1306,9 @@
         "league": "World Cup",
         "isWomen": false,
         "home": "France",
-        "away": "QF W2",
+        "away": "Spain",
         "homeFull": "France",
-        "awayFull": "Quarterfinal 2 Winner",
+        "awayFull": "Spain",
         "homeScore": 0,
         "awayScore": 0,
         "status": "pre",

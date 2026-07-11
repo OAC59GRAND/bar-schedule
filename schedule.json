@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T14:37:55.169Z",
+  "generated": "2026-07-11T18:09:12.875Z",
   "days": {
     "2026-07-10": [
       {
@@ -356,10 +356,10 @@
         "away": "Brewers",
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/11 - 12:05 PM EDT",
+        "homeScore": 3,
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "End 6th",
         "isoDate": "2026-07-11T16:05Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -371,10 +371,10 @@
         "away": "Liberty",
         "homeFull": "Minnesota Lynx",
         "awayFull": "New York Liberty",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/11 - 1:00 PM EDT",
+        "homeScore": 42,
+        "awayScore": 34,
+        "status": "in",
+        "statusDetail": "8:27 - 3rd",
         "isoDate": "2026-07-11T17:00Z",
         "venue": "Target Center",
         "broadcast": "ABC"
@@ -388,8 +388,8 @@
         "awayFull": "Los Angeles Angels",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/11 - 2:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-07-11T18:10Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"

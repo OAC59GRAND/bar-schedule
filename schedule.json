@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-14T16:57:02.609Z",
+  "generated": "2026-07-14T20:43:00.492Z",
   "days": {
     "2026-07-15": [
       {
@@ -163,10 +163,10 @@
         "away": "Fire",
         "homeFull": "Connecticut Sun",
         "awayFull": "Portland Fire",
-        "homeScore": 80,
-        "awayScore": 76,
-        "status": "in",
-        "statusDetail": "4:24 - 4th",
+        "homeScore": 90,
+        "awayScore": 87,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-14T15:00Z",
         "venue": "Mohegan Sun Arena",
         "broadcast": "WNBA League Pass"
@@ -179,9 +179,9 @@
         "homeFull": "France",
         "awayFull": "Spain",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "81'",
         "isoDate": "2026-07-14T19:00Z",
         "venue": "AT&T Stadium",
         "broadcast": "FOX"

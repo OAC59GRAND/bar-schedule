@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-14T20:43:00.492Z",
+  "generated": "2026-07-14T23:38:17.734Z",
   "days": {
     "2026-07-15": [
       {
@@ -180,8 +180,8 @@
         "awayFull": "Spain",
         "homeScore": 0,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "81'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-14T19:00Z",
         "venue": "AT&T Stadium",
         "broadcast": "FOX"
@@ -193,10 +193,10 @@
         "away": "Mystics",
         "homeFull": "Toronto Tempo",
         "awayFull": "Washington Mystics",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/14 - 7:00 PM EDT",
+        "homeScore": 25,
+        "awayScore": 14,
+        "status": "in",
+        "statusDetail": "5:54 - 2nd",
         "isoDate": "2026-07-14T23:00Z",
         "venue": "Coca-Cola Coliseum",
         "broadcast": "NBA TV"
@@ -900,9 +900,9 @@
       {
         "league": "World Cup",
         "isWomen": false,
-        "home": "SF L1",
+        "home": "France",
         "away": "SF L2",
-        "homeFull": "Semifinal 1 Loser",
+        "homeFull": "France",
         "awayFull": "Semifinal 2 Loser",
         "homeScore": 0,
         "awayScore": 0,
@@ -1337,9 +1337,9 @@
       {
         "league": "World Cup",
         "isWomen": false,
-        "home": "SF W1",
+        "home": "Spain",
         "away": "SF W2",
-        "homeFull": "Semifinal 1 Winner",
+        "homeFull": "Spain",
         "awayFull": "Semifinal 2 Winner",
         "homeScore": 0,
         "awayScore": 0,

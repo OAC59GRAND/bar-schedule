@@ -353,8 +353,8 @@ function getChannel(rawName){
 
 function isNotInPackage(rawName){
   if(!rawName) return false;
-  const lower = rawName.toLowerCase();
-  return NOT_IN_PACKAGE.some(n=>lower.includes(n));
+  // NOT_IN_PACKAGE entries are regexes -- must use .test(), not String.includes()
+  return NOT_IN_PACKAGE.some(re=>re.test(rawName));
 }
 
 // Maps ESPN broadcast name to the bar's actual subscription/channel, with explicit

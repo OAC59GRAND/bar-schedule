@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-14T12:00:43.509Z",
+  "generated": "2026-07-14T16:57:02.609Z",
   "days": {
     "2026-07-15": [
       {
@@ -163,10 +163,10 @@
         "away": "Fire",
         "homeFull": "Connecticut Sun",
         "awayFull": "Portland Fire",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/14 - 11:00 AM EDT",
+        "homeScore": 80,
+        "awayScore": 76,
+        "status": "in",
+        "statusDetail": "4:24 - 4th",
         "isoDate": "2026-07-14T15:00Z",
         "venue": "Mohegan Sun Arena",
         "broadcast": "WNBA League Pass"

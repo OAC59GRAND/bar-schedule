@@ -543,6 +543,70 @@ async function loadEspnWindow(centerDate){
   return merged;
 }
 
+/* ============== PRIMARY DATA: schedule.json ==============
+   Generated hourly by the GitHub Action in this repo and served
+   same-origin by GitHub Pages — no CORS proxy needed, so the board
+   always loads even when corsproxy.io / allorigins are down.
+   ESPN (via loadEspnWindow) is layered on top afterwards, best-effort,
+   for up-to-the-minute live scores. */
+let scheduleGeneratedAt = null;
+
+function labelToKey(label, isWomen){
+  const hit = LEAGUES.find(l=>l.label===label && l.women===!!isWomen)
+           || LEAGUES.find(l=>l.label===label);
+  return hit ? hit.key : String(label||'other').toLowerCase().replace(/\s+/g,'_');
+}
+
+function adaptStoredGame(g){
+  try{
+    const dt = new Date(g.isoDate);
+    if(isNaN(dt)) return null;
+    const isGiantsGame = !!((g.homeFull||'').includes('Giants') || (g.awayFull||'').includes('Giants'));
+    const isRootsGame  = !!((g.homeFull||'').includes('Roots')  || (g.awayFull||'').includes('Roots') || g.league==='USL');
+    const b = mapBroadcast(g.broadcast || null, isGiantsGame, isRootsGame);
+    return {
+      league: g.league,
+      isWomen: !!g.isWomen,
+      home: g.home, away: g.away,
+      homeFull: g.homeFull || '', awayFull: g.awayFull || '',
+      homeScore: (g.homeScore===null||g.homeScore===undefined) ? null : parseInt(g.homeScore),
+      awayScore: (g.awayScore===null||g.awayScore===undefined) ? null : parseInt(g.awayScore),
+      status: g.status || 'pre',
+      statusDetail: g.statusDetail || '',
+      hour: dt.getHours(),
+      dateObj: dt,
+      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
+      venue: g.venue || '',
+      broadcastApp: b.app, broadcastCls: b.cls,
+      broadcastRaw: g.broadcast || null,
+      broadcastCh: b.ch, inPackage: b.inPackage,
+    };
+  }catch(e){ return null; }
+}
+
+async function loadFromScheduleJson(){
+  // cache-bust: GitHub Pages caches for ~10 min otherwise
+  const res = await fetch('./schedule.json?t=' + Date.now(), {cache:'no-store'});
+  if(!res.ok) throw new Error('HTTP ' + res.status);
+  const j = await res.json();
+  scheduleGeneratedAt = j.generated ? new Date(j.generated) : null;
+  const merged = {};
+  Object.values(j.days || {}).forEach(games=>{
+    (games || []).forEach(raw=>{
+      const ev = adaptStoredGame(raw);
+      if(!ev) return;
+      const pk = dateKey(ev.dateObj); // bucket by real Pacific date, same as ESPN path
+      const lk = labelToKey(ev.league, ev.isWomen);
+      if(!merged[pk]) merged[pk] = {};
+      if(!merged[pk][lk]) merged[pk][lk] = [];
+      if(!merged[pk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
+        merged[pk][lk].push(ev);
+      }
+    });
+  });
+  return merged;
+}
+
 function setSyncStatus(state, text){
   document.getElementById('sync-dot').className = 'sync-dot ' + state;
   document.getElementById('sync-text').textContent = text;
@@ -1012,30 +1076,63 @@ function injectSupplemental(){
 async function initialLoad(){
   setSyncStatus('loading','Connecting to live data…');
   buildDaySelector();
+
+  // STEP 1 — Guaranteed baseline: schedule.json from this repo (updated hourly
+  // by GitHub Action). Same-origin, so it loads even when CORS proxies are down.
+  let baseLoaded = false;
   try{
-    // Load a window covering all 7 days we display (today through +6, with ±1 day buffer baked into loadEspnWindow)
+    mergedByDate = await loadFromScheduleJson();
+    LEAGUES.forEach(lg=>{ sourceStatus[lg.key] = 'ok'; });
+    injectSupplemental();
+    baseLoaded = true;
+    const ts = scheduleGeneratedAt
+      ? scheduleGeneratedAt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})
+      : '';
+    setSyncStatus('ok', ts ? `Schedule updated ${ts}` : 'Schedule loaded');
+    buildDaySelector();
+    await renderDayView();
+    if(currentView==='week') buildWeekView();
+  }catch(e){ /* fall through to ESPN direct */ }
+
+  // STEP 2 — Best-effort live overlay from ESPN for up-to-the-minute scores.
+  // If it works, its data replaces the baseline per league/day; if not, the
+  // baseline from schedule.json stays on screen.
+  try{
     const allMerges = await Promise.all(
       Array.from({length:7},(_,i)=>getDayDate(i)).map(d=>loadEspnWindow(d))
     );
-    mergedByDate = {};
+    const espnMerged = {};
     allMerges.forEach(m=>{
       Object.entries(m).forEach(([dk,leagues])=>{
-        if(!mergedByDate[dk]) mergedByDate[dk] = {};
+        if(!espnMerged[dk]) espnMerged[dk] = {};
         Object.entries(leagues).forEach(([lk,evs])=>{
-          if(!mergedByDate[dk][lk]) mergedByDate[dk][lk] = [];
+          if(!espnMerged[dk][lk]) espnMerged[dk][lk] = [];
           evs.forEach(ev=>{
-            if(!mergedByDate[dk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
-              mergedByDate[dk][lk].push(ev);
+            if(!espnMerged[dk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
+              espnMerged[dk][lk].push(ev);
             }
           });
         });
       });
     });
-    injectSupplemental(); // Add events not on ESPN (US Open, NASCAR on Peacock, etc.)
+
+    const gotAnything = Object.keys(espnMerged).length > 0;
+    if(gotAnything){
+      if(!baseLoaded) mergedByDate = {};
+      Object.entries(espnMerged).forEach(([dk,leagues])=>{
+        if(!mergedByDate[dk]) mergedByDate[dk] = {};
+        Object.entries(leagues).forEach(([lk,evs])=>{
+          mergedByDate[dk][lk] = evs; // live ESPN data wins for that league/day
+        });
+      });
+      injectSupplemental(); // Add events not on ESPN (US Open, NASCAR on Peacock, etc.)
+    }
 
     const failedCount = Object.values(sourceStatus).filter(s=>s==='err').length;
     if(failedCount===0){
       setSyncStatus('ok','Live data connected');
+    } else if(baseLoaded){
+      setSyncStatus('ok','Schedule current · some live scores unavailable');
     } else if(failedCount < LEAGUES.length){
       setSyncStatus('err', `${LEAGUES.length-failedCount}/${LEAGUES.length} sources connected`);
     } else {
@@ -1045,7 +1142,7 @@ async function initialLoad(){
     await renderDayView();
     if(currentView==='week') buildWeekView();
   }catch(e){
-    setSyncStatus('err','Connection error — tap Refresh to retry');
+    if(!baseLoaded) setSyncStatus('err','Connection error — tap Refresh to retry');
   }
 }
 

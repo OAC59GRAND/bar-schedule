@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-14T23:38:17.734Z",
+  "generated": "2026-07-15T07:30:15.701Z",
   "days": {
     "2026-07-15": [
       {
@@ -10,9 +10,9 @@
         "homeFull": "National All-Stars",
         "awayFull": "American All-Stars",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/14 - 8:00 PM EDT",
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-15T00:00Z",
         "venue": "Citizens Bank Park",
         "broadcast": "FOX"
@@ -123,85 +123,6 @@
         "broadcast": null
       }
     ],
-    "2026-07-13": [
-      {
-        "league": "WNBA",
-        "isWomen": true,
-        "home": "Dream",
-        "away": "Sparks",
-        "homeFull": "Atlanta Dream",
-        "awayFull": "Los Angeles Sparks",
-        "homeScore": 101,
-        "awayScore": 92,
-        "status": "post",
-        "statusDetail": "Final",
-        "isoDate": "2026-07-13T23:00Z",
-        "venue": "Gateway Center",
-        "broadcast": "USA Net"
-      }
-    ],
-    "2026-07-14": [
-      {
-        "league": "WNBA",
-        "isWomen": true,
-        "home": "Lynx",
-        "away": "Mercury",
-        "homeFull": "Minnesota Lynx",
-        "awayFull": "Phoenix Mercury",
-        "homeScore": 104,
-        "awayScore": 100,
-        "status": "post",
-        "statusDetail": "Final",
-        "isoDate": "2026-07-14T01:00Z",
-        "venue": "Target Center",
-        "broadcast": "Peacock"
-      },
-      {
-        "league": "WNBA",
-        "isWomen": true,
-        "home": "Sun",
-        "away": "Fire",
-        "homeFull": "Connecticut Sun",
-        "awayFull": "Portland Fire",
-        "homeScore": 90,
-        "awayScore": 87,
-        "status": "post",
-        "statusDetail": "Final",
-        "isoDate": "2026-07-14T15:00Z",
-        "venue": "Mohegan Sun Arena",
-        "broadcast": "WNBA League Pass"
-      },
-      {
-        "league": "World Cup",
-        "isWomen": false,
-        "home": "France",
-        "away": "Spain",
-        "homeFull": "France",
-        "awayFull": "Spain",
-        "homeScore": 0,
-        "awayScore": 2,
-        "status": "post",
-        "statusDetail": "FT",
-        "isoDate": "2026-07-14T19:00Z",
-        "venue": "AT&T Stadium",
-        "broadcast": "FOX"
-      },
-      {
-        "league": "WNBA",
-        "isWomen": true,
-        "home": "Tempo",
-        "away": "Mystics",
-        "homeFull": "Toronto Tempo",
-        "awayFull": "Washington Mystics",
-        "homeScore": 25,
-        "awayScore": 14,
-        "status": "in",
-        "statusDetail": "5:54 - 2nd",
-        "isoDate": "2026-07-14T23:00Z",
-        "venue": "Coca-Cola Coliseum",
-        "broadcast": "NBA TV"
-      }
-    ],
     "2026-07-16": [
       {
         "league": "WNBA",
@@ -277,6 +198,53 @@
         "isoDate": "2026-07-16T23:30Z",
         "venue": "Stade Saputo",
         "broadcast": "Apple TV"
+      }
+    ],
+    "2026-07-14": [
+      {
+        "league": "WNBA",
+        "isWomen": true,
+        "home": "Sun",
+        "away": "Fire",
+        "homeFull": "Connecticut Sun",
+        "awayFull": "Portland Fire",
+        "homeScore": 90,
+        "awayScore": 87,
+        "status": "post",
+        "statusDetail": "Final",
+        "isoDate": "2026-07-14T15:00Z",
+        "venue": "Mohegan Sun Arena",
+        "broadcast": "WNBA League Pass"
+      },
+      {
+        "league": "World Cup",
+        "isWomen": false,
+        "home": "France",
+        "away": "Spain",
+        "homeFull": "France",
+        "awayFull": "Spain",
+        "homeScore": 0,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
+        "isoDate": "2026-07-14T19:00Z",
+        "venue": "AT&T Stadium",
+        "broadcast": "FOX"
+      },
+      {
+        "league": "WNBA",
+        "isWomen": true,
+        "home": "Tempo",
+        "away": "Mystics",
+        "homeFull": "Toronto Tempo",
+        "awayFull": "Washington Mystics",
+        "homeScore": 62,
+        "awayScore": 79,
+        "status": "post",
+        "statusDetail": "Final",
+        "isoDate": "2026-07-14T23:00Z",
+        "venue": "Coca-Cola Coliseum",
+        "broadcast": "NBA TV"
       }
     ],
     "2026-07-17": [
@@ -670,7 +638,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-07-18T02:25Z",
         "venue": "Dignity Health Sports Park",
-        "broadcast": "FS1"
+        "broadcast": "FOX"
       },
       {
         "league": "NWSL",
@@ -2556,6 +2524,81 @@
         "isoDate": "2026-07-23T02:30Z",
         "venue": "PayPal Park",
         "broadcast": "Apple TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Braves",
+        "away": "Padres",
+        "homeFull": "Atlanta Braves",
+        "awayFull": "San Diego Padres",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/23 - 12:15 PM EDT",
+        "isoDate": "2026-07-23T16:15Z",
+        "venue": "Truist Park",
+        "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Guardians",
+        "away": "Twins",
+        "homeFull": "Cleveland Guardians",
+        "awayFull": "Minnesota Twins",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/23 - 1:10 PM EDT",
+        "isoDate": "2026-07-23T17:10Z",
+        "venue": "Progressive Field",
+        "broadcast": "ESPN Unlmtd"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Blue Jays",
+        "away": "Rays",
+        "homeFull": "Toronto Blue Jays",
+        "awayFull": "Tampa Bay Rays",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/23 - 3:07 PM EDT",
+        "isoDate": "2026-07-23T19:07Z",
+        "venue": "Rogers Centre",
+        "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Cardinals",
+        "away": "Diamondbacks",
+        "homeFull": "St. Louis Cardinals",
+        "awayFull": "Arizona Diamondbacks",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/23 - 5:15 PM EDT",
+        "isoDate": "2026-07-23T21:15Z",
+        "venue": "Busch Stadium",
+        "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Tigers",
+        "away": "Royals",
+        "homeFull": "Detroit Tigers",
+        "awayFull": "Kansas City Royals",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/23 - 6:40 PM EDT",
+        "isoDate": "2026-07-23T22:40Z",
+        "venue": "Comerica Park",
+        "broadcast": "MLB.TV"
       }
     ]
   }

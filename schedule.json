@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-15T12:55:27.197Z",
+  "generated": "2026-07-15T17:49:50.466Z",
   "days": {
     "2026-07-15": [
       {
@@ -24,10 +24,10 @@
         "away": "Storm",
         "homeFull": "Chicago Sky",
         "awayFull": "Seattle Storm",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/15 - 12:00 PM EDT",
+        "homeScore": 88,
+        "awayScore": 85,
+        "status": "in",
+        "statusDetail": "2:34 - 4th",
         "isoDate": "2026-07-15T16:00Z",
         "venue": "Wintrust Arena",
         "broadcast": "WNBA League Pass"
@@ -39,10 +39,10 @@
         "away": "Sparks",
         "homeFull": "Minnesota Lynx",
         "awayFull": "Los Angeles Sparks",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/15 - 1:00 PM EDT",
+        "homeScore": 28,
+        "awayScore": 28,
+        "status": "in",
+        "statusDetail": "2:43 - 2nd",
         "isoDate": "2026-07-15T17:00Z",
         "venue": "Target Center",
         "broadcast": "WNBA League Pass"

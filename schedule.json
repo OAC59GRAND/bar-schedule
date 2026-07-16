@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-16T20:04:34.208Z",
+  "generated": "2026-07-16T22:05:55.243Z",
   "days": {
     "2026-07-16": [
       {
@@ -42,8 +42,8 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "pre",
-        "statusDetail": "7/16 - 7:00 PM EDT",
-        "isoDate": "2026-07-16T23:00Z",
+        "statusDetail": "7/16 - 6:00 PM EDT",
+        "isoDate": "2026-07-16T22:00Z",
         "venue": "Citizens Bank Park",
         "broadcast": "ESPN"
       },
@@ -79,21 +79,6 @@
       }
     ],
     "2026-07-17": [
-      {
-        "league": "MLS",
-        "isWomen": false,
-        "home": "Chicago",
-        "away": "Vancouver",
-        "homeFull": "Chicago Fire FC",
-        "awayFull": "Vancouver Whitecaps",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-17T00:30Z",
-        "venue": "Soldier Field",
-        "broadcast": "Apple TV"
-      },
       {
         "league": "MLS",
         "isWomen": false,

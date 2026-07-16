@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-16T16:19:55.471Z",
+  "generated": "2026-07-16T18:09:04.818Z",
   "days": {
     "2026-07-16": [
       {
@@ -118,11 +118,11 @@
         "awayFull": "New York Liberty",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/16 - 9:00 PM EDT",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-07-17T01:00Z",
         "venue": "College Park Center",
-        "broadcast": "Prime Video"
+        "broadcast": null
       },
       {
         "league": "MLS",
@@ -1528,6 +1528,21 @@
         "isoDate": "2026-07-21T00:00Z",
         "venue": "Coca-Cola Coliseum",
         "broadcast": "Peacock"
+      },
+      {
+        "league": "WNBA",
+        "isWomen": true,
+        "home": "Wings",
+        "away": "Liberty",
+        "homeFull": "Dallas Wings",
+        "awayFull": "New York Liberty",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/20 - 8:00 PM EDT",
+        "isoDate": "2026-07-21T00:00Z",
+        "venue": "College Park Center",
+        "broadcast": null
       },
       {
         "league": "MLB",

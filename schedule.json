@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T18:09:09.451Z",
+  "generated": "2026-07-17T20:08:52.335Z",
   "days": {
     "2026-07-16": [
       {
@@ -101,10 +101,10 @@
         "away": "Rays",
         "homeFull": "Boston Red Sox",
         "awayFull": "Tampa Bay Rays",
-        "homeScore": 2,
+        "homeScore": 10,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 3rd",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-17T17:35Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"

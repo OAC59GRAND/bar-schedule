@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T07:20:24.809Z",
+  "generated": "2026-07-17T10:02:24.666Z",
   "days": {
     "2026-07-16": [
       {
@@ -3145,10 +3145,10 @@
       {
         "league": "WNBA",
         "isWomen": true,
-        "home": "TBD",
-        "away": "TBD",
-        "homeFull": "TBD",
-        "awayFull": "TBD",
+        "home": "TEAM COOP",
+        "away": "TEAM SPOON",
+        "homeFull": "TEAM COOP",
+        "awayFull": "TEAM SPOON",
         "homeScore": 0,
         "awayScore": 0,
         "status": "pre",

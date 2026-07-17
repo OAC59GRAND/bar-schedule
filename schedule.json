@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T20:08:52.335Z",
+  "generated": "2026-07-17T21:57:21.739Z",
   "days": {
     "2026-07-16": [
       {
@@ -133,8 +133,8 @@
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/17 - 7:10 PM EDT",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-07-17T23:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -457,6 +457,21 @@
         "broadcast": null
       },
       {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Guardians",
+        "away": "Pirates",
+        "homeFull": "Cleveland Guardians",
+        "awayFull": "Pittsburgh Pirates",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/18 - 1:10 PM EDT",
+        "isoDate": "2026-07-18T17:10Z",
+        "venue": "Progressive Field",
+        "broadcast": "MLB.TV"
+      },
+      {
         "league": "NWSL",
         "isWomen": true,
         "home": "Denver",
@@ -544,21 +559,6 @@
         "statusDetail": "7/18 - 4:05 PM EDT",
         "isoDate": "2026-07-18T20:05Z",
         "venue": "Citizens Bank Park",
-        "broadcast": "MLB.TV"
-      },
-      {
-        "league": "MLB",
-        "isWomen": false,
-        "home": "Guardians",
-        "away": "Pirates",
-        "homeFull": "Cleveland Guardians",
-        "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 4:10 PM EDT",
-        "isoDate": "2026-07-18T20:10Z",
-        "venue": "Progressive Field",
         "broadcast": "MLB.TV"
       },
       {
@@ -725,6 +725,21 @@
         "isoDate": "2026-07-18T23:00Z",
         "venue": "Hodges Stadium",
         "broadcast": "ESPN+"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Guardians",
+        "away": "Pirates",
+        "homeFull": "Cleveland Guardians",
+        "awayFull": "Pittsburgh Pirates",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/18 - 7:10 PM EDT",
+        "isoDate": "2026-07-18T23:10Z",
+        "venue": "Progressive Field",
+        "broadcast": "MLB.TV"
       },
       {
         "league": "USL",
@@ -1190,7 +1205,7 @@
         "status": "pre",
         "statusDetail": "7/19 - 4:10 PM EDT",
         "isoDate": "2026-07-19T20:10Z",
-        "venue": "Chase Field",
+        "venue": "Chase Field (NH)",
         "broadcast": "MLB.TV"
       },
       {
@@ -1390,7 +1405,7 @@
         "statusDetail": "7/20 - 8:00 PM EDT",
         "isoDate": "2026-07-21T00:00Z",
         "venue": "College Park Center",
-        "broadcast": null
+        "broadcast": "KFAA-TV"
       },
       {
         "league": "MLB",

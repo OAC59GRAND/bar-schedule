@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T00:01:51.602Z",
+  "generated": "2026-07-17T04:10:23.201Z",
   "days": {
     "2026-07-16": [
       {
@@ -9,10 +9,10 @@
         "away": "Mets",
         "homeFull": "Philadelphia Phillies",
         "awayFull": "New York Mets",
-        "homeScore": 0,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "homeScore": 1,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-16T22:00Z",
         "venue": "Citizens Bank Park",
         "broadcast": "ESPN"
@@ -24,10 +24,10 @@
         "away": "Fire",
         "homeFull": "Washington Mystics",
         "awayFull": "Portland Fire",
-        "homeScore": 31,
-        "awayScore": 47,
-        "status": "in",
-        "statusDetail": "Halftime",
+        "homeScore": 56,
+        "awayScore": 75,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-16T23:00Z",
         "venue": "CareFirst Arena",
         "broadcast": "NBA TV"
@@ -41,8 +41,8 @@
         "awayFull": "Toronto FC",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "16'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-16T23:30Z",
         "venue": "Stade Saputo",
         "broadcast": "Apple TV"
@@ -56,10 +56,10 @@
         "away": "Kansas City",
         "homeFull": "St. Louis CITY SC",
         "awayFull": "Sporting Kansas City",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-17T00:30Z",
         "venue": "Energizer Park",
         "broadcast": "Apple TV"
@@ -87,9 +87,9 @@
         "homeFull": "Seattle Sounders FC",
         "awayFull": "Portland Timbers",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 4,
+        "status": "in",
+        "statusDetail": "65'",
         "isoDate": "2026-07-17T02:30Z",
         "venue": "Lumen Field",
         "broadcast": "Apple TV"
@@ -167,7 +167,7 @@
         "statusDetail": "7/17 - 7:15 PM EDT",
         "isoDate": "2026-07-17T23:15Z",
         "venue": "Rogers Centre",
-        "broadcast": "MLB.TV"
+        "broadcast": "Apple TV"
       },
       {
         "league": "MLB",
@@ -363,7 +363,7 @@
         "status": "pre",
         "statusDetail": "7/17 - 9:40 PM EDT",
         "isoDate": "2026-07-18T01:40Z",
-        "venue": "Chase Field (NH)",
+        "venue": "Chase Field",
         "broadcast": "MLB.TV"
       },
       {
@@ -2461,7 +2461,7 @@
         "statusDetail": "7/24 - 6:40 PM EDT",
         "isoDate": "2026-07-24T22:40Z",
         "venue": "Citizens Bank Park",
-        "broadcast": "MLB.TV"
+        "broadcast": "Apple TV"
       },
       {
         "league": "MLB",

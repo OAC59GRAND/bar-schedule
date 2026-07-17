@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T14:46:31.555Z",
+  "generated": "2026-07-17T16:18:07.983Z",
   "days": {
     "2026-07-16": [
       {
@@ -363,7 +363,7 @@
         "status": "pre",
         "statusDetail": "7/17 - 9:40 PM EDT",
         "isoDate": "2026-07-18T01:40Z",
-        "venue": "Chase Field",
+        "venue": "Chase Field (NH)",
         "broadcast": "MLB.TV"
       },
       {
@@ -648,7 +648,7 @@
         "status": "pre",
         "statusDetail": "7/18 - 4:10 PM EDT",
         "isoDate": "2026-07-18T20:10Z",
-        "venue": "Chase Field",
+        "venue": "Chase Field (NH)",
         "broadcast": "MLB.TV"
       },
       {

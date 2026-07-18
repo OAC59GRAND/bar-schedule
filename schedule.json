@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-18T16:03:49.275Z",
+  "generated": "2026-07-18T17:57:41.644Z",
   "days": {
     "2026-07-17": [
       {
@@ -335,31 +335,16 @@
         "broadcast": "FOX"
       },
       {
-        "league": "NWSL",
-        "isWomen": true,
-        "home": "Gotham",
-        "away": "Seattle",
-        "homeFull": "Gotham FC",
-        "awayFull": "Seattle Reign FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-18T16:00Z",
-        "venue": "Icahn Stadium",
-        "broadcast": "ABC"
-      },
-      {
         "league": "USL",
         "isWomen": false,
         "home": "Pittsburgh",
         "away": "Louisville",
         "homeFull": "Pittsburgh Riverhounds",
         "awayFull": "Louisville City FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "90'+1'",
         "isoDate": "2026-07-18T16:00Z",
         "venue": "Highmark Stadium",
         "broadcast": null
@@ -371,10 +356,10 @@
         "away": "Pirates",
         "homeFull": "Cleveland Guardians",
         "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 1:10 PM EDT",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Mid 4th",
         "isoDate": "2026-07-18T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -408,6 +393,21 @@
         "isoDate": "2026-07-18T18:20Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
+      },
+      {
+        "league": "NWSL",
+        "isWomen": true,
+        "home": "Gotham",
+        "away": "Seattle",
+        "homeFull": "Gotham FC",
+        "awayFull": "Seattle Reign FC",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-07-18T18:30Z",
+        "venue": "Icahn Stadium",
+        "broadcast": "ABC"
       },
       {
         "league": "MLB",

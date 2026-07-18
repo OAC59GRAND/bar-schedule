@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-18T17:57:41.644Z",
+  "generated": "2026-07-18T19:16:45.866Z",
   "days": {
     "2026-07-17": [
       {
@@ -343,8 +343,8 @@
         "awayFull": "Louisville City FC",
         "homeScore": 3,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "90'+1'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-18T16:00Z",
         "venue": "Highmark Stadium",
         "broadcast": null
@@ -357,9 +357,9 @@
         "homeFull": "Cleveland Guardians",
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 1,
-        "awayScore": 2,
+        "awayScore": 7,
         "status": "in",
-        "statusDetail": "Mid 4th",
+        "statusDetail": "Bot 8th",
         "isoDate": "2026-07-18T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -371,11 +371,11 @@
         "away": "Portland",
         "homeFull": "Denver Summit FC",
         "awayFull": "Portland Thorns FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-18T18:00Z",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "HT",
+        "isoDate": "2026-07-18T18:15Z",
         "venue": "Centennial Stadium",
         "broadcast": "CBS"
       },
@@ -386,10 +386,10 @@
         "away": "Twins",
         "homeFull": "Chicago Cubs",
         "awayFull": "Minnesota Twins",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 2:20 PM EDT",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 3rd",
         "isoDate": "2026-07-18T18:20Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
@@ -402,12 +402,12 @@
         "homeFull": "Gotham FC",
         "awayFull": "Seattle Reign FC",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "40'",
         "isoDate": "2026-07-18T18:30Z",
         "venue": "Icahn Stadium",
-        "broadcast": "ABC"
+        "broadcast": "ESPN2"
       },
       {
         "league": "MLB",
@@ -418,8 +418,8 @@
         "awayFull": "New York Mets",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 3:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Mid 1st",
         "isoDate": "2026-07-18T19:05Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -433,8 +433,8 @@
         "awayFull": "Chicago White Sox",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 3:07 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-07-18T19:07Z",
         "venue": "Rogers Centre",
         "broadcast": "MLB.TV"
@@ -448,8 +448,8 @@
         "awayFull": "Cincinnati Reds",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/18 - 3:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Mid 1st",
         "isoDate": "2026-07-18T19:10Z",
         "venue": "Coors Field",
         "broadcast": "MLB.TV"

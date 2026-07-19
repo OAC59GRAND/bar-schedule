@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-19T03:40:06.307Z",
+  "generated": "2026-07-19T06:33:30.718Z",
   "days": {
     "2026-07-18": [
       {
@@ -491,10 +491,10 @@
         "away": "Nationals",
         "homeFull": "Athletics",
         "awayFull": "Washington Nationals",
-        "homeScore": 6,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "homeScore": 15,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T02:05Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -508,8 +508,8 @@
         "awayFull": "Detroit Tigers",
         "homeScore": 0,
         "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T02:07Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -521,10 +521,10 @@
         "away": "Monterey Bay",
         "homeFull": "Phoenix Rising FC",
         "awayFull": "Monterey Bay",
-        "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "HT",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-19T02:30Z",
         "venue": "Phoenix Rising Stadium at 38th St/Washington",
         "broadcast": null

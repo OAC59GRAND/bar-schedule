@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-19T21:57:37.417Z",
+  "generated": "2026-07-19T23:01:55.712Z",
   "days": {
     "2026-07-18": [
       {
@@ -703,8 +703,8 @@
         "awayFull": "Argentina",
         "homeScore": 1,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "120'+1'",
+        "status": "post",
+        "statusDetail": "AET",
         "isoDate": "2026-07-19T19:00Z",
         "venue": "MetLife Stadium",
         "broadcast": "FOX"
@@ -731,10 +731,10 @@
         "away": "Sky",
         "homeFull": "Atlanta Dream",
         "awayFull": "Chicago Sky",
-        "homeScore": 67,
-        "awayScore": 71,
-        "status": "in",
-        "statusDetail": "7:07 - 4th",
+        "homeScore": 93,
+        "awayScore": 91,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T20:00Z",
         "venue": "Gateway Center",
         "broadcast": "CBS"
@@ -746,10 +746,10 @@
         "away": "Nationals",
         "homeFull": "Athletics",
         "awayFull": "Washington Nationals",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 5,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T20:05Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -761,10 +761,10 @@
         "away": "Tigers",
         "homeFull": "Los Angeles Angels",
         "awayFull": "Detroit Tigers",
-        "homeScore": 2,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 6th",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T20:07Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -776,10 +776,10 @@
         "away": "Giants",
         "homeFull": "Seattle Mariners",
         "awayFull": "San Francisco Giants",
-        "homeScore": 3,
+        "homeScore": 6,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-19T20:10Z",
         "venue": "T-Mobile Park",
         "broadcast": "ESPN Unlmtd"
@@ -791,10 +791,10 @@
         "away": "Cardinals",
         "homeFull": "Arizona Diamondbacks",
         "awayFull": "St. Louis Cardinals",
-        "homeScore": 0,
+        "homeScore": 7,
         "awayScore": 7,
         "status": "in",
-        "statusDetail": "Top 6th",
+        "statusDetail": "Bot 8th",
         "isoDate": "2026-07-19T20:10Z",
         "venue": "Chase Field (NH)",
         "broadcast": "MLB.TV"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-20T18:07:54.023Z",
+  "generated": "2026-07-20T20:24:15.984Z",
   "days": {
     "2026-07-19": [
       {
@@ -2781,6 +2781,21 @@
       {
         "league": "MLB",
         "isWomen": false,
+        "home": "Reds",
+        "away": "Guardians",
+        "homeFull": "Cincinnati Reds",
+        "awayFull": "Cleveland Guardians",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/27 - 7:00 PM EDT",
+        "isoDate": "2026-07-27T23:00Z",
+        "venue": "Great American Ball Park",
+        "broadcast": "ESPN"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
         "home": "Mets",
         "away": "Braves",
         "homeFull": "New York Mets",
@@ -2791,21 +2806,6 @@
         "statusDetail": "7/27 - 7:10 PM EDT",
         "isoDate": "2026-07-27T23:10Z",
         "venue": "Citi Field",
-        "broadcast": "MLB.TV"
-      },
-      {
-        "league": "MLB",
-        "isWomen": false,
-        "home": "Reds",
-        "away": "Guardians",
-        "homeFull": "Cincinnati Reds",
-        "awayFull": "Cleveland Guardians",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 7:10 PM EDT",
-        "isoDate": "2026-07-27T23:10Z",
-        "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"
       },
       {

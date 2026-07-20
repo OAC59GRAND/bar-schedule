@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-20T03:32:15.360Z",
+  "generated": "2026-07-20T06:51:03.465Z",
   "days": {
     "2026-07-19": [
       {
@@ -269,7 +269,7 @@
         "status": "post",
         "statusDetail": "Final/10",
         "isoDate": "2026-07-19T20:10Z",
-        "venue": "Chase Field (NH)",
+        "venue": "Chase Field",
         "broadcast": "MLB.TV"
       },
       {
@@ -543,7 +543,7 @@
         "status": "pre",
         "statusDetail": "7/20 - 9:40 PM EDT",
         "isoDate": "2026-07-21T01:40Z",
-        "venue": "Chase Field (NH)",
+        "venue": "Chase Field",
         "broadcast": "MLB.TV"
       },
       {
@@ -815,7 +815,7 @@
         "status": "pre",
         "statusDetail": "7/21 - 9:40 PM EDT",
         "isoDate": "2026-07-22T01:40Z",
-        "venue": "Chase Field (NH)",
+        "venue": "Chase Field",
         "broadcast": "MLB.TV"
       },
       {

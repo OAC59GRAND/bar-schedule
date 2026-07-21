@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T09:30:07.059Z",
+  "generated": "2026-07-21T11:49:37.523Z",
   "days": {
     "2026-07-20": [
       {
@@ -926,21 +926,6 @@
       {
         "league": "MLS",
         "isWomen": false,
-        "home": "Austin",
-        "away": "Seattle",
-        "homeFull": "Austin FC",
-        "awayFull": "Seattle Sounders FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-23T00:30Z",
-        "venue": "Q2 Stadium",
-        "broadcast": "Apple TV"
-      },
-      {
-        "league": "MLS",
-        "isWomen": false,
         "home": "Houston",
         "away": "D.C. United",
         "homeFull": "Houston Dynamo FC",
@@ -997,6 +982,21 @@
         "isoDate": "2026-07-23T01:00Z",
         "venue": "Weidner Field",
         "broadcast": "ESPN+"
+      },
+      {
+        "league": "MLS",
+        "isWomen": false,
+        "home": "Austin",
+        "away": "Seattle",
+        "homeFull": "Austin FC",
+        "awayFull": "Seattle Sounders FC",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-07-23T01:30Z",
+        "venue": "Q2 Stadium",
+        "broadcast": "Apple TV"
       },
       {
         "league": "MLS",

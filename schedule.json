@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T18:17:30.682Z",
+  "generated": "2026-07-21T20:20:11.337Z",
   "days": {
     "2026-07-20": [
       {
@@ -328,8 +328,8 @@
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:05 PM EDT",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-07-21T23:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"
@@ -526,8 +526,8 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "pre",
-        "statusDetail": "7/22 - 1:35 PM EDT",
-        "isoDate": "2026-07-22T17:35Z",
+        "statusDetail": "7/22 - 1:05 PM EDT",
+        "isoDate": "2026-07-22T17:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"
       },
@@ -710,6 +710,21 @@
         "isoDate": "2026-07-22T23:00Z",
         "venue": "Lexington Stadium",
         "broadcast": null
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Yankees",
+        "away": "Pirates",
+        "homeFull": "New York Yankees",
+        "awayFull": "Pittsburgh Pirates",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "post",
+        "statusDetail": "Postponed",
+        "isoDate": "2026-07-22T23:05Z",
+        "venue": "Yankee Stadium",
+        "broadcast": "MLB.TV"
       },
       {
         "league": "MLB",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T14:02:04.958Z",
+  "generated": "2026-07-21T16:25:08.622Z",
   "days": {
     "2026-07-20": [
       {
@@ -1603,21 +1603,6 @@
         "broadcast": "MLB.TV"
       },
       {
-        "league": "MLS",
-        "isWomen": false,
-        "home": "Columbus",
-        "away": "Cincinnati",
-        "homeFull": "Columbus Crew",
-        "awayFull": "FC Cincinnati",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-07-25T23:00Z",
-        "venue": "ScottsMiracle-Gro Field",
-        "broadcast": "FS1"
-      },
-      {
         "league": "USL",
         "isWomen": false,
         "home": "Brooklyn",
@@ -1796,6 +1781,21 @@
         "isoDate": "2026-07-25T23:15Z",
         "venue": "Globe Life Field",
         "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLS",
+        "isWomen": false,
+        "home": "Columbus",
+        "away": "Cincinnati",
+        "homeFull": "Columbus Crew",
+        "awayFull": "FC Cincinnati",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-07-25T23:15Z",
+        "venue": "ScottsMiracle-Gro Field",
+        "broadcast": "FS1"
       },
       {
         "league": "MLS",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T20:20:11.337Z",
+  "generated": "2026-07-21T22:06:25.599Z",
   "days": {
     "2026-07-20": [
       {
@@ -358,8 +358,8 @@
         "awayFull": "Baltimore Orioles",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:10 PM EDT",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-07-21T23:10Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"
@@ -529,6 +529,21 @@
         "statusDetail": "7/22 - 1:05 PM EDT",
         "isoDate": "2026-07-22T17:05Z",
         "venue": "Yankee Stadium",
+        "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Red Sox",
+        "away": "Orioles",
+        "homeFull": "Boston Red Sox",
+        "awayFull": "Baltimore Orioles",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/22 - 1:35 PM EDT",
+        "isoDate": "2026-07-22T17:35Z",
+        "venue": "Fenway Park",
         "broadcast": "MLB.TV"
       },
       {
@@ -720,8 +735,8 @@
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "post",
-        "statusDetail": "Postponed",
+        "status": "pre",
+        "statusDetail": "7/22 - 7:05 PM EDT",
         "isoDate": "2026-07-22T23:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T22:06:25.599Z",
+  "generated": "2026-07-21T23:57:40.050Z",
   "days": {
     "2026-07-20": [
       {
@@ -298,8 +298,8 @@
         "awayFull": "Los Angeles Dodgers",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Rain Delay, Top 1st",
         "isoDate": "2026-07-21T22:40Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -311,10 +311,10 @@
         "away": "Twins",
         "homeFull": "Cleveland Guardians",
         "awayFull": "Minnesota Twins",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 6:40 PM EDT",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Bot 5th",
         "isoDate": "2026-07-21T22:40Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -342,9 +342,9 @@
         "homeFull": "Toronto Blue Jays",
         "awayFull": "Tampa Bay Rays",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:07 PM EDT",
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Top 3rd",
         "isoDate": "2026-07-21T23:07Z",
         "venue": "Rogers Centre",
         "broadcast": "MLB.TV"
@@ -371,10 +371,10 @@
         "away": "Padres",
         "homeFull": "Atlanta Braves",
         "awayFull": "San Diego Padres",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:15 PM EDT",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Top 3rd",
         "isoDate": "2026-07-21T23:15Z",
         "venue": "Truist Park",
         "broadcast": "MLB.TV"
@@ -388,8 +388,8 @@
         "awayFull": "New York Mets",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-21T23:40Z",
         "venue": "American Family Field",
         "broadcast": "MLB.TV"
@@ -403,8 +403,8 @@
         "awayFull": "San Francisco Giants",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/21 - 7:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-21T23:40Z",
         "venue": "Kauffman Stadium",
         "broadcast": "MLB.TV"

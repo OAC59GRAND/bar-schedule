@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-22T16:21:36.840Z",
+  "generated": "2026-07-22T18:10:18.962Z",
   "days": {
     "2026-07-21": [
       {
@@ -238,8 +238,8 @@
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/22 - 1:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 5th",
         "isoDate": "2026-07-22T17:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"
@@ -251,10 +251,10 @@
         "away": "Orioles",
         "homeFull": "Boston Red Sox",
         "awayFull": "Baltimore Orioles",
-        "homeScore": 0,
+        "homeScore": 4,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/22 - 1:35 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-07-22T17:35Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"
@@ -283,8 +283,8 @@
         "awayFull": "San Francisco Giants",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/22 - 2:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 1st",
         "isoDate": "2026-07-22T18:10Z",
         "venue": "Kauffman Stadium",
         "broadcast": "MLB.TV"

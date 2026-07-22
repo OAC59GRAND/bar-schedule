@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-22T03:33:39.366Z",
+  "generated": "2026-07-22T06:32:29.220Z",
   "days": {
     "2026-07-21": [
       {
@@ -193,8 +193,8 @@
         "awayFull": "St. Louis Cardinals",
         "homeScore": 5,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 7th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-22T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -206,10 +206,10 @@
         "away": "Athletics",
         "homeFull": "Arizona Diamondbacks",
         "awayFull": "Athletics",
-        "homeScore": 3,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "homeScore": 6,
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-07-22T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"
@@ -221,10 +221,10 @@
         "away": "Reds",
         "homeFull": "Seattle Mariners",
         "awayFull": "Cincinnati Reds",
-        "homeScore": 0,
-        "awayScore": 3,
-        "status": "in",
-        "statusDetail": "End 6th",
+        "homeScore": 2,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-22T01:40Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-23T15:11:55.122Z",
+  "generated": "2026-07-23T17:26:44.252Z",
   "days": {
     "2026-07-22": [
       {
@@ -611,10 +611,10 @@
         "away": "Padres",
         "homeFull": "Atlanta Braves",
         "awayFull": "San Diego Padres",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/23 - 12:15 PM EDT",
+        "homeScore": 5,
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Bot 4th",
         "isoDate": "2026-07-23T16:15Z",
         "venue": "Truist Park",
         "broadcast": "MLB.TV"
@@ -628,8 +628,8 @@
         "awayFull": "Minnesota Twins",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/23 - 1:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-23T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "ESPN Unlmtd"

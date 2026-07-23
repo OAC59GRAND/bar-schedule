@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-23T04:17:32.073Z",
+  "generated": "2026-07-23T07:35:01.560Z",
   "days": {
     "2026-07-22": [
       {
@@ -536,10 +536,10 @@
         "away": "Wings",
         "homeFull": "Portland Fire",
         "awayFull": "Dallas Wings",
-        "homeScore": 95,
-        "awayScore": 99,
-        "status": "in",
-        "statusDetail": "37.7 - 4th",
+        "homeScore": 97,
+        "awayScore": 101,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-23T02:00Z",
         "venue": "Moda Center",
         "broadcast": "USA Net"
@@ -551,10 +551,10 @@
         "away": "St. Louis",
         "homeFull": "LA Galaxy",
         "awayFull": "St. Louis CITY SC",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "76'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-23T02:30Z",
         "venue": "Dignity Health Sports Park",
         "broadcast": "Apple TV"
@@ -567,9 +567,9 @@
         "homeFull": "LAFC",
         "awayFull": "Real Salt Lake",
         "homeScore": 3,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "79'",
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-23T02:30Z",
         "venue": "BMO Stadium",
         "broadcast": "FS1"
@@ -581,10 +581,10 @@
         "away": "Dallas",
         "homeFull": "Portland Timbers",
         "awayFull": "FC Dallas",
-        "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "77'",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-23T02:30Z",
         "venue": "Providence Park",
         "broadcast": "Apple TV"
@@ -598,8 +598,8 @@
         "awayFull": "Orlando City SC",
         "homeScore": 0,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "75'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-23T02:30Z",
         "venue": "PayPal Park",
         "broadcast": "Apple TV"

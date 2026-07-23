@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-23T19:23:55.935Z",
+  "generated": "2026-07-23T21:08:43.158Z",
   "days": {
     "2026-07-22": [
       {
@@ -627,9 +627,9 @@
         "homeFull": "Cleveland Guardians",
         "awayFull": "Minnesota Twins",
         "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 9th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final/12",
         "isoDate": "2026-07-23T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "ESPN Unlmtd"
@@ -641,10 +641,10 @@
         "away": "Rays",
         "homeFull": "Toronto Blue Jays",
         "awayFull": "Tampa Bay Rays",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 3,
+        "awayScore": 1,
         "status": "in",
-        "statusDetail": "Bot 1st",
+        "statusDetail": "Bot 8th",
         "isoDate": "2026-07-23T19:07Z",
         "venue": "Rogers Centre",
         "broadcast": "MLB.TV"

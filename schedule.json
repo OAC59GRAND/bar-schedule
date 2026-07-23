@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-23T21:08:43.158Z",
+  "generated": "2026-07-23T22:59:40.035Z",
   "days": {
     "2026-07-22": [
       {
@@ -643,8 +643,8 @@
         "awayFull": "Tampa Bay Rays",
         "homeScore": 3,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-23T19:07Z",
         "venue": "Rogers Centre",
         "broadcast": "MLB.TV"
@@ -656,10 +656,10 @@
         "away": "Diamondbacks",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Arizona Diamondbacks",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/23 - 5:15 PM EDT",
+        "homeScore": 2,
+        "awayScore": 4,
+        "status": "in",
+        "statusDetail": "End 6th",
         "isoDate": "2026-07-23T21:15Z",
         "venue": "Busch Stadium",
         "broadcast": "MLB.TV"
@@ -673,8 +673,8 @@
         "awayFull": "Kansas City Royals",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/23 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-23T22:40Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"

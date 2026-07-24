@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-24T00:07:34.718Z",
+  "generated": "2026-07-24T04:18:29.596Z",
   "days": {
     "2026-07-23": [
       {
@@ -54,10 +54,10 @@
         "away": "Diamondbacks",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Arizona Diamondbacks",
-        "homeScore": 4,
+        "homeScore": 6,
         "awayScore": 10,
-        "status": "in",
-        "statusDetail": "Bot 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-23T21:15Z",
         "venue": "Busch Stadium",
         "broadcast": "MLB.TV"
@@ -69,10 +69,10 @@
         "away": "Royals",
         "homeFull": "Detroit Tigers",
         "awayFull": "Kansas City Royals",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "End 5th",
+        "homeScore": 4,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-23T22:40Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -127,21 +127,6 @@
       {
         "league": "MLB",
         "isWomen": false,
-        "home": "Phillies",
-        "away": "Yankees",
-        "homeFull": "Philadelphia Phillies",
-        "awayFull": "New York Yankees",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/24 - 6:40 PM EDT",
-        "isoDate": "2026-07-24T22:40Z",
-        "venue": "Citizens Bank Park",
-        "broadcast": "Apple TV"
-      },
-      {
-        "league": "MLB",
-        "isWomen": false,
         "home": "Nationals",
         "away": "Diamondbacks",
         "homeFull": "Washington Nationals",
@@ -153,6 +138,21 @@
         "isoDate": "2026-07-24T22:45Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Phillies",
+        "away": "Yankees",
+        "homeFull": "Philadelphia Phillies",
+        "awayFull": "New York Yankees",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/24 - 6:45 PM EDT",
+        "isoDate": "2026-07-24T22:45Z",
+        "venue": "Citizens Bank Park",
+        "broadcast": "Apple TV"
       },
       {
         "league": "MLB",
@@ -224,8 +224,8 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "pre",
-        "statusDetail": "7/24 - 7:10 PM EDT",
-        "isoDate": "2026-07-24T23:10Z",
+        "statusDetail": "7/24 - 7:15 PM EDT",
+        "isoDate": "2026-07-24T23:15Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"
       },

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-25T17:03:10.151Z",
+  "generated": "2026-07-25T19:13:23.984Z",
   "days": {
     "2026-07-24": [
       {
@@ -281,10 +281,10 @@
         "away": "Royals",
         "homeFull": "Detroit Tigers",
         "awayFull": "Kansas City Royals",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/25 - 1:10 PM EDT",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Top 9th",
         "isoDate": "2026-07-25T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "ESPN Unlmtd"

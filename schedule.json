@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-25T19:13:23.984Z",
+  "generated": "2026-07-25T20:57:08.219Z",
   "days": {
     "2026-07-24": [
       {
@@ -282,9 +282,9 @@
         "homeFull": "Detroit Tigers",
         "awayFull": "Kansas City Royals",
         "homeScore": 2,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 9th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-25T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "ESPN Unlmtd"
@@ -297,9 +297,9 @@
         "homeFull": "Washington Nationals",
         "awayFull": "Arizona Diamondbacks",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/25 - 4:05 PM EDT",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Bot 3rd",
         "isoDate": "2026-07-25T20:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -311,10 +311,10 @@
         "away": "Angels",
         "homeFull": "San Francisco Giants",
         "awayFull": "Los Angeles Angels",
-        "homeScore": 0,
+        "homeScore": 5,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/25 - 4:05 PM EDT",
+        "status": "in",
+        "statusDetail": "End 3rd",
         "isoDate": "2026-07-25T20:05Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -328,8 +328,8 @@
         "awayFull": "San Diego Padres",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/25 - 4:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 3rd",
         "isoDate": "2026-07-25T20:10Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"
@@ -342,9 +342,9 @@
         "homeFull": "Boston Red Sox",
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/25 - 4:10 PM EDT",
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Bot 3rd",
         "isoDate": "2026-07-25T20:10Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-25T04:14:08.807Z",
+  "generated": "2026-07-25T07:21:30.568Z",
   "days": {
     "2026-07-24": [
       {
@@ -266,10 +266,10 @@
         "away": "Angels",
         "homeFull": "San Francisco Giants",
         "awayFull": "Los Angeles Angels",
-        "homeScore": 5,
-        "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Bot 7th",
+        "homeScore": 7,
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-07-25T02:15Z",
         "venue": "Oracle Park",
         "broadcast": "ESPN Unlmtd"

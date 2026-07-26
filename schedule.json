@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T04:28:35.912Z",
+  "generated": "2026-07-26T07:37:09.438Z",
   "days": {
     "2026-07-25": [
       {
@@ -628,8 +628,8 @@
         "awayFull": "Sporting Kansas City",
         "homeScore": 4,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "86'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-26T02:30Z",
         "venue": "BMO Stadium",
         "broadcast": "Apple TV"
@@ -643,8 +643,8 @@
         "awayFull": "Real Salt Lake",
         "homeScore": 2,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "85'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-26T02:30Z",
         "venue": "Providence Park",
         "broadcast": "Apple TV"
@@ -658,8 +658,8 @@
         "awayFull": "LA Galaxy",
         "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "88'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-26T02:30Z",
         "venue": "Stanford Stadium",
         "broadcast": "Apple TV"
@@ -673,8 +673,8 @@
         "awayFull": "Hartford Athletic",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "89'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-26T02:30Z",
         "venue": "Phoenix Rising Stadium at 38th St/Washington",
         "broadcast": "ESPN+"

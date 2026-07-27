@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T21:15:08.328Z",
+  "generated": "2026-07-27T23:06:29.530Z",
   "days": {
     "2026-07-26": [
       {
@@ -298,8 +298,8 @@
         "awayFull": "Arizona Diamondbacks",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-07-27T22:40Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -312,9 +312,9 @@
         "homeFull": "Detroit Tigers",
         "awayFull": "Baltimore Orioles",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 6:40 PM EDT",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-27T22:40Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -326,10 +326,10 @@
         "away": "Phillies",
         "homeFull": "Miami Marlins",
         "awayFull": "Philadelphia Phillies",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 6:40 PM EDT",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-07-27T22:40Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"
@@ -343,8 +343,8 @@
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 6:45 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-27T22:45Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -358,8 +358,8 @@
         "awayFull": "Cleveland Guardians",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/27 - 7:00 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-07-27T23:00Z",
         "venue": "Great American Ball Park",
         "broadcast": "ESPN"
@@ -2748,7 +2748,7 @@
         "statusDetail": "8/3 - 8:05 PM EDT",
         "isoDate": "2026-08-04T00:05Z",
         "venue": "Globe Life Field",
-        "broadcast": "MLB.TV"
+        "broadcast": "ESPN"
       },
       {
         "league": "MLB",

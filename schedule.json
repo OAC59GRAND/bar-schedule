@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T00:03:09.553Z",
+  "generated": "2026-07-27T04:39:15.779Z",
   "days": {
     "2026-07-26": [
       {
@@ -234,10 +234,10 @@
         "away": "Denver",
         "homeFull": "Washington Spirit",
         "awayFull": "Denver Summit FC",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "45'+2'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-26T23:00Z",
         "venue": "Audi Field",
         "broadcast": "Victory+"
@@ -249,10 +249,10 @@
         "away": "Yankees",
         "homeFull": "Philadelphia Phillies",
         "awayFull": "New York Yankees",
-        "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Mid 3rd",
+        "homeScore": 11,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-26T23:20Z",
         "venue": "Citizens Bank Park",
         "broadcast": "NBC"
@@ -266,10 +266,10 @@
         "away": "Louisville",
         "homeFull": "Angel City FC",
         "awayFull": "Racing Louisville FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-27T01:00Z",
         "venue": "BMO Stadium",
         "broadcast": "ESPN"

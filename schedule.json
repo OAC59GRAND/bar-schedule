@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T19:40:21.151Z",
+  "generated": "2026-07-27T21:15:08.328Z",
   "days": {
     "2026-07-26": [
       {
@@ -282,9 +282,9 @@
         "homeFull": "Texas Rangers",
         "awayFull": "Seattle Mariners",
         "homeScore": 7,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Bot 4th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-27T18:35Z",
         "venue": "Globe Life Field",
         "broadcast": "ESPN Unlmtd"

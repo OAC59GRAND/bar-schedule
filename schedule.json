@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T02:48:36.200Z",
+  "generated": "2026-07-28T05:50:34.954Z",
   "days": {
     "2026-07-27": [
       {
@@ -114,10 +114,10 @@
         "away": "Yankees",
         "homeFull": "Chicago White Sox",
         "awayFull": "New York Yankees",
-        "homeScore": 4,
+        "homeScore": 5,
         "awayScore": 9,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-27T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
@@ -129,10 +129,10 @@
         "away": "Cubs",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Chicago Cubs",
-        "homeScore": 1,
-        "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Top 5th",
+        "homeScore": 3,
+        "awayScore": 7,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-27T23:45Z",
         "venue": "Busch Stadium",
         "broadcast": "MLB.TV"
@@ -147,9 +147,9 @@
         "homeFull": "Los Angeles Angels",
         "awayFull": "Houston Astros",
         "homeScore": 4,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 3rd",
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-28T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -161,10 +161,10 @@
         "away": "Red Sox",
         "homeFull": "Athletics",
         "awayFull": "Boston Red Sox",
-        "homeScore": 1,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Mid 5th",
+        "homeScore": 2,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-28T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -176,10 +176,10 @@
         "away": "Brewers",
         "homeFull": "San Francisco Giants",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 1,
+        "homeScore": 3,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 4th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-28T01:45Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"

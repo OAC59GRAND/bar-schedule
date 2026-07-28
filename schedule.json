@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T20:18:11.181Z",
+  "generated": "2026-07-28T22:09:56.455Z",
   "days": {
     "2026-07-27": [
       {
@@ -193,8 +193,8 @@
         "awayFull": "Cleveland Guardians",
         "homeScore": 5,
         "awayScore": 6,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-28T17:40Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"
@@ -268,8 +268,8 @@
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/28 - 6:45 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-07-28T22:45Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -2481,6 +2481,21 @@
       {
         "league": "MLB",
         "isWomen": false,
+        "home": "Rangers",
+        "away": "Giants",
+        "homeFull": "Texas Rangers",
+        "awayFull": "San Francisco Giants",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "8/3 - 8:00 PM EDT",
+        "isoDate": "2026-08-04T00:00Z",
+        "venue": "Globe Life Field",
+        "broadcast": "ESPN"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
         "home": "Cubs",
         "away": "Dodgers",
         "homeFull": "Chicago Cubs",
@@ -2492,21 +2507,6 @@
         "isoDate": "2026-08-04T00:05Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
-      },
-      {
-        "league": "MLB",
-        "isWomen": false,
-        "home": "Rangers",
-        "away": "Giants",
-        "homeFull": "Texas Rangers",
-        "awayFull": "San Francisco Giants",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "8/3 - 8:05 PM EDT",
-        "isoDate": "2026-08-04T00:05Z",
-        "venue": "Globe Life Field",
-        "broadcast": "ESPN"
       },
       {
         "league": "MLB",

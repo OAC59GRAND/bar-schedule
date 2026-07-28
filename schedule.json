@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T11:21:17.454Z",
+  "generated": "2026-07-28T14:18:44.731Z",
   "days": {
     "2026-07-27": [
       {
@@ -2928,7 +2928,7 @@
         "statusDetail": "8/5 - 7:00 PM EDT",
         "isoDate": "2026-08-05T23:00Z",
         "venue": "Gateway Center",
-        "broadcast": "Atlanta News First"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "WNBA",
@@ -3003,7 +3003,7 @@
         "statusDetail": "8/5 - 7:30 PM EDT",
         "isoDate": "2026-08-05T23:30Z",
         "venue": "CareFirst Arena",
-        "broadcast": "KFAA-TV"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "MLB",

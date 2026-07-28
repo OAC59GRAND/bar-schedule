@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T18:17:37.982Z",
+  "generated": "2026-07-28T20:18:11.181Z",
   "days": {
     "2026-07-27": [
       {
@@ -191,10 +191,10 @@
         "away": "Guardians",
         "homeFull": "Cincinnati Reds",
         "awayFull": "Cleveland Guardians",
-        "homeScore": 0,
-        "awayScore": 4,
+        "homeScore": 5,
+        "awayScore": 6,
         "status": "in",
-        "statusDetail": "Top 2nd",
+        "statusDetail": "Bot 8th",
         "isoDate": "2026-07-28T17:40Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"

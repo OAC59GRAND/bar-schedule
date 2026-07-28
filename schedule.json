@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T16:44:05.264Z",
+  "generated": "2026-07-28T18:17:37.982Z",
   "days": {
     "2026-07-27": [
       {
@@ -192,9 +192,9 @@
         "homeFull": "Cincinnati Reds",
         "awayFull": "Cleveland Guardians",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/28 - 1:40 PM EDT",
+        "awayScore": 4,
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-07-28T17:40Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"
@@ -283,8 +283,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/28 - 7:10 PM EDT",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-07-28T23:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"
@@ -650,6 +650,21 @@
         "isoDate": "2026-07-29T23:10Z",
         "venue": "Great American Ball Park",
         "broadcast": "ESPN Unlmtd"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Mets",
+        "away": "Braves",
+        "homeFull": "New York Mets",
+        "awayFull": "Atlanta Braves",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "7/29 - 7:10 PM EDT",
+        "isoDate": "2026-07-29T23:10Z",
+        "venue": "Citi Field",
+        "broadcast": "MLB.TV"
       },
       {
         "league": "USL",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T10:42:40.285Z",
+  "generated": "2026-07-29T13:02:47.849Z",
   "days": {
     "2026-07-28": [
       {
@@ -1843,21 +1843,6 @@
         "broadcast": "Apple TV"
       },
       {
-        "league": "MLS",
-        "isWomen": false,
-        "home": "Portland",
-        "away": "Seattle",
-        "homeFull": "Portland Timbers",
-        "awayFull": "Seattle Sounders FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-08-02T02:30Z",
-        "venue": "Providence Park",
-        "broadcast": "FS1"
-      },
-      {
         "league": "USL",
         "isWomen": false,
         "home": "Las Vegas",
@@ -1871,6 +1856,21 @@
         "isoDate": "2026-08-02T02:30Z",
         "venue": "Cashman Field",
         "broadcast": "ESPN+"
+      },
+      {
+        "league": "MLS",
+        "isWomen": false,
+        "home": "Portland",
+        "away": "Seattle",
+        "homeFull": "Portland Timbers",
+        "awayFull": "Seattle Sounders FC",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-08-02T02:45Z",
+        "venue": "Providence Park",
+        "broadcast": "FS1"
       },
       {
         "league": "USL",

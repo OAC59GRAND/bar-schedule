@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T15:50:37.725Z",
+  "generated": "2026-07-29T17:18:55.873Z",
   "days": {
     "2026-07-28": [
       {
@@ -327,9 +327,9 @@
         "homeFull": "Miami Marlins",
         "awayFull": "Philadelphia Phillies",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 12:10 PM EDT",
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Top 5th",
         "isoDate": "2026-07-29T16:10Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"
@@ -342,9 +342,9 @@
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "Arizona Diamondbacks",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 12:35 PM EDT",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-07-29T16:35Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -358,8 +358,8 @@
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 1:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-29T17:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -373,8 +373,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 1:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"
@@ -388,8 +388,8 @@
         "awayFull": "Baltimore Orioles",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 1:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"

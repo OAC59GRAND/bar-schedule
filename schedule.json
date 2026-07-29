@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T04:14:36.938Z",
+  "generated": "2026-07-29T07:45:44.396Z",
   "days": {
     "2026-07-28": [
       {
@@ -222,9 +222,9 @@
         "homeFull": "Los Angeles Angels",
         "awayFull": "Houston Astros",
         "homeScore": 2,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -238,8 +238,8 @@
         "awayFull": "Boston Red Sox",
         "homeScore": 4,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Top 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -251,10 +251,10 @@
         "away": "Rockies",
         "homeFull": "San Diego Padres",
         "awayFull": "Colorado Rockies",
-        "homeScore": 6,
-        "awayScore": 6,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "homeScore": 8,
+        "awayScore": 7,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T01:40Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"
@@ -266,10 +266,10 @@
         "away": "Brewers",
         "homeFull": "San Francisco Giants",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 0,
-        "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "homeScore": 2,
+        "awayScore": 8,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T01:45Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -298,8 +298,8 @@
         "awayFull": "New York Liberty",
         "homeScore": 109,
         "awayScore": 113,
-        "status": "in",
-        "statusDetail": "End of 4th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T02:00Z",
         "venue": "crypto.com Arena",
         "broadcast": "WNBA League Pass"
@@ -311,10 +311,10 @@
         "away": "Mariners",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Seattle Mariners",
-        "homeScore": 5,
+        "homeScore": 6,
         "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"

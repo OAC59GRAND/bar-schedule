@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T21:00:21.402Z",
+  "generated": "2026-07-29T22:08:10.090Z",
   "days": {
     "2026-07-28": [
       {
@@ -401,10 +401,10 @@
         "away": "Brewers",
         "homeFull": "San Francisco Giants",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 3,
+        "homeScore": 10,
         "awayScore": 2,
         "status": "in",
-        "statusDetail": "Bot 4th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-07-29T19:45Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -416,10 +416,10 @@
         "away": "Rockies",
         "homeFull": "San Diego Padres",
         "awayFull": "Colorado Rockies",
-        "homeScore": 0,
+        "homeScore": 3,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "Top 4th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-07-29T20:10Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"

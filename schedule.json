@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T19:22:33.286Z",
+  "generated": "2026-07-29T21:00:21.402Z",
   "days": {
     "2026-07-28": [
       {
@@ -356,10 +356,10 @@
         "away": "Blue Jays",
         "homeFull": "Washington Nationals",
         "awayFull": "Toronto Blue Jays",
-        "homeScore": 1,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "homeScore": 2,
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T17:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -373,8 +373,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 3,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"
@@ -386,10 +386,10 @@
         "away": "Orioles",
         "homeFull": "Detroit Tigers",
         "awayFull": "Baltimore Orioles",
-        "homeScore": 7,
-        "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "homeScore": 9,
+        "awayScore": 10,
+        "status": "post",
+        "statusDetail": "Final/12",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -401,10 +401,10 @@
         "away": "Brewers",
         "homeFull": "San Francisco Giants",
         "awayFull": "Milwaukee Brewers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 3:45 PM EDT",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Bot 4th",
         "isoDate": "2026-07-29T19:45Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -418,8 +418,8 @@
         "awayFull": "Colorado Rockies",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/29 - 4:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-07-29T20:10Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"

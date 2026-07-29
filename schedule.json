@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-29T17:18:55.873Z",
+  "generated": "2026-07-29T19:22:33.286Z",
   "days": {
     "2026-07-28": [
       {
@@ -326,10 +326,10 @@
         "away": "Phillies",
         "homeFull": "Miami Marlins",
         "awayFull": "Philadelphia Phillies",
-        "homeScore": 0,
-        "awayScore": 5,
-        "status": "in",
-        "statusDetail": "Top 5th",
+        "homeScore": 8,
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T16:10Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"
@@ -342,9 +342,9 @@
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "Arizona Diamondbacks",
         "homeScore": 0,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 4th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-29T16:35Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -356,10 +356,10 @@
         "away": "Blue Jays",
         "homeFull": "Washington Nationals",
         "awayFull": "Toronto Blue Jays",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 1,
+        "awayScore": 2,
         "status": "in",
-        "statusDetail": "Bot 1st",
+        "statusDetail": "Top 8th",
         "isoDate": "2026-07-29T17:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -371,10 +371,10 @@
         "away": "Braves",
         "homeFull": "New York Mets",
         "awayFull": "Atlanta Braves",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 3,
+        "awayScore": 2,
         "status": "in",
-        "statusDetail": "Bot 1st",
+        "statusDetail": "Top 8th",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"
@@ -386,10 +386,10 @@
         "away": "Orioles",
         "homeFull": "Detroit Tigers",
         "awayFull": "Baltimore Orioles",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 7,
+        "awayScore": 7,
         "status": "in",
-        "statusDetail": "Bot 1st",
+        "statusDetail": "Top 8th",
         "isoDate": "2026-07-29T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"

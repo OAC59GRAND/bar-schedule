@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T17:39:34.127Z",
+  "generated": "2026-07-30T19:38:31.994Z",
   "days": {
     "2026-07-29": [
       {
@@ -371,10 +371,10 @@
         "away": "Rangers",
         "homeFull": "Tampa Bay Rays",
         "awayFull": "Texas Rangers",
-        "homeScore": 1,
+        "homeScore": 3,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 5th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-30T16:10Z",
         "venue": "Tropicana Field",
         "broadcast": "MLB.TV"
@@ -387,9 +387,9 @@
         "homeFull": "Minnesota Twins",
         "awayFull": "Kansas City Royals",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/30 - 1:40 PM EDT",
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Bot 8th",
         "isoDate": "2026-07-30T17:40Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"
@@ -403,8 +403,8 @@
         "awayFull": "New York Yankees",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/30 - 2:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 5th",
         "isoDate": "2026-07-30T18:10Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
@@ -416,10 +416,10 @@
         "away": "Cubs",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Chicago Cubs",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/30 - 2:15 PM EDT",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 5th",
         "isoDate": "2026-07-30T18:15Z",
         "venue": "Busch Stadium",
         "broadcast": "ESPN Unlmtd"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T19:38:31.994Z",
+  "generated": "2026-07-30T21:15:12.770Z",
   "days": {
     "2026-07-29": [
       {
@@ -386,10 +386,10 @@
         "away": "Royals",
         "homeFull": "Minnesota Twins",
         "awayFull": "Kansas City Royals",
-        "homeScore": 0,
+        "homeScore": 4,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-30T17:40Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"
@@ -401,10 +401,10 @@
         "away": "Yankees",
         "homeFull": "Chicago White Sox",
         "awayFull": "New York Yankees",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 1,
+        "awayScore": 1,
         "status": "in",
-        "statusDetail": "Top 5th",
+        "statusDetail": "Top 11th",
         "isoDate": "2026-07-30T18:10Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
@@ -416,10 +416,10 @@
         "away": "Cubs",
         "homeFull": "St. Louis Cardinals",
         "awayFull": "Chicago Cubs",
-        "homeScore": 1,
-        "awayScore": 1,
+        "homeScore": 2,
+        "awayScore": 4,
         "status": "in",
-        "statusDetail": "Bot 5th",
+        "statusDetail": "Bot 10th",
         "isoDate": "2026-07-30T18:15Z",
         "venue": "Busch Stadium",
         "broadcast": "ESPN Unlmtd"

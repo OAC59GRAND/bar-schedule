@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T21:15:12.770Z",
+  "generated": "2026-07-30T23:11:25.722Z",
   "days": {
     "2026-07-29": [
       {
@@ -401,10 +401,10 @@
         "away": "Yankees",
         "homeFull": "Chicago White Sox",
         "awayFull": "New York Yankees",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 11th",
+        "status": "post",
+        "statusDetail": "Final/11",
         "isoDate": "2026-07-30T18:10Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
@@ -418,8 +418,8 @@
         "awayFull": "Chicago Cubs",
         "homeScore": 2,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Bot 10th",
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-07-30T18:15Z",
         "venue": "Busch Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -448,8 +448,8 @@
         "awayFull": "Miami Marlins",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/30 - 7:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Rain Delay, Top 1st",
         "isoDate": "2026-07-30T23:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"

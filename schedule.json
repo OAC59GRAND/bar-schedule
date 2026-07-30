@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T04:08:53.879Z",
+  "generated": "2026-07-30T07:37:05.736Z",
   "days": {
     "2026-07-29": [
       {
@@ -283,8 +283,8 @@
         "awayFull": "Washington Spirit",
         "homeScore": 0,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "83'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-30T01:00Z",
         "venue": "America First Field",
         "broadcast": "NWSL+"
@@ -297,9 +297,9 @@
         "homeFull": "Los Angeles Angels",
         "awayFull": "Houston Astros",
         "homeScore": 4,
-        "awayScore": 6,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "awayScore": 7,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-30T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -312,9 +312,9 @@
         "homeFull": "Athletics",
         "awayFull": "Boston Red Sox",
         "homeScore": 2,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-07-30T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -326,10 +326,10 @@
         "away": "Valkyries",
         "homeFull": "Phoenix Mercury",
         "awayFull": "Golden State Valkyries",
-        "homeScore": 75,
-        "awayScore": 73,
-        "status": "in",
-        "statusDetail": "4:03 - 4th",
+        "homeScore": 91,
+        "awayScore": 89,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-30T02:00Z",
         "venue": "Mortgage Matchup Center",
         "broadcast": "USA Net"
@@ -343,8 +343,8 @@
         "awayFull": "Gotham FC",
         "homeScore": 0,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "90'+6'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-07-30T02:00Z",
         "venue": "PayPal Park",
         "broadcast": "CBSSN"
@@ -357,9 +357,9 @@
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Seattle Mariners",
         "homeScore": 4,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-30T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"

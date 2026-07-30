@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T15:14:14.742Z",
+  "generated": "2026-07-30T17:39:34.127Z",
   "days": {
     "2026-07-29": [
       {
@@ -371,10 +371,10 @@
         "away": "Rangers",
         "homeFull": "Tampa Bay Rays",
         "awayFull": "Texas Rangers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/30 - 12:10 PM EDT",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Top 5th",
         "isoDate": "2026-07-30T16:10Z",
         "venue": "Tropicana Field",
         "broadcast": "MLB.TV"
@@ -2566,7 +2566,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-08-06T00:30Z",
         "venue": "ONEOK Field",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "WNBA",

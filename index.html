@@ -2,1154 +2,660 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Bar Schedule">
-<title>Bar TV Schedule — Live</title>
+<title>OAC Sports Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;min-height:100vh;background:#07101e;font-family:'Barlow Condensed',Arial Narrow,sans-serif;color:#f1f5f9;font-size:18px;-webkit-tap-highlight-color:transparent}
-
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#040b16;border-bottom:3px solid #f59e0b;position:sticky;top:0;z-index:100}
-.bar-brand{font-size:26px;font-weight:900;letter-spacing:3px;color:#f59e0b;text-transform:uppercase}
-.topbar-right{display:flex;align-items:center;gap:14px}
-.clock{font-size:30px;font-weight:800;letter-spacing:1px;text-align:right}
-.datestr{font-size:14px;color:#475569;letter-spacing:1px;text-align:right}
-
-.sync-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:#0a1929;border-bottom:1px solid #132a45;font-size:14px;color:#64748b;letter-spacing:.5px;flex-wrap:wrap;gap:6px}
-.sync-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.sync-dot{width:9px;height:9px;border-radius:50%;background:#475569;flex-shrink:0}
-.sync-dot.ok{background:#22c55e}
-.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
-.sync-dot.err{background:#ef4444}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.src-pill{font-size:12px;font-weight:700;padding:2px 7px;border-radius:3px;background:#0d1f38;color:#64748b}
-.src-pill.ok{color:#22c55e;background:rgba(34,197,94,.1)}
-.src-pill.err{color:#ef4444;background:rgba(239,68,68,.1)}
-.refresh-now-btn{background:#0d1f38;border:1px solid #1e3a5f;color:#94a3b8;padding:5px 14px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer;-webkit-appearance:none}
-.refresh-now-btn:hover{background:#132a45;color:#cbd5e1}
-
-.day-selector{display:flex;gap:4px;padding:10px 16px;background:#0a1929;border-bottom:1px solid #132a45;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.day-selector::-webkit-scrollbar{display:none}
-.day-btn{flex-shrink:0;min-width:84px;padding:10px 8px;border-radius:6px;border:1px solid #132a45;background:#060f1d;cursor:pointer;text-align:center;transition:all .15s;-webkit-appearance:none}
-.day-btn.active{background:#f59e0b;border-color:#f59e0b}
-.day-btn:hover:not(.active){background:#0d1f38}
-.day-name{font-size:14px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
-.day-btn.active .day-name{color:#000}
-.day-num{font-size:24px;font-weight:900;color:#f1f5f9;line-height:1.1}
-.day-btn.active .day-num{color:#000}
-.day-tag{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:.5px;margin-top:1px;height:13px}
-.day-btn.active .day-tag{color:#7c2d12}
-
-.view-toggle{display:flex;gap:2px;padding:8px 16px 0;background:#040b16}
-.vtab{padding:9px 18px;font-size:18px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;transition:all .15s;-webkit-appearance:none}
-.vtab.active{background:#38bdf8;color:#000}
-
-.featured-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;background:#040b16;border-bottom:1px solid #0d1e35}
-.feat-card{border-radius:6px;padding:12px 14px;border-left:4px solid;position:relative;overflow:hidden}
-.feat-card.worldcup{background:linear-gradient(135deg,rgba(220,38,38,.18),rgba(245,158,11,.12));border-color:#ef4444}
-.feat-card.giants{background:rgba(255,90,20,.12);border-color:#ff5a14}
-.feat-card.warriors{background:rgba(29,99,229,.14);border-color:#1D63E5}
-.feat-card.valkyries{background:rgba(59,130,246,.14);border-color:#38bdf8}
-.feat-eyebrow{font-size:14px;font-weight:800;letter-spacing:2px;opacity:.75;text-transform:uppercase;margin-bottom:3px}
-.feat-title{font-size:19px;font-weight:900;line-height:1.15;color:#f1f5f9}
-.feat-sub{font-size:14px;color:#94a3b8;margin-top:3px;line-height:1.4}
-.feat-live{position:absolute;top:8px;right:10px;font-size:11px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);padding:2px 7px;border-radius:3px;letter-spacing:1px}
-
-.tabs{display:flex;gap:2px;padding:8px 16px 0;background:#040b16;border-bottom:1px solid #0d1e35;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:9px 16px;font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:4px 4px 0 0;cursor:pointer;background:#0b1e33;color:#475569;white-space:nowrap;transition:all .15s;flex-shrink:0;-webkit-appearance:none}
-.tab.active{background:#f59e0b;color:#000}
-
-.content{padding:14px 16px;display:none}
-.content.active{display:block}
-
-.section-hd{font-size:14px;font-weight:800;letter-spacing:3px;color:#64748b;text-transform:uppercase;margin:12px 0 8px;padding-bottom:6px;border-bottom:1px solid #0d1e35;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.section-hd span{background:#f59e0b;color:#000;padding:2px 8px;border-radius:3px;font-size:12px}
-
-.sched{display:grid;grid-template-columns:100px 1fr}
-.stime{font-size:18px;font-weight:700;color:#475569;padding:8px 8px 8px 0;border-right:1px solid #0d1e35;text-align:right;border-bottom:1px solid #060f1d;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:2px}
-.stime .now-arrow{color:#ef4444;font-size:13px;font-weight:800}
-.sevents{padding:6px 0 6px 12px;border-bottom:1px solid #060f1d;display:flex;flex-wrap:wrap;gap:6px}
-
-.chip{border-left:3px solid;border-radius:5px;padding:8px 12px;flex:1;min-width:220px;max-width:calc(50% - 3px);position:relative}
-.chip-src{font-size:12px;font-weight:800;letter-spacing:1.5px;opacity:.7;margin-bottom:2px;text-transform:uppercase}
-.chip-title{font-size:18px;font-weight:800;line-height:1.2;color:#f1f5f9}
-.chip-sub{font-size:14px;color:#64748b;margin-top:2px}
-.chip.live-tag::after{content:"LIVE";position:absolute;top:6px;right:8px;font-size:10px;font-weight:900;color:#ef4444;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);padding:1px 5px;border-radius:3px;letter-spacing:1px}
-.chip.wcu-highlight{border-color:#ef4444;background:rgba(220,38,38,.1)}
-.chip.sf-highlight{border-color:#ff5a14;background:rgba(255,90,20,.1)}
-.chip.gsw-highlight{border-color:#1D63E5;background:rgba(29,99,229,.1)}
-.chip.gsv-highlight{border-color:#38bdf8;background:rgba(56,189,248,.1)}
-.chip.roots-highlight{border-color:#2d7a3a;background:rgba(45,122,58,.1)}
-.chip.womens{border-color:#a855f7;background:rgba(168,85,247,.08)}
-.chip.c-espn{border-color:#ef4444;background:rgba(239,68,68,.06)}
-
-.w-badge{font-size:11px;font-weight:900;letter-spacing:1px;color:#a855f7;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.35);padding:1px 5px;border-radius:3px;margin-left:6px}
-
-.chip-app{font-size:12px;font-weight:800;letter-spacing:.5px;margin-top:4px;display:inline-block;padding:2px 8px;border-radius:3px}
-.chip-app.src-dtv{background:rgba(245,158,11,.15);color:#f59e0b}
-.chip-app.src-peacock{background:rgba(129,140,248,.18);color:#a5b4fc}
-.chip-app.src-paramount{background:rgba(56,189,248,.18);color:#7dd3fc}
-.chip-app.src-espn-plus{background:rgba(239,68,68,.18);color:#fca5a5}
-.chip-app.src-amazon{background:rgba(34,211,238,.18);color:#67e8f9}
-.chip-app.src-mlbtv{background:rgba(59,130,246,.18);color:#93c5fd}
-.chip-app.src-notpkg{background:rgba(239,68,68,.22);color:#fecaca;border:1px solid rgba(239,68,68,.5)}
-.chip-app.src-unknown{background:rgba(100,116,139,.2);color:#94a3b8;border:1px dashed rgba(148,163,184,.4)}
-
-.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.week-day-col{background:#0a1929;border:1px solid #132a45;border-radius:6px;overflow:hidden;min-height:180px}
-.week-day-head{background:#0d1f38;padding:8px;text-align:center;border-bottom:1px solid #132a45}
-.week-day-head.today{background:#f59e0b}
-.week-day-head .wd-name{font-size:14px;font-weight:800;letter-spacing:1px;color:#64748b;text-transform:uppercase}
-.week-day-head.today .wd-name{color:#000}
-.week-day-head .wd-num{font-size:20px;font-weight:900;color:#f1f5f9}
-.week-day-head.today .wd-num{color:#000}
-.week-day-body{padding:8px;display:flex;flex-direction:column;gap:6px}
-.week-event{border-left:3px solid;border-radius:4px;padding:6px 8px;font-size:14px}
-.week-event-time{font-size:12px;font-weight:800;color:#64748b;letter-spacing:.5px}
-.week-event-title{font-size:14px;font-weight:800;color:#f1f5f9;line-height:1.25;margin-top:2px}
-.week-empty{font-size:13px;color:#1e293b;text-align:center;padding:14px 0}
-@media (max-width:900px){
-  .week-grid{grid-template-columns:1fr;gap:8px}
-  .week-day-col{min-height:auto}
-}
-
-.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 16px;background:#040b16;border-top:1px solid #0d1e35}
-.leg{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;letter-spacing:1px;color:#475569;text-transform:uppercase}
-.ldot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
-.refresh-bar{text-align:right;padding:6px 16px 10px;font-size:13px;color:#1e3a5f;letter-spacing:1px;background:#040b16}
-
-@media (max-width: 768px) {
-  .featured-strip{grid-template-columns:repeat(2,1fr)}
-  .chip{max-width:100%}
-}
+body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;color:#f0ece3;min-height:100vh}
+#hdr{background:#0f0f0f;border-bottom:3px solid #c9a84c;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hdr-left{display:flex;align-items:center;gap:14px}
+.mono{width:48px;height:48px;border:2px solid #c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#c9a84c;flex-shrink:0}
+.wm{font-size:15px;font-weight:800;letter-spacing:3px;color:#f0ece3;text-transform:uppercase}
+.wm-sub{font-size:10px;font-weight:600;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-top:2px}
+.hdr-right{text-align:right}
+#clock{font-size:22px;font-weight:800;color:#f0ece3;letter-spacing:1px}
+#status{font-size:10px;color:#5a5248;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+#days{display:flex;background:#111;border-bottom:1px solid #222;overflow-x:auto;scrollbar-width:none}
+#days::-webkit-scrollbar{display:none}
+.day-btn{flex:1;min-width:80px;padding:10px 4px 8px;text-align:center;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all .15s}
+.day-btn:hover{background:#1a1a1a}
+.day-btn.on{border-bottom-color:#c9a84c;background:#161410}
+.day-name{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
+.day-btn.on .day-name{color:#a07830}
+.day-num{font-size:24px;font-weight:900;color:#f0ece3;line-height:1}
+.day-btn.on .day-num{color:#c9a84c}
+.day-tag{font-size:8px;color:#c9a84c;margin-top:2px;height:10px}
+#tabs{display:flex;background:#0f0f0f;border-bottom:1px solid #222}
+.tab{flex:1;padding:10px 8px;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#5a5248;background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.tab:hover{color:#a07830;background:#141414}
+.tab.on{color:#c9a84c;border-bottom-color:#c9a84c}
+#feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;border-bottom:1px solid #222}
+.fc{padding:12px 14px;background:#111;border-top:3px solid #333;transition:background .12s}
+.fc:hover{background:#161616}
+.fc.giants{border-top-color:#EF3E42}.fc.valkyries{border-top-color:#0ea5e9}
+.fc.roots{border-top-color:#2d7a3a}.fc.ballers{border-top-color:#006341}
+.fc.bayfc{border-top-color:#1d428a}.fc.warriors{border-top-color:#1d62d6}
+.fc.firebells{border-top-color:#ff4d00}
+.fc.soul{border-top-color:#38bdf8}
+.fc-eye{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
+.fc-title{font-size:16px;font-weight:900;color:#f0ece3;line-height:1.2;margin-bottom:3px}
+.fc-sub{font-size:11px;color:#5a5248;line-height:1.4;margin-bottom:6px}
+.pill{font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;display:inline-block;padding:2px 7px;border-radius:2px;margin-right:3px;margin-top:2px}
+.p-dtv{background:#2a1f00;color:#c9a84c;border:1px solid #3d2e00}
+.p-espn{background:#2e0a0a;color:#f58a8a;border:1px solid #481212}
+.p-epn{background:#200a2e;color:#d4a0f7;border:1px solid #380a50}
+.p-pkck{background:#1a0a2e;color:#a89cf7;border:1px solid #2a1860}
+.p-pmt{background:#0a1e2e;color:#5bb8f5;border:1px solid #123048}
+.p-amz{background:#002426;color:#5edae4;border:1px solid #003840}
+.p-apl{background:#1a1a1a;color:#a8a49f;border:1px solid #2e2e2e}
+.p-wnba{background:#2a1a00;color:#f1a900;border:1px solid #3d2a00}
+.p-htn{background:#001a10;color:#00e676;border:1px solid #003020}
+.w-badge{font-size:8px;font-weight:900;color:#b07afa;background:#1e0a30;border:1px solid #3d1860;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;text-transform:uppercase}
+.live-badge{font-size:8px;font-weight:900;color:#ef4444;background:#200a0a;border:1px solid #3d1212;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;text-transform:uppercase;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+#sched{padding:14px 16px;min-height:200px}
+.sched-hd{font-size:9px;font-weight:800;letter-spacing:4px;color:#5a5248;text-transform:uppercase;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:10px}
+.sched-date{font-size:9px;font-weight:700;letter-spacing:2px;color:#c9a84c}
+.games{display:flex;flex-direction:column;gap:2px}
+.game{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:#111;border-left:3px solid #222;border-radius:2px;transition:background .1s}
+.game:hover{background:#161616}
+.acc-gold{border-left-color:#c9a84c}.acc-red{border-left-color:#EF3E42}
+.acc-blue{border-left-color:#0ea5e9}.acc-green{border-left-color:#2d7a3a}
+.acc-dkgreen{border-left-color:#006341}.acc-navy{border-left-color:#1d428a}
+.acc-purple{border-left-color:#8b4fcf}
+.acc-fire{border-left-color:#ff4d00}
+.acc-soul{border-left-color:#38bdf8}
+.g-time{font-size:13px;font-weight:800;color:#5a5248;min-width:56px;text-align:right;flex-shrink:0;padding-top:2px}
+.g-info{flex:1}
+.g-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
+.g-title{font-size:18px;font-weight:900;color:#f0ece3;line-height:1.2}
+.g-detail{font-size:10px;color:#5a5248;margin-top:2px}
+.g-br{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px}
+.g-ch{font-size:10px;font-weight:700;color:#a07830;margin-left:4px}
+.empty{color:#5a5248;text-align:center;padding:40px 0;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.score-grid{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}
+.score-card{background:#0d1929;border:1px solid #1a3050;border-radius:4px;padding:10px 14px;min-width:180px}
+.score-card.live{border-color:#c9a84c}
+.sc-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
+.sc-match{font-size:15px;font-weight:900;color:#f0ece3}
+.sc-detail{font-size:10px;color:#5a5248;margin-top:2px}
+.sec-lbl{font-size:9px;font-weight:800;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid #1e1e1e}
+@media(max-width:600px){#feat{grid-template-columns:1fr 1fr}.g-title{font-size:16px}}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="bar-brand">📺 Bar Schedule</div>
-  <div class="topbar-right">
-    <div>
-      <div class="clock" id="clk">--:--</div>
-      <div class="datestr" id="dstr"></div>
-    </div>
+<div id="hdr">
+  <div class="hdr-left">
+    <div class="mono">OAC</div>
+    <div><div class="wm">Oakland Athletic Club</div><div class="wm-sub">59 Grand Ave &middot; TV Schedule</div></div>
   </div>
+  <div class="hdr-right"><div id="clock"></div><div id="status">Loading&hellip;</div></div>
 </div>
-
-<div class="sync-bar">
-  <div class="sync-status">
-    <div class="sync-dot" id="sync-dot"></div>
-    <span id="sync-text">Connecting to live data…</span>
-    <span id="src-pills"></span>
-  </div>
-  <button class="refresh-now-btn" onclick="manualRefresh()">↻ Refresh now</button>
+<div id="days"></div>
+<div id="tabs">
+  <button class="tab on" onclick="setTab('all',this)">All Day</button>
+  <button class="tab" onclick="setTab('women',this)">&#9792; Women's</button>
+  <button class="tab" onclick="setTab('world',this)">World Cup</button>
+  <button class="tab" onclick="setTab('scores',this)">Scores</button>
 </div>
-
-<div class="day-selector" id="day-selector"></div>
-
-<div class="view-toggle">
-  <button class="vtab active" id="vtab-day" onclick="setView('day')">📋 Day View</button>
-  <button class="vtab" id="vtab-week" onclick="setView('week')">📅 Week View</button>
-</div>
-
-<div id="day-view">
-  <div class="featured-strip" id="featured-strip"></div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('all',this)">All Day</button>
-    <button class="tab" onclick="switchTab('women',this)">♀ Women's</button>
-    <button class="tab" onclick="switchTab('worldcup',this)">🏆 World Cup</button>
-    <button class="tab" onclick="switchTab('scores',this)">🔴 Scores</button>
-  </div>
-  <div id="tab-all" class="content active"><div id="grid-all"></div></div>
-  <div id="tab-women" class="content"><div id="grid-women"></div></div>
-  <div id="tab-worldcup" class="content"><div id="grid-worldcup"></div></div>
-  <div id="tab-scores" class="content"><div id="grid-scores"></div></div>
-</div>
-
-<div id="week-view" class="content" style="padding:14px 16px">
-  <div class="section-hd">7-Day Outlook <span>Live from ESPN</span></div>
-  <div class="week-grid" id="week-grid"></div>
-</div>
-
-<div class="legend">
-  <div class="leg"><div class="ldot" style="background:#f59e0b"></div>DirecTV XTRA</div>
-  <div class="leg"><div class="ldot" style="background:#a5b4fc"></div>Peacock</div>
-  <div class="leg"><div class="ldot" style="background:#7dd3fc"></div>Paramount+</div>
-  <div class="leg"><div class="ldot" style="background:#fca5a5"></div>ESPN+</div>
-  <div class="leg"><div class="ldot" style="background:#67e8f9"></div>Amazon Prime Video</div>
-  <div class="leg"><div class="ldot" style="background:#cbd5e1"></div>Apple TV+</div>
-  <div class="leg"><div class="ldot" style="background:#a855f7"></div>Women's</div>
-  <div class="leg" style="color:#ef4444"><div class="ldot" style="background:#ef4444"></div>Live Now</div>
-  <div class="leg">📺 In your package</div>
-  <div class="leg" style="color:#fca5a5">🚫 Not in your package</div>
-  <div class="leg" style="color:#94a3b8">❓ Check listings</div>
-  <div class="leg" style="margin-left:auto">Times shown in Pacific</div>
-</div>
-<div class="refresh-bar" id="rts">Connecting…</div>
-
+<div id="feat"></div>
+<div id="sched"><div class="empty">Loading schedule&hellip;</div></div>
 <script>
-/* ============== LIVE DATA LAYER — direct fetch, no proxy ============== */
+
+// ============================================================
+// SHARED DATA LAYER — same in both bar display and Squarespace
+// ============================================================
+
 const LEAGUES = [
-  {key:'mlb',  espn:'baseball/mlb',      label:'MLB',      women:false},
-  {key:'nba',  espn:'basketball/nba',    label:'NBA',      women:false},
-  {key:'wnba', espn:'basketball/wnba',   label:'WNBA',     women:true},
-  {key:'nhl',  espn:'hockey/nhl',        label:'NHL',      women:false},
-  {key:'pga',  espn:'golf/pga',          label:'PGA Tour', women:false},
-  {key:'lpga', espn:'golf/lpga',         label:'LPGA Tour',women:true},
-  {key:'wc',   espn:'soccer/fifa.world', label:'World Cup',women:false},
-  {key:'nwsl', espn:'soccer/usa.nwsl',   label:'NWSL',     women:true},
-  {key:'mls',  espn:'soccer/usa.1',      label:'MLS',      women:false},
-  {key:'atp',  espn:'tennis/atp',          label:'Tennis',   women:false},
-  {key:'wta',  espn:'tennis/wta',          label:'Tennis',   women:true},
-  {key:'roots',espn:'soccer/usa.usl.1',    label:'USL',      women:false},
+  {espn:'baseball/mlb',                       label:'MLB',              women:false},
+  {espn:'basketball/nba',                     label:'NBA',              women:false},
+  {espn:'basketball/wnba',                    label:'WNBA',             women:true},
+  {espn:'hockey/nhl',                         label:'NHL',              women:false},
+  {espn:'golf/pga',                           label:'PGA Tour',         women:false},
+  {espn:'golf/lpga',                          label:'LPGA Tour',        women:true},
+  {espn:'soccer/fifa.world',                  label:'World Cup',        women:false},
+  {espn:'soccer/usa.nwsl',                    label:'NWSL',             women:true},
+  {espn:'soccer/usa.1',                       label:'MLS',              women:false},
+  {espn:'soccer/usa.usl.1',                   label:'USL',              women:false},
+  {espn:'tennis/atp',                         label:'Tennis',           women:false},
+  {espn:'tennis/wta',                         label:'Tennis',           women:true},
+  {espn:'soccer/eng.1',                       label:'EPL',              women:false},
+  {espn:'soccer/mex.1',                       label:'Liga MX',          women:false},
+  {espn:'soccer/uefa.champions',              label:'Champions League', women:false},
+  {espn:'american-football/nfl',              label:'NFL',              women:false},
+  {espn:'american-football/college-football', label:'College Football', women:false},
+  {espn:'soccer/ita.1',                       label:'Serie A',         women:false},
+  {espn:'soccer/ger.1',                       label:'Bundesliga',      women:false}, // 2026-27: USA Network Ch 242 + Fandango (free). Spanish: Telemundo Ch 406 / Peacock
 ];
 
-
-// DirecTV XTRA channel numbers — shown alongside every game card
-// Channels confirmed included in the bar's DirecTV XTRA package.
-// XTRA tier includes: ESPN family, national broadcast (ABC/NBC/FOX/CBS via locals),
-// TNT/TBS/truTV, NFL Network, MLB/NHL/NBA Network, Golf Channel, USA Network,
-// CBS Sports Network, NBC Sports national + regional (RSNs), Telemundo/Universo.
-// NOT included: ION, Tennis Channel, FloSports/FloSoftball/etc, Willow, Sling-exclusive add-ons.
-// ── DIRECTV CHANNEL NUMBERS -- Oakland / SF Bay Area market ──────────────────
-// Local broadcast channels use Bay Area over-the-air virtual channel numbers.
-// National cable channels are the same nationwide.
-const DIRECTV_CH = {
-  // -- LOCAL BROADCAST (Bay Area DirecTV) ──────────────────────────────────
-  'FOX':                 '2',    // KTVU Fox 2 Oakland
-  'KTVU':                '2',
-  'CBS':                 '5',    // KPIX CBS 5 San Francisco
-  'KPIX':                '5',
-  'ABC':                 '7',    // KGO ABC 7 San Francisco
-  'KGO':                 '7',
-  'NBC':                 '11',   // KNTV NBC Bay Area
-  'KNTV':                '11',
-  'Telemundo':           '48',   // KSTS Telemundo Bay Area
-  'Tele':                '48',   // ESPN API short name for Telemundo
-  'Universo':            '476',
-  // -- NATIONAL CABLE (same nationwide) ─────────────────────────────────────
-  'ESPN':                '206',  'ESPN2':          '209',
-  'ESPNU':               '208',  'ESPNews':        '207',
-  'ESPN Unlmtd':         '206',  // ESPN Unlimited maps to ESPN Ch 206
-  'FS1':                 '219',  'FS2':            '618',
-  'TNT':                 '245',  'TBS':            '247',  'truTV':     '246',
-  'NFL Network':         '212',  'NFL RedZone':    '217',
-  'MLB Network':         '213',  'NHL Network':    '215',  'NBA TV':    '216',
-  'Golf Channel':        '218',  'CBS Sports Network': '221',
-  'NBC Sports':          '220',  'NBCSN':          '220',
-  'USA Network':         '242',  'USA Net':        '242',  // ESPN returns "USA Net"
-  // -- REGIONAL SPORTS NETWORKS (Bay Area) ──────────────────────────────────
-  'NBC Sports Bay Area': '696',  'NBCS Bay Area':  '696',
-  'NBC Sports California':'693', 'NBCSBA':         '696',
-  'Bally Sports':        '676',  'Root Sports':    '687',
-  // -- STREAMING (in your package -- no DirecTV channel number) ─────────────
-  'MLB.TV':              'MLB.TV app',       // NOW IN PACKAGE -- show as streaming
-  'WNBA League Pass':    'WNBA League Pass app',
-  'ESPN+':               'ESPN+ app',
-  'Peacock':             'Peacock app',
-  'Paramount+':          'Paramount+ app',
-  'Prime Video':         'Amazon app',
-  'Amazon':              'Amazon app',
-  'Apple TV+':           'Apple TV+ app',
+// DirecTV satellite channel numbers -- Oakland/Bay Area market (effective 2026)
+// Local channels = over-the-air virtual channel numbers for Bay Area satellite
+const CH = {
+  'FOX':'2',   'KTVU':'2',        // KTVU Fox 2 Oakland
+  'CBS':'5',   'KPIX':'5',        // KPIX CBS 5
+  'ABC':'7',   'KGO':'7',         // KGO ABC 7
+  'NBC':'11',  'KNTV':'11',       // KNTV NBC Bay Area
+  'Telemundo':'48', 'Tele':'48',  // KSTS Telemundo Bay Area
+  'Universo':'476',
+  'ESPN':'206',  'ESPN2':'209',   'ESPNU':'208', 'ESPNews':'207',
+  'ESPN Unlmtd':'206',
+  'FS1':'219',   'FS2':'618',
+  'TNT':'245',   'TBS':'247',     'truTV':'246',
+  'NFL Network':'212',
+  'MLB Network':'213',
+  'NHL Network':'215',
+  'NBA TV':'216',
+  'Golf Channel':'218',
+  'CBS Sports Network':'221',
+  'NBC Sports':'220',
+  'USA Network':'242', 'USA Net':'242',
+  'NBC Sports Bay Area':'696',
+  'NBC Sports California':'698',
+  // Tennis -- in their package (Ch 217)
+  'Tennis Channel':'217',
+  // Spanish sports -- confirmed from their DirecTV business package
+  'ESPN Deportes':'466',
+  'FOX Deportes':'465',
+  'TUDN':'464',
+  'TyC Sports':'469',
+  'Fanatiz':'468',
+  'PX Sports':'471',
+  'Telemundo':'406',  'Tele':'406',
+  'Universo':'410',   'UniMas':'408',
 };
 
-
-// ── MLB TEAM-SPECIFIC DIRECTV CHANNELS (2026) ────────────────────────────────
-// Confirmed from DirecTV official Sports Pack channel lineup, effective 2026.
-// RSNs are in the 600-699 block on satellite. MLB Extra Innings: Ch 720-749.
-// NBC Sports Bay Area (Giants) = Ch 696. NBC Sports California (A's) = Ch 698.
-const MLB_TEAM_CH = {
-  'San Francisco Giants': {ch:'696', net:'NBC Sports Bay Area'},
-  'Giants': {ch:'696', net:'NBC Sports Bay Area'},
-  'Athletics': {ch:'698', net:'NBC Sports California'},
-  'Baltimore Orioles': {ch:'640', net:'MASN'},
-  'Orioles': {ch:'640', net:'MASN'},
-  'Boston Red Sox': {ch:'628', net:'NESN'},
-  'Red Sox': {ch:'628', net:'NESN'},
-  'Los Angeles Dodgers': {ch:'690', net:'Spectrum SportsNet LA'},
-  'Dodgers': {ch:'690', net:'Spectrum SportsNet LA'},
-  'New York Mets': {ch:'639', net:'SNY'},
-  'Mets': {ch:'639', net:'SNY'},
-  'New York Yankees': {ch:'631', net:'YES Network'},
-  'Yankees': {ch:'631', net:'YES Network'},
-  'Pittsburgh Pirates': {ch:'659', net:'SportsNet Pittsburgh'},
-  'Pirates': {ch:'659', net:'SportsNet Pittsburgh'},
-  'Houston Astros': {ch:'674', net:'Space City Home Network'},
-  'Astros': {ch:'674', net:'Space City Home Network'},
-  'Chicago Cubs': {ch:'664', net:'Marquee Sports Network'},
-  'Cubs': {ch:'664', net:'Marquee Sports Network'},
-  'Cincinnati Reds': {ch:'671', net:'Reds.TV'},
-  'Reds': {ch:'671', net:'Reds.TV'},
-  'Detroit Tigers': {ch:'676', net:'Detroit SportsNet'},
-  'Tigers': {ch:'676', net:'Detroit SportsNet'},
-  'Kansas City Royals': {ch:'672', net:'Royals.TV'},
-  'Royals': {ch:'672', net:'Royals.TV'},
-  'Miami Marlins': {ch:'678', net:'Marlins.TV'},
-  'Marlins': {ch:'678', net:'Marlins.TV'},
-  'Milwaukee Brewers': {ch:'670', net:'Brewers.TV'},
-  'Brewers': {ch:'670', net:'Brewers.TV'},
-  'Seattle Mariners': {ch:'679', net:'Mariners.TV'},
-  'Mariners': {ch:'679', net:'Mariners.TV'},
-  'St. Louis Cardinals': {ch:'677', net:'Cardinals.TV'},
-  'Cardinals': {ch:'677', net:'Cardinals.TV'},
-  'Tampa Bay Rays': {ch:'680', net:'Rays.TV'},
-  'Rays': {ch:'680', net:'Rays.TV'},
-  'Washington Nationals': {ch:'641', net:'Nationals.TV'},
-  'Nationals': {ch:'641', net:'Nationals.TV'},
-  'San Diego Padres': {ch:'686', net:'Padres.TV'},
-  'Padres': {ch:'686', net:'Padres.TV'},
-  'Arizona Diamondbacks': {ch:'686', net:'DBACKS.TV'},
-  'Diamondbacks': {ch:'686', net:'DBACKS.TV'},
-  'Colorado Rockies': {ch:'683', net:'Rockies.TV'},
-  'Rockies': {ch:'683', net:'Rockies.TV'},
-  'Cleveland Guardians': {ch:'676', net:'Guardians.TV'},
-  'Guardians': {ch:'676', net:'Guardians.TV'},
-  'Minnesota Twins': {ch:'675', net:'Twins.TV'},
-  'Twins': {ch:'675', net:'Twins.TV'},
-  'Texas Rangers': {ch:'677', net:'Rangers Sports Network'},
-  'Rangers': {ch:'677', net:'Rangers Sports Network'},
-  'Chicago White Sox': {ch:'672', net:'Chicago Sports Network'},
-  'White Sox': {ch:'672', net:'Chicago Sports Network'},
+// Per-team MLB DirecTV channel lookup
+// SOURCE: DirecTV for Business Satellite Channel Lineup PDF, effective 6/25/26
+// Used when ESPN returns generic "MLB.TV" as broadcast
+const MLB_CH = {
+  // Bay Area teams
+  'San Francisco Giants':   {ch:'696', net:'NBC Sports Bay Area'},
+  'Giants':                 {ch:'696', net:'NBC Sports Bay Area'},
+  'Athletics':              {ch:'698', net:'NBC Sports California'},
+  // Traditional RSNs (confirmed from PDF)
+  'Baltimore Orioles':      {ch:'640', net:'MASN'},
+  'Orioles':                {ch:'640', net:'MASN'},
+  'Boston Red Sox':         {ch:'628', net:'NESN'},
+  'Red Sox':                {ch:'628', net:'NESN'},
+  'Los Angeles Dodgers':    {ch:'690', net:'Spectrum SportsNet LA'},
+  'Dodgers':                {ch:'690', net:'Spectrum SportsNet LA'},
+  'New York Mets':          {ch:'639', net:'SNY'},
+  'Mets':                   {ch:'639', net:'SNY'},
+  'New York Yankees':       {ch:'631', net:'YES Network'},
+  'Yankees':                {ch:'631', net:'YES Network'},
+  'Pittsburgh Pirates':     {ch:'659', net:'SportsNet Pittsburgh'},
+  'Pirates':                {ch:'659', net:'SportsNet Pittsburgh'},
+  'Houston Astros':         {ch:'674', net:'Space City Home Network'},
+  'Astros':                 {ch:'674', net:'Space City Home Network'},
+  'Chicago Cubs':           {ch:'664', net:'Marquee Sports Network'},
+  'Cubs':                   {ch:'664', net:'Marquee Sports Network'},
+  'Texas Rangers':          {ch:'677', net:'Rangers Sports Network'},
+  'Rangers':                {ch:'677', net:'Rangers Sports Network'},
+  // MLB-operated channels (confirmed channel numbers from PDF)
+  'Atlanta Braves':         {ch:'645', net:'BravesVision'},
+  'Braves':                 {ch:'645', net:'BravesVision'},
+  'Los Angeles Angels':     {ch:'692', net:'Angels Broadcast TV'},
+  'Angels':                 {ch:'692', net:'Angels Broadcast TV'},
+  'Chicago White Sox':      {ch:'665', net:'Chicago Sports Network'},
+  'White Sox':              {ch:'665', net:'Chicago Sports Network'},
+  'Detroit Tigers':         {ch:'663', net:'Detroit SportsNet'},
+  'Tigers':                 {ch:'663', net:'Detroit SportsNet'},
+  'Cincinnati Reds':        {ch:'661', net:'Reds.TV'},
+  'Reds':                   {ch:'661', net:'Reds.TV'},
+  'Kansas City Royals':     {ch:'671', net:'Royals.TV'},
+  'Royals':                 {ch:'671', net:'Royals.TV'},
+  'Miami Marlins':          {ch:'655', net:'Marlins.TV'},
+  'Marlins':                {ch:'655', net:'Marlins.TV'},
+  'Milwaukee Brewers':      {ch:'670', net:'Brewers.TV'},
+  'Brewers':                {ch:'670', net:'Brewers.TV'},
+  'Minnesota Twins':        {ch:'668', net:'Twins.TV'},
+  'Twins':                  {ch:'668', net:'Twins.TV'},
+  'Seattle Mariners':       {ch:'687', net:'Mariners.TV'},
+  'Mariners':               {ch:'687', net:'Mariners.TV'},
+  'St. Louis Cardinals':    {ch:'672', net:'Cardinals.TV'},
+  'Cardinals':              {ch:'672', net:'Cardinals.TV'},
+  'Tampa Bay Rays':         {ch:'652', net:'Rays.TV'},
+  'Rays':                   {ch:'652', net:'Rays.TV'},
+  'Washington Nationals':   {ch:'641', net:'Nationals.TV'},
+  'Nationals':              {ch:'641', net:'Nationals.TV'},
+  'San Diego Padres':       {ch:'694', net:'Padres.TV'},
+  'Padres':                 {ch:'694', net:'Padres.TV'},
+  'Arizona Diamondbacks':   {ch:'686', net:'DBACKS.TV'},
+  'Diamondbacks':           {ch:'686', net:'DBACKS.TV'},
+  'Colorado Rockies':       {ch:'683', net:'Rockies.TV'},
+  'Rockies':                {ch:'683', net:'Rockies.TV'},
+  'Cleveland Guardians':    {ch:'662', net:'Guardians.TV'},
+  'Guardians':              {ch:'662', net:'Guardians.TV'},
 };
 
-function getMlbTeamChannel(homeFull, awayFull) {
-  // Check home team first (in-market game is on home RSN)
-  const home = MLB_TEAM_CH[homeFull] || MLB_TEAM_CH[homeFull.split(' ').pop()];
-  if (home) return home;
-  const away = MLB_TEAM_CH[awayFull] || MLB_TEAM_CH[awayFull.split(' ').pop()];
-  if (away) return away;
-  // Out-of-market game -- MLB Extra Innings or MLB.TV
-  return {ch:'MLB.TV / Ch 720-749', net:'MLB.TV / Extra Innings'};
+function getMlbChannel(homeFull, awayFull) {
+  const both = homeFull + ' ' + awayFull;
+  for (const [key, val] of Object.entries(MLB_CH)) {
+    if (both.includes(key)) return val;
+  }
+  return {ch:'720-749', net:'MLB Extra Innings'};
 }
 
-// Streaming apps the bar actually subscribes to (no DirecTV channel number — opened via app)
-const STREAMING_APPS = {
-  'Peacock':     'Peacock app',
-  'Paramount+':  'Paramount+ app',
-  'Prime Video': 'Amazon app',  'Amazon': 'Amazon app',
-  'Apple TV+':   'Apple TV+ app',
-  'ESPN+':       'ESPN+ app',
-  'MLB.TV':      'MLB.TV (not subscribed — use NBC Sports Bay Area for Giants)',
-};
-// Known networks NOT in the bar's package — flagged instead of silently mislabeled
-const NOT_IN_PACKAGE = [
-  // These networks are confirmed NOT in the bar's package
-  /\bion\b/i, /tennis.?ch/i, /\bflo\b/i, /willow/i,
-  /victory\+/i, /\bfubo\b/i,
-  // WNBA League Pass is streaming-only -- show it but flag as streaming app
+// Supplemental events not in ESPN API
+const SUPP = [
+  // US Open Golf 2026 - Shinnecock Hills
+  {date:'2026-06-18',league:'US Open Golf',women:false,home:'US Open',away:'Round 1',detail:'Round 1 - Shinnecock Hills - Early Coverage 3:30 AM PT',isoDate:'2026-06-18T10:30:00Z',venue:'Shinnecock Hills, NY',broadcast:'USA Network'},
+  {date:'2026-06-18',league:'US Open Golf',women:false,home:'US Open',away:'Round 1',detail:'Round 1 Afternoon - 2:00 PM PT',isoDate:'2026-06-18T21:00:00Z',venue:'Shinnecock Hills, NY',broadcast:'NBC'},
+  {date:'2026-06-19',league:'US Open Golf',women:false,home:'US Open',away:'Round 2',detail:'Round 2 - Peacock/NBCSN - 3:30 AM PT',isoDate:'2026-06-19T10:30:00Z',venue:'Shinnecock Hills, NY',broadcast:'Peacock'},
+  {date:'2026-06-19',league:'US Open Golf',women:false,home:'US Open',away:'Round 2',detail:'Round 2 Afternoon - NBC - 10:30 AM PT',isoDate:'2026-06-19T17:30:00Z',venue:'Shinnecock Hills, NY',broadcast:'NBC'},
+  {date:'2026-06-20',league:'US Open Golf',women:false,home:'US Open',away:'Round 3',detail:'Round 3 - USA Network - 7:00 AM PT',isoDate:'2026-06-20T14:00:00Z',venue:'Shinnecock Hills, NY',broadcast:'USA Network'},
+  {date:'2026-06-20',league:'US Open Golf',women:false,home:'US Open',away:'Round 3',detail:'Round 3 Afternoon - NBC - 9:00 AM PT',isoDate:'2026-06-20T16:00:00Z',venue:'Shinnecock Hills, NY',broadcast:'NBC'},
+  {date:'2026-06-21',league:'US Open Golf',women:false,home:'US Open',away:'Final Round',detail:'Final Round - USA Network/NBC - 6:00 AM PT',isoDate:'2026-06-21T13:00:00Z',venue:'Shinnecock Hills, NY',broadcast:'NBC'},
+  // Wimbledon 2026 - Jun 29 to Jul 12 - ESPN exclusive US rights
+  {date:'2026-06-29',league:'Wimbledon',women:false,home:'Wimbledon',away:'First Round',detail:'Opening Day - All England Club - 6:00 AM PT',isoDate:'2026-06-29T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN2'},
+  {date:'2026-06-30',league:'Wimbledon',women:false,home:'Wimbledon',away:'First Round',detail:'First Round Continues - 6:00 AM PT',isoDate:'2026-06-30T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN2'},
+  {date:'2026-07-01',league:'Wimbledon',women:false,home:'Wimbledon',away:'Second Round',detail:'Second Round - 6:00 AM PT',isoDate:'2026-07-01T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN2'},
+  {date:'2026-07-02',league:'Wimbledon',women:false,home:'Wimbledon',away:'Second Round',detail:'Second Round Continues - 6:00 AM PT',isoDate:'2026-07-02T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN2'},
+  {date:'2026-07-03',league:'Wimbledon',women:false,home:'Wimbledon',away:'Third Round',detail:'Third Round - 6:00 AM PT',isoDate:'2026-07-03T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-04',league:'Wimbledon',women:false,home:'Wimbledon',away:'Third Round',detail:'Third Round Continues - 6:00 AM PT',isoDate:'2026-07-04T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-05',league:'Wimbledon',women:false,home:'Wimbledon',away:'Fourth Round',detail:'Fourth Round - 6:00 AM PT',isoDate:'2026-07-05T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-06',league:'Wimbledon',women:false,home:'Wimbledon',away:'Fourth Round',detail:'Fourth Round Continues - 6:00 AM PT',isoDate:'2026-07-06T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-07',league:'Wimbledon',women:false,home:'Wimbledon',away:'Quarter-Finals',detail:'Quarter-Finals - 6:00 AM PT',isoDate:'2026-07-07T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-08',league:'Wimbledon',women:false,home:'Wimbledon',away:'Quarter-Finals',detail:'Quarter-Finals Continued - 6:00 AM PT',isoDate:'2026-07-08T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-09',league:'Wimbledon',women:true, home:'Wimbledon',away:"Women's Semis",detail:"Women's Semi-Finals - 6:00 AM PT",isoDate:'2026-07-09T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-10',league:'Wimbledon',women:false,home:'Wimbledon',away:"Men's Semis",detail:"Men's Semi-Finals - 6:00 AM PT",isoDate:'2026-07-10T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-11',league:'Wimbledon',women:true, home:'Wimbledon',away:"Women's Final",detail:"Women's Final - 6:00 AM PT",isoDate:'2026-07-11T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+  {date:'2026-07-12',league:'Wimbledon',women:false,home:'Wimbledon',away:"Men's Final",detail:"Men's Final - Also on ABC - 6:00 AM PT",isoDate:'2026-07-12T13:00:00Z',venue:'All England Club, London',broadcast:'ESPN'},
+
+  // WPBL (Women's Pro Baseball League) -- inaugural season Aug-Sep 2026
+  // ESPN+ streaming (in package). SF Firebells = Bay Area team.
+  // All games: Robin Roberts Stadium, Springfield IL. Times converted to PT.
+  {date:'2026-08-01',league:'WPBL',women:true,home:'NY Heights',away:'LA Queens',
+   homeFull:'New York Heights',awayFull:'Los Angeles Queens',
+   detail:'WPBL Opening Day - 3:00 PM PT',
+   isoDate:'2026-08-01T22:00:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-02',league:'WPBL',women:true,home:'Boston Hunters',away:'SF Firebells',
+   homeFull:'Boston Hunters',awayFull:'San Francisco Firebells',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-02T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-06',league:'WPBL',women:true,home:'SF Firebells',away:'NY Heights',
+   homeFull:'San Francisco Firebells',awayFull:'New York Heights',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-06T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-07',league:'WPBL',women:true,home:'LA Queens',away:'SF Firebells',
+   homeFull:'Los Angeles Queens',awayFull:'San Francisco Firebells',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-07T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-08',league:'WPBL',women:true,home:'SF Firebells',away:'LA Queens',
+   homeFull:'San Francisco Firebells',awayFull:'Los Angeles Queens',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-08T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-12',league:'WPBL',women:true,home:'SF Firebells',away:'LA Queens',
+   homeFull:'San Francisco Firebells',awayFull:'Los Angeles Queens',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-12T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-15',league:'WPBL',women:true,home:'NY Heights',away:'SF Firebells',
+   homeFull:'New York Heights',awayFull:'San Francisco Firebells',
+   detail:'WPBL - 11:00 AM PT',
+   isoDate:'2026-08-15T18:00:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-08-30',league:'WPBL',women:true,home:'SF Firebells',away:'NY Heights',
+   homeFull:'San Francisco Firebells',awayFull:'New York Heights',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-08-30T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+  {date:'2026-09-06',league:'WPBL',women:true,home:'SF Firebells',away:'Boston Hunters',
+   homeFull:'San Francisco Firebells',awayFull:'Boston Hunters',
+   detail:'WPBL - 4:30 PM PT',
+   isoDate:'2026-09-06T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
 ];
 
-function getChannel(rawName){
-  if(!rawName) return null;
-  for(const [name, num] of Object.entries(DIRECTV_CH)){
-    if(rawName.toLowerCase().includes(name.toLowerCase())) return num;
+// Broadcast classification -- returns {app, ch, cls, inPkg} or null if not in package
+function classify(raw, homeFull, awayFull) {
+  const hf = (homeFull || '').toLowerCase();
+  const af = (awayFull || '').toLowerCase();
+  const isGiantsGame = hf.includes('giants') || af.includes('giants');
+  const isRootsGame  = hf.includes('roots')  || af.includes('roots');
+
+  if (!raw) {
+    if (isGiantsGame) return {app:'NBC Sports Bay Area', ch:'696', cls:'dtv', inPkg:true};
+    if (isRootsGame)  return {app:'ESPN+', ch:'', cls:'epn', inPkg:true};
+    return null;
   }
+
+  // MLB.TV -- look up real DirecTV channel by team
+  if (/mlb\.?tv/i.test(raw)) {
+    if (isGiantsGame) return {app:'NBC Sports Bay Area + MLB.TV', ch:'696', cls:'dtv', inPkg:true};
+    const info = getMlbChannel(homeFull || '', awayFull || '');
+    return {app: info.net, ch: info.ch, cls:'dtv', inPkg:true};
+  }
+
+  // ESPN Unlimited = ESPN Ch 206
+  if (/espn.?unl/i.test(raw)) return {app:'ESPN', ch:'206', cls:'espn', inPkg:true};
+
+  // USA Network / USA Net = Ch 242 (in package)
+  // Note: Bundesliga 2026-27 moved from ESPN+ to USA Network + Fandango (free)
+  if (/^usa.?net(work)?$/i.test(raw)) return {app:'USA Network', ch:'242', cls:'dtv', inPkg:true};
+  // Fandango -- free ad-supported streaming, no subscription needed
+  if (/fandango/i.test(raw)) return {app:'Fandango (free stream)', ch:'', cls:'pmt', inPkg:true};
+
+  // WNBA League Pass
+  if (/wnba.?league|league.?pass/i.test(raw)) return {app:'WNBA League Pass', ch:'', cls:'wnba', inPkg:true};
+
+  // Not in package
+  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo|hometeam/i.test(raw)) return null;
+
+  // Streaming
+  if (/peacock/i.test(raw))               return {app:'Peacock',       ch:'',    cls:'pkck', inPkg:true};
+  if (/paramount/i.test(raw))             return {app:'Paramount+',    ch:'',    cls:'pmt',  inPkg:true};
+  if (/espn\+|espnplus/i.test(raw))       return {app:'ESPN+',         ch:'',    cls:'epn',  inPkg:true};
+  if (/prime|amazon/i.test(raw))          return {app:'Amazon Prime',  ch:'',    cls:'amz',  inPkg:true};
+  if (/apple/i.test(raw))                 return {app:'Apple TV+',     ch:'',    cls:'apl',  inPkg:true};
+
+  // Look up in channel map
+  const key = raw.trim();
+  if (CH[key]) return {app:key, ch:CH[key], cls:'dtv', inPkg:true};
+
+  // Fuzzy match for common networks
+  if (/^fox\b/i.test(raw))            return {app:'FOX',              ch:'2',   cls:'dtv',  inPkg:true};
+  if (/^fs1\b/i.test(raw))            return {app:'FS1',              ch:'219', cls:'dtv',  inPkg:true};
+  if (/^espn2\b/i.test(raw))          return {app:'ESPN2',            ch:'209', cls:'espn', inPkg:true};
+  if (/^espn\b/i.test(raw))           return {app:'ESPN',             ch:'206', cls:'espn', inPkg:true};
+  if (/^nbc\b/i.test(raw))            return {app:'NBC',              ch:'11',  cls:'dtv',  inPkg:true};
+  if (/^cbs\b/i.test(raw))            return {app:'CBS',              ch:'5',   cls:'dtv',  inPkg:true};
+  if (/^abc\b/i.test(raw))            return {app:'ABC',              ch:'7',   cls:'dtv',  inPkg:true};
+  if (/^tnt\b/i.test(raw))            return {app:'TNT',              ch:'245', cls:'dtv',  inPkg:true};
+  if (/^tbs\b/i.test(raw))            return {app:'TBS',              ch:'247', cls:'dtv',  inPkg:true};
+  if (/nfl.?net/i.test(raw))          return {app:'NFL Network',      ch:'212', cls:'dtv',  inPkg:true};
+  if (/mlb.?net/i.test(raw))          return {app:'MLB Network',      ch:'213', cls:'dtv',  inPkg:true};
+  if (/nhl.?net/i.test(raw))          return {app:'NHL Network',      ch:'215', cls:'dtv',  inPkg:true};
+  if (/nba.?tv/i.test(raw))           return {app:'NBA TV',           ch:'216', cls:'dtv',  inPkg:true};
+  if (/golf.?ch/i.test(raw))          return {app:'Golf Channel',     ch:'218', cls:'dtv',  inPkg:true};
+  if (/cbs.?sports/i.test(raw))       return {app:'CBS Sports Net',   ch:'221', cls:'dtv',  inPkg:true};
+  if (/^tele(mundo)?$/i.test(raw))     return {app:'Telemundo',          ch:'406', cls:'dtv',  inPkg:true};
+  if (/universo/i.test(raw))           return {app:'UNIVERSO',            ch:'410', cls:'dtv',  inPkg:true};
+  if (/unimas/i.test(raw))             return {app:'UniMas',              ch:'408', cls:'dtv',  inPkg:true};
+  if (/nbcs|nbc.?sports.?bay/i.test(raw)) return {app:'NBC Sports Bay Area', ch:'696', cls:'dtv', inPkg:true};
+  if (/tennis.?ch/i.test(raw))         return {app:'Tennis Channel',      ch:'217', cls:'dtv',  inPkg:true};
+  if (/espn.?dep/i.test(raw))          return {app:'ESPN Deportes',       ch:'466', cls:'dtv',  inPkg:true};
+  if (/fox.?dep/i.test(raw))           return {app:'FOX Deportes',        ch:'465', cls:'dtv',  inPkg:true};
+  if (/^tudn$/i.test(raw))             return {app:'TUDN',                ch:'464', cls:'dtv',  inPkg:true};
+  if (/tyc/i.test(raw))                return {app:'TyC Sports',          ch:'469', cls:'dtv',  inPkg:true};
+
   return null;
 }
 
-function isNotInPackage(rawName){
-  if(!rawName) return false;
-  // NOT_IN_PACKAGE entries are regexes -- must use .test(), not String.includes()
-  return NOT_IN_PACKAGE.some(re=>re.test(rawName));
+// Team detection
+const isGiants    = e => (e.homeFull+e.awayFull).includes('Giants');
+const isFirebells = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Firebells');
+const isSoul      = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Soul');
+const isValk     = e => (e.homeFull+e.awayFull).includes('Valkyries');
+const isWarriors = e => (e.homeFull+e.awayFull).includes('Warriors');
+const isRoots    = e => (e.homeFull+e.awayFull).includes('Roots');
+const isBallers  = e => (e.homeFull+e.awayFull).includes('Ballers');
+const isBayFC    = e => (e.homeFull+e.awayFull).includes('Bay FC') || (e.homeFull+e.awayFull).includes('Bay F.C.');
+
+function getAccentClass(ev) {
+  if (ev.league === 'World Cup' || ev.league === 'Wimbledon') return 'acc-gold';
+  if (isGiants(ev))   return 'acc-red';
+  if (isValk(ev))     return 'acc-blue';
+  if (isRoots(ev))      return 'acc-green';
+  if (isFirebells(ev))  return 'acc-fire';
+  if (isSoul(ev))       return 'acc-soul';
+  if (isBallers(ev))  return 'acc-dkgreen';
+  if (isBayFC(ev))    return 'acc-navy';
+  if (ev.women)       return 'acc-purple';
+  return '';
 }
 
-// Maps ESPN broadcast name to the bar's actual subscription/channel, with explicit
-// package-coverage checking — anything not confirmed in DIRECTV_CH or STREAMING_APPS
-// gets flagged "Not in your package" rather than silently assumed to be DirecTV XTRA.
-function mapBroadcast(rawName, isGiantsGame, isRootsGame){
-  // Giants: NBC Sports Bay Area is primary broadcast even when ESPN shows MLB.TV
-  if(!rawName){
-    if(isGiantsGame) return {app:'NBC Sports Bay Area', cls:'src-dtv', ch:'696', inPackage:true};
-    if(isRootsGame)  return {app:'ESPN+', cls:'src-espn', ch:'ESPN+ app', inPackage:true};
-    return {app:'Check listings', cls:'src-unknown', ch:null, inPackage:null};
-  }
-  // Giants on MLB.TV -- show NBCSBA as primary channel
-  if(/mlb\.?tv/i.test(rawName) && isGiantsGame){
-    return {app:'NBC Sports Bay Area + MLB.TV', cls:'src-dtv', ch:'696', inPackage:true};
-  }
-  // MLB.TV -- look up actual DirecTV channel by team name
-  if(/mlb\.?tv/i.test(rawName)){
-    // channel looked up at render time via getMlbTeamChannel() -- see buildChip()
-    return {app:'MLB.TV', cls:'src-dtv', ch:'__MLB_LOOKUP__', inPackage:true};
-  }
-  // ESPN Unlimited = ESPN Ch 206
-  if(/espn.?unl/i.test(rawName)){
-    return {app:'DirecTV XTRA', cls:'src-dtv', ch:'206', inPackage:true};
-  }
-  // WNBA League Pass -- streaming, in package
-  if(/wnba.?league|league.?pass/i.test(rawName)){
-    return {app:'WNBA League Pass', cls:'src-dtv', ch:'WNBA app', inPackage:true};
-  }
-  // USA Net = USA Network Ch 242
-  if(/^usa.?net$/i.test(rawName)){
-    return {app:'DirecTV XTRA', cls:'src-dtv', ch:'242', inPackage:true};
-  }
-  // Explicitly not in package
-  if(isNotInPackage(rawName)){
-    return {app:rawName, cls:'src-notpkg', ch:null, inPackage:false};
-  }
-  // Streaming apps the bar subscribes to
-  const streamMap = [
-    {re:/peacock/i,             app:'Peacock',            cls:'src-peacock', ch:null},
-    {re:/paramount/i,           app:'Paramount+',         cls:'src-paramount', ch:null},
-    {re:/espn\+|espnplus/i,    app:'ESPN+',              cls:'src-espn', ch:null},
-    {re:/prime.?video|amazon/i, app:'Amazon Prime Video', cls:'src-amazon', ch:null},
-    {re:/apple/i,               app:'Apple TV+',          cls:'src-apple', ch:null},
-  ];
-  for(const s of streamMap){
-    if(s.re.test(rawName)) return {...s, inPackage:true};
-  }
-  // DirecTV XTRA cable channel -- look up channel number
-  const ch = getChannel(rawName);
-  if(ch){
-    return {app:'DirecTV XTRA', cls:'src-dtv', ch, inPackage:true};
-  }
-  // Unrecognized -- flag as unknown
-  return {app:rawName, cls:'src-unknown', ch:null, inPackage:null};
+function pillCls(cls) {
+  const m = {dtv:'p-dtv', espn:'p-espn', epn:'p-epn', pkck:'p-pkck',
+             pmt:'p-pmt', amz:'p-amz', apl:'p-apl', wnba:'p-wnba'};
+  return m[cls] || 'p-dtv';
 }
 
-function fmtDateForEspn(d){
-  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
-  return `${y}${m}${day}`;
-}
-function dateKey(d){
-  return fmtDateForEspn(d).replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+function matchup(ev) {
+  return (ev.homeScore !== null && ev.status !== 'pre')
+    ? `${ev.away} ${ev.awayScore} - ${ev.homeScore} ${ev.home}`
+    : `${ev.away} vs ${ev.home}`;
 }
 
-// CORS proxy fallback — tries direct first, then two free proxies
-// Important for reliability: if ESPN blocks a direct request on the iPad,
-// these fallbacks keep the schedule loading automatically.
-const _PROXIES = [
+// Date helpers
+function ymd(d) {
+  return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+}
+function dk(d) {
+  const s = ymd(d);
+  return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6)}`;
+}
+function addDays(n) {
+  const d = new Date();
+  d.setDate(d.getDate() + n);
+  return d;
+}
+
+// Process a raw event object (from either ESPN API or schedule.json)
+function processEv(raw) {
+  const dt = new Date(raw.isoDate);
+  const bc = classify(raw.broadcast, raw.homeFull || raw.home, raw.awayFull || raw.away);
+  if (!bc) return null;
+  return Object.assign({}, raw, {
+    timeStr:  dt.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'}),
+    hour:     dt.getHours(),
+    app:      bc.app,
+    ch:       bc.ch,
+    cls:      bc.cls,
+    inPkg:    bc.inPkg,
+    homeFull: raw.homeFull || raw.home || '',
+    awayFull: raw.awayFull || raw.away || '',
+  });
+}
+
+// Inject supplemental events into the cache for a given date key
+function injectSupp(cache, key) {
+  if (!cache[key]) cache[key] = [];
+  for (const s of SUPP) {
+    if (s.date !== key) continue;
+    const processed = processEv({
+      ...s,
+      homeFull: s.homeFull || s.home,
+      awayFull: s.awayFull || s.away,
+      homeScore: null, awayScore: null, status:'pre',
+    });
+    if (processed && !cache[key].some(e => e.league === s.league && e.detail === s.detail)) {
+      cache[key].push(processed);
+    }
+  }
+  cache[key].sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
+}
+
+
+
+
+
+const PROXIES = [
   u => u,
-  u => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
 ];
-let _workingProxy = 0;
-
-async function fetchEspn(espnPath, dateStr){
-  const base = `https://site.api.espn.com/apis/site/v2/sports/${espnPath}/scoreboard?dates=${dateStr}`;
-  for(let i=_workingProxy; i<_PROXIES.length; i++){
-    try{
-      const res = await fetch(_PROXIES[i](base), {cache:'no-store'});
-      if(!res.ok) throw new Error('HTTP '+res.status);
-      const j = await res.json();
-      _workingProxy = i; // remember what worked
+let px = 0;
+async function espnFetch(path, dateStr) {
+  const base = 'https://site.api.espn.com/apis/site/v2/sports/' + path + '/scoreboard?dates=' + dateStr;
+  for (let i = px; i < PROXIES.length; i++) {
+    try {
+      const r = await fetch(PROXIES[i](base), {cache:'no-store'});
+      if (!r.ok) throw new Error(r.status);
+      const j = await r.json();
+      px = i;
       return j;
-    }catch(e){}
+    } catch(e) {}
   }
   throw new Error('all proxies failed');
 }
 
-function parseEvent(ev, leagueLabel, isWomen){
-  try{
-    const comp = ev.competitions[0];
-    const home = comp.competitors.find(c=>c.homeAway==='home');
-    const away = comp.competitors.find(c=>c.homeAway==='away');
-    const status = ev.status.type.state; // 'pre','in','post'
-    const dt = new Date(ev.date); // ESPN returns UTC ISO; browser converts to local (Pacific) automatically
+const cache = {};
 
-    // Broadcast field shape varies by sport/endpoint; read defensively.
-    let rawBroadcast = null;
-    try{
-      if(comp.broadcasts && comp.broadcasts.length){
-        const b = comp.broadcasts[0];
-        rawBroadcast = (b.names && b.names[0]) || b.media?.shortName || null;
-      }
-      if(!rawBroadcast && comp.geoBroadcasts && comp.geoBroadcasts.length){
-        rawBroadcast = comp.geoBroadcasts[0].media?.shortName || null;
-      }
-    }catch(e){ rawBroadcast = null; }
-    const isGiantsGame = !!(home.team.displayName?.includes('Giants') || away.team.displayName?.includes('Giants'));
-    const isRootsGame = !!(home.team.displayName?.includes('Roots') || away.team.displayName?.includes('Roots') || (ev && ev.league === 'USL'));
-    const broadcastInfo = mapBroadcast(rawBroadcast, isGiantsGame, isRootsGame);
-
-    return {
-      league: leagueLabel,
-      isWomen,
-      home: home.team.shortDisplayName || home.team.abbreviation,
-      away: away.team.shortDisplayName || away.team.abbreviation,
-      homeFull: home.team.displayName || '',
-      awayFull: away.team.displayName || '',
-      homeScore: home.score!==undefined ? parseInt(home.score) : null,
-      awayScore: away.score!==undefined ? parseInt(away.score) : null,
-      status,
-      statusDetail: ev.status.type.shortDetail || ev.status.type.description || '',
-      hour: dt.getHours(),
-      dateObj: dt,
-      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
-      venue: comp.venue ? comp.venue.fullName : '',
-      broadcastApp: broadcastInfo.app,
-      broadcastCls: broadcastInfo.cls,
-      broadcastRaw: rawBroadcast,
-      broadcastCh:  broadcastInfo.ch,
-      inPackage:    broadcastInfo.inPackage,
-    };
-  }catch(e){ return null; }
-}
-
-const dataCache = {}; // keyed by ESPN-queried-date-string -> { league_key: [...] }
-const sourceStatus = {}; // keyed by league key -> 'ok' | 'err'
-
-// ESPN scoreboard returns games for one "ESPN date", but because game times convert
-// to Pacific, a single Pacific calendar day can span two ESPN dates (late-night ET games
-// roll to the next ESPN date but stay on the same Pacific evening, and early Pacific-morning
-// games may belong to the previous ESPN date). To be safe we fetch a 2-day ESPN window
-// (the requested date AND the next date) and then bucket every game by its REAL Pacific date.
-async function loadEspnWindow(centerDate){
-  const d0 = new Date(centerDate); d0.setDate(d0.getDate()-1);
-  const d1 = new Date(centerDate);
-  const d2 = new Date(centerDate); d2.setDate(d2.getDate()+1);
-  const espnDates = [fmtDateForEspn(d0), fmtDateForEspn(d1), fmtDateForEspn(d2)];
-
-  const merged = {}; // pacificDateKey -> { leagueKey: [events] }
-
-  await Promise.all(LEAGUES.map(async lg=>{
-    sourceStatus[lg.key] = 'loading';
-    let anySuccess = false;
-    for(const eDate of espnDates){
-      const cacheKey = lg.key+'_'+eDate;
-      let events;
-      if(dataCache[cacheKey]){
-        events = dataCache[cacheKey];
-      } else {
-        try{
-          const json = await fetchEspn(lg.espn, eDate);
-          events = (json && json.events) ? json.events.map(ev=>parseEvent(ev, lg.label, lg.women)).filter(Boolean) : [];
-          dataCache[cacheKey] = events;
-          anySuccess = true;
-        }catch(e){
-          events = null; // mark failure distinctly from "no games"
+async function loadDay(d) {
+  const key = dk(d);
+  if (cache[key]) return cache[key];
+  const dates = [-1,0,1].map(i => { const x=new Date(d); x.setDate(x.getDate()+i); return ymd(x); });
+  cache[key] = [];
+  await Promise.all(LEAGUES.map(async lg => {
+    for (const dateStr of dates) {
+      try {
+        const json = await espnFetch(lg.espn, dateStr);
+        for (const ev of (json.events || [])) {
+          try {
+            const comp = ev.competitions[0];
+            const home = comp.competitors.find(c => c.homeAway === 'home');
+            const away = comp.competitors.find(c => c.homeAway === 'away');
+            const dt = new Date(ev.date);
+            if (dk(dt) !== key) continue;
+            let raw = null;
+            try {
+              if (comp.broadcasts && comp.broadcasts.length)
+                raw = comp.broadcasts[0].names?.[0] || comp.broadcasts[0].media?.shortName || null;
+              if (!raw && comp.geoBroadcasts && comp.geoBroadcasts.length)
+                raw = comp.geoBroadcasts[0].media?.shortName || null;
+            } catch(e) {}
+            const p = processEv({
+              league:lg.label, women:lg.women,
+              home:home.team.shortDisplayName||home.team.abbreviation||'',
+              away:away.team.shortDisplayName||away.team.abbreviation||'',
+              homeFull:home.team.displayName||'',
+              awayFull:away.team.displayName||'',
+              homeScore:home.score!==undefined?parseInt(home.score):null,
+              awayScore:away.score!==undefined?parseInt(away.score):null,
+              status:ev.status.type.state,
+              detail:ev.status.type.shortDetail||'',
+              isoDate:ev.date,
+              venue:comp.venue?comp.venue.fullName:'',
+              broadcast:raw,
+            });
+            if (p && !cache[key].some(e=>e.home===p.home&&e.away===p.away&&e.isoDate===p.isoDate))
+              cache[key].push(p);
+          } catch(e) {}
         }
-      }
-      if(events){
-        events.forEach(ev=>{
-          const pk = dateKey(ev.dateObj);
-          if(!merged[pk]) merged[pk] = {};
-          if(!merged[pk][lg.key]) merged[pk][lg.key] = [];
-          // avoid duplicate entries if same game appears in overlapping fetches
-          if(!merged[pk][lg.key].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
-            merged[pk][lg.key].push(ev);
-          }
-        });
-      }
+      } catch(e) {}
     }
-    sourceStatus[lg.key] = anySuccess ? 'ok' : 'err';
   }));
-
-  return merged;
+  injectSupp(cache, key);
+  return cache[key];
 }
 
-/* ============== PRIMARY DATA: schedule.json ==============
-   Generated hourly by the GitHub Action in this repo and served
-   same-origin by GitHub Pages — no CORS proxy needed, so the board
-   always loads even when corsproxy.io / allorigins are down.
-   ESPN (via loadEspnWindow) is layered on top afterwards, best-effort,
-   for up-to-the-minute live scores. */
-let scheduleGeneratedAt = null;
-
-function labelToKey(label, isWomen){
-  const hit = LEAGUES.find(l=>l.label===label && l.women===!!isWomen)
-           || LEAGUES.find(l=>l.label===label);
-  return hit ? hit.key : String(label||'other').toLowerCase().replace(/\s+/g,'_');
+function featCard(cls, icon, label, title, sub, pills) {
+  return '<div class="fc ' + cls + '"><div class="fc-eye">' + icon + ' ' + label + '</div>' +
+    '<div class="fc-title">' + title + '</div><div class="fc-sub">' + sub + '</div>' +
+    '<div>' + pills + '</div></div>';
+}
+function fcPill(ev) {
+  if (!ev) return '';
+  const ch = ev.ch ? ' Ch ' + ev.ch : '';
+  return '<span class="pill ' + pillCls(ev.cls) + '">' + ev.app + ch + '</span>';
+}
+function buildFeat(evs) {
+  const wcs   = evs.filter(e => e.league==='World Cup'||e.league==='Wimbledon');
+  const sf    = evs.find(isGiants);
+  const gsv   = evs.find(isValk);
+  const roots = evs.find(isRoots);
+  const gsw   = evs.find(isWarriors);
+  const bay   = evs.find(isBayFC);
+  return [
+    featCard('giants','&#x26BE;','SF Giants',
+      sf?sf.away+' @ '+sf.home:'No game today',
+      sf?sf.timeStr+' &middot; '+sf.detail:'Check back later', fcPill(sf)),
+    featCard('valkyries','&#x1F3C0;','GS Valkyries <span class="w-badge">W</span>',
+      gsv?gsv.away+' @ '+gsv.home:'No game today',
+      gsv?gsv.timeStr+' &middot; '+gsv.detail:'Check back later', fcPill(gsv)),
+    featCard('roots','&#x26BD;','Oakland Roots SC',
+      roots?roots.away+' @ '+roots.home:'No game today',
+      roots?roots.timeStr+' &middot; '+roots.detail:'Check oaklandrootssc.com', fcPill(roots)),
+    featCard('ballers','&#x26BE;','Oakland Ballers',
+      'HomeTeam Network','All 96 games on HomeTeam Network streaming',
+      '<span class="pill p-htn">HomeTeam Network</span>'),
+    featCard('bayfc','&#x26BD;','Bay FC <span class="w-badge">W</span>',
+      bay?bay.away+' @ '+bay.home:'No game today',
+      bay?bay.timeStr+' &middot; '+bay.detail:'Check bayfc.com', fcPill(bay)),
+    featCard('warriors','&#x1F3C0;','GS Warriors',
+      gsw?gsw.away+' @ '+gsw.home:'Off-Season',
+      gsw?gsw.timeStr+' &middot; '+gsw.detail:'NBA off-season',
+      gsw?fcPill(gsw):'<span class="pill p-espn">ESPN / NBA TV</span>'),
+  ].join('');
+}
+function buildRow(ev) {
+  const wb   = (ev.women||isValk(ev)||isBayFC(ev)) ? '<span class="w-badge">W</span>' : '';
+  const live = ev.status==='in' ? '<span class="live-badge">Live</span>' : '';
+  const ch   = ev.ch ? '<span class="g-ch">Ch ' + ev.ch + '</span>' : '';
+  const sp   = ev.league==='World Cup'?'<span class="pill p-dtv">ES Telemundo Ch 48</span>':'';
+  return '<div class="game ' + getAccentClass(ev) + '">' +
+    '<div class="g-time">' + ev.timeStr + '</div>' +
+    '<div class="g-info">' +
+    '<div class="g-league">' + ev.league + wb + live + '</div>' +
+    '<div class="g-title">' + matchup(ev) + '</div>' +
+    '<div class="g-detail">' + ev.detail + (ev.venue?' &middot; '+ev.venue:'') + '</div>' +
+    '<div class="g-br"><span class="pill ' + pillCls(ev.cls) + '">' + ev.app + ch + '</span>' + sp + '</div>' +
+    '</div></div>';
+}
+function buildScores(evs) {
+  const live=evs.filter(e=>e.status==='in'),fin=evs.filter(e=>e.status==='post'),pre=evs.filter(e=>e.status==='pre');
+  function cards(arr){ return arr.map(g=>'<div class="score-card'+(g.status==='in'?' live':'')+'"><div class="sc-league">'+g.league+(g.status==='in'?' &middot; LIVE':g.status==='post'?' &middot; Final':'')+'</div><div class="sc-match">'+matchup(g)+'</div><div class="sc-detail">'+g.detail+'</div></div>').join(''); }
+  let h='';
+  if(live.length)  h+='<div class="sec-lbl">Live Now</div><div class="score-grid">'+cards(live)+'</div>';
+  if(fin.length)   h+='<div class="sec-lbl">Final</div><div class="score-grid">'+cards(fin)+'</div>';
+  if(pre.length)   h+='<div class="sec-lbl">Upcoming</div><div class="score-grid">'+cards(pre)+'</div>';
+  return h||'<div class="empty">No scores yet.</div>';
 }
 
-function adaptStoredGame(g){
+let curDay=0, curTab='all';
+function buildDays(){
+  document.getElementById('days').innerHTML=Array.from({length:7},(_,i)=>{
+    const d=addDays(i),k=dk(d),hasWC=cache[k]?.some(e=>e.league==='World Cup'||e.league==='Wimbledon');
+    return '<button class="day-btn'+(i===curDay?' on':'')+'" onclick="goDay('+i+')">' +
+      '<div class="day-name">'+(i===0?'Today':d.toLocaleDateString('en-US',{weekday:'short'}))+'</div>' +
+      '<div class="day-num">'+d.getDate()+'</div>' +
+      '<div class="day-tag">'+(hasWC?'WC':'')+'</div></button>';
+  }).join('');
+}
+function setTab(tab,el){
+  curTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  if(el) el.classList.add('on');
+  renderContent();
+}
+function renderContent(){
+  const key=dk(addDays(curDay)), evs=cache[key]||[];
+  const sched=document.getElementById('sched');
+  if(curTab==='scores'){sched.innerHTML='<div class="sched-hd"><span>Scores</span></div>'+buildScores(evs);return;}
+  let filtered=evs;
+  if(curTab==='women') filtered=evs.filter(e=>e.women||isValk(e)||isBayFC(e));
+  if(curTab==='world') filtered=evs.filter(e=>e.league==='World Cup'||e.league==='Wimbledon');
+  const d=addDays(curDay);
+  const ds=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}).toUpperCase();
+  sched.innerHTML=filtered.length
+    ?'<div class="sched-hd"><span>Schedule</span><span class="sched-date">'+ds+'</span></div><div class="games">'+filtered.map(buildRow).join('')+'</div>'
+    :'<div class="empty">No games'+(curTab!=='all'?' in this category':'')+' today.</div>';
+}
+async function goDay(n){
+  curDay=n; buildDays(); renderContent();
+  if(!cache[dk(addDays(n))]) await loadAndRender();
+}
+async function loadAndRender(){
+  const d=addDays(curDay);
+  document.getElementById('status').textContent='Loading...';
   try{
-    const dt = new Date(g.isoDate);
-    if(isNaN(dt)) return null;
-    const isGiantsGame = !!((g.homeFull||'').includes('Giants') || (g.awayFull||'').includes('Giants'));
-    const isRootsGame  = !!((g.homeFull||'').includes('Roots')  || (g.awayFull||'').includes('Roots') || g.league==='USL');
-    const b = mapBroadcast(g.broadcast || null, isGiantsGame, isRootsGame);
-    return {
-      league: g.league,
-      isWomen: !!g.isWomen,
-      home: g.home, away: g.away,
-      homeFull: g.homeFull || '', awayFull: g.awayFull || '',
-      homeScore: (g.homeScore===null||g.homeScore===undefined) ? null : parseInt(g.homeScore),
-      awayScore: (g.awayScore===null||g.awayScore===undefined) ? null : parseInt(g.awayScore),
-      status: g.status || 'pre',
-      statusDetail: g.statusDetail || '',
-      hour: dt.getHours(),
-      dateObj: dt,
-      timeStr: dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}),
-      venue: g.venue || '',
-      broadcastApp: b.app, broadcastCls: b.cls,
-      broadcastRaw: g.broadcast || null,
-      broadcastCh: b.ch, inPackage: b.inPackage,
-    };
-  }catch(e){ return null; }
+    await loadDay(d);
+    document.getElementById('feat').innerHTML=buildFeat(cache[dk(d)]||[]);
+    renderContent(); buildDays();
+    const n=(cache[dk(d)]||[]).length;
+    document.getElementById('status').textContent=n+' game'+(n!==1?'s':'')+' \u2022 Updated '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})+' PT';
+  }catch(e){document.getElementById('status').textContent='Error loading - will retry';}
 }
-
-async function loadFromScheduleJson(){
-  // cache-bust: GitHub Pages caches for ~10 min otherwise
-  const res = await fetch('./schedule.json?t=' + Date.now(), {cache:'no-store'});
-  if(!res.ok) throw new Error('HTTP ' + res.status);
-  const j = await res.json();
-  scheduleGeneratedAt = j.generated ? new Date(j.generated) : null;
-  const merged = {};
-  Object.values(j.days || {}).forEach(games=>{
-    (games || []).forEach(raw=>{
-      const ev = adaptStoredGame(raw);
-      if(!ev) return;
-      const pk = dateKey(ev.dateObj); // bucket by real Pacific date, same as ESPN path
-      const lk = labelToKey(ev.league, ev.isWomen);
-      if(!merged[pk]) merged[pk] = {};
-      if(!merged[pk][lk]) merged[pk][lk] = [];
-      if(!merged[pk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
-        merged[pk][lk].push(ev);
-      }
-    });
-  });
-  return merged;
+function updateClock(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});}
+async function init(){
+  buildDays(); updateClock(); setInterval(updateClock,1000);
+  await loadAndRender();
+  for(let i=1;i<7;i++) loadDay(addDays(i)).then(()=>buildDays()).catch(()=>{});
+  setInterval(()=>{Object.keys(cache).forEach(k=>delete cache[k]);loadAndRender();},300000);
 }
-
-function setSyncStatus(state, text){
-  document.getElementById('sync-dot').className = 'sync-dot ' + state;
-  document.getElementById('sync-text').textContent = text;
-  const pillsHtml = LEAGUES.map(lg=>{
-    const st = sourceStatus[lg.key] || 'loading';
-    return `<span class="src-pill ${st}">${lg.label}</span>`;
-  }).join(' ');
-  document.getElementById('src-pills').innerHTML = pillsHtml;
-}
-
-async function manualRefresh(){
-  Object.keys(dataCache).forEach(k=>delete dataCache[k]);
-  mergedByDate = {};
-  await initialLoad();
-}
-
-/* ============== UI BUILDING ============== */
-const timeLabel={0:'12 AM',1:'1 AM',2:'2 AM',3:'3 AM',4:'4 AM',5:'5 AM',6:'6 AM',7:'7 AM',8:'8 AM',9:'9 AM',10:'10 AM',11:'11 AM',12:'12 PM',13:'1 PM',14:'2 PM',15:'3 PM',16:'4 PM',17:'5 PM',18:'6 PM',19:'7 PM',20:'8 PM',21:'9 PM',22:'10 PM',23:'11 PM'};
-const ALL_HOURS = Array.from({length:18},(_,i)=>i+6); // 6 AM - 11 PM
-
-let currentDayOffset = 0;
-let currentView = 'day';
-let mergedByDate = {}; // populated by loadEspnWindow, keyed by pacific date string
-
-function getDayDate(offset){
-  const d = new Date();
-  d.setDate(d.getDate()+offset);
-  return d;
-}
-
-function flattenEvents(dayData){
-  const out=[];
-  Object.entries(dayData||{}).forEach(([key,events])=>{
-    events.forEach(e=>out.push(e));
-  });
-  return out.sort((a,b)=>a.hour-b.hour);
-}
-
-function chipClass(ev){
-  if(ev.league==='World Cup') return 'wcu-highlight';
-  if(ev.isWomen) return 'womens';
-  return 'c-espn';
-}
-
-function isGiants(ev){ return ev.homeFull.includes('Giants')||ev.awayFull.includes('Giants'); }
-function isWarriors(ev){ return ev.homeFull.includes('Warriors')||ev.awayFull.includes('Warriors'); }
-function isValkyries(ev){ return ev.homeFull.includes('Valkyries')||ev.awayFull.includes('Valkyries'); }
-function isRoots(ev){ return ev.homeFull.includes('Oakland Roots')||ev.awayFull.includes('Oakland Roots')||ev.homeFull.includes('Roots SC')||ev.awayFull.includes('Roots SC'); }
-function isTennis(ev){ return ev.league==='Tennis'; }
-
-function pkgIcon(inPackage){
-  if(inPackage===true) return '📺';
-  if(inPackage===false) return '🚫';
-  return '❓';
-}
-
-function buildChip(ev){
-  // Resolve MLB team-specific DirecTV channel when ESPN returns generic MLB.TV
-  if(ev.broadcastCh === '__MLB_LOOKUP__'){
-    const teamInfo = getMlbTeamChannel(ev.homeFull||ev.home, ev.awayFull||ev.away);
-    ev = {...ev, broadcastApp: teamInfo.net, broadcastCh: 'Ch '+teamInfo.ch};
-  }
-  const live = ev.status==='in' ? ' live-tag' : '';
-  let cls = chipClass(ev);
-  if(isGiants(ev)) cls='sf-highlight';
-  if(isValkyries(ev)) cls='gsv-highlight';
-  if(isRoots(ev)) cls='roots-highlight';
-  if(isTennis(ev)) cls='c-espn';
-  const wb = (ev.isWomen||isValkyries(ev)) ? '<span class="w-badge">WOMEN</span>' : '';
-  const scoreStr = (ev.homeScore!==null && ev.awayScore!==null && (ev.status==='in'||ev.status==='post'))
-    ? `${ev.away} ${ev.awayScore} @ ${ev.homeScore} ${ev.home}`
-    : `${ev.away} @ ${ev.home}`;
-  return `<div class="chip ${cls}${live}">
-    <div class="chip-src">${ev.league}${wb}</div>
-    <div class="chip-title">${scoreStr}</div>
-    <div class="chip-sub">${ev.timeStr} · ${ev.statusDetail}${ev.venue?' · '+ev.venue:''}</div>
-    <div class="chip-app ${ev.broadcastCls}">${pkgIcon(ev.inPackage)} ${ev.broadcastApp}${ev.broadcastCh?' · Ch '+ev.broadcastCh:''}${ev.inPackage===false?' · NOT IN YOUR PACKAGE':ev.inPackage===null?' · check listings':''}</div>
-    ${ev.league==='World Cup'?`<div class="chip-app src-dtv" style="margin-top:3px">🇪🇸 Telemundo · Ch 404 · Peacock</div>`:''}
-  </div>`;
-}
-
-function buildScheduleGrid(events, isToday){
-  const nowH = new Date().getHours();
-  let html = '<div class="sched">';
-  ALL_HOURS.forEach(h=>{
-    const evs = events.filter(e=>e.hour===h);
-    const isNow = isToday && h===nowH;
-    html += `<div class="stime">${isNow?'<span class="now-arrow">▶ NOW</span>':''}<span>${timeLabel[h]}</span></div>
-    <div class="sevents">${evs.length?evs.map(buildChip).join(''):'<div style="color:#0d1e35;font-size:18px;padding:6px">—</div>'}</div>`;
-  });
-  return html+'</div>';
-}
-
-function buildFeaturedStrip(dayData, isToday){
-  const wc = (dayData.wc)||[];
-  const mlb = (dayData.mlb)||[];
-  const nba = (dayData.nba)||[];
-  const wnba = (dayData.wnba)||[];
-
-  const sfGame = mlb.find(isGiants);
-  const gswGame = nba.find(isWarriors);
-  const gsvGame = wnba.find(isValkyries);
-  const allEvents = flattenEvents(dayData);
-  const rootsGame = allEvents.find(isRoots);
-  const tennisEvs = allEvents.filter(isTennis).slice(0,2);
-
-  const wcCard = `<div class="feat-card worldcup">
-    ${wc.length && isToday?'<div class="feat-live">TODAY</div>':''}
-    <div class="feat-eyebrow">🏆 FIFA World Cup 2026</div>
-    <div class="feat-title">${wc.length} Match${wc.length!==1?'es':''}</div>
-    <div class="feat-sub">${wc.slice(0,3).map(g=>`${g.timeStr}: ${g.away} vs ${g.home}`).join('<br>')||'No matches'}</div>
-    ${wc.length?`<div class="chip-app ${wc[0].broadcastCls}" style="margin-top:4px">${pkgIcon(wc[0].inPackage)} ${wc[0].broadcastApp}${wc[0].broadcastCh?' · Ch '+wc[0].broadcastCh:''}</div>`:''}
-    ${wc.length?`<div class="chip-app src-dtv" style="margin-top:3px">🇪🇸 Telemundo Ch 404 · Peacock</div>`:''}
-  </div>`;
-
-  const sfCard = `<div class="feat-card giants">
-    <div class="feat-eyebrow">⚾ SF Giants</div>
-    <div class="feat-title">${sfGame? (sfGame.away+' @ '+sfGame.home) : 'No game'}</div>
-    <div class="feat-sub">${sfGame? sfGame.timeStr+' · '+sfGame.statusDetail+(sfGame.homeScore!==null&&sfGame.status!=='pre'?` · ${sfGame.awayScore}-${sfGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${sfGame?`<div class="chip-app ${sfGame.broadcastCls}">${pkgIcon(sfGame.inPackage)} ${sfGame.broadcastApp}${sfGame.broadcastCh?' · Ch '+sfGame.broadcastCh:''}</div>`:''}
-  </div>`;
-
-  const gswCard = `<div class="feat-card warriors">
-    <div class="feat-eyebrow">🏀 Golden State Warriors</div>
-    <div class="feat-title">${gswGame? (gswGame.away+' @ '+gswGame.home) : 'No game'}</div>
-    <div class="feat-sub">${gswGame? gswGame.timeStr+' · '+gswGame.statusDetail : 'Off-season'}</div>
-    ${gswGame?`<div class="chip-app ${gswGame.broadcastCls}">${pkgIcon(gswGame.inPackage)} ${gswGame.broadcastApp}${gswGame.broadcastCh?' · Ch '+gswGame.broadcastCh:''}</div>`:''}
-  </div>`;
-
-  const gsvCard = `<div class="feat-card valkyries">
-    ${gsvGame && gsvGame.status==='in' ? '<div class="feat-live">LIVE NOW</div>' : ''}
-    <div class="feat-eyebrow">🏀 GS Valkyries <span class="w-badge">WOMEN</span></div>
-    <div class="feat-title">${gsvGame? (gsvGame.away+' @ '+gsvGame.home) : 'No game'}</div>
-    <div class="feat-sub">${gsvGame? gsvGame.timeStr+' · '+gsvGame.statusDetail+(gsvGame.homeScore!==null&&gsvGame.status!=='pre'?` · ${gsvGame.awayScore}-${gsvGame.homeScore}`:'') : 'Check next game day'}</div>
-    ${gsvGame?`<div class="chip-app ${gsvGame.broadcastCls}">${pkgIcon(gsvGame.inPackage)} ${gsvGame.broadcastApp}${gsvGame.broadcastCh?' · Ch '+gsvGame.broadcastCh:''}</div>`:''}
-  </div>`;
-
-  return wcCard+sfCard+gswCard+gsvCard;
-}
-
-function wcSpanish(g){
-  // Determine Spanish channel: 92 matches on Telemundo Ch 404, 12 simultaneous group-stage matches on Universo Ch 406.
-  // All 104 available on Peacock in Spanish (bar already subscribes).
-  // We default to Telemundo unless ESPN data tells us otherwise — safe for the vast majority of matches.
-  const raw = g.broadcastRaw || '';
-  const univMatch = /universo/i.test(raw);
-  const tvCh = univMatch ? 'Universo · Ch 406' : 'Telemundo · Ch 404';
-  return `<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">
-    <div class="chip-app src-dtv">🇪🇸 ${tvCh}</div>
-    <div class="chip-app src-peacock">🇪🇸 Peacock (streaming)</div>
-  </div>`;
-}
-
-function buildWorldCupPanel(dayData, dateObj){
-  const wc = (dayData.wc)||[];
-  if(!wc.length) return '<div class="section-hd">🏆 FIFA World Cup</div><div style="color:#475569;padding:16px">No World Cup matches found for this day.</div>';
-  let html = `<div class="section-hd">🏆 FIFA World Cup 2026 — ${dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</div>
-  <div style="background:#0a1929;border:1px solid #1e3a5f;border-radius:6px;padding:14px 16px;margin-bottom:10px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">`;
-  const colors=['#ef4444','#f59e0b','#818cf8','#38bdf8'];
-  wc.forEach((g,i)=>{
-    const scoreStr=(g.homeScore!==null&&g.status!=='pre')?`${g.away} ${g.awayScore} - ${g.homeScore} ${g.home}`:`${g.away} vs ${g.home}`;
-    html+=`<div style="background:#060f1d;border-radius:5px;padding:12px 14px;border-left:3px solid ${colors[i%4]}">
-      <div style="font-size:13px;color:${colors[i%4]};font-weight:800;letter-spacing:1px">${g.timeStr}${g.status==='in'?' · LIVE':''}</div>
-      <div style="font-size:19px;font-weight:900;margin:4px 0">${scoreStr}</div>
-      <div style="font-size:14px;color:#64748b">${g.statusDetail}${g.venue?' · '+g.venue:''}</div>
-      <div style="margin-top:6px;font-size:12px;font-weight:700;color:#475569;letter-spacing:1px">🇬🇧 ENGLISH</div>
-      <div class="chip-app ${g.broadcastCls}" style="margin-top:3px">${pkgIcon(g.inPackage)} ${g.broadcastApp}${g.broadcastCh?' · Ch '+g.broadcastCh:''}${g.inPackage===false?' · NOT IN YOUR PACKAGE':''}</div>
-      <div style="margin-top:6px;font-size:12px;font-weight:700;color:#475569;letter-spacing:1px">🇪🇸 ESPAÑOL</div>
-      ${wcSpanish(g)}
-    </div>`;
-  });
-  html+='</div></div>';
-  return html;
-}
-
-function buildWomenPanel(dayData){
-  const all = flattenEvents(dayData).filter(e=>e.isWomen||isValkyries(e)||isRoots(e));
-  if(!all.length) return '<div class="section-hd">Women\'s Sports</div><div style="color:#475569;padding:16px">No women\'s sports events found for this day.</div>';
-  let html='<div class="section-hd">Women\'s Sports This Day <span>ALL WOMEN</span></div><div class="sched">';
-  all.forEach(e=>{
-    html+=`<div class="stime"><span>${timeLabel[e.hour]}</span></div><div class="sevents">${buildChip(e)}</div>`;
-  });
-  return html+'</div>';
-}
+init();
 
 
-function buildScoresPanel(dayData, isToday){
-  const all = flattenEvents(dayData);
-  const live  = all.filter(e=>e.status==='in');
-  const final = all.filter(e=>e.status==='post');
-  const pre   = all.filter(e=>e.status==='pre');
 
-  function row(g){
-    const aW = g.awayScore > g.homeScore;
-    const hW = g.homeScore > g.awayScore;
-    const score = (g.homeScore!==null) 
-      ? `${g.awayScore} – ${g.homeScore}`
-      : 'vs';
-    return `<div style="flex-shrink:0;background:#0a1929;border:1px solid #132a45;border-radius:5px;padding:8px 12px;min-width:160px" class="${g.status==='in'?'sc live':'sc'}">
-      <div style="font-size:9px;font-weight:800;letter-spacing:1.5px;color:${g.status==='in'?'#ef4444':'#475569'};margin-bottom:4px">${g.league}${g.status==='in'?' · LIVE':g.status==='post'?' · Final':' · Upcoming'}</div>
-      <div style="font-size:14px;font-weight:800;color:#f1f5f9">${g.away} ${score} ${g.home}</div>
-      <div style="font-size:9px;color:#475569;margin-top:3px">${g.statusDetail}</div>
-    </div>`;
-  }
-
-  if(!all.length) return '<div style="color:#475569;padding:20px;text-align:center;font-size:14px">No games found for this day.</div>';
-
-  let html = '';
-  if(live.length){
-    html += `<div class="section-hd">🔴 In Progress <span>${live.length} live</span></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">${live.map(row).join('')}</div>`;
-  }
-  if(final.length){
-    html += `<div class="section-hd">✔ Final Scores</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">${final.map(row).join('')}</div>`;
-  }
-  if(pre.length){
-    html += `<div class="section-hd">⏰ Upcoming</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px">${pre.map(row).join('')}</div>`;
-  }
-  return html;
-}
-
-async function renderDayView(){
-  const isToday = currentDayOffset===0;
-  const dateObj = getDayDate(currentDayOffset);
-  const dk = dateKey(dateObj);
-  const dayData = mergedByDate[dk] || {};
-  const events = flattenEvents(dayData);
-
-  document.getElementById('featured-strip').innerHTML = buildFeaturedStrip(dayData, isToday);
-  document.getElementById('grid-all').innerHTML = buildScheduleGrid(events, isToday);
-  document.getElementById('grid-women').innerHTML = buildWomenPanel(dayData);
-  document.getElementById('grid-worldcup').innerHTML = buildWorldCupPanel(dayData, dateObj);
-  document.getElementById('grid-scores').innerHTML = buildScoresPanel(dayData, isToday);
-
-  document.getElementById('rts').textContent = `${isToday?'Today':dateObj.toLocaleDateString('en-US',{weekday:'long'})}, ${dateObj.toLocaleDateString('en-US',{month:'long',day:'numeric'})} · All times Pacific`;
-}
-
-function buildWeekView(){
-  let html = '';
-  for(let i=0;i<7;i++){
-    const d = getDayDate(i);
-    const isToday = i===0;
-    const dk = dateKey(d);
-    const dayData = mergedByDate[dk] || {};
-    const events = flattenEvents(dayData);
-    const highlights = events.filter(e=>e.league==='World Cup'||e.isWomen||isGiants(e)||isWarriors(e)||isValkyries(e)||isRoots(e)).slice(0,6);
-    const toShow = highlights.length ? highlights : events.slice(0,6);
-
-    html += `<div class="week-day-col">
-      <div class="week-day-head${isToday?' today':''}">
-        <div class="wd-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
-        <div class="wd-num">${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
-      </div>
-      <div class="week-day-body">`;
-    if(toShow.length===0){
-      html += '<div class="week-empty">No events found</div>';
-    } else {
-      toShow.forEach(e=>{
-        const cls = isGiants(e)?'sf-highlight':isValkyries(e)?'gsv-highlight':isRoots(e)?'roots-highlight':chipClass(e);
-        const scoreStr=(e.homeScore!==null&&e.status!=='pre')?`${e.away} ${e.awayScore}-${e.homeScore} ${e.home}`:`${e.away} vs ${e.home}`;
-        html += `<div class="week-event ${cls}">
-          <div class="week-event-time">${e.timeStr} · ${e.league}</div>
-          <div class="week-event-title">${scoreStr}</div>
-        </div>`;
-      });
-    }
-    html += '</div></div>';
-  }
-  document.getElementById('week-grid').innerHTML = html;
-}
-
-function buildDaySelector(){
-  const el = document.getElementById('day-selector');
-  let html = '';
-  for(let i=0;i<7;i++){
-    const d = getDayDate(i);
-    const isToday = i===0;
-    const dk = dateKey(d);
-    const hasWC = mergedByDate[dk] && (mergedByDate[dk].wc||[]).length>0;
-    html += `<button class="day-btn${i===currentDayOffset?' active':''}" onclick="selectDay(${i})">
-      <div class="day-name">${isToday?'Today':d.toLocaleDateString('en-US',{weekday:'short'})}</div>
-      <div class="day-num">${d.getDate()}</div>
-      <div class="day-tag">${hasWC?'⚽ WC':''}</div>
-    </button>`;
-  }
-  el.innerHTML = html;
-}
-
-async function selectDay(offset){
-  currentDayOffset = offset;
-  buildDaySelector();
-  await renderDayView();
-  if(currentView==='week') buildWeekView();
-}
-
-function setView(view){
-  currentView = view;
-  document.getElementById('vtab-day').classList.toggle('active', view==='day');
-  document.getElementById('vtab-week').classList.toggle('active', view==='week');
-  document.getElementById('day-view').style.display = view==='day' ? 'block' : 'none';
-  document.getElementById('week-view').style.display = view==='week' ? 'block' : 'none';
-  document.getElementById('week-view').classList.toggle('active', view==='week');
-  if(view==='week') buildWeekView();
-}
-
-function switchTab(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('#day-view .content').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
-}
-
-function updateClock(){
-  const n=new Date();
-  document.getElementById('clk').textContent=n.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('dstr').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}).toUpperCase();
-}
-
-// SUPPLEMENTAL EVENTS — hardcoded for events not on ESPN's API
-// (US Open is on NBC/USA Network/NBCSN/Peacock, not ESPN, so ESPN's golf endpoint won't return it)
-// Format mirrors a parsed ESPN event so it slots into the same display logic.
-// All times are Pacific. Update weekly as needed.
-const SUPPLEMENTAL = [
-  // ── US Open Golf, Shinnecock Hills ──────────────────────────────────────
-  // Thu Jun 18 PT: USA Network 3:30am–2pm PT, then NBCSN+Peacock 2–5pm PT
-  {dateKey:'2026-06-18', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 1', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 1 · Shinnecock Hills', hour:4,
-   timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
-   broadcastRaw:'USA Network'},
-  {dateKey:'2026-06-18', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 1', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 1 Late · Peacock & NBCSN', hour:14,
-   timeStr:'2:00 PM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null, inPackage:true,
-   broadcastRaw:'Peacock'},
-  // Fri Jun 19 PT: NBCSN+Peacock 3:30am–10:30am PT, NBC+Peacock 10:30am–4:30pm PT
-  {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 2', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 2 Morning · NBCSN & Peacock', hour:4,
-   timeStr:'3:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'Peacock', broadcastCls:'src-peacock', broadcastCh:null, inPackage:true,
-   broadcastRaw:'NBCSN / Peacock'},
-  {dateKey:'2026-06-19', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 2', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 2 Afternoon · NBC & Peacock', hour:11,
-   timeStr:'10:30 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
-   broadcastRaw:'NBC'},
-  // Sat Jun 20 PT: USA Network 7am–9am PT, NBC+Peacock 9am–5pm PT
-  {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 3', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 3 Early · USA Network', hour:7,
-   timeStr:'7:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
-   broadcastRaw:'USA Network'},
-  {dateKey:'2026-06-20', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 3', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Round 3 · NBC & Peacock', hour:9,
-   timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
-   broadcastRaw:'NBC'},
-  // Sun Jun 21 PT: USA Network 6am–9am PT, NBC+Peacock 9am–4pm PT
-  {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 4 - Final', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Final Round Early · USA Network', hour:6,
-   timeStr:'6:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'242', inPackage:true,
-   broadcastRaw:'USA Network'},
-  {dateKey:'2026-06-21', league:'US Open Golf', isWomen:false,
-   home:'US Open', away:'Round 4 - Final', homeFull:'', awayFull:'',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'Final Round · NBC & Peacock', hour:9,
-   timeStr:'9:00 AM', venue:'Shinnecock Hills, NY',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'392', inPackage:true,
-   broadcastRaw:'NBC'},
-
-  // ── WNFC IX Cup Championship — Women's professional tackle football ────
-  // Sun Jun 21 PT: 1:00 PM PT (4:00 PM ET) on ESPN2, Ford Center at The Star, Frisco TX
-
-  // ── OAKLAND ROOTS SC 2026 Upcoming Schedule ──────────────────────────────
-  // From oaklandrootssc.com — most games on ESPN+ streaming
-  // National broadcast games (CBS Sports Net Ch 221) noted where confirmed
-  {dateKey:'2026-06-17',league:'Oakland Roots SC',isWomen:false,
-   home:'Oakland Roots',away:'TBD',homeFull:'Oakland Roots',awayFull:'',
-   homeScore:null,awayScore:null,status:'pre',
-   statusDetail:'USL Championship · 12:00 PM PT · Home · Laney College',hour:12,
-   timeStr:'12:00 PM',venue:'Laney College Stadium, Oakland',
-   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
-   broadcastRaw:'ESPN+'},
-  {dateKey:'2026-06-20',league:'Oakland Roots SC',isWomen:false,
-   home:'TBD',away:'Oakland Roots',homeFull:'',awayFull:'Oakland Roots',
-   homeScore:null,awayScore:null,status:'pre',
-   statusDetail:'USL Championship · 7:30 PM PT · Away',hour:19,
-   timeStr:'7:30 PM',venue:'Away',
-   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
-   broadcastRaw:'ESPN+'},
-  {dateKey:'2026-07-04',league:'Oakland Roots SC',isWomen:false,
-   home:'Oakland Roots',away:'TBD',homeFull:'Oakland Roots',awayFull:'',
-   homeScore:null,awayScore:null,status:'pre',
-   statusDetail:'USL Championship · 6:30 PM PT · Home · Independence Day Match',hour:18,
-   timeStr:'6:30 PM',venue:'Laney College Stadium, Oakland',
-   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
-   broadcastRaw:'ESPN+'},
-  {dateKey:'2026-07-22',league:'Oakland Roots SC',isWomen:false,
-   home:'TBD',away:'Oakland Roots',homeFull:'',awayFull:'Oakland Roots',
-   homeScore:null,awayScore:null,status:'pre',
-   statusDetail:'USL Championship · 4:00 PM PT · Away',hour:16,
-   timeStr:'4:00 PM',venue:'Away',
-   broadcastApp:'ESPN+',broadcastCls:'src-espn',broadcastCh:'ESPN+ app',inPackage:true,
-   broadcastRaw:'ESPN+'},
-
-  {dateKey:'2026-06-21', league:'WNFC Football', isWomen:true,
-   home:'San Diego Rebellion', away:'Texas Elite Spartans',
-   homeFull:'San Diego Rebellion', awayFull:'Texas Elite Spartans',
-   homeScore:null, awayScore:null, status:'pre',
-   statusDetail:'IX Cup Championship · Defending champs Spartans seek 6th title', hour:13,
-   timeStr:'1:00 PM', venue:'Ford Center at The Star, Frisco TX',
-   broadcastApp:'DirecTV XTRA', broadcastCls:'src-dtv', broadcastCh:'209', inPackage:true,
-   broadcastRaw:'ESPN2'},
-];
-
-const WIMBLEDON_SUPP = [
-  // Wimbledon 2026 — June 29 to July 12 — ESPN exclusive US rights
-  // Coverage starts ~6AM PT daily. Men's Final also on ABC.
-  {dateKey:'2026-06-29',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'First Round — Opening Day',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
-  {dateKey:'2026-06-30',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'First Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
-  {dateKey:'2026-07-01',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Second Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
-  {dateKey:'2026-07-02',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Second Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'209',inPackage:true,broadcastRaw:'ESPN2'},
-  {dateKey:'2026-07-03',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Third Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-04',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Third Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-05',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Fourth Round',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-06',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Fourth Round Continues',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-07',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Quarter-Finals',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-08',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:'Quarter-Finals Continue',hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-09',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Women's Semi-Finals",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-10',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Men's Semi-Finals",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-11',league:'Wimbledon',isWomen:true, home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Women's Final · All England Club",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN'},
-  {dateKey:'2026-07-12',league:'Wimbledon',isWomen:false,home:'Wimbledon',away:'',homeFull:'',awayFull:'',homeScore:null,awayScore:null,status:'pre',statusDetail:"Men's Final · Also on ABC",hour:6,timeStr:'6:00 AM',venue:'All England Club, Wimbledon',broadcastApp:'DirecTV XTRA',broadcastCls:'src-espn',broadcastCh:'206',inPackage:true,broadcastRaw:'ESPN / ABC'},
-];
-
-
-function injectSupplemental(){
-  [...SUPPLEMENTAL, ...WIMBLEDON_SUPP].forEach(ev=>{
-    const dk = ev.dateKey;
-    if(!mergedByDate[dk]) mergedByDate[dk] = {};
-    if(!mergedByDate[dk]['supplemental']) mergedByDate[dk]['supplemental'] = [];
-    // avoid duplicates on refresh
-    const exists = mergedByDate[dk]['supplemental'].some(
-      e=>e.league===ev.league && e.hour===ev.hour && e.statusDetail===ev.statusDetail
-    );
-    if(!exists) mergedByDate[dk]['supplemental'].push(ev);
-  });
-}
-
-async function initialLoad(){
-  setSyncStatus('loading','Connecting to live data…');
-  buildDaySelector();
-
-  // STEP 1 — Guaranteed baseline: schedule.json from this repo (updated hourly
-  // by GitHub Action). Same-origin, so it loads even when CORS proxies are down.
-  let baseLoaded = false;
-  try{
-    mergedByDate = await loadFromScheduleJson();
-    LEAGUES.forEach(lg=>{ sourceStatus[lg.key] = 'ok'; });
-    injectSupplemental();
-    baseLoaded = true;
-    const ts = scheduleGeneratedAt
-      ? scheduleGeneratedAt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})
-      : '';
-    setSyncStatus('ok', ts ? `Schedule updated ${ts}` : 'Schedule loaded');
-    buildDaySelector();
-    await renderDayView();
-    if(currentView==='week') buildWeekView();
-  }catch(e){ /* fall through to ESPN direct */ }
-
-  // STEP 2 — Best-effort live overlay from ESPN for up-to-the-minute scores.
-  // If it works, its data replaces the baseline per league/day; if not, the
-  // baseline from schedule.json stays on screen.
-  try{
-    const allMerges = await Promise.all(
-      Array.from({length:7},(_,i)=>getDayDate(i)).map(d=>loadEspnWindow(d))
-    );
-    const espnMerged = {};
-    allMerges.forEach(m=>{
-      Object.entries(m).forEach(([dk,leagues])=>{
-        if(!espnMerged[dk]) espnMerged[dk] = {};
-        Object.entries(leagues).forEach(([lk,evs])=>{
-          if(!espnMerged[dk][lk]) espnMerged[dk][lk] = [];
-          evs.forEach(ev=>{
-            if(!espnMerged[dk][lk].some(e2=>e2.home===ev.home && e2.away===ev.away && e2.hour===ev.hour)){
-              espnMerged[dk][lk].push(ev);
-            }
-          });
-        });
-      });
-    });
-
-    const gotAnything = Object.keys(espnMerged).length > 0;
-    if(gotAnything){
-      if(!baseLoaded) mergedByDate = {};
-      Object.entries(espnMerged).forEach(([dk,leagues])=>{
-        if(!mergedByDate[dk]) mergedByDate[dk] = {};
-        Object.entries(leagues).forEach(([lk,evs])=>{
-          mergedByDate[dk][lk] = evs; // live ESPN data wins for that league/day
-        });
-      });
-      injectSupplemental(); // Add events not on ESPN (US Open, NASCAR on Peacock, etc.)
-    }
-
-    const failedCount = Object.values(sourceStatus).filter(s=>s==='err').length;
-    if(failedCount===0){
-      setSyncStatus('ok','Live data connected');
-    } else if(baseLoaded){
-      setSyncStatus('ok','Schedule current · some live scores unavailable');
-    } else if(failedCount < LEAGUES.length){
-      setSyncStatus('err', `${LEAGUES.length-failedCount}/${LEAGUES.length} sources connected`);
-    } else {
-      setSyncStatus('err','Could not reach live data — check Wi-Fi or try Refresh');
-    }
-    buildDaySelector();
-    await renderDayView();
-    if(currentView==='week') buildWeekView();
-  }catch(e){
-    if(!baseLoaded) setSyncStatus('err','Connection error — tap Refresh to retry');
-  }
-}
-
-initialLoad();
-updateClock();
-setInterval(updateClock,1000);
-setInterval(()=>{ manualRefresh(); }, 90000); // refresh live scores every 90s
 </script>
 </body>
 </html>

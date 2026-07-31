@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T03:22:31.319Z",
+  "generated": "2026-07-31T06:48:07.366Z",
   "days": {
     "2026-07-30": [
       {
@@ -147,9 +147,9 @@
         "homeFull": "Athletics",
         "awayFull": "Boston Red Sox",
         "homeScore": 4,
-        "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-31T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -163,8 +163,8 @@
         "awayFull": "San Francisco Giants",
         "homeScore": 1,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Top 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-31T01:40Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"
@@ -176,10 +176,10 @@
         "away": "Liberty",
         "homeFull": "Las Vegas Aces",
         "awayFull": "New York Liberty",
-        "homeScore": 62,
-        "awayScore": 59,
-        "status": "in",
-        "statusDetail": "5:54 - 3rd",
+        "homeScore": 104,
+        "awayScore": 99,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-31T02:00Z",
         "venue": "Michelob ULTRA Arena",
         "broadcast": "Prime Video"
@@ -191,10 +191,10 @@
         "away": "Mariners",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Seattle Mariners",
-        "homeScore": 5,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 4th",
+        "homeScore": 6,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-07-31T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
@@ -1491,7 +1491,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-08-02T23:00Z",
         "venue": "America First Field",
-        "broadcast": null
+        "broadcast": "NWSL+"
       },
       {
         "league": "MLB",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T21:10:21.965Z",
+  "generated": "2026-07-31T23:05:19.363Z",
   "days": {
     "2026-07-30": [
       {
@@ -221,10 +221,10 @@
         "away": "Pirates",
         "homeFull": "Cincinnati Reds",
         "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/31 - 6:10 PM EDT",
+        "homeScore": 2,
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Mid 3rd",
         "isoDate": "2026-07-31T22:10Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"

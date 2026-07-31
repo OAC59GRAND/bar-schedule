@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T17:42:38.990Z",
+  "generated": "2026-07-31T19:39:55.225Z",
   "days": {
     "2026-07-30": [
       {
@@ -207,9 +207,9 @@
         "homeFull": "Chicago Cubs",
         "awayFull": "New York Yankees",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "7/31 - 2:20 PM EDT",
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "Top 6th",
         "isoDate": "2026-07-31T18:20Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"

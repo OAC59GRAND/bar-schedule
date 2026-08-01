@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T20:58:16.845Z",
+  "generated": "2026-08-01T22:03:40.689Z",
   "days": {
     "2026-07-31": [
       {
@@ -341,10 +341,10 @@
         "away": "Liberty",
         "homeFull": "Phoenix Mercury",
         "awayFull": "New York Liberty",
-        "homeScore": 81,
-        "awayScore": 84,
-        "status": "in",
-        "statusDetail": "2:33 - 4th",
+        "homeScore": 92,
+        "awayScore": 94,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T19:00Z",
         "venue": "Mortgage Matchup Center",
         "broadcast": "ABC"
@@ -356,10 +356,10 @@
         "away": "Cardinals",
         "homeFull": "Toronto Blue Jays",
         "awayFull": "St. Louis Cardinals",
-        "homeScore": 2,
+        "homeScore": 5,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T19:07Z",
         "venue": "Rogers Centre",
         "broadcast": "MLB.TV"
@@ -371,10 +371,10 @@
         "away": "Chicago",
         "homeFull": "Racing Louisville FC",
         "awayFull": "Chicago Stars FC",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 2,
+        "awayScore": 1,
         "status": "in",
-        "statusDetail": "HT",
+        "statusDetail": "90'+5'",
         "isoDate": "2026-08-01T20:00Z",
         "venue": "Lynn Family Stadium",
         "broadcast": "CBSSN"
@@ -386,10 +386,10 @@
         "away": "White Sox",
         "homeFull": "Tampa Bay Rays",
         "awayFull": "Chicago White Sox",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "Top 4th",
+        "statusDetail": "End 7th",
         "isoDate": "2026-08-01T20:10Z",
         "venue": "Tropicana Field",
         "broadcast": "MLB.TV"
@@ -401,10 +401,10 @@
         "away": "Marlins",
         "homeFull": "New York Mets",
         "awayFull": "Miami Marlins",
-        "homeScore": 0,
-        "awayScore": 3,
+        "homeScore": 2,
+        "awayScore": 4,
         "status": "in",
-        "statusDetail": "Top 2nd",
+        "statusDetail": "Bot 5th",
         "isoDate": "2026-08-01T20:10Z",
         "venue": "Citi Field",
         "broadcast": "MLB.TV"
@@ -417,9 +417,9 @@
         "homeFull": "Seattle Mariners",
         "awayFull": "Minnesota Twins",
         "homeScore": 3,
-        "awayScore": 0,
+        "awayScore": 2,
         "status": "in",
-        "statusDetail": "End 2nd",
+        "statusDetail": "Bot 6th",
         "isoDate": "2026-08-01T20:10Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"

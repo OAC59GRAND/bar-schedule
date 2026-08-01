@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T03:20:52.195Z",
+  "generated": "2026-08-01T06:33:08.286Z",
   "days": {
     "2026-07-31": [
       {
@@ -208,8 +208,8 @@
         "awayFull": "Kansas City Royals",
         "homeScore": 3,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T00:40Z",
         "venue": "Coors Field",
         "broadcast": "MLB.TV"
@@ -238,8 +238,8 @@
         "awayFull": "Milwaukee Brewers",
         "homeScore": 2,
         "awayScore": 6,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -252,9 +252,9 @@
         "homeFull": "Athletics",
         "awayFull": "Detroit Tigers",
         "homeScore": 1,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 6th",
+        "awayScore": 13,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -266,10 +266,10 @@
         "away": "Giants",
         "homeFull": "San Diego Padres",
         "awayFull": "San Francisco Giants",
-        "homeScore": 6,
+        "homeScore": 7,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Mid 5th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T01:45Z",
         "venue": "Petco Park",
         "broadcast": "Apple TV"
@@ -281,10 +281,10 @@
         "away": "Fever",
         "homeFull": "Portland Fire",
         "awayFull": "Indiana Fever",
-        "homeScore": 52,
-        "awayScore": 65,
-        "status": "in",
-        "statusDetail": "7:21 - 3rd",
+        "homeScore": 98,
+        "awayScore": 112,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T02:00Z",
         "venue": "Moda Center",
         "broadcast": "ION"
@@ -296,10 +296,10 @@
         "away": "Red Sox",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Boston Red Sox",
-        "homeScore": 0,
-        "awayScore": 3,
-        "status": "in",
-        "statusDetail": "Bot 4th",
+        "homeScore": 4,
+        "awayScore": 9,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "ESPN Unlmtd"
@@ -312,9 +312,9 @@
         "homeFull": "Seattle Mariners",
         "awayFull": "Minnesota Twins",
         "homeScore": 3,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Bot 4th",
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-01T02:10Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"

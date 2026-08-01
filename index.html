@@ -115,7 +115,6 @@ const LEAGUES = [
   {espn:'hockey/nhl',                         label:'NHL',              women:false},
   {espn:'golf/pga',                           label:'PGA Tour',         women:false},
   {espn:'golf/lpga',                          label:'LPGA Tour',        women:true},
-  {espn:'soccer/fifa.world',                  label:'World Cup',        women:false},
   {espn:'soccer/usa.nwsl',                    label:'NWSL',             women:true},
   {espn:'soccer/usa.1',                       label:'MLS',              women:false},
   {espn:'soccer/usa.usl.1',                   label:'USL',              women:false},
@@ -331,6 +330,8 @@ function classify(raw, homeFull, awayFull) {
   // USA Network / USA Net = Ch 242 (in package)
   // Note: Bundesliga 2026-27 moved from ESPN+ to USA Network + Fandango (free)
   if (/^usa.?net(work)?$/i.test(raw)) return {app:'USA Network', ch:'242', cls:'dtv', inPkg:true};
+  // HomeTeam Network -- Oakland Ballers (confirmed in package)
+  if (/hometeam/i.test(raw)) return {app:'HomeTeam Network', ch:'', cls:'htn', inPkg:true};
   // Fandango -- free ad-supported streaming, no subscription needed
   if (/fandango/i.test(raw)) return {app:'Fandango (free stream)', ch:'', cls:'pmt', inPkg:true};
 
@@ -338,7 +339,7 @@ function classify(raw, homeFull, awayFull) {
   if (/wnba.?league|league.?pass/i.test(raw)) return {app:'WNBA League Pass', ch:'', cls:'wnba', inPkg:true};
 
   // Not in package
-  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo|hometeam/i.test(raw)) return null;
+  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo/i.test(raw)) return null;
 
   // Streaming
   if (/peacock/i.test(raw))               return {app:'Peacock',       ch:'',    cls:'pkck', inPkg:true};
@@ -468,6 +469,8 @@ function injectSupp(cache, key) {
 
 
 
+
+
 const PROXIES = [
   u => u,
   u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
@@ -566,7 +569,7 @@ function buildFeat(evs) {
       roots?roots.away+' @ '+roots.home:'No game today',
       roots?roots.timeStr+' &middot; '+roots.detail:'Check oaklandrootssc.com', fcPill(roots)),
     featCard('ballers','&#x26BE;','Oakland Ballers',
-      'HomeTeam Network','All 96 games on HomeTeam Network streaming',
+      'HomeTeam Network','All 96 Ballers games on HomeTeam Network',
       '<span class="pill p-htn">HomeTeam Network</span>'),
     featCard('bayfc','&#x26BD;','Bay FC <span class="w-badge">W</span>',
       bay?bay.away+' @ '+bay.home:'No game today',
@@ -653,6 +656,8 @@ async function init(){
   setInterval(()=>{Object.keys(cache).forEach(k=>delete cache[k]);loadAndRender();},300000);
 }
 init();
+
+
 
 
 

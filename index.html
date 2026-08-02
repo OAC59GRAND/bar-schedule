@@ -41,6 +41,7 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 .fc.soul{border-top-color:#38bdf8}
 .fc.f1{border-top-color:#e10600}
 .fc.nascar{border-top-color:#ffd659}
+.fc.sharks{border-top-color:#008577}
 .fc-eye{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
 .fc-title{font-size:16px;font-weight:900;color:#f0ece3;line-height:1.2;margin-bottom:3px}
 .fc-sub{font-size:11px;color:#5a5248;line-height:1.4;margin-bottom:6px}
@@ -71,6 +72,7 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 .acc-soul{border-left-color:#38bdf8}
 .acc-f1{border-left-color:#e10600}
 .acc-nascar{border-left-color:#ffd659}
+.acc-sharks{border-left-color:#008577}
 .g-time{font-size:13px;font-weight:800;color:#5a5248;min-width:56px;text-align:right;flex-shrink:0;padding-top:2px}
 .g-info{flex:1}
 .g-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
@@ -131,7 +133,8 @@ const LEAGUES = [
   {espn:'american-football/college-football', label:'College Football', women:false},
   {espn:'soccer/ita.1',                       label:'Serie A',         women:false},
   {espn:'soccer/ger.1',                       label:'Bundesliga',      women:false},
-  {espn:'soccer/esp.1',                       label:'La Liga',         women:false}, // 2026-27: USA Network Ch 242 + Fandango (free). Spanish: Telemundo Ch 406 / Peacock
+  {espn:'soccer/esp.1',                       label:'La Liga',         women:false},
+  {espn:'soccer/fra.1',                       label:'Ligue 1',         women:false}, // 2026-27: USA Network Ch 242 + Fandango (free). Spanish: Telemundo Ch 406 / Peacock
 ];
 
 // DirecTV satellite channel numbers -- Oakland/Bay Area market (effective 2026)
@@ -367,7 +370,7 @@ function classify(raw, homeFull, awayFull) {
   if (/wnba.?league|league.?pass/i.test(raw)) return {app:'WNBA League Pass', ch:'', cls:'wnba', inPkg:true};
 
   // Not in package
-  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo|hometeam/i.test(raw)) return null;
+  if (/tennis.?ch|\bflo\b|willow|victory\+|fubo|nwsl\+/i.test(raw)) return null;
 
   // Streaming
   if (/peacock/i.test(raw))               return {app:'Peacock',       ch:'',    cls:'pkck', inPkg:true};
@@ -386,6 +389,7 @@ function classify(raw, homeFull, awayFull) {
   if (/^espn2\b/i.test(raw))          return {app:'ESPN2',            ch:'209', cls:'espn', inPkg:true};
   if (/^espn\b/i.test(raw))           return {app:'ESPN',             ch:'206', cls:'espn', inPkg:true};
   if (/^nbc\b/i.test(raw))            return {app:'NBC',              ch:'11',  cls:'dtv',  inPkg:true};
+  if (/^ion$/i.test(raw))              return {app:'ION',              ch:'305', cls:'dtv',  inPkg:true};
   if (/^cbs\b/i.test(raw))            return {app:'CBS',              ch:'5',   cls:'dtv',  inPkg:true};
   if (/^abc\b/i.test(raw))            return {app:'ABC',              ch:'7',   cls:'dtv',  inPkg:true};
   if (/^tnt\b/i.test(raw))            return {app:'TNT',              ch:'245', cls:'dtv',  inPkg:true};
@@ -395,7 +399,7 @@ function classify(raw, homeFull, awayFull) {
   if (/nhl.?net/i.test(raw))          return {app:'NHL Network',      ch:'215', cls:'dtv',  inPkg:true};
   if (/nba.?tv/i.test(raw))           return {app:'NBA TV',           ch:'216', cls:'dtv',  inPkg:true};
   if (/golf.?ch/i.test(raw))          return {app:'Golf Channel',     ch:'218', cls:'dtv',  inPkg:true};
-  if (/cbs.?sports/i.test(raw))       return {app:'CBS Sports Net',   ch:'221', cls:'dtv',  inPkg:true};
+  if (/cbssn|cbs.?sports/i.test(raw)) return {app:'CBS Sports Net',   ch:'221', cls:'dtv',  inPkg:true};
   if (/^tele(mundo)?$/i.test(raw))     return {app:'Telemundo',          ch:'406', cls:'dtv',  inPkg:true};
   if (/universo/i.test(raw))           return {app:'UNIVERSO',            ch:'410', cls:'dtv',  inPkg:true};
   if (/unimas/i.test(raw))             return {app:'UniMas',              ch:'408', cls:'dtv',  inPkg:true};
@@ -411,8 +415,12 @@ function classify(raw, homeFull, awayFull) {
 
 // Team detection
 const isGiants    = e => (e.homeFull+e.awayFull).includes('Giants');
+const isSharks    = e => (e.homeFull+e.awayFull).includes('Sharks');
+const isAthletics = e => e.homeFull === 'Athletics' || e.awayFull === 'Athletics' || e.homeFull === 'Oakland Athletics' || e.awayFull === 'Oakland Athletics';
 const isF1        = e => e.league === 'Formula 1';
 const isNascar    = e => e.league === 'NASCAR';
+const isCal       = e => (e.homeFull+e.awayFull).includes('California') || (e.homeFull+e.awayFull).includes('Cal Bears');
+const isStanford  = e => (e.homeFull+e.awayFull).includes('Stanford');
 const isFirebells = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Firebells');
 const isSoul      = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Soul');
 const isValk     = e => (e.homeFull+e.awayFull).includes('Valkyries');
@@ -426,6 +434,7 @@ function getAccentClass(ev) {
   if (isGiants(ev))   return 'acc-red';
   if (isValk(ev))     return 'acc-blue';
   if (isRoots(ev))      return 'acc-green';
+  if (isSharks(ev))     return 'acc-sharks';  // Teal: San Jose Sharks
   if (isF1(ev))         return 'acc-f1';
   if (isNascar(ev))     return 'acc-nascar';
   if (isFirebells(ev))  return 'acc-fire';
@@ -467,6 +476,35 @@ function processEv(raw) {
   const dt = new Date(raw.isoDate);
   const bc = classify(raw.broadcast, raw.homeFull || raw.home, raw.awayFull || raw.away);
   if (!bc) return null;
+
+  // FILTERING RULES
+  const hf = raw.homeFull || raw.home || '';
+  const af = raw.awayFull || raw.away || '';
+  const lg = raw.league || '';
+  const bcast = raw.broadcast || '';
+
+  // Athletics excluded
+  if (hf === 'Athletics' || af === 'Athletics') return null;
+
+  // USL: only show Oakland Roots games
+  if (lg === 'USL' && !hf.includes('Roots') && !af.includes('Roots')) return null;
+
+  // WNBA: Valkyries always shown; all others only on national broadcast
+  const WNBA_NAT = /espn|espn2|abc|nbc|cbs|cbssn|tnt|tbs|trutv|usa.?net|prime.?video|amazon|ion|nba.?tv|peacock/i;
+  if (lg === 'WNBA' && !hf.includes('Valkyries') && !af.includes('Valkyries')) {
+    if (!bcast || !WNBA_NAT.test(bcast)) return null;
+  }
+
+  // College Football: Cal/Stanford always; others only national TV
+  if (lg === 'College Football') {
+    const isBayArea = hf.includes('California') || af.includes('California') ||
+                      hf.includes('Stanford') || af.includes('Stanford');
+    if (!isBayArea) {
+      const CFB_NAT = /^(abc|fox|cbs|nbc|espn|espn2)$/i;
+      if (!bcast || !CFB_NAT.test(bcast)) return null;
+    }
+  }
+
   return Object.assign({}, raw, {
     timeStr:  dt.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'}),
     hour:     dt.getHours(),
@@ -496,6 +534,7 @@ function injectSupp(cache, key) {
   }
   cache[key].sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
 }
+
 
 
 
@@ -689,6 +728,7 @@ async function init(){
   setInterval(()=>{Object.keys(cache).forEach(k=>delete cache[k]);loadAndRender();},300000);
 }
 init();
+
 
 
 

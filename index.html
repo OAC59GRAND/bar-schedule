@@ -4,106 +4,135 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>OAC Sports Schedule</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow-x:hidden}
 body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;color:#f0ece3;min-height:100vh}
-#hdr{background:#0f0f0f;border-bottom:3px solid #c9a84c;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.hdr-left{display:flex;align-items:center;gap:14px}
-.mono{width:48px;height:48px;border:2px solid #c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#c9a84c;flex-shrink:0}
-.wm{font-size:15px;font-weight:800;letter-spacing:3px;color:#f0ece3;text-transform:uppercase}
-.wm-sub{font-size:10px;font-weight:600;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-top:2px}
-.hdr-right{text-align:right}
-#clock{font-size:22px;font-weight:800;color:#f0ece3;letter-spacing:1px}
-#status{font-size:10px;color:#5a5248;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-#days{display:flex;background:#111;border-bottom:1px solid #222;overflow-x:auto;scrollbar-width:none}
+
+/* HEADER */
+#hdr{background:#0f0f0f;border-bottom:3px solid #c9a84c;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0}
+.hdr-l{display:flex;align-items:center;gap:12px}
+.mono{width:44px;height:44px;border:2px solid #c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#c9a84c;flex-shrink:0}
+.wm{font-size:14px;font-weight:800;letter-spacing:3px;color:#f0ece3;text-transform:uppercase}
+.wm-sub{font-size:9px;font-weight:600;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-top:1px}
+.hdr-r{text-align:right}
+#clock{font-size:20px;font-weight:800;color:#f0ece3;letter-spacing:1px;font-variant-numeric:tabular-nums}
+#status-txt{font-size:9px;color:#5a5248;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+
+/* DAY SELECTOR */
+#days{display:flex;background:#111;border-bottom:1px solid #222;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
 #days::-webkit-scrollbar{display:none}
-.day-btn{flex:1;min-width:80px;padding:10px 4px 8px;text-align:center;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all .15s}
+.day-btn{flex:1;min-width:78px;padding:9px 4px 7px;text-align:center;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all .15s;font-family:inherit}
 .day-btn:hover{background:#1a1a1a}
 .day-btn.on{border-bottom-color:#c9a84c;background:#161410}
 .day-name{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
 .day-btn.on .day-name{color:#a07830}
-.day-num{font-size:24px;font-weight:900;color:#f0ece3;line-height:1}
+.day-num{font-size:22px;font-weight:900;color:#f0ece3;line-height:1}
 .day-btn.on .day-num{color:#c9a84c}
 .day-tag{font-size:8px;color:#c9a84c;margin-top:2px;height:10px}
-#tabs{display:flex;background:#0f0f0f;border-bottom:1px solid #222}
-.tab{flex:1;padding:10px 8px;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#5a5248;background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+
+/* TABS */
+#tabs{display:flex;background:#0f0f0f;border-bottom:1px solid #222;flex-shrink:0}
+.tab{flex:1;padding:9px 8px;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#5a5248;background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
 .tab:hover{color:#a07830;background:#141414}
 .tab.on{color:#c9a84c;border-bottom-color:#c9a84c}
-#feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;border-bottom:1px solid #222}
-.fc{padding:12px 14px;background:#111;border-top:3px solid #333;transition:background .12s}
+
+/* FEATURED CARDS */
+#feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;border-bottom:1px solid #222;flex-shrink:0}
+.fc{padding:10px 13px;background:#111;border-top:3px solid #333;transition:background .12s;cursor:default}
 .fc:hover{background:#161616}
-.fc.giants{border-top-color:#EF3E42}.fc.valkyries{border-top-color:#0ea5e9}
-.fc.roots{border-top-color:#2d7a3a}.fc.ballers{border-top-color:#006341}
-.fc.bayfc{border-top-color:#1d428a}.fc.warriors{border-top-color:#1d62d6}
-.fc.firebells{border-top-color:#ff4d00}
-.fc.soul{border-top-color:#38bdf8}
-.fc.f1{border-top-color:#e10600}
-.fc.nascar{border-top-color:#ffd659}
-.fc.sharks{border-top-color:#008577}
-.fc-eye{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
-.fc-title{font-size:16px;font-weight:900;color:#f0ece3;line-height:1.2;margin-bottom:3px}
-.fc-sub{font-size:11px;color:#5a5248;line-height:1.4;margin-bottom:6px}
-.pill{font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;display:inline-block;padding:2px 7px;border-radius:2px;margin-right:3px;margin-top:2px}
+.fc.giants   {border-top-color:#EF3E42}
+.fc.valkyries{border-top-color:#0ea5e9}
+.fc.roots    {border-top-color:#2d7a3a}
+.fc.ballers  {border-top-color:#006341}
+.fc.bayfc    {border-top-color:#1d428a}
+.fc.earthquakes{border-top-color:#003087}
+.fc-eye{font-size:8px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:3px}
+.fc-title{font-size:14px;font-weight:900;color:#f0ece3;line-height:1.2;margin-bottom:2px}
+.fc-sub{font-size:10px;color:#5a5248;line-height:1.3;margin-bottom:5px}
+
+/* PILLS */
+.pill{font-size:8px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;display:inline-block;padding:2px 6px;border-radius:2px;margin-right:3px;margin-top:2px}
 .p-dtv{background:#2a1f00;color:#c9a84c;border:1px solid #3d2e00}
 .p-espn{background:#2e0a0a;color:#f58a8a;border:1px solid #481212}
-.p-epn{background:#200a2e;color:#d4a0f7;border:1px solid #380a50}
+.p-epn{background:#1a0a2e;color:#c4a0f7;border:1px solid #300a50}
 .p-pkck{background:#1a0a2e;color:#a89cf7;border:1px solid #2a1860}
 .p-pmt{background:#0a1e2e;color:#5bb8f5;border:1px solid #123048}
 .p-amz{background:#002426;color:#5edae4;border:1px solid #003840}
 .p-apl{background:#1a1a1a;color:#a8a49f;border:1px solid #2e2e2e}
-.p-wnba{background:#2a1a00;color:#f1a900;border:1px solid #3d2a00}
 .p-htn{background:#001a10;color:#00e676;border:1px solid #003020}
-.w-badge{font-size:8px;font-weight:900;color:#b07afa;background:#1e0a30;border:1px solid #3d1860;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;text-transform:uppercase}
-.live-badge{font-size:8px;font-weight:900;color:#ef4444;background:#200a0a;border:1px solid #3d1212;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;text-transform:uppercase;animation:pulse 1.5s infinite}
+.p-ppv{background:#1a0a00;color:#ff9500;border:1px solid #3d2200}
+.p-wnba{background:#2a1a00;color:#f1a900;border:1px solid #3d2a00}
+
+/* BADGES */
+.w-badge{font-size:7px;font-weight:900;color:#b07afa;background:#1e0a30;border:1px solid #3d1860;padding:1px 4px;border-radius:2px;margin-left:3px;vertical-align:middle;text-transform:uppercase}
+.live-badge{font-size:7px;font-weight:900;color:#ef4444;background:#200a0a;border:1px solid #3d1212;padding:1px 4px;border-radius:2px;margin-left:3px;vertical-align:middle;text-transform:uppercase;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-#sched{padding:14px 16px;min-height:200px}
-.sched-hd{font-size:9px;font-weight:800;letter-spacing:4px;color:#5a5248;text-transform:uppercase;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:10px}
+
+/* SCHEDULE */
+#sched{padding:12px 16px;min-height:200px;overflow-y:auto}
+.sched-hd{font-size:8px;font-weight:800;letter-spacing:4px;color:#5a5248;text-transform:uppercase;padding-bottom:7px;margin-bottom:9px;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:10px}
 .sched-date{font-size:9px;font-weight:700;letter-spacing:2px;color:#c9a84c}
 .games{display:flex;flex-direction:column;gap:2px}
-.game{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;background:#111;border-left:3px solid #222;border-radius:2px;transition:background .1s}
+.game{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;background:#111;border-left:3px solid #222;border-radius:2px;transition:background .1s}
 .game:hover{background:#161616}
-.acc-gold{border-left-color:#c9a84c}.acc-red{border-left-color:#EF3E42}
-.acc-blue{border-left-color:#0ea5e9}.acc-green{border-left-color:#2d7a3a}
-.acc-dkgreen{border-left-color:#006341}.acc-navy{border-left-color:#1d428a}
-.acc-purple{border-left-color:#8b4fcf}
-.acc-fire{border-left-color:#ff4d00}
-.acc-soul{border-left-color:#38bdf8}
-.acc-f1{border-left-color:#e10600}
-.acc-nascar{border-left-color:#ffd659}
-.acc-sharks{border-left-color:#008577}
-.g-time{font-size:13px;font-weight:800;color:#5a5248;min-width:56px;text-align:right;flex-shrink:0;padding-top:2px}
-.g-info{flex:1}
-.g-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
-.g-title{font-size:18px;font-weight:900;color:#f0ece3;line-height:1.2}
-.g-detail{font-size:10px;color:#5a5248;margin-top:2px}
-.g-br{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px}
-.g-ch{font-size:10px;font-weight:700;color:#a07830;margin-left:4px}
-.empty{color:#5a5248;text-align:center;padding:40px 0;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.acc-gold   {border-left-color:#c9a84c}
+.acc-red    {border-left-color:#EF3E42}
+.acc-blue   {border-left-color:#0ea5e9}
+.acc-green  {border-left-color:#2d7a3a}
+.acc-dkgreen{border-left-color:#006341}
+.acc-navy   {border-left-color:#003087}
+.acc-sharks {border-left-color:#008577}
+.acc-purple {border-left-color:#8b4fcf}
+.acc-fire   {border-left-color:#ff4d00}
+.acc-soul   {border-left-color:#38bdf8}
+.acc-f1     {border-left-color:#e10600}
+.acc-nascar {border-left-color:#ffd659}
+.acc-quakes {border-left-color:#003087}
+.g-time{font-size:12px;font-weight:800;color:#5a5248;min-width:54px;text-align:right;flex-shrink:0;padding-top:2px;letter-spacing:.3px}
+.g-info{flex:1;min-width:0}
+.g-league{font-size:8px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
+.g-title{font-size:17px;font-weight:900;color:#f0ece3;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-detail{font-size:9px;color:#5a5248;margin-top:2px}
+.g-br{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.g-ch{font-size:9px;font-weight:700;color:#a07830;margin-left:3px}
+
+/* SCORES */
 .score-grid{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}
-.score-card{background:#0d1929;border:1px solid #1a3050;border-radius:4px;padding:10px 14px;min-width:180px}
+.score-card{background:#0d1929;border:1px solid #1a3050;border-radius:4px;padding:9px 12px;min-width:170px;max-width:220px}
 .score-card.live{border-color:#c9a84c}
-.sc-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
-.sc-match{font-size:15px;font-weight:900;color:#f0ece3}
-.sc-detail{font-size:10px;color:#5a5248;margin-top:2px}
-.sec-lbl{font-size:9px;font-weight:800;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid #1e1e1e}
-@media(max-width:600px){#feat{grid-template-columns:1fr 1fr}.g-title{font-size:16px}}
+.sc-league{font-size:8px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:3px}
+.sc-match{font-size:14px;font-weight:900;color:#f0ece3}
+.sc-detail{font-size:9px;color:#5a5248;margin-top:2px}
+.sec-lbl{font-size:8px;font-weight:800;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin:10px 0 5px;padding-bottom:3px;border-bottom:1px solid #1e1e1e}
+
+/* EMPTY */
+.empty{color:#5a5248;text-align:center;padding:40px 0;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+
+@media(max-width:600px){
+  #feat{grid-template-columns:1fr 1fr}
+  .g-title{font-size:15px}
+  .hdr-r{display:none}
+}
+
 </style>
 </head>
 <body>
 <div id="hdr">
-  <div class="hdr-left">
+  <div class="hdr-l">
     <div class="mono">OAC</div>
     <div><div class="wm">Oakland Athletic Club</div><div class="wm-sub">59 Grand Ave &middot; TV Schedule</div></div>
   </div>
-  <div class="hdr-right"><div id="clock"></div><div id="status">Loading&hellip;</div></div>
+  <div class="hdr-r"><div id="clock"></div><div id="status-txt">Loading&hellip;</div></div>
 </div>
 <div id="days"></div>
 <div id="tabs">
   <button class="tab on" onclick="setTab('all',this)">All Day</button>
   <button class="tab" onclick="setTab('women',this)">&#9792; Women's</button>
-  <button class="tab" onclick="setTab('world',this)">World Cup</button>
   <button class="tab" onclick="setTab('scores',this)">Scores</button>
 </div>
 <div id="feat"></div>
@@ -335,6 +364,36 @@ const SUPP = [
   {date:'2026-10-25',league:'NASCAR',women:false,home:'Talladega',away:'Playoffs Rd 3',homeFull:'',awayFull:'',detail:'Talladega Superspeedway - PLAYOFFS Round of 8 - 1:30 PM PT',isoDate:'2026-10-25T20:30:00Z',venue:'Talladega Superspeedway, Alabama',broadcast:'NBC'},
   {date:'2026-11-01',league:'NASCAR',women:false,home:'Martinsville',away:'Playoffs Final 4',homeFull:'',awayFull:'',detail:'Xfinity 500 - Martinsville Speedway - PLAYOFFS Round of 4 - 11:00 AM PT',isoDate:'2026-11-01T18:00:00Z',venue:'Martinsville Speedway, Virginia',broadcast:'NBC'},
   {date:'2026-11-08',league:'NASCAR',women:false,home:'Homestead-Miami',away:'Championship',homeFull:'',awayFull:'',detail:'NASCAR Cup Series Championship - Homestead-Miami Speedway - 11:00 AM PT',isoDate:'2026-11-08T19:00:00Z',venue:'Homestead-Miami Speedway, Florida',broadcast:'NBC'},
+
+  // UFC 2026 -- remaining events (source: UFC.com, verified Jul 28 2026)
+  // DirecTV PPV for commercial bar exhibition. Main card ~7 PM PT for US events.
+  {date:'2026-08-08',league:'UFC',women:false,home:'UFC Fight Night',away:'Gamrot vs Salkilld',
+   homeFull:'',awayFull:'',detail:'UFC Fight Night 284 - Main Card 7:00 PM PT',
+   isoDate:'2026-08-09T02:00:00Z',venue:'TBD',broadcast:'UFC'},
+  {date:'2026-08-15',league:'UFC',women:false,home:'UFC 330',away:'Makhachev vs Machado Garry',
+   homeFull:'',awayFull:'',detail:'UFC 330 PPV - Xfinity Mobile Arena, Philadelphia - Main Card 7:00 PM PT',
+   isoDate:'2026-08-16T02:00:00Z',venue:'Xfinity Mobile Arena, Philadelphia PA',broadcast:'UFC'},
+  {date:'2026-08-22',league:'UFC',women:false,home:'UFC Fight Night',away:'Hernandez vs Rodrigues',
+   homeFull:'',awayFull:'',detail:'UFC Fight Night 285 - Main Card 7:00 PM PT',
+   isoDate:'2026-08-23T02:00:00Z',venue:'TBD',broadcast:'UFC'},
+  {date:'2026-08-29',league:'UFC',women:false,home:'UFC Fight Night',away:'Nurmagomedov vs Song',
+   homeFull:'',awayFull:'',detail:'UFC Fight Night - Oriental Sports Center, Shanghai - Main Card 3:00 AM PT',
+   isoDate:'2026-08-29T10:00:00Z',venue:'Oriental Sports Center, Shanghai, China',broadcast:'UFC'},
+  {date:'2026-09-05',league:'UFC',women:false,home:'UFC Fight Night',away:'Hooker vs Parnasse',
+   homeFull:'',awayFull:'',detail:'UFC Fight Night - Paris, France - Main Card 12:00 PM PT',
+   isoDate:'2026-09-05T19:00:00Z',venue:'Paris, France',broadcast:'UFC'},
+  {date:'2026-09-12',league:'UFC',women:false,home:'Noche UFC',away:'TBD',
+   homeFull:'',awayFull:'',detail:'Noche UFC - Main Card 7:00 PM PT',
+   isoDate:'2026-09-13T02:00:00Z',venue:'TBD',broadcast:'UFC'},
+  {date:'2026-09-19',league:'UFC',women:false,home:'UFC 331',away:'TBD',
+   homeFull:'',awayFull:'',detail:'UFC 331 PPV - Crypto.com Arena, Los Angeles - Main Card 7:00 PM PT',
+   isoDate:'2026-09-20T02:00:00Z',venue:'Crypto.com Arena, Los Angeles CA',broadcast:'UFC'},
+  {date:'2026-10-17',league:'UFC',women:false,home:'UFC Fight Night',away:'Buckley vs Malott',
+   homeFull:'',awayFull:'',detail:'UFC Fight Night - Edmonton, Canada - Main Card 5:00 PM PT',
+   isoDate:'2026-10-18T00:00:00Z',venue:'Edmonton, Alberta, Canada',broadcast:'UFC'},
+  {date:'2026-10-24',league:'UFC',women:false,home:'UFC 333',away:'Volkanovski vs Evloev',
+   homeFull:'',awayFull:'',detail:'UFC 333 PPV - Featherweight Championship - Etihad Arena, Abu Dhabi - Main Card 11:00 AM PT',
+   isoDate:'2026-10-24T18:00:00Z',venue:'Etihad Arena, Yas Island, Abu Dhabi',broadcast:'UFC'},
 ];
 
 // Broadcast classification -- returns {app, ch, cls, inPkg} or null if not in package
@@ -363,6 +422,8 @@ function classify(raw, homeFull, awayFull) {
   // USA Network / USA Net = Ch 242 (in package)
   // Note: Bundesliga 2026-27 moved from ESPN+ to USA Network + Fandango (free)
   if (/^usa.?net(work)?$/i.test(raw)) return {app:'USA Network', ch:'242', cls:'dtv', inPkg:true};
+  // UFC -- DirecTV PPV for commercial bar exhibition (residential Paramount+ doesn't cover commercial rights)
+  if (/^ufc$|ultimate.?fighting/i.test(raw)) return {app:'DirecTV PPV', ch:'', cls:'ppv', inPkg:true};
   // Fandango -- free ad-supported streaming, no subscription needed
   if (/fandango/i.test(raw)) return {app:'Fandango (free stream)', ch:'', cls:'pmt', inPkg:true};
 
@@ -428,13 +489,15 @@ const isWarriors = e => (e.homeFull+e.awayFull).includes('Warriors');
 const isRoots    = e => (e.homeFull+e.awayFull).includes('Roots');
 const isBallers  = e => (e.homeFull+e.awayFull).includes('Ballers');
 const isBayFC    = e => (e.homeFull+e.awayFull).includes('Bay FC') || (e.homeFull+e.awayFull).includes('Bay F.C.');
+const isQuakes   = e => (e.homeFull+e.awayFull).includes('San Jose Earthquakes') || (e.homeFull+e.awayFull).includes('Earthquakes');
 
 function getAccentClass(ev) {
   if (ev.league === 'World Cup' || ev.league === 'Wimbledon') return 'acc-gold';
   if (isGiants(ev))   return 'acc-red';
   if (isValk(ev))     return 'acc-blue';
   if (isRoots(ev))      return 'acc-green';
-  if (isSharks(ev))     return 'acc-sharks';  // Teal: San Jose Sharks
+  if (isSharks(ev))     return 'acc-sharks';
+  if (isQuakes(ev))     return 'acc-quakes';
   if (isF1(ev))         return 'acc-f1';
   if (isNascar(ev))     return 'acc-nascar';
   if (isFirebells(ev))  return 'acc-fire';
@@ -536,19 +599,14 @@ function injectSupp(cache, key) {
 }
 
 
-
-
-
-
-
-
-
+// CORS PROXY FALLBACKS -- tries direct, then two free proxies
 const PROXIES = [
   u => u,
   u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
   u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
 ];
 let px = 0;
+
 async function espnFetch(path, dateStr) {
   const base = 'https://site.api.espn.com/apis/site/v2/sports/' + path + '/scoreboard?dates=' + dateStr;
   for (let i = px; i < PROXIES.length; i++) {
@@ -563,6 +621,7 @@ async function espnFetch(path, dateStr) {
   throw new Error('all proxies failed');
 }
 
+// CACHE
 const cache = {};
 
 async function loadDay(d) {
@@ -570,6 +629,7 @@ async function loadDay(d) {
   if (cache[key]) return cache[key];
   const dates = [-1,0,1].map(i => { const x=new Date(d); x.setDate(x.getDate()+i); return ymd(x); });
   cache[key] = [];
+
   await Promise.all(LEAGUES.map(async lg => {
     for (const dateStr of dates) {
       try {
@@ -609,131 +669,183 @@ async function loadDay(d) {
       } catch(e) {}
     }
   }));
+
   injectSupp(cache, key);
   return cache[key];
 }
 
-function featCard(cls, icon, label, title, sub, pills) {
-  return '<div class="fc ' + cls + '"><div class="fc-eye">' + icon + ' ' + label + '</div>' +
-    '<div class="fc-title">' + title + '</div><div class="fc-sub">' + sub + '</div>' +
-    '<div>' + pills + '</div></div>';
+// UI
+function pillCls(cls) {
+  const m = {dtv:'p-dtv',espn:'p-espn',epn:'p-epn',pkck:'p-pkck',pmt:'p-pmt',
+             amz:'p-amz',apl:'p-apl',htn:'p-htn',ppv:'p-ppv',wnba:'p-wnba'};
+  return m[cls] || 'p-dtv';
 }
+
 function fcPill(ev) {
   if (!ev) return '';
   const ch = ev.ch ? ' Ch ' + ev.ch : '';
   return '<span class="pill ' + pillCls(ev.cls) + '">' + ev.app + ch + '</span>';
 }
+
+function featCard(cls, icon, label, title, sub, pills) {
+  return '<div class="fc ' + cls + '">' +
+    '<div class="fc-eye">' + icon + ' ' + label + '</div>' +
+    '<div class="fc-title">' + title + '</div>' +
+    '<div class="fc-sub">' + sub + '</div>' +
+    '<div>' + pills + '</div></div>';
+}
+
 function buildFeat(evs) {
-  const wcs   = evs.filter(e => e.league==='World Cup'||e.league==='Wimbledon');
   const sf    = evs.find(isGiants);
   const gsv   = evs.find(isValk);
   const roots = evs.find(isRoots);
-  const gsw   = evs.find(isWarriors);
   const bay   = evs.find(isBayFC);
+  const quakes= evs.find(isQuakes);
+  const bal   = evs.find(isBallers);
   return [
     featCard('giants','&#x26BE;','SF Giants',
-      sf?sf.away+' @ '+sf.home:'No game today',
-      sf?sf.timeStr+' &middot; '+sf.detail:'Check back later', fcPill(sf)),
+      sf ? sf.away+' @ '+sf.home : 'No game today',
+      sf ? sf.timeStr+' &middot; '+sf.detail : 'Check back later',
+      fcPill(sf)),
     featCard('valkyries','&#x1F3C0;','GS Valkyries <span class="w-badge">W</span>',
-      gsv?gsv.away+' @ '+gsv.home:'No game today',
-      gsv?gsv.timeStr+' &middot; '+gsv.detail:'Check back later', fcPill(gsv)),
+      gsv ? gsv.away+' @ '+gsv.home : 'No game today',
+      gsv ? gsv.timeStr+' &middot; '+gsv.detail : 'Check back later',
+      fcPill(gsv)),
     featCard('roots','&#x26BD;','Oakland Roots SC',
-      roots?roots.away+' @ '+roots.home:'No game today',
-      roots?roots.timeStr+' &middot; '+roots.detail:'Check oaklandrootssc.com', fcPill(roots)),
+      roots ? roots.away+' @ '+roots.home : 'No game today',
+      roots ? roots.timeStr+' &middot; '+roots.detail : 'Check oaklandrootssc.com',
+      fcPill(roots)),
     featCard('ballers','&#x26BE;','Oakland Ballers',
-      'HomeTeam Network','All 96 Ballers games on HomeTeam Network',
+      'HomeTeam Network',
+      'All 96 games on HomeTeam Network (Roku)',
       '<span class="pill p-htn">HomeTeam Network</span>'),
     featCard('bayfc','&#x26BD;','Bay FC <span class="w-badge">W</span>',
-      bay?bay.away+' @ '+bay.home:'No game today',
-      bay?bay.timeStr+' &middot; '+bay.detail:'Check bayfc.com', fcPill(bay)),
-    featCard('warriors','&#x1F3C0;','GS Warriors',
-      gsw?gsw.away+' @ '+gsw.home:'Off-Season',
-      gsw?gsw.timeStr+' &middot; '+gsw.detail:'NBA off-season',
-      gsw?fcPill(gsw):'<span class="pill p-espn">ESPN / NBA TV</span>'),
+      bay ? bay.away+' @ '+bay.home : 'No game today',
+      bay ? bay.timeStr+' &middot; '+bay.detail : 'Check bayfc.com',
+      fcPill(bay)),
+    featCard('earthquakes','&#x26BD;','SJ Earthquakes',
+      quakes ? quakes.away+' @ '+quakes.home : 'No game today',
+      quakes ? quakes.timeStr+' &middot; '+quakes.detail : 'Apple TV - MLS',
+      fcPill(quakes)),
   ].join('');
 }
+
 function buildRow(ev) {
   const wb   = (ev.women||isValk(ev)||isBayFC(ev)) ? '<span class="w-badge">W</span>' : '';
   const live = ev.status==='in' ? '<span class="live-badge">Live</span>' : '';
   const ch   = ev.ch ? '<span class="g-ch">Ch ' + ev.ch + '</span>' : '';
-  const sp   = ev.league==='World Cup'?'<span class="pill p-dtv">ES Telemundo Ch 48</span>':'';
   return '<div class="game ' + getAccentClass(ev) + '">' +
     '<div class="g-time">' + ev.timeStr + '</div>' +
     '<div class="g-info">' +
     '<div class="g-league">' + ev.league + wb + live + '</div>' +
     '<div class="g-title">' + matchup(ev) + '</div>' +
-    '<div class="g-detail">' + ev.detail + (ev.venue?' &middot; '+ev.venue:'') + '</div>' +
-    '<div class="g-br"><span class="pill ' + pillCls(ev.cls) + '">' + ev.app + ch + '</span>' + sp + '</div>' +
+    '<div class="g-detail">' + ev.detail + (ev.venue ? ' &middot; '+ev.venue : '') + '</div>' +
+    '<div class="g-br"><span class="pill ' + pillCls(ev.cls) + '">' + ev.app + ch + '</span></div>' +
     '</div></div>';
 }
+
 function buildScores(evs) {
-  const live=evs.filter(e=>e.status==='in'),fin=evs.filter(e=>e.status==='post'),pre=evs.filter(e=>e.status==='pre');
-  function cards(arr){ return arr.map(g=>'<div class="score-card'+(g.status==='in'?' live':'')+'"><div class="sc-league">'+g.league+(g.status==='in'?' &middot; LIVE':g.status==='post'?' &middot; Final':'')+'</div><div class="sc-match">'+matchup(g)+'</div><div class="sc-detail">'+g.detail+'</div></div>').join(''); }
-  let h='';
-  if(live.length)  h+='<div class="sec-lbl">Live Now</div><div class="score-grid">'+cards(live)+'</div>';
-  if(fin.length)   h+='<div class="sec-lbl">Final</div><div class="score-grid">'+cards(fin)+'</div>';
-  if(pre.length)   h+='<div class="sec-lbl">Upcoming</div><div class="score-grid">'+cards(pre)+'</div>';
-  return h||'<div class="empty">No scores yet.</div>';
+  const live  = evs.filter(e => e.status==='in');
+  const final = evs.filter(e => e.status==='post');
+  const pre   = evs.filter(e => e.status==='pre');
+  function cards(arr) {
+    return arr.map(g =>
+      '<div class="score-card' + (g.status==='in'?' live':'') + '">' +
+      '<div class="sc-league">' + g.league + (g.status==='in'?' &middot; LIVE':g.status==='post'?' &middot; Final':'') + '</div>' +
+      '<div class="sc-match">' + matchup(g) + '</div>' +
+      '<div class="sc-detail">' + g.detail + '</div></div>'
+    ).join('');
+  }
+  let h = '';
+  if (live.length)  h += '<div class="sec-lbl">Live Now</div><div class="score-grid">' + cards(live) + '</div>';
+  if (final.length) h += '<div class="sec-lbl">Final</div><div class="score-grid">' + cards(final) + '</div>';
+  if (pre.length)   h += '<div class="sec-lbl">Upcoming</div><div class="score-grid">' + cards(pre) + '</div>';
+  return h || '<div class="empty">No scores yet.</div>';
 }
 
-let curDay=0, curTab='all';
-function buildDays(){
-  document.getElementById('days').innerHTML=Array.from({length:7},(_,i)=>{
-    const d=addDays(i),k=dk(d),hasWC=cache[k]?.some(e=>e.league==='World Cup'||e.league==='Wimbledon');
-    return '<button class="day-btn'+(i===curDay?' on':'')+'" onclick="goDay('+i+')">' +
-      '<div class="day-name">'+(i===0?'Today':d.toLocaleDateString('en-US',{weekday:'short'}))+'</div>' +
-      '<div class="day-num">'+d.getDate()+'</div>' +
-      '<div class="day-tag">'+(hasWC?'WC':'')+'</div></button>';
+// STATE
+let curDay = 0, curTab = 'all';
+
+function buildDays() {
+  document.getElementById('days').innerHTML = Array.from({length:7}, (_,i) => {
+    const d = addDays(i), k = dk(d);
+    const hasEvt = cache[k]?.length > 0;
+    return '<button class="day-btn' + (i===curDay?' on':'') + '" onclick="goDay(' + i + ')">' +
+      '<div class="day-name">' + (i===0 ? 'Today' : d.toLocaleDateString('en-US',{weekday:'short'})) + '</div>' +
+      '<div class="day-num">' + d.getDate() + '</div>' +
+      '<div class="day-tag">' + (hasEvt && i>0 ? '&#8226;' : '') + '</div></button>';
   }).join('');
 }
-function setTab(tab,el){
-  curTab=tab;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  if(el) el.classList.add('on');
+
+function setTab(tab, el) {
+  curTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  if (el) el.classList.add('on');
   renderContent();
 }
-function renderContent(){
-  const key=dk(addDays(curDay)), evs=cache[key]||[];
-  const sched=document.getElementById('sched');
-  if(curTab==='scores'){sched.innerHTML='<div class="sched-hd"><span>Scores</span></div>'+buildScores(evs);return;}
-  let filtered=evs;
-  if(curTab==='women') filtered=evs.filter(e=>e.women||isValk(e)||isBayFC(e));
-  if(curTab==='world') filtered=evs.filter(e=>e.league==='World Cup'||e.league==='Wimbledon');
-  const d=addDays(curDay);
-  const ds=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}).toUpperCase();
-  sched.innerHTML=filtered.length
-    ?'<div class="sched-hd"><span>Schedule</span><span class="sched-date">'+ds+'</span></div><div class="games">'+filtered.map(buildRow).join('')+'</div>'
-    :'<div class="empty">No games'+(curTab!=='all'?' in this category':'')+' today.</div>';
+
+function renderContent() {
+  const key  = dk(addDays(curDay));
+  const evs  = cache[key] || [];
+  const sched = document.getElementById('sched');
+
+  if (curTab === 'scores') {
+    sched.innerHTML = '<div class="sched-hd"><span>Scores &amp; Results</span></div>' + buildScores(evs);
+    return;
+  }
+
+  let filtered = evs;
+  if (curTab === 'women') filtered = evs.filter(e => e.women || isValk(e) || isBayFC(e));
+
+  const d = addDays(curDay);
+  const ds = d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}).toUpperCase();
+  const n = filtered.length;
+
+  sched.innerHTML = n
+    ? '<div class="sched-hd"><span>Schedule</span><span class="sched-date">' + ds + '</span><span style="color:#5a5248;font-size:9px;margin-left:auto">' + n + ' game' + (n!==1?'s':'') + '</span></div>' +
+      '<div class="games">' + filtered.map(buildRow).join('') + '</div>'
+    : '<div class="empty">No games' + (curTab!=='all'?' in this category':'') + ' today.</div>';
 }
-async function goDay(n){
-  curDay=n; buildDays(); renderContent();
-  if(!cache[dk(addDays(n))]) await loadAndRender();
+
+async function goDay(n) {
+  curDay = n;
+  buildDays();
+  renderContent();
+  if (!cache[dk(addDays(n))]) await loadAndRender();
 }
-async function loadAndRender(){
-  const d=addDays(curDay);
-  document.getElementById('status').textContent='Loading...';
-  try{
+
+async function loadAndRender() {
+  const d = addDays(curDay);
+  document.getElementById('status-txt').textContent = 'Loading...';
+  try {
     await loadDay(d);
-    document.getElementById('feat').innerHTML=buildFeat(cache[dk(d)]||[]);
-    renderContent(); buildDays();
-    const n=(cache[dk(d)]||[]).length;
-    document.getElementById('status').textContent=n+' game'+(n!==1?'s':'')+' \u2022 Updated '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})+' PT';
-  }catch(e){document.getElementById('status').textContent='Error loading - will retry';}
+    document.getElementById('feat').innerHTML = buildFeat(cache[dk(d)] || []);
+    renderContent();
+    buildDays();
+    const n = (cache[dk(d)] || []).length;
+    document.getElementById('status-txt').textContent =
+      n + ' game' + (n!==1?'s':'') + ' \u2022 Updated ' +
+      new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}) + ' PT';
+  } catch(e) {
+    document.getElementById('status-txt').textContent = 'Error loading \u2014 will retry';
+  }
 }
-function updateClock(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});}
-async function init(){
-  buildDays(); updateClock(); setInterval(updateClock,1000);
+
+function updateClock() {
+  document.getElementById('clock').textContent =
+    new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});
+}
+
+async function init() {
+  buildDays();
+  updateClock();
+  setInterval(updateClock, 1000);
   await loadAndRender();
-  for(let i=1;i<7;i++) loadDay(addDays(i)).then(()=>buildDays()).catch(()=>{});
-  setInterval(()=>{Object.keys(cache).forEach(k=>delete cache[k]);loadAndRender();},300000);
+  for (let i=1; i<7; i++) loadDay(addDays(i)).then(() => buildDays()).catch(() => {});
+  setInterval(() => { Object.keys(cache).forEach(k => delete cache[k]); loadAndRender(); }, 300000);
 }
+
 init();
-
-
-
-
-
-
 
 </script>
 </body>

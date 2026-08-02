@@ -195,7 +195,7 @@ jobs:
             const https2 = require('https');
             const emailData = JSON.stringify({
               personalizations: [{ to: process.env.EMAIL_TO.split(',').map(e => ({email: e.trim()})) }],
-              from: { email: 'schedule@oaklandathleticclub.com', name: 'OAC Schedule' },
+              from: { email: 'aaron@oaklandathleticclub.com', name: 'OAC Schedule' },
               reply_to: { email: process.env.SENDGRID_FROM || 'aaron@oaklandathleticclub.com' },
               subject: 'OAC Priority Teams - Week of ' + weekLabel + ' (' + withGames.length + ' teams, ' + totalGames + ' games)',
               content: [{ type: 'text/html', value: html }]

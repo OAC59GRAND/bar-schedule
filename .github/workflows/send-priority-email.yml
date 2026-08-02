@@ -146,31 +146,31 @@ jobs:
 
             let tableRows = '';
             for (const {team, games} of withGames) {
-              tableRows += '<tr><td colspan="5" style="padding:10px 16px 8px;background:#1a1a1a;border-top:3px solid '+team.color+';border-bottom:1px solid #2a2a2a">';
-              tableRows += '<strong style="font-family:Arial,sans-serif;font-size:13px;color:#f0ece3;text-transform:uppercase;letter-spacing:1px">'+team.name+'</strong>';
-              tableRows += '<span style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;text-transform:uppercase;letter-spacing:2px;margin-left:10px">'+team.league+'</span>';
+              tableRows += '<tr><td colspan="5" style="padding:10px 16px 8px;background:#f5f5f5;border-top:3px solid '+team.color+';border-bottom:1px solid #e0e0e0">';
+              tableRows += '<strong style="font-family:Arial,sans-serif;font-size:13px;color:#111111;text-transform:uppercase;letter-spacing:1px">'+team.name+'</strong>';
+              tableRows += '<span style="font-family:Arial,sans-serif;font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:2px;margin-left:10px">'+team.league+'</span>';
               tableRows += '</td></tr>';
               for (const ev of games) {
                 const d   = new Date(ev.isoDate);
                 const opp = opponent(ev, team);
                 const vs  = homeTeam(ev,team) ? 'vs' : '@';
                 const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
-                tableRows += '<tr style="border-bottom:1px solid #222">';
-                tableRows += '<td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#a07830;font-weight:bold;white-space:nowrap">'+DAYS[d.getDay()]+'</td>';
-                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#8a8480;white-space:nowrap">'+MONS[d.getMonth()]+' '+d.getDate()+'</td>';
-                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#f0ece3">'+vs+' '+opp+'</td>';
-                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#8a8480;white-space:nowrap">'+fmtTime(ev.isoDate)+'</td>';
+                tableRows += '<tr style="border-bottom:1px solid #eeeeee;background:#ffffff">';
+                tableRows += '<td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#8a6000;font-weight:bold;white-space:nowrap">'+DAYS[d.getDay()]+'</td>';
+                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+MONS[d.getMonth()]+' '+d.getDate()+'</td>';
+                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#0f0f0f">'+vs+' '+opp+'</td>';
+                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+fmtTime(ev.isoDate)+'</td>';
                 tableRows += '<td style="padding:7px 16px 7px 4px;font-family:Arial,sans-serif;font-size:11px;color:#c9a84c;font-weight:bold;white-space:nowrap">'+ch+'</td>';
                 tableRows += '</tr>';
               }
-              tableRows += '<tr><td colspan="5" style="height:4px;background:#0d0d0d"></td></tr>';
+              tableRows += '<tr><td colspan="5" style="height:4px;background:#f5f5f5"></td></tr>';
             }
 
             const totalGames = withGames.reduce((s,x) => s+x.games.length, 0);
 
             const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>'
-              + '<body style="margin:0;padding:0;background:#0a0a0a">'
-              + '<table width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#0a0a0a">'
+              + '<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,sans-serif">'
+              + '<table width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#ffffff;border:1px solid #e0e0e0">'
               + '<tr><td style="background:#0f0f0f;padding:18px 20px 14px;border-bottom:3px solid #c9a84c">'
               + '<table width="100%" cellpadding="0" cellspacing="0"><tr>'
               + '<td style="vertical-align:middle">'
@@ -179,15 +179,15 @@ jobs:
               + '</td>'
               + '<td style="text-align:right;vertical-align:middle">'
               + '<div style="font-family:Arial,sans-serif;font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px">Week of '+weekLabel+'</div>'
-              + '<div style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;margin-top:2px">'+withGames.length+' teams - '+totalGames+' games</div>'
+              + '<div style="font-family:Arial,sans-serif;font-size:10px;color:#666666;margin-top:2px">'+withGames.length+' teams - '+totalGames+' games</div>'
               + '</td></tr></table>'
               + '</td></tr>'
-              + '<tr><td style="background:#111">'
+              + '<tr><td style="background:#ffffff">'
               + '<table width="100%" cellpadding="0" cellspacing="0">'+tableRows+'</table>'
               + '</td></tr>'
-              + '<tr><td style="background:#0f0f0f;padding:12px 20px;border-top:1px solid #1e1e1e">'
-              + '<p style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;margin:0;text-transform:uppercase;letter-spacing:1px">'
-              + 'Oakland Athletic Club - <a href="https://oac59grand.github.io/bar-schedule/priority-schedule.html" style="color:#c9a84c;text-decoration:none">View live schedule</a> - Updates hourly'
+              + '<tr><td style="background:#0f0f0f;padding:12px 20px;border-top:1px solid #e0e0e0">'
+              + '<p style="font-family:Arial,sans-serif;font-size:10px;color:#666666;margin:0;text-transform:uppercase;letter-spacing:1px">'
+              + 'Oakland Athletic Club - <a href="https://oac59grand.github.io/bar-schedule/priority-schedule.html" style="color:#1d428a;text-decoration:none">View live schedule</a> - Updates hourly'
               + '</p></td></tr>'
               + '</table></body></html>';
 

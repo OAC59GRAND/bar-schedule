@@ -39,6 +39,8 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 .fc.bayfc{border-top-color:#1d428a}.fc.warriors{border-top-color:#1d62d6}
 .fc.firebells{border-top-color:#ff4d00}
 .fc.soul{border-top-color:#38bdf8}
+.fc.f1{border-top-color:#e10600}
+.fc.nascar{border-top-color:#ffd659}
 .fc-eye{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:4px}
 .fc-title{font-size:16px;font-weight:900;color:#f0ece3;line-height:1.2;margin-bottom:3px}
 .fc-sub{font-size:11px;color:#5a5248;line-height:1.4;margin-bottom:6px}
@@ -67,6 +69,8 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 .acc-purple{border-left-color:#8b4fcf}
 .acc-fire{border-left-color:#ff4d00}
 .acc-soul{border-left-color:#38bdf8}
+.acc-f1{border-left-color:#e10600}
+.acc-nascar{border-left-color:#ffd659}
 .g-time{font-size:13px;font-weight:800;color:#5a5248;min-width:56px;text-align:right;flex-shrink:0;padding-top:2px}
 .g-info{flex:1}
 .g-league{font-size:9px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase;margin-bottom:2px}
@@ -126,7 +130,8 @@ const LEAGUES = [
   {espn:'american-football/nfl',              label:'NFL',              women:false},
   {espn:'american-football/college-football', label:'College Football', women:false},
   {espn:'soccer/ita.1',                       label:'Serie A',         women:false},
-  {espn:'soccer/ger.1',                       label:'Bundesliga',      women:false}, // 2026-27: USA Network Ch 242 + Fandango (free). Spanish: Telemundo Ch 406 / Peacock
+  {espn:'soccer/ger.1',                       label:'Bundesliga',      women:false},
+  {espn:'soccer/esp.1',                       label:'La Liga',         women:false}, // 2026-27: USA Network Ch 242 + Fandango (free). Spanish: Telemundo Ch 406 / Peacock
 ];
 
 // DirecTV satellite channel numbers -- Oakland/Bay Area market (effective 2026)
@@ -302,6 +307,31 @@ const SUPP = [
    homeFull:'San Francisco Firebells',awayFull:'Boston Hunters',
    detail:'WPBL - 4:30 PM PT',
    isoDate:'2026-09-06T23:30:00Z',venue:'Robin Roberts Stadium, Springfield IL',broadcast:'ESPN+'},
+
+  {date:'2026-08-23',league:'Formula 1',women:false,home:'Italian GP',away:'Monza',homeFull:'',awayFull:'',detail:'Italian Grand Prix - Autodromo Nazionale Monza - 6:00 AM PT',isoDate:'2026-08-23T13:00:00Z',venue:'Autodromo Nazionale Monza, Italy',broadcast:'Apple TV'},
+  {date:'2026-09-13',league:'Formula 1',women:false,home:'Spanish GP',away:'Madrid',homeFull:'',awayFull:'',detail:'Spanish Grand Prix - Madrid Street Circuit - 6:00 AM PT',isoDate:'2026-09-13T13:00:00Z',venue:'Madrid Street Circuit, Spain',broadcast:'Apple TV'},
+  {date:'2026-09-27',league:'Formula 1',women:false,home:'Azerbaijan GP',away:'Baku',homeFull:'',awayFull:'',detail:'Azerbaijan Grand Prix - Baku City Circuit - 4:00 AM PT',isoDate:'2026-09-27T11:00:00Z',venue:'Baku City Circuit, Azerbaijan',broadcast:'Apple TV'},
+  {date:'2026-10-11',league:'Formula 1',women:false,home:'Singapore GP',away:'Marina Bay',homeFull:'',awayFull:'',detail:'Singapore Grand Prix - Marina Bay Street Circuit - 5:00 AM PT',isoDate:'2026-10-11T12:00:00Z',venue:'Marina Bay Street Circuit, Singapore',broadcast:'Apple TV'},
+  {date:'2026-10-25',league:'Formula 1',women:false,home:'US Grand Prix',away:'Austin',homeFull:'',awayFull:'',detail:'United States Grand Prix - Circuit of the Americas - 12:00 PM PT',isoDate:'2026-10-25T19:00:00Z',venue:'Circuit of the Americas, Austin TX',broadcast:'Apple TV'},
+  {date:'2026-11-01',league:'Formula 1',women:false,home:'Mexico City GP',away:'Mexico',homeFull:'',awayFull:'',detail:'Grand Prix of Mexico City - 11:00 AM PT',isoDate:'2026-11-01T18:00:00Z',venue:'Autodromo Hermanos Rodriguez, Mexico City',broadcast:'Apple TV'},
+  {date:'2026-11-08',league:'Formula 1',women:false,home:'Brazilian GP',away:'Sao Paulo',homeFull:'',awayFull:'',detail:'Grand Prix of Brazil - Autodromo Jose Carlos Pace - 10:00 AM PT',isoDate:'2026-11-08T17:00:00Z',venue:'Autodromo Jose Carlos Pace, Sao Paulo',broadcast:'Apple TV'},
+  {date:'2026-11-21',league:'Formula 1',women:false,home:'Las Vegas GP',away:'Las Vegas',homeFull:'',awayFull:'',detail:'Las Vegas Grand Prix - Las Vegas Strip Circuit - 10:00 PM PT',isoDate:'2026-11-22T06:00:00Z',venue:'Las Vegas Strip Circuit, Nevada',broadcast:'Apple TV'},
+  {date:'2026-11-29',league:'Formula 1',women:false,home:'Qatar GP',away:'Lusail',homeFull:'',awayFull:'',detail:'Qatar Grand Prix - Lusail Circuit - 11:00 AM PT',isoDate:'2026-11-29T18:00:00Z',venue:'Lusail International Circuit, Qatar',broadcast:'Apple TV'},
+  {date:'2026-12-06',league:'Formula 1',women:false,home:'Abu Dhabi GP',away:'Yas Marina',homeFull:'',awayFull:'',detail:'Abu Dhabi Grand Prix - Yas Marina Circuit - 8:00 AM PT',isoDate:'2026-12-06T13:00:00Z',venue:'Yas Marina Circuit, Abu Dhabi',broadcast:'Apple TV'},
+  {date:'2026-08-09',league:'NASCAR',women:false,home:'Michigan',away:'Cup Series',homeFull:'',awayFull:'',detail:'FireKeepers Casino 400 - Michigan International Speedway - 12:30 PM PT',isoDate:'2026-08-09T19:30:00Z',venue:'Michigan International Speedway',broadcast:'USA Network'},
+  {date:'2026-08-16',league:'NASCAR',women:false,home:'Richmond',away:'Cup Series',homeFull:'',awayFull:'',detail:'Cook Out 400 - Richmond Raceway - 2:30 PM PT',isoDate:'2026-08-16T21:30:00Z',venue:'Richmond Raceway, Virginia',broadcast:'USA Network'},
+  {date:'2026-08-23',league:'NASCAR',women:false,home:'Watkins Glen',away:'Cup Series',homeFull:'',awayFull:'',detail:'Go Bowling at The Glen - Watkins Glen International - 12:00 PM PT',isoDate:'2026-08-23T19:00:00Z',venue:'Watkins Glen International, New York',broadcast:'TNT'},
+  {date:'2026-08-29',league:'NASCAR',women:false,home:'Daytona',away:'Cup Series',homeFull:'',awayFull:'',detail:'Coke Zero Sugar 400 - Daytona International Speedway - 4:00 PM PT',isoDate:'2026-08-29T23:00:00Z',venue:'Daytona International Speedway, Florida',broadcast:'NBC'},
+  {date:'2026-09-05',league:'NASCAR',women:false,home:'Darlington',away:'Playoffs Rd 1',homeFull:'',awayFull:'',detail:'Southern 500 - Darlington Raceway - PLAYOFFS BEGIN - 3:00 PM PT',isoDate:'2026-09-05T22:00:00Z',venue:'Darlington Raceway, South Carolina',broadcast:'USA Network'},
+  {date:'2026-09-12',league:'NASCAR',women:false,home:'Kansas',away:'Playoffs Rd 1',homeFull:'',awayFull:'',detail:'Hollywood Casino 400 - Kansas Speedway - PLAYOFFS - 2:00 PM PT',isoDate:'2026-09-12T21:00:00Z',venue:'Kansas Speedway, Kansas City KS',broadcast:'USA Network'},
+  {date:'2026-09-19',league:'NASCAR',women:false,home:'Bristol',away:'Playoffs Rd 1',homeFull:'',awayFull:'',detail:'Bass Pro Shops Night Race - Bristol Motor Speedway - PLAYOFFS - 4:30 PM PT',isoDate:'2026-09-19T23:30:00Z',venue:'Bristol Motor Speedway, Tennessee',broadcast:'USA Network'},
+  {date:'2026-09-27',league:'NASCAR',women:false,home:'Texas',away:'Playoffs Rd 2',homeFull:'',awayFull:'',detail:'AutoTrader 400 - Texas Motor Speedway - PLAYOFFS Round of 12 - 1:30 PM PT',isoDate:'2026-09-27T20:30:00Z',venue:'Texas Motor Speedway, Fort Worth TX',broadcast:'USA Network'},
+  {date:'2026-10-04',league:'NASCAR',women:false,home:'Charlotte ROVAL',away:'Playoffs Rd 2',homeFull:'',awayFull:'',detail:'Bank of America ROVAL 400 - Charlotte Motor Speedway - PLAYOFFS - 12:30 PM PT',isoDate:'2026-10-04T19:30:00Z',venue:'Charlotte Motor Speedway ROVAL, NC',broadcast:'USA Network'},
+  {date:'2026-10-11',league:'NASCAR',women:false,home:'Talladega',away:'Playoffs Rd 2',homeFull:'',awayFull:'',detail:'YellaWood 500 - Talladega Superspeedway - PLAYOFFS - 11:00 AM PT',isoDate:'2026-10-11T18:00:00Z',venue:'Talladega Superspeedway, Alabama',broadcast:'USA Network'},
+  {date:'2026-10-18',league:'NASCAR',women:false,home:'Las Vegas',away:'Playoffs Rd 3',homeFull:'',awayFull:'',detail:'Pennzoil 400 - Las Vegas Motor Speedway - PLAYOFFS Round of 8 - 11:00 AM PT',isoDate:'2026-10-18T18:00:00Z',venue:'Las Vegas Motor Speedway, Nevada',broadcast:'USA Network'},
+  {date:'2026-10-25',league:'NASCAR',women:false,home:'Talladega',away:'Playoffs Rd 3',homeFull:'',awayFull:'',detail:'Talladega Superspeedway - PLAYOFFS Round of 8 - 1:30 PM PT',isoDate:'2026-10-25T20:30:00Z',venue:'Talladega Superspeedway, Alabama',broadcast:'NBC'},
+  {date:'2026-11-01',league:'NASCAR',women:false,home:'Martinsville',away:'Playoffs Final 4',homeFull:'',awayFull:'',detail:'Xfinity 500 - Martinsville Speedway - PLAYOFFS Round of 4 - 11:00 AM PT',isoDate:'2026-11-01T18:00:00Z',venue:'Martinsville Speedway, Virginia',broadcast:'NBC'},
+  {date:'2026-11-08',league:'NASCAR',women:false,home:'Homestead-Miami',away:'Championship',homeFull:'',awayFull:'',detail:'NASCAR Cup Series Championship - Homestead-Miami Speedway - 11:00 AM PT',isoDate:'2026-11-08T19:00:00Z',venue:'Homestead-Miami Speedway, Florida',broadcast:'NBC'},
 ];
 
 // Broadcast classification -- returns {app, ch, cls, inPkg} or null if not in package
@@ -330,8 +360,6 @@ function classify(raw, homeFull, awayFull) {
   // USA Network / USA Net = Ch 242 (in package)
   // Note: Bundesliga 2026-27 moved from ESPN+ to USA Network + Fandango (free)
   if (/^usa.?net(work)?$/i.test(raw)) return {app:'USA Network', ch:'242', cls:'dtv', inPkg:true};
-  // HomeTeam Network -- Oakland Ballers (confirmed in package)
-  if (/hometeam/i.test(raw)) return {app:'HomeTeam Network', ch:'', cls:'htn', inPkg:true};
   // Fandango -- free ad-supported streaming, no subscription needed
   if (/fandango/i.test(raw)) return {app:'Fandango (free stream)', ch:'', cls:'pmt', inPkg:true};
 
@@ -339,7 +367,7 @@ function classify(raw, homeFull, awayFull) {
   if (/wnba.?league|league.?pass/i.test(raw)) return {app:'WNBA League Pass', ch:'', cls:'wnba', inPkg:true};
 
   // Not in package
-  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo/i.test(raw)) return null;
+  if (/\bion\b|tennis.?ch|\bflo\b|willow|victory\+|fubo|hometeam/i.test(raw)) return null;
 
   // Streaming
   if (/peacock/i.test(raw))               return {app:'Peacock',       ch:'',    cls:'pkck', inPkg:true};
@@ -383,6 +411,8 @@ function classify(raw, homeFull, awayFull) {
 
 // Team detection
 const isGiants    = e => (e.homeFull+e.awayFull).includes('Giants');
+const isF1        = e => e.league === 'Formula 1';
+const isNascar    = e => e.league === 'NASCAR';
 const isFirebells = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Firebells');
 const isSoul      = e => (e.homeFull+e.awayFull+e.home+e.away).includes('Soul');
 const isValk     = e => (e.homeFull+e.awayFull).includes('Valkyries');
@@ -396,6 +426,8 @@ function getAccentClass(ev) {
   if (isGiants(ev))   return 'acc-red';
   if (isValk(ev))     return 'acc-blue';
   if (isRoots(ev))      return 'acc-green';
+  if (isF1(ev))         return 'acc-f1';
+  if (isNascar(ev))     return 'acc-nascar';
   if (isFirebells(ev))  return 'acc-fire';
   if (isSoul(ev))       return 'acc-soul';
   if (isBallers(ev))  return 'acc-dkgreen';
@@ -464,6 +496,7 @@ function injectSupp(cache, key) {
   }
   cache[key].sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
 }
+
 
 
 
@@ -656,6 +689,7 @@ async function init(){
   setInterval(()=>{Object.keys(cache).forEach(k=>delete cache[k]);loadAndRender();},300000);
 }
 init();
+
 
 
 

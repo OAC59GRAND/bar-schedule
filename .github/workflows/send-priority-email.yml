@@ -9,14 +9,10 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
-      - name: Install nodemailer
-        run: npm install nodemailer
-
       - name: Write email script
         run: |
           cat > email_script.js << 'ENDSCRIPT'
-          const https      = require('https');
-          const nodemailer = require('./node_modules/nodemailer');
+          const https = require('https');
 
           const TEAMS = [
             {name:'Barcelona',       matches:['Barcelona'],                       league:'La Liga',    color:'#A50044',emoji:'[soccer]'},
@@ -195,19 +191,42 @@ jobs:
               + '</p></td></tr>'
               + '</table></body></html>';
 
-            const transporter = nodemailer.createTransport({
-              host: 'smtp.gmail.com', port: 465, secure: true,
-              auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS }
-            });
-
-            await transporter.sendMail({
-              from: '"OAC Schedule" <' + process.env.GMAIL_USER + '>',
-              to:   process.env.EMAIL_TO,
+            // Send via SendGrid HTTP API -- no SMTP auth issues
+            const https2 = require('https');
+            const emailData = JSON.stringify({
+              personalizations: [{ to: process.env.EMAIL_TO.split(',').map(e => ({email: e.trim()})) }],
+              from: { email: 'schedule@oaklandathleticclub.com', name: 'OAC Schedule' },
+              reply_to: { email: process.env.SENDGRID_FROM || 'aaron@oaklandathleticclub.com' },
               subject: 'OAC Priority Teams - Week of ' + weekLabel + ' (' + withGames.length + ' teams, ' + totalGames + ' games)',
-              html: html,
+              content: [{ type: 'text/html', value: html }]
             });
 
-            console.log('Email sent: ' + withGames.length + ' teams, ' + totalGames + ' games');
+            await new Promise((resolve, reject) => {
+              const req = https2.request({
+                hostname: 'api.sendgrid.com',
+                path: '/v3/mail/send',
+                method: 'POST',
+                headers: {
+                  'Authorization': 'Bearer ' + process.env.SENDGRID_API_KEY,
+                  'Content-Type': 'application/json',
+                  'Content-Length': Buffer.byteLength(emailData),
+                }
+              }, res => {
+                let body = '';
+                res.on('data', c => body += c);
+                res.on('end', () => {
+                  if (res.statusCode === 202) {
+                    console.log('Email sent: ' + withGames.length + ' teams, ' + totalGames + ' games');
+                    resolve();
+                  } else {
+                    reject(new Error('SendGrid error ' + res.statusCode + ': ' + body));
+                  }
+                });
+              });
+              req.on('error', reject);
+              req.write(emailData);
+              req.end();
+            });
           }
 
           main().catch(e => { console.error(e.message); process.exit(1); });
@@ -215,7 +234,6 @@ jobs:
 
       - name: Run email script
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
-          EMAIL_TO:   ${{ secrets.EMAIL_TO }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          EMAIL_TO:         ${{ secrets.EMAIL_TO }}
         run: node email_script.js

@@ -1,0 +1,208 @@
+{
+  "_instructions": "Edit this file directly on GitHub to update the channel guide. Save and the guide updates live. Do not change the key names (left side), only the values (right side).",
+  "updated": "August 2026",
+  "package": "DirecTV for Business — XTRA Pack (Satellite) + Roku streaming",
+  "source": "DirecTV for Business Satellite Channel Lineup PDF, effective 6/25/26",
+
+  "priorityTeams": [
+    { "name": "SF Giants",         "league": "MLB",             "color": "#EF3E42", "where": "NBC Sports Bay Area Ch 696 · MLB.TV" },
+    { "name": "GS Warriors",       "league": "NBA",             "color": "#1d62d6", "where": "NBC Sports Bay Area Ch 696 · ESPN Ch 206 · ABC Ch 7" },
+    { "name": "GS Valkyries",      "league": "WNBA",            "color": "#0ea5e9", "where": "ESPN Ch 206 · ABC Ch 7 · ION Ch 305 · CBS Ch 5", "women": true },
+    { "name": "SJ Sharks",         "league": "NHL",             "color": "#008577", "where": "NHL Network Ch 215 · ESPN Ch 206 · TNT Ch 245" },
+    { "name": "Oakland Roots SC",  "league": "USL Championship","color": "#2d7a3a", "where": "ESPN+ (Roku) · Away games only" },
+    { "name": "Oakland Ballers",   "league": "Pioneer League",  "color": "#006341", "where": "HomeTeam Network (Roku)" },
+    { "name": "Bay FC",            "league": "NWSL",            "color": "#1d428a", "where": "CBS Sports Net Ch 221 · ION Ch 305 · CBS Ch 5", "women": true },
+    { "name": "SJ Earthquakes",    "league": "MLS",             "color": "#003087", "where": "Apple TV via Everpass · MLS Season Pass" }
+  ],
+
+  "localBroadcast": [
+    { "ch": "2",  "network": "FOX",       "station": "KTVU Oakland",     "sports": "NFL, NASCAR (early season), Liga MX, Soccer" },
+    { "ch": "5",  "network": "CBS",       "station": "KPIX SF",          "sports": "NFL, WNBA, NWSL, NCAA March Madness, NASCAR" },
+    { "ch": "7",  "network": "ABC",       "station": "KGO SF",           "sports": "NFL, NBA Finals, WNBA, College Football (CFP), Wimbledon Men's Final" },
+    { "ch": "11", "network": "NBC",       "station": "KNTV Bay Area",    "sports": "NFL Sunday Night Football, NASCAR, NHL, WNBA, Olympics" },
+    { "ch": "48", "network": "Telemundo", "station": "KSTS Bay Area",    "sports": "Liga MX (Spanish), Soccer, CONCACAF" }
+  ],
+
+  "nationalCable": [
+    { "ch": "206", "network": "ESPN",                "sports": "NFL MNF, NBA, MLB Sunday Night, College Football/Basketball, WNBA, NHL" },
+    { "ch": "207", "network": "ESPNews",             "sports": "Sports news, replays, overflow" },
+    { "ch": "208", "network": "ESPNU",               "sports": "College Football, College Basketball, College Baseball" },
+    { "ch": "209", "network": "ESPN2",               "sports": "MLB, Tennis (Wimbledon early), WNBA, WPBL, College sports" },
+    { "ch": "212", "network": "NFL Network",         "sports": "NFL preseason, regular season, Draft, Combine" },
+    { "ch": "213", "network": "MLB Network",         "sports": "MLB games, Quick Pitch, baseball analysis" },
+    { "ch": "214", "network": "RACER Network",       "sports": "Motorsports, IndyCar, international racing" },
+    { "ch": "215", "network": "NHL Network",         "sports": "NHL games, hockey analysis, highlights" },
+    { "ch": "216", "network": "NBA TV",              "sports": "NBA games, WNBA select, basketball analysis" },
+    { "ch": "217", "network": "Tennis Channel",      "sports": "Wimbledon, US Open, Australian Open, Roland Garros, WTA/ATP Tour" },
+    { "ch": "218", "network": "Golf Channel",        "sports": "PGA Tour, LPGA Tour, LIV Golf, major championship coverage" },
+    { "ch": "219", "network": "FS1",                 "sports": "NASCAR, NFL (NFC), College Football/Basketball, Liga MX, CONCACAF" },
+    { "ch": "221", "network": "CBS Sports Network",  "sports": "NWSL, College sports, MMA (note: ESPN API returns as CBSSN)" },
+    { "ch": "242", "network": "USA Network",         "sports": "Bundesliga 2026-27 (30+ matches), NASCAR Cup Playoffs (10 races), WNBA select" },
+    { "ch": "245", "network": "TNT",                 "sports": "NBA Playoffs/Finals, March Madness, NASCAR" },
+    { "ch": "246", "network": "truTV",               "sports": "NCAA March Madness" },
+    { "ch": "247", "network": "TBS",                 "sports": "MLB Playoffs, NCAA March Madness, NBA Playoffs" },
+    { "ch": "305", "network": "ION",                 "sports": "WNBA regular season, NWSL regular season, NFL select" }
+  ],
+
+  "spanishLanguage": [
+    { "ch": "406", "network": "Telemundo",    "sports": "Liga MX, Soccer, CONCACAF (satellite feed)" },
+    { "ch": "408", "network": "UniMás",       "sports": "Liga MX, Soccer" },
+    { "ch": "410", "network": "UNIVERSO",     "sports": "Soccer, Boxing, MMA" },
+    { "ch": "464", "network": "TUDN",         "sports": "Liga MX, CONCACAF Champions Cup, Soccer" },
+    { "ch": "465", "network": "FOX Deportes", "sports": "Liga MX, Boxing, NASCAR (Spanish)" },
+    { "ch": "466", "network": "ESPN Deportes","sports": "MLS, Soccer, NBA, MMA, Tennis (Spanish)" }
+  ],
+
+  "bayAreaRSN": [
+    { "ch": "696", "network": "NBC Sports Bay Area",    "teams": "SF Giants (primary), GS Warriors" },
+    { "ch": "698", "network": "NBC Sports California",  "teams": "Athletics (excluded from schedule)" }
+  ],
+
+  "mlbRSNs": [
+    { "ch": "628", "network": "NESN",                    "team": "Boston Red Sox" },
+    { "ch": "630", "network": "NBC Sports Boston",       "team": "Boston teams" },
+    { "ch": "631", "network": "YES Network",             "team": "New York Yankees" },
+    { "ch": "639", "network": "SNY",                     "team": "New York Mets" },
+    { "ch": "640", "network": "MASN",                    "team": "Baltimore Orioles" },
+    { "ch": "641", "network": "Nationals.TV",            "team": "Washington Nationals" },
+    { "ch": "645", "network": "BravesVision",            "team": "Atlanta Braves" },
+    { "ch": "652", "network": "Rays.TV",                 "team": "Tampa Bay Rays" },
+    { "ch": "655", "network": "Marlins.TV",              "team": "Miami Marlins" },
+    { "ch": "659", "network": "SportsNet Pittsburgh",    "team": "Pittsburgh Pirates" },
+    { "ch": "661", "network": "Reds.TV",                 "team": "Cincinnati Reds" },
+    { "ch": "662", "network": "Guardians.TV",            "team": "Cleveland Guardians" },
+    { "ch": "663", "network": "Detroit SportsNet",       "team": "Detroit Tigers" },
+    { "ch": "664", "network": "Marquee Sports Network",  "team": "Chicago Cubs" },
+    { "ch": "665", "network": "Chicago Sports Network",  "team": "Chicago White Sox" },
+    { "ch": "668", "network": "Twins.TV",                "team": "Minnesota Twins" },
+    { "ch": "670", "network": "Brewers.TV",              "team": "Milwaukee Brewers" },
+    { "ch": "671", "network": "Royals.TV",               "team": "Kansas City Royals" },
+    { "ch": "672", "network": "Cardinals.TV",            "team": "St. Louis Cardinals" },
+    { "ch": "674", "network": "Space City Home Network", "team": "Houston Astros" },
+    { "ch": "677", "network": "Rangers Sports Network",  "team": "Texas Rangers" },
+    { "ch": "683", "network": "Rockies.TV",              "team": "Colorado Rockies" },
+    { "ch": "686", "network": "DBACKS.TV",               "team": "Arizona Diamondbacks" },
+    { "ch": "688", "network": "NHL Seattle Kraken",      "team": "Seattle Kraken" },
+    { "ch": "690", "network": "Spectrum SportsNet LA",   "team": "Los Angeles Dodgers" },
+    { "ch": "691", "network": "Spectrum SportsNet",      "team": "Lakers, Kings" },
+    { "ch": "692", "network": "Angels Broadcast TV",     "team": "Los Angeles Angels" },
+    { "ch": "694", "network": "Padres.TV",               "team": "San Diego Padres" }
+  ],
+
+  "streaming": [
+    {
+      "name": "Everpass",
+      "device": "Commercial streaming device",
+      "color": "#1d62d6",
+      "tag": "Bundle",
+      "content": [
+        "NFL Sunday Ticket — out-of-market Sunday NFL games",
+        "Peacock Sports Pass — EPL select, Big Ten, WNBA, MLB select",
+        "Amazon Prime Video — Thursday Night Football, WNBA, NWSL, NASCAR",
+        "Apple TV sports — F1 (DirecTV Ch 9526), MLS Season Pass (Ch 9475-9490), Friday Night Baseball"
+      ],
+      "note": "ESPN+ is a separate standalone Roku subscription, not included in Everpass"
+    },
+    {
+      "name": "Paramount+",
+      "device": "Roku",
+      "color": "#0ea5e9",
+      "tag": "Roku",
+      "content": [
+        "UEFA Champions League — all matches via Everpass",
+        "Serie A — all 380 matches",
+        "NFL — CBS games via streaming",
+        "NCAA March Madness — full tournament streaming",
+        "La Liga — select matches"
+      ],
+      "note": "UFC included for residential subscribers — bars require DirecTV PPV commercial license"
+    },
+    {
+      "name": "ESPN+",
+      "device": "Roku",
+      "color": "#ef4444",
+      "tag": "Roku",
+      "content": [
+        "La Liga — all matches",
+        "Ligue 1 — all matches",
+        "USL Championship — Oakland Roots away games",
+        "NHL — out-of-market games",
+        "WPBL — SF Firebells and all games",
+        "College sports — SEC, ACC, Big 12",
+        "PGA Tour Live — early round coverage"
+      ],
+      "note": "Standalone Roku subscription. Separate from Everpass."
+    },
+    {
+      "name": "Fandango",
+      "device": "Roku",
+      "color": "#c9a84c",
+      "tag": "Free",
+      "content": [
+        "Bundesliga 2026-27 — all matches not on USA Network Ch 242",
+        "No subscription required — free ad-supported streaming"
+      ],
+      "note": "USA Network (Ch 242) carries 30+ Bundesliga matches. Fandango covers the rest free."
+    },
+    {
+      "name": "HomeTeam Network",
+      "device": "Roku",
+      "color": "#006341",
+      "tag": "Roku",
+      "content": [
+        "Oakland Ballers — all 96 Pioneer League games (2026 season)"
+      ],
+      "note": "Dedicated streaming service for independent baseball. Separate commercial subscription."
+    },
+    {
+      "name": "YouTube",
+      "device": "Roku",
+      "color": "#ff0000",
+      "tag": "Roku",
+      "content": [
+        "OAC subscribed channels — women's sports, highlights, partner content"
+      ],
+      "note": "When no women's games are scheduled, play OAC's subscribed YouTube channels via the YouTube app on Roku."
+    },
+    {
+      "name": "DirecTV PPV",
+      "device": "DirecTV",
+      "color": "#9b1c1c",
+      "tag": "PPV",
+      "content": [
+        "UFC — all numbered events, Fight Nights, Noche UFC (commercial license)",
+        "Boxing — select major cards"
+      ],
+      "note": "Ordered through DirecTV commercial account. Residential Paramount+ includes UFC free but commercial bar exhibition requires separate PPV license."
+    }
+  ],
+
+  "leagues": [
+    { "league": "MLB",                "sport": "Baseball",    "source": "ESPN API (live)",          "channels": "NBC Sports Bay Area Ch 696 · ESPN Ch 206 · FOX Ch 2 · MLB.TV (team RSNs)" },
+    { "league": "NBA",                "sport": "Basketball",  "source": "ESPN API (live)",          "channels": "NBC Sports Bay Area Ch 696 · ESPN Ch 206 · ABC Ch 7 · TNT Ch 245 · NBA TV Ch 216" },
+    { "league": "WNBA",               "sport": "Basketball",  "source": "ESPN API (live)",          "channels": "ESPN Ch 206 · ABC Ch 7 · CBS Ch 5 · ION Ch 305 · USA Network Ch 242 · NBC Ch 11", "women": true },
+    { "league": "NHL",                "sport": "Hockey",      "source": "ESPN API (live)",          "channels": "ESPN Ch 206 · ESPN2 Ch 209 · TNT Ch 245 · NHL Network Ch 215 · ABC Ch 7" },
+    { "league": "NFL",                "sport": "Football",    "source": "ESPN API (live)",          "channels": "ESPN Ch 206 (MNF) · FOX Ch 2 · CBS Ch 5 · NBC Ch 11 (SNF) · NFL Network Ch 212" },
+    { "league": "College Football",   "sport": "Football",    "source": "ESPN API (live)",          "channels": "ESPN Ch 206 · ESPN2 Ch 209 · ABC Ch 7 · FOX Ch 2 · CBS Ch 5 · NBC Ch 11" },
+    { "league": "MLS",                "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "Apple TV via Everpass (Ch 9475-9490) · FS1 Ch 219 (select)" },
+    { "league": "NWSL",               "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "CBS Sports Net Ch 221 · CBS Ch 5 · ION Ch 305 · Prime Video (Everpass)", "women": true },
+    { "league": "USL Championship",   "sport": "Soccer",      "source": "ESPN API — Roots only",   "channels": "ESPN+ (Roku) · ESPN2 Ch 209 (select)" },
+    { "league": "EPL",                "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "Peacock (Everpass) · NBC Ch 11 (select) · USA Network Ch 242 (select)" },
+    { "league": "La Liga",            "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "ESPN+ (Roku) · ESPN Ch 206 (select) · ESPN Deportes Ch 466" },
+    { "league": "Bundesliga",         "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "USA Network Ch 242 (30+ matches) · Fandango free (Roku) · Telemundo Ch 406 (Spanish)" },
+    { "league": "Serie A",            "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "Paramount+ (Roku) · CBS Sports Net Ch 221 (select) · CBS Ch 5 (select)" },
+    { "league": "Ligue 1",            "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "ESPN+ (Roku) · ESPN Ch 206 (select)" },
+    { "league": "Liga MX",            "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "FOX Ch 2 · FS1 Ch 219 · TUDN Ch 464 · FOX Deportes Ch 465 (Spanish)" },
+    { "league": "Champions League",   "sport": "Soccer",      "source": "ESPN API (live)",          "channels": "Everpass · CBS Sports Net Ch 221 · CBS Ch 5 (select) · TUDN Ch 464 (Spanish)" },
+    { "league": "Tennis (ATP/WTA)",   "sport": "Tennis",      "source": "ESPN API (live)",          "channels": "Tennis Channel Ch 217 · ESPN Ch 206 · ESPN2 Ch 209" },
+    { "league": "PGA Tour",           "sport": "Golf",        "source": "ESPN API (live)",          "channels": "Golf Channel Ch 218 · CBS Ch 5 · NBC Ch 11 · ESPN+ (Roku)" },
+    { "league": "LPGA Tour",          "sport": "Golf",        "source": "ESPN API (live)",          "channels": "Golf Channel Ch 218 · NBC Ch 11 · Peacock (Everpass)", "women": true },
+    { "league": "Formula 1",          "sport": "Motorsport",  "source": "Supplemental hardcoded",  "channels": "Apple TV via Everpass · DirecTV Ch 9526" },
+    { "league": "NASCAR",             "sport": "Motorsport",  "source": "Supplemental hardcoded",  "channels": "FOX Ch 2 · FS1 Ch 219 · USA Network Ch 242 · NBC Ch 11 · Peacock (Everpass) · Prime Video" },
+    { "league": "UFC",                "sport": "MMA",         "source": "Supplemental hardcoded",  "channels": "DirecTV PPV (commercial license)" },
+    { "league": "WPBL",               "sport": "Baseball",    "source": "Supplemental hardcoded",  "channels": "ESPN+ (Roku) · SF Firebells featured", "women": true },
+    { "league": "Wimbledon",          "sport": "Tennis",      "source": "Supplemental hardcoded",  "channels": "ESPN Ch 206 · ESPN2 Ch 209 · ABC Ch 7 (Men's Final)" },
+    { "league": "US Open Golf",       "sport": "Golf",        "source": "Supplemental hardcoded",  "channels": "NBC Ch 11 · USA Network Ch 242 · Peacock (Everpass)" },
+    { "league": "Oakland Ballers",    "sport": "Baseball",    "source": "Supplemental hardcoded",  "channels": "HomeTeam Network (Roku)" }
+  ]
+}

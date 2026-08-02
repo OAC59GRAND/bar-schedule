@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oakland Athletic Club — TV & Streaming Channel Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', Arial, sans-serif; background: #f5f0e8; color: #0f0f0f; font-size: 14px; line-height: 1.5; }
+
+  /* HEADER */
+  .page-header { background: #0f0f0f; border-bottom: 4px solid #c9a84c; padding: 28px 40px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .monogram { width: 56px; height: 56px; border: 2px solid #c9a84c; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; color: #c9a84c; flex-shrink: 0; }
+  .bar-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 3px; color: #f5f0e8; text-transform: uppercase; }
+  .bar-addr { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: #c9a84c; text-transform: uppercase; margin-top: 3px; }
+  .doc-info { text-align: right; font-family: 'Barlow Condensed', sans-serif; }
+  .doc-info h1 { font-size: 18px; font-weight: 800; letter-spacing: 2px; color: #f5f0e8; text-transform: uppercase; }
+  .doc-info p { font-size: 11px; color: #c9a84c; letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
+
+  /* EDIT BANNER */
+  .edit-banner { background: #fffbf0; border-bottom: 2px solid #f0d080; padding: 10px 40px; font-size: 12px; color: #7c4f00; display: flex; align-items: center; gap: 10px; }
+  .edit-banner strong { color: #0f0f0f; }
+  .edit-banner a { color: #1d428a; font-weight: 600; }
+  .edit-dot { width: 8px; height: 8px; border-radius: 50%; background: #4a9b6f; flex-shrink: 0; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 32px 40px 48px; }
+
+  /* SECTION */
+  .section { margin-bottom: 36px; }
+  .section-header { background: #0f0f0f; color: #c9a84c; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; padding: 8px 14px; border-radius: 3px 3px 0 0; }
+  .section-sub { font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #6b6560; text-transform: uppercase; padding: 6px 14px; background: #e8e3d8; border-bottom: 1px solid #d0c9bb; }
+  .youtube-note { background: #fff8e8; border: 1px solid #f0d080; border-top: none; padding: 10px 16px; font-size: 12px; color: #7c4f00; display: flex; align-items: center; gap: 8px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; border: 1px solid #d0c9bb; border-top: none; font-size: 13px; }
+  thead th { background: #1a1a1a; color: #f5f0e8; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+  tbody tr { border-bottom: 1px solid #e0dbd0; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #faf7f2; }
+  tbody tr:hover { background: #f0ebe0; }
+  td { padding: 8px 12px; vertical-align: top; }
+  .ch-num { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 900; white-space: nowrap; }
+  .ch-name { font-weight: 600; }
+  .ch-detail { color: #3d3832; font-size: 12px; }
+  .ch-note { color: #6b6560; font-size: 11px; font-style: italic; }
+
+  /* TAGS */
+  .tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin: 1px 2px 1px 0; }
+  .tag-women  { background: #7c3aed; color: #fff; }
+  .tag-stream { background: #1d428a; color: #fff; }
+  .tag-ppv    { background: #9b1c1c; color: #fff; }
+  .tag-free   { background: #166534; color: #fff; }
+  .tag-bundle { background: #0f0f0f; color: #c9a84c; }
+
+  /* PRIORITY TEAMS */
+  .teams-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #d0c9bb; border: 1px solid #d0c9bb; border-top: none; }
+  .team-card { background: #fff; padding: 14px 16px; border-top: 3px solid #c9a84c; }
+  .team-name { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 3px; }
+  .team-league { font-size: 11px; color: #6b6560; margin-bottom: 5px; }
+  .team-where { font-size: 12px; font-weight: 600; color: #3d3832; }
+
+  /* STREAMING */
+  .streaming-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #d0c9bb; border: 1px solid #d0c9bb; border-top: none; }
+  .stream-card { background: #fff; padding: 14px 16px; }
+  .stream-name { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .stream-content { font-size: 12px; color: #3d3832; line-height: 1.6; margin-bottom: 6px; }
+  .stream-note { font-size: 11px; color: #6b6560; font-style: italic; border-top: 1px solid #e8e3d8; padding-top: 6px; margin-top: 6px; }
+  .stream-content li { margin-left: 14px; }
+
+  /* FOOTER */
+  .page-footer { background: #0f0f0f; color: #5a5248; padding: 16px 40px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+  .page-footer span { color: #c9a84c; }
+  .loading { color: #6b6560; text-align: center; padding: 60px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+
+  @media print {
+    .edit-banner { display: none; }
+    body { font-size: 11px; }
+    .content { padding: 16px 24px; }
+    .section { margin-bottom: 20px; page-break-inside: avoid; }
+    .teams-grid { grid-template-columns: repeat(4,1fr); }
+    .streaming-grid { grid-template-columns: repeat(3,1fr); }
+    td { padding: 5px 8px; }
+  }
+  @media(max-width:700px) {
+    .page-header { flex-direction: column; gap: 12px; }
+    .teams-grid, .streaming-grid { grid-template-columns: 1fr 1fr; }
+    .content { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-left">
+    <div class="monogram">OAC</div>
+    <div>
+      <div class="bar-name">Oakland Athletic Club</div>
+      <div class="bar-addr">59 Grand Ave, Oakland CA &mdash; Official Bar Partner Guide</div>
+    </div>
+  </div>
+  <div class="doc-info">
+    <h1>TV &amp; Streaming Channel Guide</h1>
+    <p id="doc-updated">Loading&hellip;</p>
+  </div>
+</div>
+
+<div class="edit-banner">
+  <div class="edit-dot"></div>
+  <span><strong>Live document</strong> &mdash; Data loads from
+    <a href="https://oac59grand.github.io/bar-schedule/channels.json" target="_blank">channels.json</a>
+    on GitHub. To update channels, edit that file at
+    <a href="https://github.com/OAC59GRAND/bar-schedule/blob/main/channels.json" target="_blank">github.com/OAC59GRAND/bar-schedule</a>
+    and changes appear here immediately. No rebuilding needed.
+  </span>
+</div>
+
+<div class="content" id="content">
+  <div class="loading">Loading channel guide&hellip;</div>
+</div>
+
+<div class="page-footer">
+  <div>Oakland Athletic Club &bull; 59 Grand Ave, Oakland CA &bull; <span>oaklandathleticclub.com</span></div>
+  <div>Data source: <span>channels.json on GitHub</span> &bull; Schedule system: <span>oac59grand.github.io/bar-schedule</span></div>
+</div>
+
+<script>
+const DATA_URL = 'https://oac59grand.github.io/bar-schedule/channels.json';
+
+function tag(text, cls) {
+  return `<span class="tag ${cls}">${text}</span>`;
+}
+
+function buildPriorityTeams(teams) {
+  const cards = teams.map(t => `
+    <div class="team-card" style="border-top-color:${t.color}">
+      <div class="team-name">${t.name} ${t.women ? tag('Women','tag-women') : ''}</div>
+      <div class="team-league">${t.league}</div>
+      <div class="team-where">${t.where}</div>
+    </div>`).join('');
+  return `
+    <div class="section">
+      <div class="section-header">&#9733; Official Bar Partner &amp; Bay Area Priority Teams</div>
+      <div class="section-sub">These teams are always featured at the top of the schedule display</div>
+      <div class="teams-grid">${cards}</div>
+    </div>`;
+}
+
+function buildTable(sectionTitle, sectionSub, headers, rows) {
+  const ths = headers.map(h => `<th>${h}</th>`).join('');
+  const trs = rows.map(cols =>
+    `<tr>${cols.map((c,i) => `<td class="${i===0?'ch-num':i===1?'ch-name':'ch-detail'}">${c||''}</td>`).join('')}</tr>`
+  ).join('');
+  return `
+    <div class="section">
+      <div class="section-header">${sectionTitle}</div>
+      ${sectionSub ? `<div class="section-sub">${sectionSub}</div>` : ''}
+      <table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>
+    </div>`;
+}
+
+function buildStreaming(services) {
+  const cards = services.map(s => {
+    const tagHtml = s.tag === 'Free' ? tag('Free','tag-free')
+                  : s.tag === 'PPV'  ? tag('PPV','tag-ppv')
+                  : s.tag === 'Bundle' ? tag('Bundle','tag-bundle')
+                  : tag('Roku','tag-stream');
+    const items = s.content.map(c => `<li>${c}</li>`).join('');
+    return `
+      <div class="stream-card">
+        <div class="stream-name" style="color:${s.color}">${s.name} ${tagHtml} ${s.device !== 'Commercial streaming device' && s.device !== 'DirecTV' ? tag('Roku','tag-stream') : ''}</div>
+        <div class="stream-content"><ul>${items}</ul></div>
+        ${s.note ? `<div class="stream-note">${s.note}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="section">
+      <div class="section-header">&#128225; Streaming Services</div>
+      <div class="section-sub">Everpass (commercial) &bull; Roku: Paramount+, ESPN+, Fandango, HomeTeam Network, YouTube &bull; DirecTV PPV</div>
+      <div class="youtube-note">
+        <span style="font-size:16px">&#9654;</span>
+        <span><strong>No Women&rsquo;s Games Scheduled?</strong> &mdash; Switch to one of OAC&rsquo;s subscribed YouTube channels via the <strong>YouTube app on Roku</strong>. Recommended: women&rsquo;s sports, highlights, and partner content.</span>
+      </div>
+      <div class="streaming-grid">${cards}</div>
+    </div>`;
+}
+
+function buildLeagues(leagues) {
+  const rows = leagues.map(l => [
+    l.league + (l.women ? ' <span class="tag tag-women">W</span>' : ''),
+    l.sport,
+    l.source,
+    l.channels
+  ]);
+  return buildTable(
+    '&#127942; All Leagues in the Live Schedule System',
+    'Live data fetched hourly via ESPN API. Supplemental events hardcoded for leagues not in ESPN API.',
+    ['League','Sport','Source','Primary Channels'],
+    rows
+  );
+}
+
+async function loadAndRender() {
+  try {
+    const r = await fetch(DATA_URL + '?t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+
+    document.getElementById('doc-updated').textContent =
+      'Updated: ' + (d.updated || 'See GitHub') + ' \u00b7 ' + (d.source || '');
+
+    const html = [
+      buildPriorityTeams(d.priorityTeams || []),
+
+      buildTable(
+        '&#128250; Local Broadcast Channels &mdash; Bay Area DirecTV',
+        'Local channels use over-the-air virtual channel numbers for Bay Area satellite subscribers',
+        ['Ch','Network','Station','Sports Coverage'],
+        (d.localBroadcast||[]).map(c => [c.ch, c.network, c.station, c.sports])
+      ),
+
+      buildTable(
+        '&#128246; National Sports Cable Channels',
+        null,
+        ['Ch','Network','Primary Sports Coverage'],
+        (d.nationalCable||[]).map(c => [c.ch, c.network, c.sports])
+      ),
+
+      buildTable(
+        '&#127466;&#127480; Spanish-Language Sports Channels',
+        null,
+        ['Ch','Network','Sports Coverage'],
+        (d.spanishLanguage||[]).map(c => [c.ch, c.network, c.sports])
+      ),
+
+      buildStreaming(d.streaming || []),
+
+      buildLeagues(d.leagues || []),
+
+      buildTable(
+        '&#9917; Bay Area RSNs',
+        null,
+        ['Ch','Network','Team(s)'],
+        (d.bayAreaRSN||[]).map(c => [c.ch, c.network, c.teams])
+      ),
+
+      buildTable(
+        '&#9917; MLB Team RSN Channels',
+        'All included in DirecTV Business XTRA. Source: DirecTV Sports Pack PDF effective 6/25/26.',
+        ['Ch','Network','Team'],
+        (d.mlbRSNs||[]).map(c => [c.ch, c.network, c.team])
+      ),
+    ].join('');
+
+    document.getElementById('content').innerHTML = html;
+
+  } catch(e) {
+    document.getElementById('content').innerHTML =
+      `<div class="loading">Could not load channel data. Check that channels.json exists at:<br><br>
+       <a href="${DATA_URL}" style="color:#1d428a">${DATA_URL}</a></div>`;
+  }
+}
+
+loadAndRender();
+</script>
+</body>
+</html>

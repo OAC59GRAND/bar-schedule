@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-02T03:45:04.079Z",
+  "generated": "2026-08-02T06:36:30.751Z",
   "days": {
     "2026-08-01": [
       {
@@ -478,8 +478,8 @@
         "awayFull": "San Francisco Giants",
         "homeScore": 6,
         "awayScore": 5,
-        "status": "in",
-        "statusDetail": "Bot 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-02T00:40Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"
@@ -552,9 +552,9 @@
         "homeFull": "Los Angeles Angels",
         "awayFull": "Milwaukee Brewers",
         "homeScore": 1,
-        "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-02T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -566,10 +566,10 @@
         "away": "Tigers",
         "homeFull": "Athletics",
         "awayFull": "Detroit Tigers",
-        "homeScore": 2,
-        "awayScore": 6,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "homeScore": 6,
+        "awayScore": 8,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-02T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -598,8 +598,8 @@
         "awayFull": "Pittsburgh Riverhounds",
         "homeScore": 0,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "74'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T02:00Z",
         "venue": "Oakland-Alameda County Coliseum",
         "broadcast": "ESPN+"
@@ -613,8 +613,8 @@
         "awayFull": "El Paso Locomotive FC",
         "homeScore": 2,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "78'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T02:00Z",
         "venue": "Championship Soccer Stadium",
         "broadcast": null
@@ -628,8 +628,8 @@
         "awayFull": "FC Dallas",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "47'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T02:30Z",
         "venue": "Dignity Health Sports Park",
         "broadcast": "Apple TV"
@@ -643,8 +643,8 @@
         "awayFull": "Phoenix Rising FC",
         "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "HT",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T02:30Z",
         "venue": "Cashman Field",
         "broadcast": "ESPN+"
@@ -656,10 +656,10 @@
         "away": "Seattle",
         "homeFull": "Portland Timbers",
         "awayFull": "Seattle Sounders FC",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "45'+4'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T02:45Z",
         "venue": "Providence Park",
         "broadcast": "FS1"
@@ -671,10 +671,10 @@
         "away": "Sporting JAX",
         "homeFull": "Sacramento Republic FC",
         "awayFull": "Sporting JAX",
-        "homeScore": 1,
+        "homeScore": 5,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "34'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-08-02T03:00Z",
         "venue": "Heart Health Park",
         "broadcast": "ESPN+"

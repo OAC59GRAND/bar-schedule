@@ -1,0 +1,219 @@
+name: Send Weekly Priority Team Schedule Email
+
+on:
+  schedule:
+    - cron: '0 15 * * 1'   # Every Monday 8:00 AM PT (15:00 UTC)
+  workflow_dispatch:         # Also trigger manually from Actions tab
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm install nodemailer
+
+      - name: Build and send priority schedule email
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+          EMAIL_TO:   ${{ secrets.EMAIL_TO }}
+        run: |
+          node << 'SCRIPT'
+          const https      = require('https');
+          const nodemailer = require('./node_modules/nodemailer');
+
+          const PRIORITY_TEAMS = [
+            {name:'Barcelona',       matches:['Barcelona'],                          league:'La Liga',    color:'#A50044',emoji:'⚽'},
+            {name:'Real Madrid',     matches:['Real Madrid'],                        league:'La Liga',    color:'#FEBE10',emoji:'⚽'},
+            {name:'Atletico Madrid', matches:['Atletico','Atl\u00e9tico'],           league:'La Liga',    color:'#C42535',emoji:'⚽'},
+            {name:'Bayern Munich',   matches:['Bayern'],                             league:'Bundesliga', color:'#DC052D',emoji:'⚽'},
+            {name:'Dortmund',        matches:['Dortmund'],                           league:'Bundesliga', color:'#FDE100',emoji:'⚽'},
+            {name:'Bayer Leverkusen',matches:['Leverkusen'],                         league:'Bundesliga', color:'#E32221',emoji:'⚽'},
+            {name:'AC Milan',        matches:['AC Milan'],                           league:'Serie A',    color:'#FB090B',emoji:'⚽'},
+            {name:'Juventus',        matches:['Juventus'],                           league:'Serie A',    color:'#2d2d2d',emoji:'⚽'},
+            {name:'Napoli',          matches:['Napoli'],                             league:'Serie A',    color:'#12A0D7',emoji:'⚽'},
+            {name:'Inter Milan',     matches:['Internazionale','Inter Milan'],        league:'Serie A',    color:'#0068A8',emoji:'⚽'},
+            {name:'PSG',             matches:['Paris Saint-Germain','Paris SG'],     league:'Ligue 1',   color:'#004170',emoji:'⚽'},
+            {name:'Marseille',       matches:['Marseille'],                          league:'Ligue 1',   color:'#2CBFE8',emoji:'⚽'},
+            {name:'Liverpool',       matches:['Liverpool'],                          league:'EPL',        color:'#C8102E',emoji:'⚽'},
+            {name:'Man United',      matches:['Manchester United'],                  league:'EPL',        color:'#DA291C',emoji:'⚽'},
+            {name:'Chelsea',         matches:['Chelsea'],                            league:'EPL',        color:'#034694',emoji:'⚽'},
+            {name:'Man City',        matches:['Manchester City'],                    league:'EPL',        color:'#6CABDD',emoji:'⚽'},
+            {name:'Arsenal',         matches:['Arsenal'],                            league:'EPL',        color:'#EF0107',emoji:'⚽'},
+            {name:'Newcastle',       matches:['Newcastle'],                          league:'EPL',        color:'#241F20',emoji:'⚽'},
+            {name:'Tottenham',       matches:['Tottenham'],                          league:'EPL',        color:'#132257',emoji:'⚽'},
+            {name:'SF Giants',       matches:['Giants'],                             league:'MLB',        color:'#EF3E42',emoji:'⚾'},
+            {name:'GS Warriors',     matches:['Warriors'],                           league:'NBA',        color:'#1d62d6',emoji:'🏀'},
+            {name:'GS Valkyries',    matches:['Valkyries'],                          league:'WNBA',       color:'#0ea5e9',emoji:'🏀'},
+            {name:'SJ Sharks',       matches:['Sharks'],                             league:'NHL',        color:'#008577',emoji:'🏒'},
+            {name:'Oakland Roots',   matches:['Roots'],                              league:'USL',        color:'#2d7a3a',emoji:'⚽'},
+            {name:'Oakland Ballers', matches:['Ballers'],                            league:'Pioneer Lg', color:'#006341',emoji:'⚾'},
+            {name:'Bay FC',          matches:['Bay FC'],                             league:'NWSL',       color:'#1d428a',emoji:'⚽'},
+            {name:'SJ Earthquakes',  matches:['Earthquakes'],                        league:'MLS',        color:'#003087',emoji:'⚽'},
+            {name:'Raiders',         matches:['Raiders'],                            league:'NFL',        color:'#A5ACAF',emoji:'🏈'},
+            {name:'49ers',           matches:['49ers'],                              league:'NFL',        color:'#AA0000',emoji:'🏈'},
+          ];
+
+          const CH = {
+            'FOX':'Ch 2','CBS':'Ch 5','ABC':'Ch 7','NBC':'Ch 11','Telemundo':'Ch 406',
+            'ESPN':'Ch 206','ESPN2':'Ch 209','ESPN Unlmtd':'Ch 206','ESPNU':'Ch 208',
+            'FS1':'Ch 219','FS2':'Ch 618','TNT':'Ch 245','TBS':'Ch 247','truTV':'Ch 246',
+            'NFL Network':'Ch 212','MLB Network':'Ch 213','NHL Network':'Ch 215','NBA TV':'Ch 216',
+            'Golf Channel':'Ch 218','CBS Sports Network':'Ch 221','CBSSN':'Ch 221',
+            'USA Network':'Ch 242','USA Net':'Ch 242','ION':'Ch 305',
+            'NBC Sports Bay Area':'Ch 696',
+          };
+          const MLB_CH = {
+            'Giants':'NBC Sports Bay Area Ch 696','Dodgers':'Spectrum SportsNet LA Ch 690',
+            'Angels':'Angels Bcast TV Ch 692','Padres':'Padres.TV Ch 694',
+            'Mariners':'Mariners.TV Ch 687','Cardinals':'Cardinals.TV Ch 672',
+            'Royals':'Royals.TV Ch 671','Cubs':'Marquee Ch 664',
+            'White Sox':'Chicago SN Ch 665','Astros':'Space City HN Ch 674',
+            'Rangers':'Rangers SN Ch 677','Yankees':'YES Network Ch 631',
+            'Mets':'SNY Ch 639','Red Sox':'NESN Ch 628','Orioles':'MASN Ch 640',
+            'Nationals':'Nationals.TV Ch 641','Braves':'BravesVision Ch 645',
+            'Rays':'Rays.TV Ch 652','Marlins':'Marlins.TV Ch 655',
+            'Pirates':'SportsNet PIT Ch 659','Reds':'Reds.TV Ch 661',
+            'Guardians':'Guardians.TV Ch 662','Tigers':'Detroit SN Ch 663',
+            'Brewers':'Brewers.TV Ch 670','Twins':'Twins.TV Ch 668',
+            'Rockies':'Rockies.TV Ch 683','Diamondbacks':'DBACKS.TV Ch 686',
+          };
+
+          function getChannel(broadcast, homeFull, awayFull) {
+            if (!broadcast) return '';
+            if (/mlb\.?tv/i.test(broadcast)) {
+              for (const [k,v] of Object.entries(MLB_CH))
+                if ((homeFull+' '+awayFull).includes(k)) return v;
+              return 'MLB.TV';
+            }
+            if (/espn.?unl/i.test(broadcast)) return 'ESPN Ch 206';
+            if (/^usa.?net/i.test(broadcast)) return 'USA Network Ch 242';
+            if (/^cbssn$/i.test(broadcast))   return 'CBS Sports Net Ch 221';
+            if (/^ion$/i.test(broadcast))      return 'ION Ch 305';
+            if (/peacock/i.test(broadcast))    return 'Peacock';
+            if (/paramount/i.test(broadcast))  return 'Paramount+';
+            if (/espn\+|espnplus/i.test(broadcast)) return 'ESPN+';
+            if (/prime|amazon/i.test(broadcast))    return 'Amazon Prime';
+            if (/apple/i.test(broadcast))      return 'Apple TV';
+            if (/fandango/i.test(broadcast))   return 'Fandango (Free)';
+            if (/hometeam/i.test(broadcast))   return 'HomeTeam Network';
+            const ch = CH[broadcast.trim()];
+            return ch ? broadcast.trim()+' '+ch : broadcast;
+          }
+
+          function fetchJSON(url) {
+            return new Promise((resolve, reject) => {
+              https.get(url, {headers:{'User-Agent':'OAC-Bot/1.0'}}, res => {
+                let d='';
+                res.on('data', c=>d+=c);
+                res.on('end', ()=>{ try{resolve(JSON.parse(d))}catch(e){reject(e)} });
+              }).on('error', reject);
+            });
+          }
+
+          function teamMatches(ev, team) {
+            const both = ((ev.homeFull||'')+(ev.awayFull||'')).toLowerCase();
+            return team.matches.some(m => both.includes(m.toLowerCase()));
+          }
+          function isHome(ev, team) {
+            return team.matches.some(m => (ev.homeFull||'').toLowerCase().includes(m.toLowerCase()));
+          }
+          function getOpponent(ev, team) {
+            return isHome(ev,team) ? (ev.awayFull||ev.away) : (ev.homeFull||ev.home);
+          }
+
+          const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+          const MONS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+          function fmtTime(iso) {
+            const d = new Date(iso);
+            const h = d.getHours(), m = d.getMinutes();
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const h12  = h % 12 || 12;
+            return h12 + (m ? ':' + String(m).padStart(2,'0') : '') + ' ' + ampm + ' PT';
+          }
+
+          async function main() {
+            const data = await fetchJSON('https://oac59grand.github.io/bar-schedule/schedule.json');
+            const all = [];
+            for (const evs of Object.values(data.days||{})) for (const ev of evs) all.push(ev);
+            all.sort((a,b)=>new Date(a.isoDate)-new Date(b.isoDate));
+
+            const now=new Date(), end=new Date(now);
+            end.setDate(end.getDate()+6);
+            const weekLabel = MONS[now.getMonth()]+' '+now.getDate()+' - '+MONS[end.getMonth()]+' '+end.getDate()+', '+end.getFullYear();
+
+            const withGames = PRIORITY_TEAMS
+              .map(t => ({team:t, games:all.filter(ev=>teamMatches(ev,t))}))
+              .filter(x => x.games.length > 0);
+
+            if (withGames.length === 0) {
+              console.log('No games found this week. Email skipped.');
+              return;
+            }
+
+            // Build rows
+            let tableRows = '';
+            for (const {team, games} of withGames) {
+              tableRows += `<tr><td colspan="5" style="padding:10px 16px 8px;background:#1a1a1a;border-top:3px solid ${team.color};border-bottom:1px solid #2a2a2a">
+                <strong style="font-family:Arial,sans-serif;font-size:13px;color:#f0ece3;text-transform:uppercase;letter-spacing:1px">${team.emoji} ${team.name}</strong>
+                <span style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;text-transform:uppercase;letter-spacing:2px;margin-left:10px">${team.league}</span>
+              </td></tr>`;
+              for (const ev of games) {
+                const d   = new Date(ev.isoDate);
+                const opp = getOpponent(ev, team);
+                const vs  = isHome(ev,team) ? 'vs' : '@';
+                const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
+                tableRows += `<tr style="border-bottom:1px solid #222">
+                  <td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#a07830;font-weight:bold;white-space:nowrap">${DAYS[d.getDay()]}</td>
+                  <td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#8a8480;white-space:nowrap">${MONS[d.getMonth()]} ${d.getDate()}</td>
+                  <td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#f0ece3">${vs} ${opp}</td>
+                  <td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#8a8480;white-space:nowrap">${fmtTime(ev.isoDate)}</td>
+                  <td style="padding:7px 16px 7px 4px;font-family:Arial,sans-serif;font-size:11px;color:#c9a84c;font-weight:bold;white-space:nowrap">${ch}</td>
+                </tr>`;
+              }
+              tableRows += '<tr><td colspan="5" style="height:4px;background:#0d0d0d"></td></tr>';
+            }
+
+            const totalGames = withGames.reduce((s,x)=>s+x.games.length,0);
+
+            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#0a0a0a">
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#0a0a0a">
+<tr><td style="background:#0f0f0f;padding:18px 20px 14px;border-bottom:3px solid #c9a84c">
+  <table width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td style="vertical-align:middle">
+      <div style="font-family:Arial,sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;color:#f0ece3;text-transform:uppercase">OAKLAND ATHLETIC CLUB</div>
+      <div style="font-family:Arial,sans-serif;font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-top:2px">Priority Team Schedule &bull; 59 Grand Ave</div>
+    </td>
+    <td style="text-align:right;vertical-align:middle">
+      <div style="font-family:Arial,sans-serif;font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px">Week of ${weekLabel}</div>
+      <div style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;margin-top:2px">${withGames.length} teams &bull; ${totalGames} games</div>
+    </td>
+  </tr></table>
+</td></tr>
+<tr><td style="background:#111">
+  <table width="100%" cellpadding="0" cellspacing="0">${tableRows}</table>
+</td></tr>
+<tr><td style="background:#0f0f0f;padding:12px 20px;border-top:1px solid #1e1e1e">
+  <p style="font-family:Arial,sans-serif;font-size:10px;color:#5a5248;margin:0;text-transform:uppercase;letter-spacing:1px">
+    Oakland Athletic Club &bull; <a href="https://oac59grand.github.io/bar-schedule/priority-schedule.html" style="color:#c9a84c;text-decoration:none">View live schedule</a> &bull; Data updates hourly via GitHub Actions
+  </p>
+</td></tr>
+</table></body></html>`;
+
+            const t = nodemailer.createTransport({
+              service:'gmail',
+              auth:{user:process.env.GMAIL_USER, pass:process.env.GMAIL_PASS}
+            });
+            await t.sendMail({
+              from:`"OAC Schedule" <${process.env.GMAIL_USER}>`,
+              to: process.env.EMAIL_TO,
+              subject:`OAC Priority Teams - Week of ${weekLabel} (${withGames.length} teams, ${totalGames} games)`,
+              html,
+            });
+            console.log(`Sent: ${withGames.length} teams, ${totalGames} games`);
+          }
+
+          main().catch(e=>{console.error(e.message);process.exit(1);});
+          SCRIPT

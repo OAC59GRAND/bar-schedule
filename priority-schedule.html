@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAC Priority Team Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;color:#f0ece3;min-height:100vh}
+#hdr{background:#0f0f0f;border-bottom:3px solid #c9a84c;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-l{display:flex;align-items:center;gap:14px}
+.mono{width:48px;height:48px;border:2px solid #c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#c9a84c;flex-shrink:0}
+.wm{font-size:16px;font-weight:800;letter-spacing:3px;color:#f0ece3;text-transform:uppercase}
+.wm-sub{font-size:10px;font-weight:600;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-top:2px}
+.hdr-r{text-align:right}
+.doc-title{font-size:14px;font-weight:800;letter-spacing:2px;color:#f0ece3;text-transform:uppercase}
+.doc-sub{font-size:10px;color:#c9a84c;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.toolbar{background:#111;border-bottom:1px solid #222;padding:10px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:#4a9b6f;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.toolbar-txt{font-size:10px;color:#5a5248;letter-spacing:1px;text-transform:uppercase}
+.toolbar-txt span{color:#c9a84c}
+.wk-label{font-size:10px;font-weight:800;letter-spacing:2px;color:#f0ece3;text-transform:uppercase;margin-left:auto}
+#content{padding:20px 24px}
+.section-hd{font-size:9px;font-weight:800;letter-spacing:4px;color:#5a5248;text-transform:uppercase;padding:12px 0 8px;border-bottom:1px solid #1e1e1e;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin-bottom:24px}
+.team-card{background:#111;border-radius:4px;overflow:hidden;border:1px solid #222;border-left:4px solid #333}
+.tc-hdr{padding:10px 14px;display:flex;align-items:center;gap:8px;background:#141414}
+.tc-emoji{font-size:16px;flex-shrink:0}
+.tc-name{font-size:16px;font-weight:900;color:#f0ece3;flex:1}
+.tc-league{font-size:8px;font-weight:800;letter-spacing:2px;color:#5a5248;text-transform:uppercase}
+.game-row{padding:8px 14px;border-top:1px solid #1e1e1e;display:flex;align-items:flex-start;gap:10px}
+.game-row:hover{background:#161616}
+.game-day{font-size:10px;font-weight:800;color:#a07830;min-width:28px;padding-top:2px;flex-shrink:0}
+.game-date{font-size:9px;color:#5a5248;min-width:52px;flex-shrink:0;padding-top:1px}
+.game-info{flex:1;min-width:0}
+.game-match{font-size:13px;font-weight:800;color:#f0ece3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game-time{font-size:9px;color:#5a5248;margin-top:2px}
+.game-ch{font-size:9px;font-weight:700;color:#c9a84c;background:#2a1f00;border:1px solid #3d2e00;padding:1px 6px;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.empty{color:#5a5248;text-align:center;padding:60px 0;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.loading{color:#5a5248;text-align:center;padding:60px 0;font-size:13px;letter-spacing:2px;text-transform:uppercase;animation:pulse 1.5s infinite}
+#footer{background:#0f0f0f;border-top:1px solid #222;padding:14px 24px;font-size:10px;color:#5a5248;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between}
+#footer span{color:#c9a84c}
+@media(max-width:600px){.grid{grid-template-columns:1fr}#content{padding:12px 16px}}
+
+</style>
+</head>
+<body>
+<div id="hdr">
+  <div class="hdr-l">
+    <div class="mono">OAC</div>
+    <div><div class="wm">Oakland Athletic Club</div><div class="wm-sub">59 Grand Ave &middot; Priority Teams</div></div>
+  </div>
+  <div class="hdr-r">
+    <div class="doc-title">Weekly Team Schedule</div>
+    <div class="doc-sub">29 teams &bull; Auto-updates hourly</div>
+  </div>
+</div>
+<div class="toolbar">
+  <div class="dot"></div>
+  <span class="toolbar-txt">Live &bull; Updated <span id="updated-txt">Loading&hellip;</span></span>
+  <span class="wk-label" id="wk-label"></span>
+</div>
+<div id="content"><div id="schedule-content"><div class="loading">Loading schedule&hellip;</div></div></div>
+<div id="footer">
+  <div>Oakland Athletic Club &bull; 59 Grand Ave, Oakland CA &bull; <span>oaklandathleticclub.com</span></div>
+  <div>Data: <span>oac59grand.github.io/bar-schedule/schedule.json</span> &bull; Updates every 5 min</div>
+</div>
+<script>
+
+const CH = {
+  'FOX':'2','CBS':'5','ABC':'7','NBC':'11','Telemundo':'406','Tele':'406',
+  'ESPN':'206','ESPN2':'209','ESPNU':'208','ESPNews':'207','ESPN Unlmtd':'206',
+  'FS1':'219','FS2':'618','TNT':'245','TBS':'247','truTV':'246',
+  'NFL Network':'212','MLB Network':'213','NHL Network':'215','NBA TV':'216',
+  'Golf Channel':'218','CBS Sports Network':'221','CBSSN':'221',
+  'USA Network':'242','USA Net':'242','ION':'305',
+  'NBC Sports Bay Area':'696','NBCSBA':'696',
+};
+const MLB_CH = {
+  'Giants':'NBC Sports Bay Area 696','Padres':'Padres.TV 694',
+  'Dodgers':'Spectrum SportsNet LA 690','Angels':'Angels Bcast 692',
+  'Athletics':'NBC Sports CA 698','Mariners':'Mariners.TV 687',
+  'Cardinals':'Cardinals.TV 672','Royals':'Royals.TV 671',
+  'Cubs':'Marquee 664','White Sox':'Chicago SN 665',
+  'Astros':'Space City HN 674','Rangers':'Rangers SN 677',
+  'Yankees':'YES 631','Mets':'SNY 639','Red Sox':'NESN 628',
+  'Orioles':'MASN 640','Nationals':'Nationals.TV 641',
+  'Braves':'BravesVision 645','Rays':'Rays.TV 652',
+  'Marlins':'Marlins.TV 655','Pirates':'SportsNet PIT 659',
+  'Reds':'Reds.TV 661','Guardians':'Guardians.TV 662',
+  'Tigers':'Detroit SN 663','Brewers':'Brewers.TV 670',
+  'Twins':'Twins.TV 668','Rockies':'Rockies.TV 683',
+  'Padres':'Padres.TV 694','Diamondbacks':'DBACKS.TV 686',
+};
+function getChannel(broadcast, homeFull, awayFull) {
+  if (!broadcast) return '';
+  if (/mlb\.?tv/i.test(broadcast)) {
+    for (const [k,v] of Object.entries(MLB_CH)) {
+      if ((homeFull+awayFull).includes(k)) return v;
+    }
+    return 'MLB.TV';
+  }
+  if (/espn.?unl/i.test(broadcast)) return 'ESPN Ch 206';
+  if (/^usa.?net/i.test(broadcast)) return 'USA Network Ch 242';
+  if (/^cbssn$/i.test(broadcast)) return 'CBS Sports Net Ch 221';
+  if (/^ion$/i.test(broadcast)) return 'ION Ch 305';
+  if (/peacock/i.test(broadcast)) return 'Peacock';
+  if (/paramount/i.test(broadcast)) return 'Paramount+';
+  if (/espn\+|espnplus/i.test(broadcast)) return 'ESPN+';
+  if (/prime|amazon/i.test(broadcast)) return 'Amazon Prime';
+  if (/apple/i.test(broadcast)) return 'Apple TV';
+  if (/fandango/i.test(broadcast)) return 'Fandango (free)';
+  if (/hometeam/i.test(broadcast)) return 'HomeTeam Network';
+  const ch = CH[broadcast.trim()];
+  if (ch) return broadcast.trim() + ' Ch ' + ch;
+  return broadcast;
+}
+
+const PRIORITY_TEAMS = [{"id": "barcelona", "name": "Barcelona", "matches": ["Barcelona"], "league": "La Liga", "color": "#A50044", "emoji": "\u26bd"}, {"id": "realmadrid", "name": "Real Madrid", "matches": ["Real Madrid"], "league": "La Liga", "color": "#FEBE10", "emoji": "\u26bd"}, {"id": "atletico", "name": "Atletico Madrid", "matches": ["Atletico", "Atl\u00e9tico"], "league": "La Liga", "color": "#C42535", "emoji": "\u26bd"}, {"id": "munich", "name": "Bayern Munich", "matches": ["Bayern"], "league": "Bundesliga", "color": "#DC052D", "emoji": "\u26bd"}, {"id": "dortmund", "name": "Dortmund", "matches": ["Dortmund"], "league": "Bundesliga", "color": "#FDE100", "emoji": "\u26bd"}, {"id": "leverkusen", "name": "Bayer Leverkusen", "matches": ["Leverkusen"], "league": "Bundesliga", "color": "#E32221", "emoji": "\u26bd"}, {"id": "acmilan", "name": "AC Milan", "matches": ["AC Milan"], "league": "Serie A", "color": "#FB090B", "emoji": "\u26bd"}, {"id": "juventus", "name": "Juventus", "matches": ["Juventus"], "league": "Serie A", "color": "#2d2d2d", "emoji": "\u26bd"}, {"id": "napoli", "name": "Napoli", "matches": ["Napoli"], "league": "Serie A", "color": "#12A0D7", "emoji": "\u26bd"}, {"id": "inter", "name": "Inter Milan", "matches": ["Internazionale", "Inter Milan", "Inter "], "league": "Serie A", "color": "#0068A8", "emoji": "\u26bd"}, {"id": "psg", "name": "PSG", "matches": ["Paris Saint-Germain", "Paris SG"], "league": "Ligue 1", "color": "#004170", "emoji": "\u26bd"}, {"id": "marseille", "name": "Marseille", "matches": ["Marseille"], "league": "Ligue 1", "color": "#2CBFE8", "emoji": "\u26bd"}, {"id": "liverpool", "name": "Liverpool", "matches": ["Liverpool"], "league": "EPL", "color": "#C8102E", "emoji": "\u26bd"}, {"id": "manutd", "name": "Man United", "matches": ["Manchester United", "Man United"], "league": "EPL", "color": "#DA291C", "emoji": "\u26bd"}, {"id": "chelsea", "name": "Chelsea", "matches": ["Chelsea"], "league": "EPL", "color": "#034694", "emoji": "\u26bd"}, {"id": "mancity", "name": "Man City", "matches": ["Manchester City"], "league": "EPL", "color": "#6CABDD", "emoji": "\u26bd"}, {"id": "arsenal", "name": "Arsenal", "matches": ["Arsenal"], "league": "EPL", "color": "#EF0107", "emoji": "\u26bd"}, {"id": "newcastle", "name": "Newcastle", "matches": ["Newcastle"], "league": "EPL", "color": "#241F20", "emoji": "\u26bd"}, {"id": "tottenham", "name": "Tottenham", "matches": ["Tottenham", "Spurs"], "league": "EPL", "color": "#132257", "emoji": "\u26bd"}, {"id": "giants", "name": "SF Giants", "matches": ["Giants"], "league": "MLB", "color": "#EF3E42", "emoji": "\u26be"}, {"id": "warriors", "name": "GS Warriors", "matches": ["Warriors"], "league": "NBA", "color": "#1d62d6", "emoji": "\ud83c\udfc0"}, {"id": "valkyries", "name": "GS Valkyries", "matches": ["Valkyries"], "league": "WNBA", "color": "#0ea5e9", "emoji": "\ud83c\udfc0"}, {"id": "sharks", "name": "SJ Sharks", "matches": ["Sharks"], "league": "NHL", "color": "#008577", "emoji": "\ud83c\udfd2"}, {"id": "roots", "name": "Oakland Roots SC", "matches": ["Roots"], "league": "USL", "color": "#2d7a3a", "emoji": "\u26bd"}, {"id": "ballers", "name": "Oakland Ballers", "matches": ["Ballers"], "league": "Pioneer Lg", "color": "#006341", "emoji": "\u26be"}, {"id": "bayfc", "name": "Bay FC", "matches": ["Bay FC"], "league": "NWSL", "color": "#1d428a", "emoji": "\u26bd"}, {"id": "earthquakes", "name": "SJ Earthquakes", "matches": ["Earthquakes"], "league": "MLS", "color": "#003087", "emoji": "\u26bd"}, {"id": "raiders", "name": "Raiders", "matches": ["Raiders"], "league": "NFL", "color": "#A5ACAF", "emoji": "\ud83c\udfc8"}, {"id": "niners", "name": "49ers", "matches": ["49ers"], "league": "NFL", "color": "#AA0000", "emoji": "\ud83c\udfc8"}];
+
+const SCHEDULE_URL = 'https://oac59grand.github.io/bar-schedule/schedule.json';
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function teamMatches(ev, team) {
+  const both = (ev.homeFull || '') + ' ' + (ev.awayFull || '');
+  return team.matches.some(m => both.toLowerCase().includes(m.toLowerCase()));
+}
+
+function opponent(ev, team) {
+  const hf = ev.homeFull || ev.home || '';
+  const af = ev.awayFull || ev.away || '';
+  const isHome = team.matches.some(m => hf.toLowerCase().includes(m.toLowerCase()));
+  return isHome ? (af || ev.away) : (hf || ev.home);
+}
+
+function vsLabel(ev, team) {
+  const hf = ev.homeFull || ev.home || '';
+  const isHome = team.matches.some(m => hf.toLowerCase().includes(m.toLowerCase()));
+  return isHome ? 'vs' : '@';
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return DAYS[d.getDay()] + ' ' + MONTHS[d.getMonth()] + ' ' + d.getDate();
+}
+
+function formatTime(iso) {
+  const d = new Date(iso);
+  return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) + ' PT';
+}
+
+function formatDayShort(iso) {
+  return DAYS[new Date(iso).getDay()];
+}
+
+async function load() {
+  document.getElementById('schedule-content').innerHTML = '<div class="loading">Loading schedule&hellip;</div>';
+  try {
+    const r = await fetch(SCHEDULE_URL + '?t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+
+    // Week label
+    const now = new Date();
+    const end = new Date(now); end.setDate(end.getDate()+6);
+    document.getElementById('wk-label').textContent =
+      'Week of ' + MONTHS[now.getMonth()] + ' ' + now.getDate() +
+      ' – ' + MONTHS[end.getMonth()] + ' ' + end.getDate();
+    document.getElementById('updated-txt').textContent = 'Data from ' + (data.generated ? new Date(data.generated).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' UTC' : 'GitHub');
+
+    // Flatten all events
+    const allEvents = [];
+    for (const [date, evs] of Object.entries(data.days || {})) {
+      for (const ev of evs) allEvents.push(ev);
+    }
+    allEvents.sort((a,b) => new Date(a.isoDate) - new Date(b.isoDate));
+
+    // Build sections by league group
+    const leagueGroups = {};
+    const teamGames = {};
+
+    for (const team of PRIORITY_TEAMS) {
+      const games = allEvents.filter(ev => teamMatches(ev, team));
+      if (games.length === 0) continue; // skip teams with no games
+      teamGames[team.id] = {team, games};
+      if (!leagueGroups[team.league]) leagueGroups[team.league] = [];
+      leagueGroups[team.league].push(team.id);
+    }
+
+    if (Object.keys(teamGames).length === 0) {
+      document.getElementById('schedule-content').innerHTML =
+        '<div class="empty">No games found for priority teams this week.<br><br><span style="font-size:10px">Schedule updates hourly via GitHub Actions.</span></div>';
+      return;
+    }
+
+    // Define league order
+    const LEAGUE_ORDER = ['MLB','NBA','WNBA','NHL','NFL','MLS','NWSL','USL','Pioneer Lg','EPL','La Liga','Bundesliga','Serie A','Ligue 1'];
+
+    let html = '';
+    for (const lg of LEAGUE_ORDER) {
+      if (!leagueGroups[lg]) continue;
+      html += '<div class="section-hd">' + lg + '</div><div class="grid">';
+      for (const tid of leagueGroups[lg]) {
+        const {team, games} = teamGames[tid];
+        const rows = games.map(ev => {
+          const opp = opponent(ev, team);
+          const vs  = vsLabel(ev, team);
+          const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
+          const status = ev.status === 'in' ? ' <span style="color:#ef4444;font-size:8px">LIVE</span>' :
+                         ev.status === 'post' ? ' <span style="color:#5a5248;font-size:8px">Final</span>' : '';
+          return '<div class="game-row">' +
+            '<div class="game-day">' + formatDayShort(ev.isoDate) + '</div>' +
+            '<div class="game-date">' + new Date(ev.isoDate).toLocaleDateString('en-US',{month:'short',day:'numeric'}) + '</div>' +
+            '<div class="game-info">' +
+              '<div class="game-match">' + vs + ' ' + opp + status + '</div>' +
+              '<div class="game-time">' + formatTime(ev.isoDate) + (ev.detail && ev.status!=='pre' ? ' &middot; ' + ev.detail : '') + '</div>' +
+            '</div>' +
+            (ch ? '<div class="game-ch">' + ch + '</div>' : '') +
+            '</div>';
+        }).join('');
+
+        html += '<div class="team-card" style="border-left-color:' + team.color + '">' +
+          '<div class="tc-hdr">' +
+          '<div class="tc-emoji">' + team.emoji + '</div>' +
+          '<div><div class="tc-name">' + team.name + '</div><div class="tc-league">' + team.league + '</div></div>' +
+          '</div>' + rows + '</div>';
+      }
+      html += '</div>';
+    }
+
+    document.getElementById('schedule-content').innerHTML = html;
+  } catch(e) {
+    document.getElementById('schedule-content').innerHTML =
+      '<div class="empty">Could not load schedule data.<br><br><span style="font-size:10px">' + e.message + '</span></div>';
+  }
+}
+
+load();
+setInterval(load, 300000);
+
+</script>
+</body>
+</html>

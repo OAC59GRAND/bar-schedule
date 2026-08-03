@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T21:07:34.153Z",
+  "generated": "2026-08-03T23:05:25.560Z",
   "days": {
     "2026-08-02": [
       {
@@ -357,9 +357,9 @@
         "homeFull": "Philadelphia Phillies",
         "awayFull": "Washington Nationals",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "8/3 - 6:40 PM EDT",
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-08-03T22:40Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -386,10 +386,10 @@
         "away": "Storm",
         "homeFull": "New York Liberty",
         "awayFull": "Seattle Storm",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "8/3 - 7:00 PM EDT",
+        "homeScore": 6,
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "8:33 - 1st",
         "isoDate": "2026-08-03T23:00Z",
         "venue": "Barclays Center",
         "broadcast": "WNBA League Pass"
@@ -529,7 +529,7 @@
         "statusDetail": "8/4 - 6:35 PM EDT",
         "isoDate": "2026-08-04T22:35Z",
         "venue": "Oriole Park at Camden Yards",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "MLB",
@@ -696,7 +696,7 @@
         "statusDetail": "8/4 - 8:10 PM EDT",
         "isoDate": "2026-08-05T00:10Z",
         "venue": "Daikin Park",
-        "broadcast": "MLB.TV"
+        "broadcast": "Sportsnet"
       },
       {
         "league": "MLB",
@@ -726,7 +726,7 @@
         "statusDetail": "8/4 - 9:40 PM EDT",
         "isoDate": "2026-08-05T01:40Z",
         "venue": "T-Mobile Park",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "MLB",
@@ -1208,7 +1208,7 @@
         "statusDetail": "8/6 - 6:05 PM EDT",
         "isoDate": "2026-08-06T22:05Z",
         "venue": "Citizens Bank Park",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "WNBA",
@@ -1360,7 +1360,7 @@
         "statusDetail": "8/7 - 6:45 PM EDT",
         "isoDate": "2026-08-07T22:45Z",
         "venue": "Nationals Park",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "NWSL",
@@ -1782,7 +1782,7 @@
         "statusDetail": "8/8 - 6:45 PM EDT",
         "isoDate": "2026-08-08T22:45Z",
         "venue": "Nationals Park",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "USL",
@@ -2219,7 +2219,7 @@
         "statusDetail": "8/9 - 1:40 PM EDT",
         "isoDate": "2026-08-09T17:40Z",
         "venue": "loanDepot park",
-        "broadcast": "MLB.TV"
+        "broadcast": null
       },
       {
         "league": "MLB",
@@ -2354,7 +2354,7 @@
         "statusDetail": "8/9 - 4:05 PM EDT",
         "isoDate": "2026-08-09T20:05Z",
         "venue": "Oracle Park",
-        "broadcast": "ESPN Unlmtd"
+        "broadcast": null
       },
       {
         "league": "MLB",

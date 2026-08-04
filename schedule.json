@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-04T02:51:53.362Z",
+  "generated": "2026-08-04T05:51:54.133Z",
   "days": {
     "2026-08-03": [
       {
@@ -86,10 +86,10 @@
         "away": "Giants",
         "homeFull": "Texas Rangers",
         "awayFull": "San Francisco Giants",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 5,
-        "status": "in",
-        "statusDetail": "Bot 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-04T00:00Z",
         "venue": "Globe Life Field",
         "broadcast": "ESPN"
@@ -131,10 +131,10 @@
         "away": "Rays",
         "homeFull": "Colorado Rockies",
         "awayFull": "Tampa Bay Rays",
-        "homeScore": 4,
-        "awayScore": 11,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "homeScore": 9,
+        "awayScore": 13,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-04T00:40Z",
         "venue": "Coors Field",
         "broadcast": "MLB.TV"
@@ -146,10 +146,10 @@
         "away": "Mercury",
         "homeFull": "Chicago Sky",
         "awayFull": "Phoenix Mercury",
-        "homeScore": 86,
-        "awayScore": 82,
-        "status": "in",
-        "statusDetail": "7:46 - 4th",
+        "homeScore": 101,
+        "awayScore": 106,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-04T01:00Z",
         "venue": "Wintrust Arena",
         "broadcast": "USA Net"
@@ -161,10 +161,10 @@
         "away": "Padres",
         "homeFull": "Arizona Diamondbacks",
         "awayFull": "San Diego Padres",
-        "homeScore": 3,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 5th",
+        "homeScore": 5,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-08-04T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"

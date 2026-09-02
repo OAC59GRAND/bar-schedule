@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02T02:28:47.176Z",
+  "generated": "2026-09-02T03:44:06.589Z",
   "days": {
     "2026-09-01": [
       {
@@ -39,10 +39,10 @@
         "away": "Giants",
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "San Francisco Giants",
-        "homeScore": 12,
+        "homeScore": 13,
         "awayScore": 12,
-        "status": "in",
-        "statusDetail": "Bot 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-01T22:40Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -99,10 +99,10 @@
         "away": "Tigers",
         "homeFull": "Minnesota Twins",
         "awayFull": "Detroit Tigers",
-        "homeScore": 14,
+        "homeScore": 15,
         "awayScore": 2,
         "status": "in",
-        "statusDetail": "Bot 8th",
+        "statusDetail": "Top 9th",
         "isoDate": "2026-09-01T23:40Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"
@@ -132,7 +132,7 @@
         "homeScore": 4,
         "awayScore": 7,
         "status": "in",
-        "statusDetail": "End 7th",
+        "statusDetail": "Top 8th",
         "isoDate": "2026-09-01T23:40Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
@@ -149,7 +149,7 @@
         "homeScore": 8,
         "awayScore": 1,
         "status": "in",
-        "statusDetail": "Bot 6th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-09-02T00:05Z",
         "venue": "Globe Life Field",
         "broadcast": "MLB.TV"
@@ -179,7 +179,7 @@
         "homeScore": 2,
         "awayScore": 1,
         "status": "in",
-        "statusDetail": "Bot 5th",
+        "statusDetail": "Top 6th",
         "isoDate": "2026-09-02T00:40Z",
         "venue": "Coors Field",
         "broadcast": "MLB.TV"
@@ -191,10 +191,10 @@
         "away": "Yankees",
         "homeFull": "Los Angeles Angels",
         "awayFull": "New York Yankees",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 4,
         "status": "in",
-        "statusDetail": "Mid 3rd",
+        "statusDetail": "Bot 3rd",
         "isoDate": "2026-09-02T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -209,7 +209,7 @@
         "homeScore": 0,
         "awayScore": 2,
         "status": "in",
-        "statusDetail": "Top 3rd",
+        "statusDetail": "Mid 3rd",
         "isoDate": "2026-09-02T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"
@@ -224,7 +224,7 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "Top 1st",
+        "statusDetail": "End 1st",
         "isoDate": "2026-09-02T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "ESPN Unlmtd"

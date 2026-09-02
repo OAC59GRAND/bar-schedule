@@ -41,6 +41,14 @@ jobs:
             {espn:'soccer/ita.1',           label:'Serie A',    women:false},
             {espn:'soccer/ger.1',           label:'Bundesliga', women:false},
             {espn:'soccer/fra.1',           label:'Ligue 1',    women:false},
+            {espn:'soccer/mex.1',           label:'Liga MX',    women:false},
+            // College feeds return EVERY D1 game nationally — hundreds a day in
+            // basketball season. chunk:true splits the window into weekly requests
+            // so nothing is lost to the limit, and onlyPriority:true discards games
+            // that don't involve a listed school before they ever hit schedule.json.
+            {espn:'football/college-football',        label:'CFB',   women:false, chunk:true, onlyPriority:true},
+            {espn:'basketball/mens-college-basketball',   label:'NCAAM', women:false, chunk:true, onlyPriority:true},
+            {espn:'basketball/womens-college-basketball', label:'NCAAW', women:true,  chunk:true, onlyPriority:true},
             {espn:'soccer/uefa.champions',  label:'UCL',        women:false},
           ];
 
@@ -86,6 +94,14 @@ jobs:
             return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6)}`;
           }
 
+          // Shared team list — same file the page and the email read.
+          const TEAMS = JSON.parse(fs.readFileSync('teams.json', 'utf8'));
+          function priorityNamesFor(label) {
+            return TEAMS
+              .filter(t => (t.leagues || [t.league]).includes(label))
+              .flatMap(t => t.matches.map(m => m.toLowerCase()));
+          }
+
           async function main() {
             const result = {};
 
@@ -97,15 +113,34 @@ jobs:
             // ~10 unique dates x 12 leagues = ~120/run,
             // which reduces the chance of tripping ESPN's undocumented
             // rate limiting/throttling on this hourly job.
+            // 5-week forward window so the page can offer week navigation.
+            // Costs nothing extra in requests: the range is one call per league
+            // either way. Only the response size grows.
             const first = new Date(); first.setDate(first.getDate() - 1);
-            const last  = new Date(); last.setDate(last.getDate() + 8);
+            const last  = new Date(); last.setDate(last.getDate() + 35);
             const range = `${ymd(first)}-${ymd(last)}`;
+
+            // Weekly sub-ranges, used only by high-volume leagues.
+            const weekRanges = [];
+            for (let w = 0; w * 7 < 36; w++) {
+              const a = new Date(first); a.setDate(a.getDate() + w * 7);
+              const b = new Date(a);     b.setDate(b.getDate() + 6);
+              if (b > last) b.setTime(last.getTime());
+              weekRanges.push(`${ymd(a)}-${ymd(b)}`);
+            }
 
             const counts = {};
             for (const lg of LEAGUES) {
-                counts[lg.label] = counts[lg.label] || 0;
+              counts[lg.label] = counts[lg.label] || 0;
+              const ranges = lg.chunk ? weekRanges : [range];
+              const keep = lg.onlyPriority ? priorityNamesFor(lg.label) : null;
+              if (keep && keep.length === 0) {
+                console.warn(`No priority teams listed for ${lg.label}; skipping league.`);
+                continue;
+              }
+              for (const rg of ranges) {
                 try {
-                  const url = `https://site.web.api.espn.com/apis/site/v2/sports/${lg.espn}/scoreboard?dates=${range}&limit=1000`;
+                  const url = `https://site.web.api.espn.com/apis/site/v2/sports/${lg.espn}/scoreboard?dates=${rg}&limit=1000`;
                   const json = await fetchJson(url);
                   await sleep(250);
                   for (const ev of (json.events || [])) {
@@ -137,6 +172,12 @@ jobs:
                         venue:        comp.venue ? comp.venue.fullName : '',
                         broadcast:    rawBroadcast,
                       };
+                      // Drop non-priority games before they reach the file.
+                      if (keep) {
+                        const hay = (event.homeFull + ' ' + event.awayFull).toLowerCase();
+                        if (!keep.some(n => hay.includes(n))) continue;
+                      }
+
                       if (!result[pacificDate]) result[pacificDate] = [];
                       const dup = result[pacificDate].some(e =>
                         e.home === event.home && e.away === event.away && e.isoDate === event.isoDate
@@ -145,8 +186,9 @@ jobs:
                     } catch(e) {}
                   }
                 } catch(e) {
-                  console.warn(`Skipped ${lg.espn} [${range}]: ${e.message}`);
+                  console.warn(`Skipped ${lg.espn} [${rg}]: ${e.message}`);
                 }
+              }
             }
 
             // Per-league tallies. A league sitting at 0 in-season means either

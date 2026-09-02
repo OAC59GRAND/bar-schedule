@@ -32,24 +32,24 @@ jobs:
             {espn:'golf/lpga',              label:'LPGA Tour',  women:true},
             {espn:'tennis/atp',             label:'Tennis',     women:false},
             {espn:'tennis/wta',             label:'Tennis',     women:true},
-            {espn:'soccer/usa.1',           label:'MLS',        women:false},
-            {espn:'soccer/usa.nwsl',        label:'NWSL',       women:true},
-            {espn:'soccer/usa.usl.1',       label:'USL',        women:false},
-            {espn:'soccer/fifa.world',      label:'World Cup',  women:false},
-            {espn:'soccer/eng.1',           label:'EPL',        women:false},
-            {espn:'soccer/esp.1',           label:'La Liga',    women:false},
-            {espn:'soccer/ita.1',           label:'Serie A',    women:false},
-            {espn:'soccer/ger.1',           label:'Bundesliga', women:false},
-            {espn:'soccer/fra.1',           label:'Ligue 1',    women:false},
-            {espn:'soccer/mex.1',           label:'Liga MX',    women:false},
+            {espn:'soccer/usa.1',           label:'MLS',        women:false, chunk:12},
+            {espn:'soccer/usa.nwsl',        label:'NWSL',       women:true, chunk:12},
+            {espn:'soccer/usa.usl.1',       label:'USL',        women:false, chunk:12},
+            {espn:'soccer/fifa.world',      label:'World Cup',  women:false, chunk:12},
+            {espn:'soccer/eng.1',           label:'EPL',        women:false, chunk:12},
+            {espn:'soccer/esp.1',           label:'La Liga',    women:false, chunk:12},
+            {espn:'soccer/ita.1',           label:'Serie A',    women:false, chunk:12},
+            {espn:'soccer/ger.1',           label:'Bundesliga', women:false, chunk:12},
+            {espn:'soccer/fra.1',           label:'Ligue 1',    women:false, chunk:12},
+            {espn:'soccer/mex.1',           label:'Liga MX',    women:false, chunk:12},
             // College feeds return EVERY D1 game nationally — hundreds a day in
-            // basketball season. chunk:true splits the window into weekly requests
+            // basketball season. chunk:7 splits the window into weekly requests
             // so nothing is lost to the limit, and onlyPriority:true discards games
             // that don't involve a listed school before they ever hit schedule.json.
-            {espn:'football/college-football',        label:'CFB',   women:false, chunk:true, onlyPriority:true},
-            {espn:'basketball/mens-college-basketball',   label:'NCAAM', women:false, chunk:true, onlyPriority:true},
-            {espn:'basketball/womens-college-basketball', label:'NCAAW', women:true,  chunk:true, onlyPriority:true},
-            {espn:'soccer/uefa.champions',  label:'UCL',        women:false},
+            {espn:'football/college-football',        label:'CFB',   women:false, chunk:7, onlyPriority:true},
+            {espn:'basketball/mens-college-basketball',   label:'NCAAM', women:false, chunk:7, onlyPriority:true},
+            {espn:'basketball/womens-college-basketball', label:'NCAAW', women:true,  chunk:7, onlyPriority:true},
+            {espn:'soccer/uefa.champions',  label:'UCL',        women:false, chunk:12},
           ];
 
           const REQUEST_TIMEOUT_MS = 8000;
@@ -120,19 +120,24 @@ jobs:
             const last  = new Date(); last.setDate(last.getDate() + 35);
             const range = `${ymd(first)}-${ymd(last)}`;
 
-            // Weekly sub-ranges, used only by high-volume leagues.
-            const weekRanges = [];
-            for (let w = 0; w * 7 < 36; w++) {
-              const a = new Date(first); a.setDate(a.getDate() + w * 7);
-              const b = new Date(a);     b.setDate(b.getDate() + 6);
-              if (b > last) b.setTime(last.getTime());
-              weekRanges.push(`${ymd(a)}-${ymd(b)}`);
+            // Sub-ranges for leagues that can't be asked for the whole window in
+            // one shot. College feeds are too high-volume to fit in one response;
+            // the soccer feeds appear to truncate long ranges, silently dropping
+            // fixtures past roughly two weeks out.
+            function buildRanges(days) {
+              const out = [];
+              for (let a = new Date(first); a <= last; a.setDate(a.getDate() + days)) {
+                const b = new Date(a); b.setDate(b.getDate() + days - 1);
+                if (b > last) b.setTime(last.getTime());
+                out.push(`${ymd(a)}-${ymd(b)}`);
+              }
+              return out;
             }
 
             const counts = {};
             for (const lg of LEAGUES) {
               counts[lg.label] = counts[lg.label] || 0;
-              const ranges = lg.chunk ? weekRanges : [range];
+              const ranges = lg.chunk ? buildRanges(lg.chunk) : [range];
               const keep = lg.onlyPriority ? priorityNamesFor(lg.label) : null;
               if (keep && keep.length === 0) {
                 console.warn(`No priority teams listed for ${lg.label}; skipping league.`);
@@ -191,10 +196,22 @@ jobs:
               }
             }
 
-            // Per-league tallies. A league sitting at 0 in-season means either
-            // its slug is wrong or ESPN ignored the date range for it.
+            // Per-league tallies AND the date span actually returned. The span is
+            // the tell for truncation: if a league's last event lands well short
+            // of the requested window while its season is running, the feed cut
+            // the range short rather than running out of fixtures.
+            const spans = {};
+            for (const [date, evs] of Object.entries(result)) {
+              for (const e of evs) {
+                const sp = spans[e.league] || (spans[e.league] = {first:date, last:date});
+                if (date < sp.first) sp.first = date;
+                if (date > sp.last)  sp.last  = date;
+              }
+            }
+            console.log(`Requested window: ${ymd(first)} - ${ymd(last)}`);
             for (const [label, n] of Object.entries(counts)) {
-              console.log(`  ${label}: ${n} events`);
+              const sp = spans[label];
+              console.log(`  ${label}: ${n} events` + (sp ? `  [${sp.first} .. ${sp.last}]` : ''));
             }
 
             // Sort each day by time

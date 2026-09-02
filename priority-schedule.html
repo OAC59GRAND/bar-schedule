@@ -22,7 +22,19 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .toolbar-txt{font-size:10px;color:#5a5248;letter-spacing:1px;text-transform:uppercase}
 .toolbar-txt span{color:#c9a84c}
-.wk-label{font-size:10px;font-weight:800;letter-spacing:2px;color:#f0ece3;text-transform:uppercase;margin-left:auto}
+.wk-label{font-size:10px;font-weight:800;letter-spacing:2px;color:#f0ece3;text-transform:uppercase}
+.wk-nav{display:flex;align-items:center;gap:8px;margin-left:auto}
+.wk-btn{background:rgba(240,236,227,.12);border:1px solid rgba(240,236,227,.25);color:#f0ece3;font-family:inherit;font-size:11px;font-weight:800;line-height:1;padding:5px 9px;border-radius:3px;cursor:pointer}
+.wk-btn:hover:not(:disabled){background:rgba(240,236,227,.28)}
+.wk-btn:disabled{opacity:.28;cursor:default}
+.wk-today{font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:5px 8px}
+@media print{.wk-nav .wk-btn{display:none}}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 14px;background:#efeae0;border-bottom:1px solid #ddd6c8}
+.chip{font-family:inherit;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:11px;border:1px solid #b9b0a0;background:#fff;color:#5a5248;cursor:pointer;line-height:1}
+.chip.on{background:#2b2620;border-color:#2b2620;color:#f0ece3}
+.chip.none{opacity:.35;cursor:default}
+.chip-all{margin-right:2px}
+@media print{.filters{display:none}}
 #content{padding:20px 24px}
 .section-hd{font-size:9px;font-weight:800;letter-spacing:4px;color:#5a5248;text-transform:uppercase;padding:12px 0 8px;border-bottom:1px solid #1e1e1e;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin-bottom:24px}
@@ -61,8 +73,14 @@ body{font-family:'Barlow Condensed',Arial Narrow,sans-serif;background:#0a0a0a;c
 <div class="toolbar">
   <div class="dot"></div>
   <span class="toolbar-txt">Live &bull; Updated <span id="updated-txt">Loading&hellip;</span></span>
-  <span class="wk-label" id="wk-label"></span>
+  <span class="wk-nav">
+    <button class="wk-btn" id="wk-prev" type="button" title="Previous week">&lsaquo;</button>
+    <span class="wk-label" id="wk-label"></span>
+    <button class="wk-btn" id="wk-next" type="button" title="Next week">&rsaquo;</button>
+    <button class="wk-btn wk-today" id="wk-today" type="button">This week</button>
+  </span>
 </div>
+<div class="filters" id="filters"></div>
 <div id="content"><div id="schedule-content"><div class="loading">Loading schedule&hellip;</div></div></div>
 <div id="footer">
   <div>Oakland Athletic Club &bull; 59 Grand Ave, Oakland CA &bull; <span>oaklandathleticclub.com</span></div>
@@ -78,6 +96,14 @@ const CH = {
   'Golf Channel':'218','CBS Sports Network':'221','CBSSN':'221',
   'USA Network':'242','USA Net':'242','ION':'305',
   'NBC Sports Bay Area':'696','NBCSBA':'696',
+  // Spanish-language carriers — required for Liga MX to be actionable.
+  'TUDN':'464','FOX Deportes':'465','FOX Dep':'465','ESPN Deportes':'466',
+  'ESPND':'466','TyC Sports':'469','Universo':'410',
+  'Univision':'402','UniMas':'403','UniM\u00e1s':'403',
+  'ViX':'ViX app','ViX+':'ViX app',
+  // College carriers
+  'ACC Network':'612','ACCN':'612','Big Ten Network':'610','BTN':'610',
+  'SEC Network':'611','Pac-12 Network':'613','ESPNU':'208',
 };
 const MLB_CH = {
   'Giants':'NBC Sports Bay Area 696','Padres':'Padres.TV 694',
@@ -119,7 +145,9 @@ function getChannel(broadcast, homeFull, awayFull) {
   return broadcast;
 }
 
-const PRIORITY_TEAMS = [{"id": "barcelona", "name": "Barcelona", "matches": ["Barcelona"], "league": "La Liga", "color": "#A50044", "emoji": "⚽", "leagues": ["La Liga", "UCL"]}, {"id": "realmadrid", "name": "Real Madrid", "matches": ["Real Madrid"], "league": "La Liga", "color": "#FEBE10", "emoji": "⚽", "leagues": ["La Liga", "UCL"]}, {"id": "atletico", "name": "Atletico Madrid", "matches": ["Atletico", "Atlético"], "league": "La Liga", "color": "#C42535", "emoji": "⚽", "leagues": ["La Liga", "UCL"]}, {"id": "munich", "name": "Bayern Munich", "matches": ["Bayern"], "league": "Bundesliga", "color": "#DC052D", "emoji": "⚽", "leagues": ["Bundesliga", "UCL"]}, {"id": "dortmund", "name": "Dortmund", "matches": ["Dortmund"], "league": "Bundesliga", "color": "#FDE100", "emoji": "⚽", "leagues": ["Bundesliga", "UCL"]}, {"id": "leverkusen", "name": "Bayer Leverkusen", "matches": ["Leverkusen"], "league": "Bundesliga", "color": "#E32221", "emoji": "⚽", "leagues": ["Bundesliga", "UCL"]}, {"id": "acmilan", "name": "AC Milan", "matches": ["AC Milan"], "league": "Serie A", "color": "#FB090B", "emoji": "⚽", "leagues": ["Serie A", "UCL"]}, {"id": "juventus", "name": "Juventus", "matches": ["Juventus"], "league": "Serie A", "color": "#2d2d2d", "emoji": "⚽", "leagues": ["Serie A", "UCL"]}, {"id": "napoli", "name": "Napoli", "matches": ["Napoli"], "league": "Serie A", "color": "#12A0D7", "emoji": "⚽", "leagues": ["Serie A", "UCL"]}, {"id": "inter", "name": "Inter Milan", "matches": ["Internazionale", "Inter Milan", "Inter "], "league": "Serie A", "color": "#0068A8", "emoji": "⚽", "leagues": ["Serie A", "UCL"]}, {"id": "psg", "name": "PSG", "matches": ["Paris Saint-Germain", "Paris SG"], "league": "Ligue 1", "color": "#004170", "emoji": "⚽", "leagues": ["Ligue 1", "UCL"]}, {"id": "marseille", "name": "Marseille", "matches": ["Marseille"], "league": "Ligue 1", "color": "#2CBFE8", "emoji": "⚽", "leagues": ["Ligue 1", "UCL"]}, {"id": "liverpool", "name": "Liverpool", "matches": ["Liverpool"], "league": "EPL", "color": "#C8102E", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "manutd", "name": "Man United", "matches": ["Manchester United", "Man United"], "league": "EPL", "color": "#DA291C", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "chelsea", "name": "Chelsea", "matches": ["Chelsea"], "league": "EPL", "color": "#034694", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "mancity", "name": "Man City", "matches": ["Manchester City"], "league": "EPL", "color": "#6CABDD", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "arsenal", "name": "Arsenal", "matches": ["Arsenal"], "league": "EPL", "color": "#EF0107", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "newcastle", "name": "Newcastle", "matches": ["Newcastle"], "league": "EPL", "color": "#241F20", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "tottenham", "name": "Tottenham", "matches": ["Tottenham", "Spurs"], "league": "EPL", "color": "#132257", "emoji": "⚽", "leagues": ["EPL", "UCL"]}, {"id": "giants", "name": "SF Giants", "matches": ["Giants"], "league": "MLB", "color": "#EF3E42", "emoji": "⚾", "leagues": ["MLB"]}, {"id": "warriors", "name": "GS Warriors", "matches": ["Warriors"], "league": "NBA", "color": "#1d62d6", "emoji": "🏀", "leagues": ["NBA"]}, {"id": "valkyries", "name": "GS Valkyries", "matches": ["Valkyries"], "league": "WNBA", "color": "#0ea5e9", "emoji": "🏀", "leagues": ["WNBA"]}, {"id": "sharks", "name": "SJ Sharks", "matches": ["Sharks"], "league": "NHL", "color": "#008577", "emoji": "🏒", "leagues": ["NHL"]}, {"id": "roots", "name": "Oakland Roots SC", "matches": ["Roots"], "league": "USL", "color": "#2d7a3a", "emoji": "⚽", "leagues": ["USL"]}, {"id": "ballers", "name": "Oakland Ballers", "matches": ["Ballers"], "league": "Pioneer Lg", "color": "#006341", "emoji": "⚾", "leagues": ["Pioneer Lg"]}, {"id": "bayfc", "name": "Bay FC", "matches": ["Bay FC"], "league": "NWSL", "color": "#1d428a", "emoji": "⚽", "leagues": ["NWSL"]}, {"id": "earthquakes", "name": "SJ Earthquakes", "matches": ["Earthquakes"], "league": "MLS", "color": "#003087", "emoji": "⚽", "leagues": ["MLS"]}, {"id": "raiders", "name": "Raiders", "matches": ["Raiders"], "league": "NFL", "color": "#A5ACAF", "emoji": "🏈", "leagues": ["NFL"]}, {"id": "niners", "name": "49ers", "matches": ["49ers"], "league": "NFL", "color": "#AA0000", "emoji": "🏈", "leagues": ["NFL"]}];
+// Team list lives in teams.json so this page and the Monday email workflow
+// read the same source. Editing the list means editing one file, not two.
+let PRIORITY_TEAMS = [];
 
 const SCHEDULE_URL = 'https://oac59grand.github.io/bar-schedule/schedule.json';
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -163,33 +191,147 @@ function formatDayShort(iso) {
   return DAYS[new Date(iso).getDay()];
 }
 
+// ---- Week navigation state ----
+// ALL_EVENTS holds the full feed; the board renders one 7-day slice of it.
+// weekOffset 0 = today through +6 days, 1 = the following 7 days, etc.
+// maxOffset is derived from the data, so widening or narrowing the fetch
+// window in the Action changes the available weeks with no edit here.
+let ALL_EVENTS = [];
+let weekOffset = 0;
+let maxOffset  = 0;
+
+// ---- Sport filter ----
+// Sports come from the 'sport' field in teams.json, so adding a league there
+// adds its chip here with no edit to this file. Empty set = show everything.
+const SPORT_ORDER = ['Football','Basketball','Baseball','Hockey','Soccer'];
+let activeSports = new Set();
+
+function sportsInList() {
+  const seen = new Set(PRIORITY_TEAMS.map(t => t.sport).filter(Boolean));
+  const ordered = SPORT_ORDER.filter(s => seen.has(s));
+  for (const s of seen) if (!ordered.includes(s)) ordered.push(s);
+  return ordered;
+}
+
+function buildFilters(sportsWithGames) {
+  const bar = document.getElementById('filters');
+  const chips = ['<button class="chip chip-all' + (activeSports.size === 0 ? ' on' : '') +
+                 '" data-sport="__all">All</button>'];
+  for (const sp of sportsInList()) {
+    const has = sportsWithGames.has(sp);
+    const cls = 'chip' + (activeSports.has(sp) ? ' on' : '') + (has ? '' : ' none');
+    chips.push('<button class="' + cls + '" data-sport="' + sp + '"' +
+               (has ? '' : ' disabled title="No games this week"') + '>' + sp + '</button>');
+  }
+  bar.innerHTML = chips.join('');
+  bar.querySelectorAll('button[data-sport]').forEach(b => {
+    b.addEventListener('click', () => toggleSport(b.dataset.sport));
+  });
+}
+
+function toggleSport(sp) {
+  if (sp === '__all') activeSports.clear();
+  else if (activeSports.has(sp)) activeSports.delete(sp);
+  else activeSports.add(sp);
+  render();
+}
+
+function startOfDay(d) {
+  const x = new Date(d); x.setHours(0,0,0,0); return x;
+}
+
+function weekWindow(offset) {
+  const start = startOfDay(new Date());
+  start.setDate(start.getDate() + offset * 7);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 7);
+  return {start, end};
+}
+
+function updateWeekChrome() {
+  const {start, end} = weekWindow(weekOffset);
+  const lastDay = new Date(end); lastDay.setDate(lastDay.getDate() - 1);
+  const label = weekOffset === 0 ? 'This week' : 'Week of ' + MONTHS[start.getMonth()] + ' ' + start.getDate();
+  document.getElementById('wk-label').textContent =
+    label + ' \u00b7 ' + MONTHS[start.getMonth()] + ' ' + start.getDate() +
+    ' \u2013 ' + MONTHS[lastDay.getMonth()] + ' ' + lastDay.getDate();
+  document.getElementById('wk-prev').disabled  = weekOffset <= 0;
+  document.getElementById('wk-next').disabled  = weekOffset >= maxOffset;
+  document.getElementById('wk-today').disabled = weekOffset === 0;
+}
+
+function goWeek(offset) {
+  weekOffset = Math.max(0, Math.min(maxOffset, offset));
+  render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 async function load() {
   document.getElementById('schedule-content').innerHTML = '<div class="loading">Loading schedule&hellip;</div>';
   try {
-    const r = await fetch(SCHEDULE_URL + '?t=' + Date.now(), {cache:'no-store'});
-    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const [r, tr] = await Promise.all([
+      fetch(SCHEDULE_URL + '?t=' + Date.now(), {cache:'no-store'}),
+      fetch('./teams.json?t=' + Date.now(), {cache:'no-store'}),
+    ]);
+    if (!r.ok)  throw new Error('schedule.json HTTP ' + r.status);
+    if (!tr.ok) throw new Error('teams.json HTTP ' + tr.status);
     const data = await r.json();
+    PRIORITY_TEAMS = await tr.json();
+    document.querySelector('.doc-sub').textContent =
+      PRIORITY_TEAMS.length + ' teams \u2022 Auto-updates hourly';
 
-    // Week label
-    const now = new Date();
-    const end = new Date(now); end.setDate(end.getDate()+6);
-    document.getElementById('wk-label').textContent =
-      'Week of ' + MONTHS[now.getMonth()] + ' ' + now.getDate() +
-      ' – ' + MONTHS[end.getMonth()] + ' ' + end.getDate();
     document.getElementById('updated-txt').textContent = 'Data from ' + (data.generated ? new Date(data.generated).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' UTC' : 'GitHub');
 
     // Flatten all events
-    const allEvents = [];
+    ALL_EVENTS = [];
     for (const [date, evs] of Object.entries(data.days || {})) {
-      for (const ev of evs) allEvents.push(ev);
+      for (const ev of evs) ALL_EVENTS.push(ev);
     }
-    allEvents.sort((a,b) => new Date(a.isoDate) - new Date(b.isoDate));
+    ALL_EVENTS.sort((a,b) => new Date(a.isoDate) - new Date(b.isoDate));
+
+    // How many future weeks does the feed actually cover?
+    const todayStart = startOfDay(new Date());
+    let furthest = todayStart;
+    for (const ev of ALL_EVENTS) {
+      const d = new Date(ev.isoDate);
+      if (d > furthest) furthest = d;
+    }
+    maxOffset = Math.max(0, Math.floor((startOfDay(furthest) - todayStart) / (7*86400000)));
+
+    render();
+  } catch(e) {
+    document.getElementById('schedule-content').innerHTML =
+      '<div class="empty">Could not load schedule data.<br><br><span style="font-size:10px">' + e.message + '</span></div>';
+  }
+}
+
+function render() {
+  try {
+    updateWeekChrome();
+    const {start, end} = weekWindow(weekOffset);
+    const allEvents = ALL_EVENTS.filter(ev => {
+      const d = new Date(ev.isoDate);
+      return d >= start && d < end;
+    });
+
+    // Which sports actually have games this week — drives chip dimming.
+    // Computed against the unfiltered team list so chips don't disappear
+    // as a side effect of the filter that's currently applied.
+    const sportsWithGames = new Set();
+    for (const team of PRIORITY_TEAMS) {
+      if (team.sport && allEvents.some(ev => teamMatches(ev, team))) sportsWithGames.add(team.sport);
+    }
+    buildFilters(sportsWithGames);
+
+    const visibleTeams = activeSports.size === 0
+      ? PRIORITY_TEAMS
+      : PRIORITY_TEAMS.filter(t => activeSports.has(t.sport));
 
     // Build sections by league group
     const leagueGroups = {};
     const teamGames = {};
 
-    for (const team of PRIORITY_TEAMS) {
+    for (const team of visibleTeams) {
       const games = allEvents.filter(ev => teamMatches(ev, team));
       if (games.length === 0) continue; // skip teams with no games
       teamGames[team.id] = {team, games};
@@ -199,12 +341,14 @@ async function load() {
 
     if (Object.keys(teamGames).length === 0) {
       document.getElementById('schedule-content').innerHTML =
-        '<div class="empty">No games found for priority teams this week.<br><br><span style="font-size:10px">Schedule updates hourly via GitHub Actions.</span></div>';
+        (activeSports.size
+          ? '<div class="empty">No ' + [...activeSports].join(' / ') + ' games this week.<br><br><span style="font-size:10px">Tap All, or try the next week.</span></div>'
+          : '<div class="empty">No priority team games this week.<br><br><span style="font-size:10px">Try the next week, or check back after the schedule refreshes.</span></div>');
       return;
     }
 
     // Define league order
-    const LEAGUE_ORDER = ['NFL','MLB','NBA','WNBA','NHL','MLS','NWSL','USL','Pioneer Lg','EPL','La Liga','Bundesliga','Serie A','Ligue 1','UCL'];
+    const LEAGUE_ORDER = ['NFL','CFB','MLB','NBA','WNBA','NHL',"NCAA Men's","NCAA Women's",'MLS','NWSL','USL','Pioneer Lg','Liga MX','EPL','La Liga','Bundesliga','Serie A','Ligue 1','UCL'];
 
     let html = '';
     for (const lg of LEAGUE_ORDER) {
@@ -241,11 +385,21 @@ async function load() {
     document.getElementById('schedule-content').innerHTML = html;
   } catch(e) {
     document.getElementById('schedule-content').innerHTML =
-      '<div class="empty">Could not load schedule data.<br><br><span style="font-size:10px">' + e.message + '</span></div>';
+      '<div class="empty">Could not render schedule.<br><br><span style="font-size:10px">' + e.message + '</span></div>';
   }
 }
 
+document.getElementById('wk-prev').addEventListener('click',  () => goWeek(weekOffset - 1));
+document.getElementById('wk-next').addEventListener('click',  () => goWeek(weekOffset + 1));
+document.getElementById('wk-today').addEventListener('click', () => goWeek(0));
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowLeft')  goWeek(weekOffset - 1);
+  if (e.key === 'ArrowRight') goWeek(weekOffset + 1);
+});
+
 load();
+// Refresh the feed on a timer, but keep whatever week is on screen.
 setInterval(load, 300000);
 
 </script>

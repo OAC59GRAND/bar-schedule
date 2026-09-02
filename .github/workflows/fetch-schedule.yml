@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10      # safety net: fail loud instead of hanging for hours
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -23,18 +23,25 @@ jobs:
           const https = require('https');
           const fs = require('fs');
           const LEAGUES = [
-            {espn:'baseball/mlb',      label:'MLB',       women:false},
-            {espn:'basketball/nba',    label:'NBA',       women:false},
-            {espn:'basketball/wnba',   label:'WNBA',      women:true},
-            {espn:'hockey/nhl',        label:'NHL',       women:false},
-            {espn:'golf/pga',          label:'PGA Tour',  women:false},
-            {espn:'golf/lpga',         label:'LPGA Tour', women:true},
-            {espn:'soccer/fifa.world', label:'World Cup', women:false},
-            {espn:'soccer/usa.nwsl',   label:'NWSL',      women:true},
-            {espn:'soccer/usa.1',      label:'MLS',       women:false},
-            {espn:'tennis/atp',        label:'Tennis',    women:false},
-            {espn:'tennis/wta',        label:'Tennis',    women:true},
-            {espn:'soccer/usa.usl.1',  label:'USL',       women:false},
+            {espn:'baseball/mlb',           label:'MLB',        women:false},
+            {espn:'football/nfl',           label:'NFL',        women:false},
+            {espn:'basketball/nba',         label:'NBA',        women:false},
+            {espn:'basketball/wnba',        label:'WNBA',       women:true},
+            {espn:'hockey/nhl',             label:'NHL',        women:false},
+            {espn:'golf/pga',               label:'PGA Tour',   women:false},
+            {espn:'golf/lpga',              label:'LPGA Tour',  women:true},
+            {espn:'tennis/atp',             label:'Tennis',     women:false},
+            {espn:'tennis/wta',             label:'Tennis',     women:true},
+            {espn:'soccer/usa.1',           label:'MLS',        women:false},
+            {espn:'soccer/usa.nwsl',        label:'NWSL',       women:true},
+            {espn:'soccer/usa.usl.1',       label:'USL',        women:false},
+            {espn:'soccer/fifa.world',      label:'World Cup',  women:false},
+            {espn:'soccer/eng.1',           label:'EPL',        women:false},
+            {espn:'soccer/esp.1',           label:'La Liga',    women:false},
+            {espn:'soccer/ita.1',           label:'Serie A',    women:false},
+            {espn:'soccer/ger.1',           label:'Bundesliga', women:false},
+            {espn:'soccer/fra.1',           label:'Ligue 1',    women:false},
+            {espn:'soccer/uefa.champions',  label:'UCL',        women:false},
           ];
 
           const REQUEST_TIMEOUT_MS = 8000;
@@ -43,7 +50,7 @@ jobs:
             return new Promise((resolve, reject) => {
               const req = https.get(url, {
                 headers: {
-                  'User-Agent': 'Mozilla/5.0 (compatible; OAC-Schedule-Bot/1.0)',
+                  'User-Agent': 'OAC-Schedule-Bot/1.0',
                   'Accept': 'application/json',
                 },
                 timeout: REQUEST_TIMEOUT_MS,
@@ -69,6 +76,8 @@ jobs:
             });
           }
 
+          const sleep = ms => new Promise(r => setTimeout(r, ms));
+
           function ymd(d) {
             return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
           }
@@ -88,23 +97,17 @@ jobs:
             // ~10 unique dates x 12 leagues = ~120/run,
             // which reduces the chance of tripping ESPN's undocumented
             // rate limiting/throttling on this hourly job.
-            const uniqueDates = new Set();
-            for (let dayOffset = 0; dayOffset < 8; dayOffset++) {
-              const targetDate = new Date();
-              targetDate.setDate(targetDate.getDate() + dayOffset);
-              for (const i of [-1, 0, 1]) {
-                const d = new Date(targetDate);
-                d.setDate(d.getDate() + i);
-                uniqueDates.add(ymd(d));
-              }
-            }
-            const espnDates = Array.from(uniqueDates).sort();
+            const first = new Date(); first.setDate(first.getDate() - 1);
+            const last  = new Date(); last.setDate(last.getDate() + 8);
+            const range = `${ymd(first)}-${ymd(last)}`;
 
+            const counts = {};
             for (const lg of LEAGUES) {
-              for (const dateStr of espnDates) {
+                counts[lg.label] = counts[lg.label] || 0;
                 try {
-                  const url = `https://site.api.espn.com/apis/site/v2/sports/${lg.espn}/scoreboard?dates=${dateStr}`;
+                  const url = `https://site.web.api.espn.com/apis/site/v2/sports/${lg.espn}/scoreboard?dates=${range}&limit=1000`;
                   const json = await fetchJson(url);
+                  await sleep(250);
                   for (const ev of (json.events || [])) {
                     try {
                       const comp = ev.competitions[0];
@@ -138,13 +141,18 @@ jobs:
                       const dup = result[pacificDate].some(e =>
                         e.home === event.home && e.away === event.away && e.isoDate === event.isoDate
                       );
-                      if (!dup) result[pacificDate].push(event);
+                      if (!dup) { result[pacificDate].push(event); counts[lg.label]++; }
                     } catch(e) {}
                   }
                 } catch(e) {
-                  console.warn(`Skipped ${lg.espn}/${dateStr}: ${e.message}`);
+                  console.warn(`Skipped ${lg.espn} [${range}]: ${e.message}`);
                 }
-              }
+            }
+
+            // Per-league tallies. A league sitting at 0 in-season means either
+            // its slug is wrong or ESPN ignored the date range for it.
+            for (const [label, n] of Object.entries(counts)) {
+              console.log(`  ${label}: ${n} events`);
             }
 
             // Sort each day by time
@@ -155,8 +163,20 @@ jobs:
               generated: new Date().toISOString(),
               days: result,
             };
-            fs.writeFileSync('schedule.json', JSON.stringify(output, null, 2));
             const totalEvents = Object.values(result).reduce((s, d) => s + d.length, 0);
+
+            // Guard: never overwrite a good schedule.json with an empty one.
+            // On 2026-08-05 ESPN began 403ing site.api.espn.com for non-browser
+            // clients. Every request failed, the run "succeeded", and an empty
+            // days:{} was committed hourly for weeks with no visible signal.
+            // Fail the job loudly and leave the last known-good file in place.
+            if (totalEvents === 0) {
+              console.error('ABORT: zero events fetched across all leagues and dates.');
+              console.error('Every ESPN request failed. schedule.json left unchanged.');
+              process.exit(1);
+            }
+
+            fs.writeFileSync('schedule.json', JSON.stringify(output, null, 2));
             console.log(`Written schedule.json: ${Object.keys(result).length} days, ${totalEvents} total events`);
           }
           main().catch(e => { console.error('Fatal:', e); process.exit(1); });

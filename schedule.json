@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02T13:25:49.349Z",
+  "generated": "2026-09-02T17:44:53.718Z",
   "days": {
     "2026-09-01": [
       {
@@ -236,10 +236,10 @@
         "away": "Padres",
         "homeFull": "Cincinnati Reds",
         "awayFull": "San Diego Padres",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/2 - 12:40 PM EDT",
+        "homeScore": 4,
+        "awayScore": 3,
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-09-02T16:40Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"
@@ -253,8 +253,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/2 - 1:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-09-02T17:05Z",
         "venue": "Nationals Park",
         "broadcast": "MLB.TV"
@@ -964,8 +964,8 @@
         "awayFull": "Toluca",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-09-05T01:00Z",
         "venue": "Estadio Cuauhtémoc",
         "broadcast": null
@@ -1594,8 +1594,8 @@
         "awayFull": "Monterrey",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-09-05T23:00Z",
         "venue": "Estadio Corregidora",
         "broadcast": null
@@ -1926,8 +1926,8 @@
         "awayFull": "Tijuana",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-09-06T01:00Z",
         "venue": "Estadio Banorte",
         "broadcast": null
@@ -2406,8 +2406,8 @@
         "awayFull": "León",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "Postponed",
         "isoDate": "2026-09-06T18:00Z",
         "venue": "Estadio Olímpico Universitario",
         "broadcast": null
@@ -4632,21 +4632,6 @@
       {
         "league": "Liga MX",
         "isWomen": false,
-        "home": "Cruz Azul",
-        "away": "América",
-        "homeFull": "Cruz Azul",
-        "awayFull": "América",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-09-12T18:00Z",
-        "venue": "Estadio Banorte",
-        "broadcast": null
-      },
-      {
-        "league": "Liga MX",
-        "isWomen": false,
         "home": "Toluca",
         "away": "Atlas",
         "homeFull": "Toluca",
@@ -5395,6 +5380,21 @@
         "isoDate": "2026-09-13T02:30Z",
         "venue": "PayPal Park",
         "broadcast": "Apple TV"
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
+        "home": "Cruz Azul",
+        "away": "América",
+        "homeFull": "Cruz Azul",
+        "awayFull": "América",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-13T03:00Z",
+        "venue": "Estadio Banorte",
+        "broadcast": null
       },
       {
         "league": "La Liga",

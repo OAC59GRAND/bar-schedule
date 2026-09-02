@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02T02:20:33.720Z",
+  "generated": "2026-09-02T02:28:47.176Z",
   "days": {
     "2026-09-01": [
       {
@@ -132,7 +132,7 @@
         "homeScore": 4,
         "awayScore": 7,
         "status": "in",
-        "statusDetail": "Bot 7th",
+        "statusDetail": "End 7th",
         "isoDate": "2026-09-01T23:40Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
@@ -146,7 +146,7 @@
         "away": "Athletics",
         "homeFull": "Texas Rangers",
         "awayFull": "Athletics",
-        "homeScore": 7,
+        "homeScore": 8,
         "awayScore": 1,
         "status": "in",
         "statusDetail": "Bot 6th",
@@ -164,7 +164,7 @@
         "homeScore": 0,
         "awayScore": 3,
         "status": "in",
-        "statusDetail": "Bot 6th",
+        "statusDetail": "Top 7th",
         "isoDate": "2026-09-02T00:10Z",
         "venue": "Daikin Park",
         "broadcast": "MLB.TV"
@@ -194,7 +194,7 @@
         "homeScore": 0,
         "awayScore": 4,
         "status": "in",
-        "statusDetail": "Top 3rd",
+        "statusDetail": "Mid 3rd",
         "isoDate": "2026-09-02T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03T03:42:41.602Z",
+  "generated": "2026-09-03T08:44:48.858Z",
   "days": {
     "2026-09-02": [
       {
@@ -160,9 +160,9 @@
         "homeFull": "Minnesota Twins",
         "awayFull": "Detroit Tigers",
         "homeScore": 6,
-        "awayScore": 8,
-        "status": "in",
-        "statusDetail": "Top 12th",
+        "awayScore": 11,
+        "status": "post",
+        "statusDetail": "Final/12",
         "isoDate": "2026-09-02T23:40Z",
         "venue": "Target Field",
         "broadcast": "MLB.TV"
@@ -221,10 +221,10 @@
         "away": "Yankees",
         "homeFull": "Los Angeles Angels",
         "awayFull": "New York Yankees",
-        "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "homeScore": 3,
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-09-03T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -236,10 +236,10 @@
         "away": "Cardinals",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "St. Louis Cardinals",
-        "homeScore": 3,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "End 5th",
+        "homeScore": 6,
+        "awayScore": 8,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-09-03T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"

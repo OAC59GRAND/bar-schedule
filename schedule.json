@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03T13:24:05.361Z",
+  "generated": "2026-09-03T17:41:06.559Z",
   "days": {
     "2026-09-02": [
       {
@@ -251,10 +251,10 @@
         "away": "Giants",
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "San Francisco Giants",
-        "homeScore": 0,
+        "homeScore": 2,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/3 - 12:35 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 4th",
         "isoDate": "2026-09-03T16:35Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -268,8 +268,8 @@
         "awayFull": "Toronto Blue Jays",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/3 - 1:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Top 2nd",
         "isoDate": "2026-09-03T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"

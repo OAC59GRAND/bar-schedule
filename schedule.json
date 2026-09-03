@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03T20:44:40.591Z",
+  "generated": "2026-09-03T23:05:47.981Z",
   "days": {
     "2026-09-02": [
       {
@@ -251,10 +251,10 @@
         "away": "Giants",
         "homeFull": "Pittsburgh Pirates",
         "awayFull": "San Francisco Giants",
-        "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 4th",
+        "homeScore": 5,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-03T16:35Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -266,10 +266,10 @@
         "away": "Blue Jays",
         "homeFull": "Cleveland Guardians",
         "awayFull": "Toronto Blue Jays",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 2nd",
+        "homeScore": 3,
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-03T17:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -281,10 +281,10 @@
         "away": "White Sox",
         "homeFull": "Houston Astros",
         "awayFull": "Chicago White Sox",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/3 - 2:10 PM EDT",
+        "homeScore": 6,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-03T18:10Z",
         "venue": "Daikin Park",
         "broadcast": "ESPN Unlmtd"
@@ -297,9 +297,9 @@
         "homeFull": "Toulouse",
         "awayFull": "Lille",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-03T18:45Z",
         "venue": "Stadium Municipal de Toulouse",
         "broadcast": null
@@ -313,8 +313,8 @@
         "awayFull": "Celta Vigo",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-03T19:00Z",
         "venue": "Reale Arena",
         "broadcast": "ESPN+"

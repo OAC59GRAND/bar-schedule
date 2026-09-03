@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03T08:44:48.858Z",
+  "generated": "2026-09-03T13:24:05.361Z",
   "days": {
     "2026-09-02": [
       {
@@ -4358,21 +4358,6 @@
         "broadcast": "MLB.TV"
       },
       {
-        "league": "Liga MX",
-        "isWomen": false,
-        "home": "Toluca",
-        "away": "Atlas",
-        "homeFull": "Toluca",
-        "awayFull": "Atlas",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-09-12T18:00Z",
-        "venue": "Estadio Nemesio Díez Riega",
-        "broadcast": null
-      },
-      {
         "league": "MLB",
         "isWomen": false,
         "home": "Cubs",
@@ -4716,6 +4701,21 @@
         "isoDate": "2026-09-12T23:00Z",
         "venue": "Hodges Stadium",
         "broadcast": "ESPN+"
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
+        "home": "Toluca",
+        "away": "Atlas",
+        "homeFull": "Toluca",
+        "awayFull": "Atlas",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-12T23:00Z",
+        "venue": "Estadio Nemesio Díez Riega",
+        "broadcast": null
       },
       {
         "league": "MLB",

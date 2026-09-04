@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-04T03:44:31.530Z",
+  "generated": "2026-09-04T08:40:13.273Z",
   "days": {
     "2026-09-03": [
       {
@@ -146,10 +146,10 @@
         "away": "Athletics",
         "homeFull": "Seattle Mariners",
         "awayFull": "Athletics",
-        "homeScore": 3,
-        "awayScore": 5,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "homeScore": 4,
+        "awayScore": 7,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-04T01:40Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"
@@ -161,10 +161,10 @@
         "away": "Cardinals",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "St. Louis Cardinals",
-        "homeScore": 1,
+        "homeScore": 3,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "End 5th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-04T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"

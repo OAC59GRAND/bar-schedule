@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-04T17:28:31.101Z",
+  "generated": "2026-09-04T20:31:34.530Z",
   "days": {
     "2026-09-03": [
       {
@@ -176,10 +176,10 @@
         "away": "Auxerre",
         "homeFull": "Lyon",
         "awayFull": "AJ Auxerre",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T17:00Z",
         "venue": "Groupama Stadium",
         "broadcast": null

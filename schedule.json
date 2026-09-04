@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-04T13:18:39.151Z",
+  "generated": "2026-09-04T17:28:31.101Z",
   "days": {
     "2026-09-03": [
       {
@@ -193,8 +193,8 @@
         "awayFull": "Detroit Tigers",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/4 - 2:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Rain Delay, Top 1st",
         "isoDate": "2026-09-04T18:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -2077,6 +2077,21 @@
         "isoDate": "2026-09-06T23:00Z",
         "venue": "Inter&Co Stadium",
         "broadcast": "Roku"
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
+        "home": "Cruz Azul",
+        "away": "Santos",
+        "homeFull": "Cruz Azul",
+        "awayFull": "Santos",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-06T23:00Z",
+        "venue": "Estadio Banorte",
+        "broadcast": null
       }
     ],
     "2026-09-07": [
@@ -2094,21 +2109,6 @@
         "isoDate": "2026-09-07T01:00Z",
         "venue": "Lumen Field",
         "broadcast": "ESPN2"
-      },
-      {
-        "league": "Liga MX",
-        "isWomen": false,
-        "home": "Cruz Azul",
-        "away": "Santos",
-        "homeFull": "Cruz Azul",
-        "awayFull": "Santos",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-09-07T02:00Z",
-        "venue": "Estadio Banorte",
-        "broadcast": null
       },
       {
         "league": "MLB",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-04T20:31:34.530Z",
+  "generated": "2026-09-04T22:53:10.144Z",
   "days": {
     "2026-09-03": [
       {
@@ -191,10 +191,10 @@
         "away": "Tigers",
         "homeFull": "Cleveland Guardians",
         "awayFull": "Detroit Tigers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Rain Delay, Top 1st",
+        "homeScore": 7,
+        "awayScore": 6,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-04T18:10Z",
         "venue": "Progressive Field",
         "broadcast": "MLB.TV"
@@ -206,10 +206,10 @@
         "away": "Cologne",
         "homeFull": "VfB Stuttgart",
         "awayFull": "FC Cologne",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 4,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T18:30Z",
         "venue": "MHPArena",
         "broadcast": "Fandango"
@@ -221,10 +221,10 @@
         "away": "Como",
         "homeFull": "Genoa",
         "awayFull": "Como",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T18:45Z",
         "venue": "Stadio Luigi Ferraris",
         "broadcast": "Paramount+"
@@ -237,9 +237,9 @@
         "homeFull": "Ipswich Town",
         "awayFull": "Liverpool",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T19:00Z",
         "venue": "Portman Road",
         "broadcast": "USA Net"
@@ -251,10 +251,10 @@
         "away": "Real Madrid",
         "homeFull": "Real Betis",
         "awayFull": "Real Madrid",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T19:00Z",
         "venue": "Estadio La Cartuja",
         "broadcast": "ESPN Deportes"
@@ -266,10 +266,10 @@
         "away": "Monaco",
         "homeFull": "Paris Saint-Germain",
         "awayFull": "AS Monaco",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-04T19:05Z",
         "venue": "Parc des Princes",
         "broadcast": null
@@ -283,8 +283,8 @@
         "awayFull": "Milwaukee Brewers",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/4 - 6:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-09-04T22:10Z",
         "venue": "Great American Ball Park",
         "broadcast": "MLB.TV"
@@ -298,8 +298,8 @@
         "awayFull": "Los Angeles Angels",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/4 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-09-04T22:40Z",
         "venue": "PNC Park",
         "broadcast": "MLB.TV"
@@ -313,8 +313,8 @@
         "awayFull": "Atlanta Braves",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/4 - 6:40 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-09-04T22:40Z",
         "venue": "Citizens Bank Park",
         "broadcast": "ESPN Unlmtd"
@@ -367,21 +367,6 @@
       {
         "league": "MLB",
         "isWomen": false,
-        "home": "Guardians",
-        "away": "Tigers",
-        "homeFull": "Cleveland Guardians",
-        "awayFull": "Detroit Tigers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/4 - 7:10 PM EDT",
-        "isoDate": "2026-09-04T23:10Z",
-        "venue": "Progressive Field",
-        "broadcast": "MLB.TV"
-      },
-      {
-        "league": "MLB",
-        "isWomen": false,
         "home": "Mets",
         "away": "Giants",
         "homeFull": "New York Mets",
@@ -422,6 +407,21 @@
         "statusDetail": "9/4 - 7:40 PM EDT",
         "isoDate": "2026-09-04T23:40Z",
         "venue": "Rate Field",
+        "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLB",
+        "isWomen": false,
+        "home": "Guardians",
+        "away": "Tigers",
+        "homeFull": "Cleveland Guardians",
+        "awayFull": "Detroit Tigers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
+        "isoDate": "2026-09-04T23:45Z",
+        "venue": "Progressive Field",
         "broadcast": "MLB.TV"
       }
     ],
@@ -769,7 +769,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "The City Ground",
-        "broadcast": "Peacock"
+        "broadcast": "NBCSN"
       },
       {
         "league": "La Liga",

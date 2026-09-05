@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T10:15:23.319Z",
+  "generated": "2026-09-05T13:45:37.140Z",
   "days": {
     "2026-09-04": [
       {
@@ -431,10 +431,10 @@
         "away": "Bournemouth",
         "homeFull": "Newcastle United",
         "awayFull": "AFC Bournemouth",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "77'",
         "isoDate": "2026-09-05T11:30Z",
         "venue": "St. James' Park",
         "broadcast": "USA Net"
@@ -448,8 +448,8 @@
         "awayFull": "Torino",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "4'",
         "isoDate": "2026-09-05T13:00Z",
         "venue": "Stadio Artemio Franchi",
         "broadcast": "Paramount+"
@@ -461,10 +461,10 @@
         "away": "Union Berlin",
         "homeFull": "Bayer Leverkusen",
         "awayFull": "1. FC Union Berlin",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "15'",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "BayArena",
         "broadcast": "Fandango"
@@ -476,10 +476,10 @@
         "away": "Elversberg",
         "homeFull": "Borussia Mönchengladbach",
         "awayFull": "SV Elversberg",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "14'",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "BORUSSIA-PARK",
         "broadcast": "Fandango"
@@ -493,8 +493,8 @@
         "awayFull": "SC Freiburg",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "16'",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "Home Deluxe Arena",
         "broadcast": "Fandango"
@@ -508,8 +508,8 @@
         "awayFull": "Borussia Dortmund",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "15'",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "PreZero Arena",
         "broadcast": "Fandango"
@@ -521,10 +521,10 @@
         "away": "RB Leipzig",
         "homeFull": "Werder Bremen",
         "awayFull": "RB Leipzig",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "14'",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "Weserstadion",
         "broadcast": "Fandango"

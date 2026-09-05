@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T18:53:55.197Z",
+  "generated": "2026-09-05T21:01:00.747Z",
   "days": {
     "2026-09-04": [
       {
@@ -538,8 +538,8 @@
         "awayFull": "Sunderland",
         "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "90'+6'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "Gtech Community Stadium",
         "broadcast": "Peacock"
@@ -611,10 +611,10 @@
         "away": "Atlético",
         "homeFull": "Athletic Club",
         "awayFull": "Atlético Madrid",
-        "homeScore": 2,
+        "homeScore": 3,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "79'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:15Z",
         "venue": "San Mamés",
         "broadcast": "ESPN Deportes"
@@ -641,10 +641,10 @@
         "away": "Napoli",
         "homeFull": "Internazionale",
         "awayFull": "Napoli",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "1'",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T16:00Z",
         "venue": "San Siro",
         "broadcast": "Paramount+"
@@ -658,8 +658,8 @@
         "awayFull": "Aston Villa",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T16:30Z",
         "venue": "The MKM Stadium",
         "broadcast": "NBC"
@@ -671,10 +671,10 @@
         "away": "Racing",
         "homeFull": "Rayo Vallecano",
         "awayFull": "Racing Santander",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T16:30Z",
         "venue": "Estadio Municipal de Butarque",
         "broadcast": "ESPN Deportes"
@@ -703,8 +703,8 @@
         "awayFull": "Atalanta",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "7'",
         "isoDate": "2026-09-05T18:45Z",
         "venue": "Olimpico",
         "broadcast": "Paramount+"

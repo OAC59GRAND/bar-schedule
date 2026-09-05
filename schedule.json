@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T16:39:29.331Z",
+  "generated": "2026-09-05T18:53:55.197Z",
   "days": {
     "2026-09-04": [
       {
@@ -447,9 +447,9 @@
         "homeFull": "Fiorentina",
         "awayFull": "Torino",
         "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "81'",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:00Z",
         "venue": "Stadio Artemio Franchi",
         "broadcast": "Paramount+"
@@ -461,10 +461,10 @@
         "away": "Union Berlin",
         "homeFull": "Bayer Leverkusen",
         "awayFull": "1. FC Union Berlin",
-        "homeScore": 3,
+        "homeScore": 4,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "58'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "BayArena",
         "broadcast": "Fandango"
@@ -476,10 +476,10 @@
         "away": "Elversberg",
         "homeFull": "Borussia Mönchengladbach",
         "awayFull": "SV Elversberg",
-        "homeScore": 2,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "56'",
+        "homeScore": 3,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "BORUSSIA-PARK",
         "broadcast": "Fandango"
@@ -493,8 +493,8 @@
         "awayFull": "SC Freiburg",
         "homeScore": 0,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "58'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "Home Deluxe Arena",
         "broadcast": "Fandango"
@@ -507,9 +507,9 @@
         "homeFull": "TSG Hoffenheim",
         "awayFull": "Borussia Dortmund",
         "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "55'",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "PreZero Arena",
         "broadcast": "Fandango"
@@ -521,10 +521,10 @@
         "away": "RB Leipzig",
         "homeFull": "Werder Bremen",
         "awayFull": "RB Leipzig",
-        "homeScore": 1,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "54'",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T13:30Z",
         "venue": "Weserstadion",
         "broadcast": "Fandango"
@@ -536,10 +536,10 @@
         "away": "Sunderland",
         "homeFull": "Brentford",
         "awayFull": "Sunderland",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 1,
+        "awayScore": 1,
         "status": "in",
-        "statusDetail": "45'",
+        "statusDetail": "90'+6'",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "Gtech Community Stadium",
         "broadcast": "Peacock"
@@ -551,10 +551,10 @@
         "away": "Leeds",
         "homeFull": "Brighton & Hove Albion",
         "awayFull": "Leeds United",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "45'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "American Express Stadium",
         "broadcast": "Peacock"
@@ -567,9 +567,9 @@
         "homeFull": "Fulham",
         "awayFull": "Crystal Palace",
         "homeScore": 2,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "45'+1'",
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "Craven Cottage",
         "broadcast": "Peacock"
@@ -583,8 +583,8 @@
         "awayFull": "Coventry City",
         "homeScore": 1,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "44'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "Etihad Stadium",
         "broadcast": "USA Net"
@@ -598,8 +598,8 @@
         "awayFull": "Tottenham Hotspur",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "45'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T14:00Z",
         "venue": "The City Ground",
         "broadcast": "NBCSN"
@@ -611,10 +611,10 @@
         "away": "Atlético",
         "homeFull": "Athletic Club",
         "awayFull": "Atlético Madrid",
-        "homeScore": 0,
+        "homeScore": 2,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "28'",
+        "statusDetail": "79'",
         "isoDate": "2026-09-05T14:15Z",
         "venue": "San Mamés",
         "broadcast": "ESPN Deportes"
@@ -627,9 +627,9 @@
         "homeFull": "Lens",
         "awayFull": "Lorient",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T15:15Z",
         "venue": "Stade Bollaert-Delelis",
         "broadcast": null
@@ -643,8 +643,8 @@
         "awayFull": "Napoli",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "1'",
         "isoDate": "2026-09-05T16:00Z",
         "venue": "San Siro",
         "broadcast": "Paramount+"
@@ -688,8 +688,8 @@
         "awayFull": "Bayern Munich",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-05T16:30Z",
         "venue": "Veltins Arena",
         "broadcast": "USA Net"
@@ -718,8 +718,8 @@
         "awayFull": "Brest",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "9'",
         "isoDate": "2026-09-05T18:45Z",
         "venue": "Stade Océane",
         "broadcast": null
@@ -733,8 +733,8 @@
         "awayFull": "Le Mans",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "9'",
         "isoDate": "2026-09-05T18:45Z",
         "venue": "Allianz Riviera",
         "broadcast": null
@@ -2213,7 +2213,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-08T16:45Z",
         "venue": "Jan Breydel Stadium",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "UCL",
@@ -2228,7 +2228,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-08T19:00Z",
         "venue": "Signal Iduna Park",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "UCL",
@@ -2530,7 +2530,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-09T16:45Z",
         "venue": "MHPArena",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "MLB",
@@ -2605,7 +2605,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-09T19:00Z",
         "venue": "Estádio José Alvalade",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "MLB",
@@ -3072,7 +3072,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-10T16:45Z",
         "venue": "Ulker Stadyumu",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "UCL",
@@ -3132,7 +3132,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-10T19:00Z",
         "venue": "Giuseppe Sinigaglia",
-        "broadcast": "Paramount+"
+        "broadcast": "CBSSN"
       },
       {
         "league": "UCL",

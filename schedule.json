@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-06T08:30:05.227Z",
+  "generated": "2026-09-06T12:43:06.001Z",
   "days": {
     "2026-09-05": [
       {
@@ -957,9 +957,9 @@
         "homeFull": "California Golden Bears",
         "awayFull": "UCLA Bruins",
         "homeScore": 24,
-        "awayScore": 31,
-        "status": "in",
-        "statusDetail": "3:01 - 4th",
+        "awayScore": 45,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-06T02:30Z",
         "venue": "California Memorial Stadium",
         "broadcast": "ESPN"

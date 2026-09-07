@@ -99,7 +99,7 @@ const CH = {
   // Spanish-language carriers — required for Liga MX to be actionable.
   'TUDN':'464','FOX Deportes':'465','FOX Dep':'465','ESPN Deportes':'466',
   'ESPND':'466','TyC Sports':'469','Universo':'410',
-  'Univision':'402','UniMas':'403','UniM\u00e1s':'403',
+  'UniMas':'408','UniM\u00e1s':'408',
   'ViX':'ViX app','ViX+':'ViX app',
   // College carriers
   'ACC Network':'612','ACCN':'612','Big Ten Network':'610','BTN':'610',
@@ -123,6 +123,11 @@ const MLB_CH = {
 };
 function getChannel(broadcast, homeFull, awayFull, league) {
   if (!broadcast) {
+    // Home-team override first: some leagues (Liga MX especially) sell rights
+    // club by club, and the host club's deal decides where the game airs.
+    for (const [k, v] of Object.entries(HOME_OVERRIDES)) {
+      if (k[0] !== '_' && homeFull.toLowerCase().includes(k.toLowerCase())) return v;
+    }
     const f = LEAGUE_CH[league];
     return f ? f.default : '';
   }
@@ -155,6 +160,7 @@ let PRIORITY_TEAMS = [];
 // broadcast empty for most non-marquee games, which used to render a blank
 // cell — useless to staff. Falls back to where the league actually lives.
 let LEAGUE_CH = {};
+let HOME_OVERRIDES = {};
 
 const SCHEDULE_URL = 'https://oac59grand.github.io/bar-schedule/schedule.json';
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -286,7 +292,11 @@ async function load() {
     const data = await r.json();
     PRIORITY_TEAMS = await tr.json();
     // Non-fatal: a missing fallback file just means blank cells again.
-    LEAGUE_CH = lc.ok ? (await lc.json()).defaults || {} : {};
+    if (lc.ok) {
+      const j = await lc.json();
+      LEAGUE_CH = j.defaults || {};
+      HOME_OVERRIDES = j.homeTeamOverrides || {};
+    }
     document.querySelector('.doc-sub').textContent =
       PRIORITY_TEAMS.length + ' teams \u2022 Auto-updates hourly';
 

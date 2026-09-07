@@ -89,10 +89,13 @@ jobs:
           function ymd(d) {
             return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
           }
-          function dk(d) {
-            const s = ymd(d);
-            return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6)}`;
-          }
+          // Day bucket for schedule.json. MUST be Pacific: the runner is UTC, so
+          // a 7:30pm PT game is 02:30 UTC the NEXT day and was being filed under
+          // tomorrow's key.
+          const PT_KEY = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'America/Los_Angeles', year:'numeric', month:'2-digit', day:'2-digit'
+          });
+          function dk(d) { return PT_KEY.format(d); }
 
           // Shared team list — same file the page and the email read.
           const TEAMS = JSON.parse(fs.readFileSync('teams.json', 'utf8'));

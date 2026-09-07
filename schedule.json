@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T09:07:40.520Z",
+  "generated": "2026-09-07T15:37:41.006Z",
   "days": {
     "2026-09-06": [
       {
@@ -1406,21 +1406,6 @@
       {
         "league": "MLS",
         "isWomen": false,
-        "home": "Philadelphia",
-        "away": "Cincinnati",
-        "homeFull": "Philadelphia Union",
-        "awayFull": "FC Cincinnati",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-09-09T23:30Z",
-        "venue": "Subaru Park",
-        "broadcast": "FS1"
-      },
-      {
-        "league": "MLS",
-        "isWomen": false,
         "home": "Toronto",
         "away": "Nashville",
         "homeFull": "Toronto FC",
@@ -1477,6 +1462,21 @@
         "isoDate": "2026-09-09T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
+      },
+      {
+        "league": "MLS",
+        "isWomen": false,
+        "home": "Philadelphia",
+        "away": "Cincinnati",
+        "homeFull": "Philadelphia Union",
+        "awayFull": "FC Cincinnati",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-09T23:45Z",
+        "venue": "Subaru Park",
+        "broadcast": "FS1"
       }
     ],
     "2026-09-10": [
@@ -5274,7 +5274,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-18T19:00Z",
         "venue": "RCDE Stadium",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "MLB",
@@ -5636,7 +5636,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-19T12:00Z",
         "venue": "El Sadar",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "Serie A",
@@ -5786,7 +5786,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-19T14:15Z",
         "venue": "San Mamés",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "Ligue 1",
@@ -5846,7 +5846,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-19T16:30Z",
         "venue": "Balaidos",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "Bundesliga",
@@ -5966,7 +5966,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-19T19:00Z",
         "venue": "Ramón Sánchez Pizjuán Stadium",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "CFB",
@@ -6853,7 +6853,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-20T12:00Z",
         "venue": "Estadio Coliseum",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "EPL",
@@ -6973,7 +6973,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-20T14:15Z",
         "venue": "Riyadh Air Metropolitano",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "Ligue 1",
@@ -7048,7 +7048,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-20T16:30Z",
         "venue": "Riazor",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "La Liga",
@@ -7438,7 +7438,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-20T19:00Z",
         "venue": "Mestalla Stadium",
-        "broadcast": "ESPN+"
+        "broadcast": "ESPN Deportes"
       },
       {
         "league": "MLB",
@@ -10140,6 +10140,21 @@
       {
         "league": "Liga MX",
         "isWomen": false,
+        "home": "Cruz Azul",
+        "away": "Toluca",
+        "homeFull": "Cruz Azul",
+        "awayFull": "Toluca",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-26T23:00Z",
+        "venue": "Estadio Banorte",
+        "broadcast": null
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
         "home": "Guadalajara",
         "away": "Queretaro",
         "homeFull": "Guadalajara",
@@ -10663,21 +10678,6 @@
         "isoDate": "2026-09-27T02:30Z",
         "venue": "Stanford Stadium",
         "broadcast": "ESPN"
-      },
-      {
-        "league": "Liga MX",
-        "isWomen": false,
-        "home": "Cruz Azul",
-        "away": "Toluca",
-        "homeFull": "Cruz Azul",
-        "awayFull": "Toluca",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-09-27T03:00Z",
-        "venue": "Estadio Banorte",
-        "broadcast": null
       },
       {
         "league": "NFL",

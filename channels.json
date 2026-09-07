@@ -186,6 +186,11 @@
   ],
   "spanishLanguage": [
     {
+      "ch": "402",
+      "network": "Univision",
+      "sports": "Liga MX (marquee weekend matches), Soccer, Boxing"
+    },
+    {
       "ch": "406",
       "network": "Telemundo",
       "sports": "Liga MX, Soccer, CONCACAF (satellite feed)"
@@ -548,7 +553,7 @@
       "league": "Liga MX",
       "sport": "Soccer",
       "source": "ESPN API (live)",
-      "channels": "TUDN Ch 464 · UniMas Ch 408 · Telemundo Ch 406 (Chivas home) · FOX Deportes Ch 465 · CBS Sports Net Ch 221 (English)",
+      "channels": "TUDN Ch 464 · Univision Ch 402 · UniMas Ch 408 · Telemundo Ch 406 (Chivas home) · FOX Deportes Ch 465 · CBS Sports Net Ch 221 (English)",
       "note": "Rights are sold per club and follow the HOME team. TelevisaUnivision (TUDN/UniMas/ViX) has America, Pumas, Toluca, Cruz Azul, Atlas. Telemundo has Chivas home matches. FOX Deportes has Monterrey, Tijuana, Santos, Juarez, Leon, Necaxa, Pachuca, Queretaro."
     },
     {

@@ -19,6 +19,13 @@ jobs:
           const fs = require('fs');
           // Single source of truth, shared with priority-schedule.html.
           const TEAMS = JSON.parse(fs.readFileSync('teams.json', 'utf8'));
+          // Same fallback map the board uses, so email and screen agree.
+          let LEAGUE_CH = {};
+          try {
+            LEAGUE_CH = JSON.parse(fs.readFileSync('league-channels.json','utf8')).defaults || {};
+          } catch (e) {
+            console.warn('league-channels.json unreadable; blank channels will show:', e.message);
+          }
 
           const CH = {
             'FOX':'Ch 2','CBS':'Ch 5','ABC':'Ch 7','NBC':'Ch 11','Telemundo':'Ch 406',
@@ -45,8 +52,11 @@ jobs:
             'Rockies':'Rockies.TV Ch 683','Diamondbacks':'DBACKS.TV Ch 686',
           };
 
-          function getChannel(broadcast, hf, af) {
-            if (!broadcast) return '';
+          function getChannel(broadcast, hf, af, league) {
+            if (!broadcast) {
+              const f = LEAGUE_CH[league];
+              return f ? f.default : '';
+            }
             if (/mlb\.?tv/i.test(broadcast)) {
               for (const [k,v] of Object.entries(MLB_CH))
                 if ((hf+af).includes(k)) return v;
@@ -166,7 +176,7 @@ jobs:
               for (const ev of games) {
                 const opp = opponent(ev, team);
                 const vs  = homeTeam(ev,team) ? 'vs' : '@';
-                const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
+                const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'', ev.league);
                 tableRows += '<tr style="border-bottom:1px solid #eeeeee;background:#ffffff">';
                 tableRows += '<td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#8a6000;font-weight:bold;white-space:nowrap">'+fmtDay(ev.isoDate)+'</td>';
                 tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+fmtDate(ev.isoDate)+'</td>';

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T22:20:53.527Z",
+  "generated": "2026-09-07T22:38:50.301Z",
   "days": {
     "2026-09-06": [
       {
@@ -734,7 +734,7 @@
         "homeScore": 3,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "End 3rd",
+        "statusDetail": "Bot 4th",
         "isoDate": "2026-09-07T21:10Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"

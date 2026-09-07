@@ -9,42 +9,16 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
+
       - name: Write email script
         run: |
           cat > email_script.js << 'ENDSCRIPT'
           const https = require('https');
 
-          const TEAMS = [
-            {name:'Barcelona',       matches:['Barcelona'],                       league:'La Liga',    color:'#A50044',emoji:'[soccer]'},
-            {name:'Real Madrid',     matches:['Real Madrid'],                     league:'La Liga',    color:'#FEBE10',emoji:'[soccer]'},
-            {name:'Atletico Madrid', matches:['Atletico','Atletico de Madrid'],   league:'La Liga',    color:'#C42535',emoji:'[soccer]'},
-            {name:'Bayern Munich',   matches:['Bayern'],                          league:'Bundesliga', color:'#DC052D',emoji:'[soccer]'},
-            {name:'Dortmund',        matches:['Dortmund'],                        league:'Bundesliga', color:'#FDE100',emoji:'[soccer]'},
-            {name:'Bayer Leverkusen',matches:['Leverkusen'],                      league:'Bundesliga', color:'#E32221',emoji:'[soccer]'},
-            {name:'AC Milan',        matches:['AC Milan'],                        league:'Serie A',    color:'#FB090B',emoji:'[soccer]'},
-            {name:'Juventus',        matches:['Juventus'],                        league:'Serie A',    color:'#2d2d2d',emoji:'[soccer]'},
-            {name:'Napoli',          matches:['Napoli'],                          league:'Serie A',    color:'#12A0D7',emoji:'[soccer]'},
-            {name:'Inter Milan',     matches:['Internazionale','Inter Milan'],     league:'Serie A',    color:'#0068A8',emoji:'[soccer]'},
-            {name:'PSG',             matches:['Paris Saint-Germain','Paris SG'],  league:'Ligue 1',   color:'#004170',emoji:'[soccer]'},
-            {name:'Marseille',       matches:['Marseille'],                       league:'Ligue 1',   color:'#2CBFE8',emoji:'[soccer]'},
-            {name:'Liverpool',       matches:['Liverpool'],                       league:'EPL',        color:'#C8102E',emoji:'[soccer]'},
-            {name:'Man United',      matches:['Manchester United'],               league:'EPL',        color:'#DA291C',emoji:'[soccer]'},
-            {name:'Chelsea',         matches:['Chelsea'],                         league:'EPL',        color:'#034694',emoji:'[soccer]'},
-            {name:'Man City',        matches:['Manchester City'],                 league:'EPL',        color:'#6CABDD',emoji:'[soccer]'},
-            {name:'Arsenal',         matches:['Arsenal'],                         league:'EPL',        color:'#EF0107',emoji:'[soccer]'},
-            {name:'Newcastle',       matches:['Newcastle'],                       league:'EPL',        color:'#241F20',emoji:'[soccer]'},
-            {name:'Tottenham',       matches:['Tottenham'],                       league:'EPL',        color:'#132257',emoji:'[soccer]'},
-            {name:'SF Giants',       matches:['Giants'],                          league:'MLB',        color:'#EF3E42',emoji:'[baseball]'},
-            {name:'GS Warriors',     matches:['Warriors'],                        league:'NBA',        color:'#1d62d6',emoji:'[basketball]'},
-            {name:'GS Valkyries',    matches:['Valkyries'],                       league:'WNBA',       color:'#0ea5e9',emoji:'[basketball]'},
-            {name:'SJ Sharks',       matches:['Sharks'],                          league:'NHL',        color:'#008577',emoji:'[hockey]'},
-            {name:'Oakland Roots',   matches:['Roots'],                           league:'USL',        color:'#2d7a3a',emoji:'[soccer]'},
-            {name:'Oakland Ballers', matches:['Ballers'],                         league:'Pioneer Lg', color:'#006341',emoji:'[baseball]'},
-            {name:'Bay FC',          matches:['Bay FC'],                          league:'NWSL',       color:'#1d428a',emoji:'[soccer]'},
-            {name:'SJ Earthquakes',  matches:['Earthquakes'],                     league:'MLS',        color:'#003087',emoji:'[soccer]'},
-            {name:'Raiders',         matches:['Raiders'],                         league:'NFL',        color:'#A5ACAF',emoji:'[football]'},
-            {name:'49ers',           matches:['49ers'],                           league:'NFL',        color:'#AA0000',emoji:'[football]'},
-          ];
+          const fs = require('fs');
+          // Single source of truth, shared with priority-schedule.html.
+          const TEAMS = JSON.parse(fs.readFileSync('teams.json', 'utf8'));
 
           const CH = {
             'FOX':'Ch 2','CBS':'Ch 5','ABC':'Ch 7','NBC':'Ch 11','Telemundo':'Ch 406',
@@ -104,6 +78,10 @@ jobs:
           }
 
           function matches(ev, team) {
+            // Must scope by league: name matching is a substring test, so
+            // 'Giants' otherwise pulls NY Giants (NFL) into the SF Giants row.
+            const allowed = team.leagues || [team.league];
+            if (!allowed.includes(ev.league)) return false;
             const both = ((ev.homeFull||'')+(ev.awayFull||'')).toLowerCase();
             return team.matches.some(m => both.includes(m.toLowerCase()));
           }
@@ -117,13 +95,35 @@ jobs:
           const DAYS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
           const MONS  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-          function fmtTime(iso) {
-            const d = new Date(iso);
-            const h = d.getHours(), m = d.getMinutes();
-            const ampm = h >= 12 ? 'PM' : 'AM';
-            const h12  = h % 12 || 12;
-            return h12 + (m ? ':' + String(m).padStart(2,'0') : '') + ' ' + ampm + ' PT';
+          // CRITICAL: this runs on a GitHub runner, whose clock is UTC. Date
+          // methods like getHours()/getDay() therefore return UTC values. The
+          // old code read those and appended " PT", shifting every game 7-8
+          // hours and rolling evening games onto the wrong day. Everything
+          // user-facing must go through an explicit America/Los_Angeles
+          // formatter — never getHours(), getDay(), getDate() or getMonth().
+          const PT = 'America/Los_Angeles';
+          const PT_PARTS = new Intl.DateTimeFormat('en-US', {
+            timeZone: PT, weekday:'short', month:'short', day:'numeric',
+            hour:'numeric', minute:'2-digit', hour12:true
+          });
+          const PT_KEY = new Intl.DateTimeFormat('en-CA', {
+            timeZone: PT, year:'numeric', month:'2-digit', day:'2-digit'
+          });
+
+          function ptParts(iso) {
+            const out = {};
+            for (const p of PT_PARTS.formatToParts(new Date(iso))) out[p.type] = p.value;
+            return out;
           }
+          // YYYY-MM-DD in Pacific. Sorts and compares as a plain string.
+          function ptKey(iso) { return PT_KEY.format(new Date(iso)); }
+
+          function fmtTime(iso) {
+            const p = ptParts(iso);
+            return p.hour + (p.minute !== '00' ? ':' + p.minute : '') + ' ' + p.dayPeriod + ' PT';
+          }
+          function fmtDay(iso)  { return ptParts(iso).weekday; }
+          function fmtDate(iso) { const p = ptParts(iso); return p.month + ' ' + p.day; }
 
           async function main() {
             const data = await fetchJSON('https://oac59grand.github.io/bar-schedule/schedule.json');
@@ -131,12 +131,25 @@ jobs:
             for (const evs of Object.values(data.days||{})) for (const ev of evs) all.push(ev);
             all.sort((a,b) => new Date(a.isoDate) - new Date(b.isoDate));
 
+            // Anchor the week to the Pacific date, not the runner's UTC date.
+            // A Monday 15:00 UTC send is Monday 08:00 PT, but a UTC-based
+            // "today" flips a day early on any send after 5pm PT.
             const now = new Date();
-            const end = new Date(now); end.setDate(end.getDate()+6);
-            const weekLabel = MONS[now.getMonth()]+' '+now.getDate()+' - '+MONS[end.getMonth()]+' '+end.getDate()+', '+end.getFullYear();
+            const end = new Date(now.getTime() + 6*86400000);
+            const weekLabel = fmtDate(now) + ' - ' + fmtDate(end) + ', ' + ptKey(end).slice(0,4);
+
+            // schedule.json carries ~5 weeks so the board can page through
+            // weeks. The email is a ONE WEEK digest — clamp it here or the
+            // send balloons to every fixture a month out.
+            const startKey = ptKey(now);
+            const endKey   = ptKey(end);
+            const thisWeek = all.filter(ev => {
+              const k = ptKey(ev.isoDate);
+              return k >= startKey && k <= endKey;
+            });
 
             const withGames = TEAMS
-              .map(t => ({team:t, games:all.filter(ev => matches(ev,t))}))
+              .map(t => ({team:t, games:thisWeek.filter(ev => matches(ev,t))}))
               .filter(x => x.games.length > 0);
 
             if (withGames.length === 0) {
@@ -151,13 +164,12 @@ jobs:
               tableRows += '<span style="font-family:Arial,sans-serif;font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:2px;margin-left:10px">'+team.league+'</span>';
               tableRows += '</td></tr>';
               for (const ev of games) {
-                const d   = new Date(ev.isoDate);
                 const opp = opponent(ev, team);
                 const vs  = homeTeam(ev,team) ? 'vs' : '@';
                 const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
                 tableRows += '<tr style="border-bottom:1px solid #eeeeee;background:#ffffff">';
-                tableRows += '<td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#8a6000;font-weight:bold;white-space:nowrap">'+DAYS[d.getDay()]+'</td>';
-                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+MONS[d.getMonth()]+' '+d.getDate()+'</td>';
+                tableRows += '<td style="padding:7px 16px;font-family:Arial,sans-serif;font-size:12px;color:#8a6000;font-weight:bold;white-space:nowrap">'+fmtDay(ev.isoDate)+'</td>';
+                tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+fmtDate(ev.isoDate)+'</td>';
                 tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#0f0f0f">'+vs+' '+opp+'</td>';
                 tableRows += '<td style="padding:7px 6px;font-family:Arial,sans-serif;font-size:12px;color:#555555;white-space:nowrap">'+fmtTime(ev.isoDate)+'</td>';
                 tableRows += '<td style="padding:7px 16px 7px 4px;font-family:Arial,sans-serif;font-size:11px;color:#c9a84c;font-weight:bold;white-space:nowrap">'+ch+'</td>';

@@ -121,8 +121,11 @@ const MLB_CH = {
   'Twins':'Twins.TV 668','Rockies':'Rockies.TV 683',
   'Padres':'Padres.TV 694','Diamondbacks':'DBACKS.TV 686',
 };
-function getChannel(broadcast, homeFull, awayFull) {
-  if (!broadcast) return '';
+function getChannel(broadcast, homeFull, awayFull, league) {
+  if (!broadcast) {
+    const f = LEAGUE_CH[league];
+    return f ? f.default : '';
+  }
   if (/mlb\.?tv/i.test(broadcast)) {
     for (const [k,v] of Object.entries(MLB_CH)) {
       if ((homeFull+awayFull).includes(k)) return v;
@@ -148,6 +151,10 @@ function getChannel(broadcast, homeFull, awayFull) {
 // Team list lives in teams.json so this page and the Monday email workflow
 // read the same source. Editing the list means editing one file, not two.
 let PRIORITY_TEAMS = [];
+// Fallback channels by league, from league-channels.json. ESPN leaves
+// broadcast empty for most non-marquee games, which used to render a blank
+// cell — useless to staff. Falls back to where the league actually lives.
+let LEAGUE_CH = {};
 
 const SCHEDULE_URL = 'https://oac59grand.github.io/bar-schedule/schedule.json';
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -269,14 +276,17 @@ function goWeek(offset) {
 async function load() {
   document.getElementById('schedule-content').innerHTML = '<div class="loading">Loading schedule&hellip;</div>';
   try {
-    const [r, tr] = await Promise.all([
+    const [r, tr, lc] = await Promise.all([
       fetch(SCHEDULE_URL + '?t=' + Date.now(), {cache:'no-store'}),
       fetch('./teams.json?t=' + Date.now(), {cache:'no-store'}),
+      fetch('./league-channels.json?t=' + Date.now(), {cache:'no-store'}),
     ]);
     if (!r.ok)  throw new Error('schedule.json HTTP ' + r.status);
     if (!tr.ok) throw new Error('teams.json HTTP ' + tr.status);
     const data = await r.json();
     PRIORITY_TEAMS = await tr.json();
+    // Non-fatal: a missing fallback file just means blank cells again.
+    LEAGUE_CH = lc.ok ? (await lc.json()).defaults || {} : {};
     document.querySelector('.doc-sub').textContent =
       PRIORITY_TEAMS.length + ' teams \u2022 Auto-updates hourly';
 
@@ -359,7 +369,7 @@ function render() {
         const rows = games.map(ev => {
           const opp = opponent(ev, team);
           const vs  = vsLabel(ev, team);
-          const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'');
+          const ch  = getChannel(ev.broadcast, ev.homeFull||'', ev.awayFull||'', ev.league);
           const status = ev.status === 'in' ? ' <span style="color:#ef4444;font-size:8px">LIVE</span>' :
                          ev.status === 'post' ? ' <span style="color:#5a5248;font-size:8px">Final</span>' : '';
           return '<div class="game-row">' +

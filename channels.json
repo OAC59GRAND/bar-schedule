@@ -548,7 +548,8 @@
       "league": "Liga MX",
       "sport": "Soccer",
       "source": "ESPN API (live)",
-      "channels": "FOX Ch 2 · FS1 Ch 219 · TUDN Ch 464 · FOX Deportes Ch 465 (Spanish)"
+      "channels": "TUDN Ch 464 · UniMas Ch 408 · Telemundo Ch 406 (Chivas home) · FOX Deportes Ch 465 · CBS Sports Net Ch 221 (English)",
+      "note": "Rights are sold per club and follow the HOME team. TelevisaUnivision (TUDN/UniMas/ViX) has America, Pumas, Toluca, Cruz Azul, Atlas. Telemundo has Chivas home matches. FOX Deportes has Monterrey, Tijuana, Santos, Juarez, Leon, Necaxa, Pachuca, Queretaro."
     },
     {
       "league": "Champions League",

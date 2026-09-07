@@ -177,6 +177,11 @@
       "ch": "305",
       "network": "ION",
       "sports": "WNBA regular season, NWSL regular season, NFL select"
+    },
+    {
+      "ch": "620",
+      "network": "beIN SPORTS",
+      "sports": "Ligue 1 (exclusive US rights), Copa del Rey, Turkish Super Lig, AFC competitions"
     }
   ],
   "spanishLanguage": [
@@ -536,8 +541,8 @@
       "league": "Ligue 1",
       "sport": "Soccer",
       "source": "ESPN API (live)",
-      "channels": "beIN SPORTS Ch 620 (NOT in current package) · beIN SPORTS XTRA Ch 4122 (free, limited) · Fanatiz / beIN CONNECT",
-      "note": "beIN holds exclusive US rights through 2028-29. Not carried in the current DirecTV pack — PSG and Marseille matches are unavailable at the venue."
+      "channels": "beIN SPORTS Ch 620 · beIN SPORTS en Espanol · beIN SPORTS XTRA Ch 4122 (free)",
+      "note": "beIN holds exclusive US rights through 2028-29. All PSG and Marseille matches."
     },
     {
       "league": "Liga MX",

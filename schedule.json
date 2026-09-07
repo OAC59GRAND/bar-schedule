@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T19:42:46.583Z",
+  "generated": "2026-09-07T22:09:01.778Z",
   "days": {
     "2026-09-06": [
       {
@@ -511,9 +511,7 @@
         "isoDate": "2026-09-06T23:00Z",
         "venue": "Estadio Banorte",
         "broadcast": null
-      }
-    ],
-    "2026-09-07": [
+      },
       {
         "league": "NWSL",
         "isWomen": true,
@@ -558,7 +556,9 @@
         "isoDate": "2026-09-07T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-07": [
       {
         "league": "Serie A",
         "isWomen": false,
@@ -738,9 +738,7 @@
         "isoDate": "2026-09-07T21:10Z",
         "venue": "Petco Park",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-08": [
+      },
       {
         "league": "MLB",
         "isWomen": false,
@@ -785,7 +783,9 @@
         "isoDate": "2026-09-08T02:05Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-08": [
       {
         "league": "UCL",
         "isWomen": false,
@@ -1025,9 +1025,7 @@
         "isoDate": "2026-09-08T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-09": [
+      },
       {
         "league": "MLB",
         "isWomen": false,
@@ -1102,7 +1100,9 @@
         "isoDate": "2026-09-09T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-09": [
       {
         "league": "UCL",
         "isWomen": false,
@@ -1477,9 +1477,7 @@
         "isoDate": "2026-09-09T23:45Z",
         "venue": "Subaru Park",
         "broadcast": "FS1"
-      }
-    ],
-    "2026-09-10": [
+      },
       {
         "league": "MLS",
         "isWomen": false,
@@ -1644,7 +1642,9 @@
         "isoDate": "2026-09-10T02:30Z",
         "venue": "BC Place",
         "broadcast": "Apple TV"
-      },
+      }
+    ],
+    "2026-09-10": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -1809,9 +1809,7 @@
         "isoDate": "2026-09-10T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-11": [
+      },
       {
         "league": "NFL",
         "isWomen": false,
@@ -1841,7 +1839,9 @@
         "isoDate": "2026-09-11T03:00Z",
         "venue": "Estadio Olímpico Universitario",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-11": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -2066,9 +2066,7 @@
         "isoDate": "2026-09-11T23:40Z",
         "venue": "American Family Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-12": [
+      },
       {
         "league": "NWSL",
         "isWomen": true,
@@ -2248,7 +2246,9 @@
         "isoDate": "2026-09-12T03:00Z",
         "venue": "Estadio Caliente",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-12": [
       {
         "league": "La Liga",
         "isWomen": false,
@@ -3043,9 +3043,7 @@
         "isoDate": "2026-09-12T23:30Z",
         "venue": "Inter&Co Stadium",
         "broadcast": "Apple TV"
-      }
-    ],
-    "2026-09-13": [
+      },
       {
         "league": "NWSL",
         "isWomen": true,
@@ -3300,7 +3298,9 @@
         "isoDate": "2026-09-13T03:00Z",
         "venue": "Estadio Banorte",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-13": [
       {
         "league": "La Liga",
         "isWomen": false,
@@ -3975,9 +3975,7 @@
         "isoDate": "2026-09-13T23:20Z",
         "venue": "Oracle Park",
         "broadcast": "Peacock"
-      }
-    ],
-    "2026-09-14": [
+      },
       {
         "league": "Liga MX",
         "isWomen": false,
@@ -4037,7 +4035,9 @@
         "isoDate": "2026-09-14T01:07Z",
         "venue": "Estadio Akron",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-14": [
       {
         "league": "Serie A",
         "isWomen": false,
@@ -4217,9 +4217,7 @@
         "isoDate": "2026-09-14T23:45Z",
         "venue": "Busch Stadium",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-15": [
+      },
       {
         "league": "NFL",
         "isWomen": false,
@@ -4294,7 +4292,9 @@
         "isoDate": "2026-09-15T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-15": [
       {
         "league": "La Liga",
         "isWomen": false,
@@ -4504,9 +4504,7 @@
         "isoDate": "2026-09-15T23:45Z",
         "venue": "Busch Stadium",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-16": [
+      },
       {
         "league": "MLB",
         "isWomen": false,
@@ -4596,7 +4594,9 @@
         "isoDate": "2026-09-16T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-16": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -4821,9 +4821,7 @@
         "isoDate": "2026-09-16T23:40Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-17": [
+      },
       {
         "league": "MLB",
         "isWomen": false,
@@ -4943,7 +4941,9 @@
         "isoDate": "2026-09-17T02:00Z",
         "venue": "BMO Stadium",
         "broadcast": "NWSL+"
-      },
+      }
+    ],
+    "2026-09-17": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -5093,9 +5093,7 @@
         "isoDate": "2026-09-17T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-18": [
+      },
       {
         "league": "WNBA",
         "isWomen": true,
@@ -5200,7 +5198,9 @@
         "isoDate": "2026-09-18T02:00Z",
         "venue": "Climate Pledge Arena",
         "broadcast": "USA Net"
-      },
+      }
+    ],
+    "2026-09-18": [
       {
         "league": "Bundesliga",
         "isWomen": false,
@@ -5425,9 +5425,7 @@
         "isoDate": "2026-09-18T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-19": [
+      },
       {
         "league": "MLB",
         "isWomen": false,
@@ -5607,7 +5605,9 @@
         "isoDate": "2026-09-19T03:00Z",
         "venue": "Estadio Olímpico Benito Juárez",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-19": [
       {
         "league": "EPL",
         "isWomen": false,
@@ -6432,9 +6432,7 @@
         "isoDate": "2026-09-19T23:30Z",
         "venue": "Al Lang Stadium",
         "broadcast": "ESPN+"
-      }
-    ],
-    "2026-09-20": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -6824,7 +6822,9 @@
         "isoDate": "2026-09-20T03:00Z",
         "venue": "Rose Bowl",
         "broadcast": "BTN"
-      },
+      }
+    ],
+    "2026-09-20": [
       {
         "league": "Serie A",
         "isWomen": false,
@@ -7799,9 +7799,7 @@
         "isoDate": "2026-09-20T23:20Z",
         "venue": "Oriole Park at Camden Yards",
         "broadcast": "Peacock"
-      }
-    ],
-    "2026-09-21": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -7891,7 +7889,9 @@
         "isoDate": "2026-09-21T02:00Z",
         "venue": "Estadio Corregidora",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-21": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -7996,9 +7996,7 @@
         "isoDate": "2026-09-21T23:00Z",
         "venue": "Colisee Videotron",
         "broadcast": null
-      }
-    ],
-    "2026-09-22": [
+      },
       {
         "league": "WNBA",
         "isWomen": true,
@@ -8103,7 +8101,9 @@
         "isoDate": "2026-09-22T02:00Z",
         "venue": "Mortgage Matchup Center",
         "broadcast": "USA Net"
-      },
+      }
+    ],
+    "2026-09-22": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -8358,9 +8358,7 @@
         "isoDate": "2026-09-22T23:40Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-23": [
+      },
       {
         "league": "WNBA",
         "isWomen": true,
@@ -8600,7 +8598,9 @@
         "isoDate": "2026-09-23T04:00Z",
         "venue": "Scotiabank Arena",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-23": [
       {
         "league": "USL",
         "isWomen": false,
@@ -8765,9 +8765,7 @@
         "isoDate": "2026-09-23T23:40Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-24": [
+      },
       {
         "league": "WNBA",
         "isWomen": true,
@@ -8917,7 +8915,9 @@
         "isoDate": "2026-09-24T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-24": [
       {
         "league": "MLB",
         "isWomen": false,
@@ -9172,9 +9172,7 @@
         "isoDate": "2026-09-24T23:30Z",
         "venue": "Capital One Arena",
         "broadcast": "CW26"
-      }
-    ],
-    "2026-09-25": [
+      },
       {
         "league": "WNBA",
         "isWomen": true,
@@ -9354,7 +9352,9 @@
         "isoDate": "2026-09-25T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
-      },
+      }
+    ],
+    "2026-09-25": [
       {
         "league": "NWSL",
         "isWomen": true,
@@ -9579,9 +9579,7 @@
         "isoDate": "2026-09-25T23:40Z",
         "venue": "American Family Field",
         "broadcast": "MLB.TV"
-      }
-    ],
-    "2026-09-26": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -9821,7 +9819,9 @@
         "isoDate": "2026-09-26T04:00Z",
         "venue": "SECU Stadium",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-09-26": [
       {
         "league": "NWSL",
         "isWomen": true,
@@ -10331,9 +10331,7 @@
         "isoDate": "2026-09-26T23:30Z",
         "venue": "Red Bull Arena",
         "broadcast": "Apple TV"
-      }
-    ],
-    "2026-09-27": [
+      },
       {
         "league": "MLS",
         "isWomen": false,
@@ -10678,7 +10676,9 @@
         "isoDate": "2026-09-27T02:30Z",
         "venue": "Stanford Stadium",
         "broadcast": "ESPN"
-      },
+      }
+    ],
+    "2026-09-27": [
       {
         "league": "NFL",
         "isWomen": false,
@@ -11158,9 +11158,54 @@
         "isoDate": "2026-09-27T23:00Z",
         "venue": "America First Field",
         "broadcast": "Roku"
+      },
+      {
+        "league": "NFL",
+        "isWomen": false,
+        "home": "Broncos",
+        "away": "Rams",
+        "homeFull": "Denver Broncos",
+        "awayFull": "Los Angeles Rams",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "9/27 - 8:20 PM EDT",
+        "isoDate": "2026-09-28T00:20Z",
+        "venue": "Empower Field at Mile High",
+        "broadcast": "NBC"
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
+        "home": "León",
+        "away": "Juarez",
+        "homeFull": "León",
+        "awayFull": "FC Juarez",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-28T01:00Z",
+        "venue": "Estadio León",
+        "broadcast": null
+      },
+      {
+        "league": "Liga MX",
+        "isWomen": false,
+        "home": "Necaxa",
+        "away": "América",
+        "homeFull": "Necaxa",
+        "awayFull": "América",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-09-28T03:00Z",
+        "venue": "Estadio Victoria",
+        "broadcast": null
       }
     ],
-    "2026-09-29": [
+    "2026-09-28": [
       {
         "league": "NFL",
         "isWomen": false,
@@ -11190,7 +11235,9 @@
         "isoDate": "2026-09-29T04:00Z",
         "venue": "",
         "broadcast": "NBC"
-      },
+      }
+    ],
+    "2026-09-29": [
       {
         "league": "NHL",
         "isWomen": false,
@@ -11220,9 +11267,7 @@
         "isoDate": "2026-09-29T23:00Z",
         "venue": "Scotiabank Arena",
         "broadcast": null
-      }
-    ],
-    "2026-09-30": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -11282,7 +11327,9 @@
         "isoDate": "2026-09-30T04:00Z",
         "venue": "",
         "broadcast": "NBC"
-      },
+      }
+    ],
+    "2026-09-30": [
       {
         "league": "USL",
         "isWomen": false,
@@ -11357,9 +11404,7 @@
         "isoDate": "2026-09-30T23:30Z",
         "venue": "Centreville Bank Stadium",
         "broadcast": null
-      }
-    ],
-    "2026-10-01": [
+      },
       {
         "league": "USL",
         "isWomen": false,
@@ -11419,54 +11464,39 @@
         "isoDate": "2026-10-01T04:00Z",
         "venue": "",
         "broadcast": "NBC"
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Blue Jackets",
-        "away": "Sabres",
-        "homeFull": "Columbus Blue Jackets",
-        "awayFull": "Buffalo Sabres",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 7:00 PM EDT",
-        "isoDate": "2026-10-01T23:00Z",
-        "venue": "Nationwide Arena",
-        "broadcast": null
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Devils",
-        "away": "Flyers",
-        "homeFull": "New Jersey Devils",
-        "awayFull": "Philadelphia Flyers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 7:00 PM EDT",
-        "isoDate": "2026-10-01T23:00Z",
-        "venue": "Prudential Center",
-        "broadcast": "Disney+"
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Rangers",
-        "away": "Lightning",
-        "homeFull": "New York Rangers",
-        "awayFull": "Tampa Bay Lightning",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 7:00 PM EDT",
-        "isoDate": "2026-10-01T23:00Z",
-        "venue": "Madison Square Garden",
-        "broadcast": null
       }
     ],
-    "2026-10-03": [
+    "2026-10-02": [
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Red Wings",
+        "away": "Rangers",
+        "homeFull": "Detroit Red Wings",
+        "awayFull": "New York Rangers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/2 - 6:30 PM EDT",
+        "isoDate": "2026-10-02T22:30Z",
+        "venue": "Little Caesars Arena",
+        "broadcast": "TNT"
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Hurricanes",
+        "away": "Capitals",
+        "homeFull": "Carolina Hurricanes",
+        "awayFull": "Washington Capitals",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/2 - 7:00 PM EDT",
+        "isoDate": "2026-10-02T23:00Z",
+        "venue": "Lenovo Center",
+        "broadcast": null
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -11571,7 +11601,9 @@
         "isoDate": "2026-10-03T04:00Z",
         "venue": "Allegacy Federal Credit Union Stadium",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-10-03": [
       {
         "league": "CFB",
         "isWomen": false,
@@ -11841,9 +11873,7 @@
         "isoDate": "2026-10-03T23:30Z",
         "venue": "Al Lang Stadium",
         "broadcast": null
-      }
-    ],
-    "2026-10-04": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -12008,7 +12038,9 @@
         "isoDate": "2026-10-04T04:00Z",
         "venue": "",
         "broadcast": "FOX"
-      },
+      }
+    ],
+    "2026-10-04": [
       {
         "league": "NFL",
         "isWomen": false,
@@ -12323,9 +12355,7 @@
         "isoDate": "2026-10-04T23:00Z",
         "venue": "Shell Energy Stadium",
         "broadcast": "Roku"
-      }
-    ],
-    "2026-10-05": [
+      },
       {
         "league": "NHL",
         "isWomen": false,
@@ -12400,7 +12430,9 @@
         "isoDate": "2026-10-05T04:00Z",
         "venue": "",
         "broadcast": "TBS"
-      },
+      }
+    ],
+    "2026-10-05": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -12490,9 +12522,7 @@
         "isoDate": "2026-10-05T23:30Z",
         "venue": "PPG Paints Arena",
         "broadcast": null
-      }
-    ],
-    "2026-10-06": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -12567,7 +12597,9 @@
         "isoDate": "2026-10-06T04:00Z",
         "venue": "",
         "broadcast": "FOX"
-      },
+      }
+    ],
+    "2026-10-06": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -12657,9 +12689,7 @@
         "isoDate": "2026-10-06T23:00Z",
         "venue": "KeyBank Center",
         "broadcast": null
-      }
-    ],
-    "2026-10-07": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -12794,7 +12824,9 @@
         "isoDate": "2026-10-07T04:00Z",
         "venue": "",
         "broadcast": "TBS"
-      },
+      }
+    ],
+    "2026-10-07": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -12839,9 +12871,7 @@
         "isoDate": "2026-10-07T23:30Z",
         "venue": "Canada Life Centre",
         "broadcast": null
-      }
-    ],
-    "2026-10-08": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -12931,7 +12961,9 @@
         "isoDate": "2026-10-08T04:00Z",
         "venue": "",
         "broadcast": "TBS"
-      },
+      }
+    ],
+    "2026-10-08": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -13096,9 +13128,7 @@
         "isoDate": "2026-10-08T23:30Z",
         "venue": "UBS Arena",
         "broadcast": null
-      }
-    ],
-    "2026-10-09": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -13203,7 +13233,9 @@
         "isoDate": "2026-10-09T04:00Z",
         "venue": "",
         "broadcast": "FOX"
-      },
+      }
+    ],
+    "2026-10-09": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -13293,9 +13325,7 @@
         "isoDate": "2026-10-09T23:30Z",
         "venue": "Lexington Stadium",
         "broadcast": null
-      }
-    ],
-    "2026-10-10": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -13415,7 +13445,9 @@
         "isoDate": "2026-10-10T04:00Z",
         "venue": "California Memorial Stadium",
         "broadcast": null
-      },
+      }
+    ],
+    "2026-10-10": [
       {
         "league": "EPL",
         "isWomen": false,
@@ -14240,9 +14272,7 @@
         "isoDate": "2026-10-10T23:30Z",
         "venue": "Red Bull Arena",
         "broadcast": "Apple TV"
-      }
-    ],
-    "2026-10-11": [
+      },
       {
         "league": "NBA",
         "isWomen": false,
@@ -14527,7 +14557,9 @@
         "isoDate": "2026-10-11T04:00Z",
         "venue": "",
         "broadcast": "FOX"
-      },
+      }
+    ],
+    "2026-10-11": [
       {
         "league": "NBA",
         "isWomen": false,
@@ -15157,9 +15189,7 @@
         "isoDate": "2026-10-11T23:00Z",
         "venue": "Estadio Hidalgo",
         "broadcast": null
-      }
-    ],
-    "2026-10-12": [
+      },
       {
         "league": "NFL",
         "isWomen": false,
@@ -15219,7 +15249,161 @@
         "isoDate": "2026-10-12T04:00Z",
         "venue": "",
         "broadcast": "TBS"
+      }
+    ],
+    "2026-10-01": [
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Blue Jackets",
+        "away": "Sabres",
+        "homeFull": "Columbus Blue Jackets",
+        "awayFull": "Buffalo Sabres",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 7:00 PM EDT",
+        "isoDate": "2026-10-01T23:00Z",
+        "venue": "Nationwide Arena",
+        "broadcast": null
       },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Devils",
+        "away": "Flyers",
+        "homeFull": "New Jersey Devils",
+        "awayFull": "Philadelphia Flyers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 7:00 PM EDT",
+        "isoDate": "2026-10-01T23:00Z",
+        "venue": "Prudential Center",
+        "broadcast": "Disney+"
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Rangers",
+        "away": "Lightning",
+        "homeFull": "New York Rangers",
+        "awayFull": "Tampa Bay Lightning",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 7:00 PM EDT",
+        "isoDate": "2026-10-01T23:00Z",
+        "venue": "Madison Square Garden",
+        "broadcast": null
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Predators",
+        "away": "Wild",
+        "homeFull": "Nashville Predators",
+        "awayFull": "Minnesota Wild",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 8:00 PM EDT",
+        "isoDate": "2026-10-02T00:00Z",
+        "venue": "Bridgestone Arena",
+        "broadcast": null
+      },
+      {
+        "league": "NFL",
+        "isWomen": false,
+        "home": "Browns",
+        "away": "Steelers",
+        "homeFull": "Cleveland Browns",
+        "awayFull": "Pittsburgh Steelers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 8:15 PM EDT",
+        "isoDate": "2026-10-02T00:15Z",
+        "venue": "Huntington Bank Field",
+        "broadcast": "Prime Video"
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Flames",
+        "away": "Kraken",
+        "homeFull": "Calgary Flames",
+        "awayFull": "Seattle Kraken",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 9:00 PM EDT",
+        "isoDate": "2026-10-02T01:00Z",
+        "venue": "Scotiabank Saddledome",
+        "broadcast": null
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Mammoth",
+        "away": "Blackhawks",
+        "homeFull": "Utah Mammoth",
+        "awayFull": "Chicago Blackhawks",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 9:30 PM EDT",
+        "isoDate": "2026-10-02T01:30Z",
+        "venue": "Delta Center",
+        "broadcast": "Disney+"
+      },
+      {
+        "league": "MLS",
+        "isWomen": false,
+        "home": "Seattle",
+        "away": "Kansas City",
+        "homeFull": "Seattle Sounders FC",
+        "awayFull": "Sporting Kansas City",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-02T01:30Z",
+        "venue": "Lumen Field",
+        "broadcast": "Apple TV"
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Sharks",
+        "away": "Panthers",
+        "homeFull": "San Jose Sharks",
+        "awayFull": "Florida Panthers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 10:00 PM EDT",
+        "isoDate": "2026-10-02T02:00Z",
+        "venue": "SAP Center at San Jose",
+        "broadcast": null
+      },
+      {
+        "league": "NHL",
+        "isWomen": false,
+        "home": "Canucks",
+        "away": "Oilers",
+        "homeFull": "Vancouver Canucks",
+        "awayFull": "Edmonton Oilers",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "10/1 - 10:00 PM EDT",
+        "isoDate": "2026-10-02T02:00Z",
+        "venue": "Rogers Arena",
+        "broadcast": null
+      }
+    ],
+    "2026-10-12": [
       {
         "league": "Serie A",
         "isWomen": false,
@@ -15354,193 +15538,7 @@
         "isoDate": "2026-10-12T23:30Z",
         "venue": "Madison Square Garden",
         "broadcast": null
-      }
-    ],
-    "2026-09-28": [
-      {
-        "league": "NFL",
-        "isWomen": false,
-        "home": "Broncos",
-        "away": "Rams",
-        "homeFull": "Denver Broncos",
-        "awayFull": "Los Angeles Rams",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/27 - 8:20 PM EDT",
-        "isoDate": "2026-09-28T00:20Z",
-        "venue": "Empower Field at Mile High",
-        "broadcast": "NBC"
       },
-      {
-        "league": "Liga MX",
-        "isWomen": false,
-        "home": "León",
-        "away": "Juarez",
-        "homeFull": "León",
-        "awayFull": "FC Juarez",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-09-28T01:00Z",
-        "venue": "Estadio León",
-        "broadcast": null
-      },
-      {
-        "league": "Liga MX",
-        "isWomen": false,
-        "home": "Necaxa",
-        "away": "América",
-        "homeFull": "Necaxa",
-        "awayFull": "América",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-09-28T03:00Z",
-        "venue": "Estadio Victoria",
-        "broadcast": null
-      }
-    ],
-    "2026-10-02": [
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Predators",
-        "away": "Wild",
-        "homeFull": "Nashville Predators",
-        "awayFull": "Minnesota Wild",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 8:00 PM EDT",
-        "isoDate": "2026-10-02T00:00Z",
-        "venue": "Bridgestone Arena",
-        "broadcast": null
-      },
-      {
-        "league": "NFL",
-        "isWomen": false,
-        "home": "Browns",
-        "away": "Steelers",
-        "homeFull": "Cleveland Browns",
-        "awayFull": "Pittsburgh Steelers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 8:15 PM EDT",
-        "isoDate": "2026-10-02T00:15Z",
-        "venue": "Huntington Bank Field",
-        "broadcast": "Prime Video"
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Flames",
-        "away": "Kraken",
-        "homeFull": "Calgary Flames",
-        "awayFull": "Seattle Kraken",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 9:00 PM EDT",
-        "isoDate": "2026-10-02T01:00Z",
-        "venue": "Scotiabank Saddledome",
-        "broadcast": null
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Mammoth",
-        "away": "Blackhawks",
-        "homeFull": "Utah Mammoth",
-        "awayFull": "Chicago Blackhawks",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 9:30 PM EDT",
-        "isoDate": "2026-10-02T01:30Z",
-        "venue": "Delta Center",
-        "broadcast": "Disney+"
-      },
-      {
-        "league": "MLS",
-        "isWomen": false,
-        "home": "Seattle",
-        "away": "Kansas City",
-        "homeFull": "Seattle Sounders FC",
-        "awayFull": "Sporting Kansas City",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-10-02T01:30Z",
-        "venue": "Lumen Field",
-        "broadcast": "Apple TV"
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Sharks",
-        "away": "Panthers",
-        "homeFull": "San Jose Sharks",
-        "awayFull": "Florida Panthers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 10:00 PM EDT",
-        "isoDate": "2026-10-02T02:00Z",
-        "venue": "SAP Center at San Jose",
-        "broadcast": null
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Canucks",
-        "away": "Oilers",
-        "homeFull": "Vancouver Canucks",
-        "awayFull": "Edmonton Oilers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/1 - 10:00 PM EDT",
-        "isoDate": "2026-10-02T02:00Z",
-        "venue": "Rogers Arena",
-        "broadcast": null
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Red Wings",
-        "away": "Rangers",
-        "homeFull": "Detroit Red Wings",
-        "awayFull": "New York Rangers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/2 - 6:30 PM EDT",
-        "isoDate": "2026-10-02T22:30Z",
-        "venue": "Little Caesars Arena",
-        "broadcast": "TNT"
-      },
-      {
-        "league": "NHL",
-        "isWomen": false,
-        "home": "Hurricanes",
-        "away": "Capitals",
-        "homeFull": "Carolina Hurricanes",
-        "awayFull": "Washington Capitals",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/2 - 7:00 PM EDT",
-        "isoDate": "2026-10-02T23:00Z",
-        "venue": "Lenovo Center",
-        "broadcast": null
-      }
-    ],
-    "2026-10-13": [
       {
         "league": "NHL",
         "isWomen": false,

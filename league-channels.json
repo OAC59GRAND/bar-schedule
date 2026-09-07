@@ -2,24 +2,81 @@
   "_instructions": "Fallback channel shown when ESPN returns no broadcast for a game. Read by both priority-schedule.html and the weekly email workflow. 'default' is the everyday home of the league in the US; 'alt' lists the other places its games turn up. Verified Sep 2026 — recheck each August, US soccer rights move often.",
   "updated": "September 2026",
   "defaults": {
-    "EPL":         { "default": "Peacock",          "alt": "NBC Ch 11 · USA Network Ch 242 · Telemundo Ch 406" },
-    "Bundesliga":  { "default": "Fandango (free)",  "alt": "USA Network Ch 242 · Telemundo Ch 406 · Universo Ch 410" },
-    "La Liga":     { "default": "ESPN+",            "alt": "ESPN Deportes Ch 466 · ESPN Ch 206" },
-    "Serie A":     { "default": "Paramount+",       "alt": "CBS Sports Net Ch 221" },
-    "Ligue 1":     { "default": "beIN SPORTS",      "alt": "beIN SPORTS en Espanol · Fanatiz — NOT in current DirecTV pack" },
-    "UCL":         { "default": "Paramount+",       "alt": "CBS Ch 5 · CBS Sports Net Ch 221" },
-    "Liga MX":     { "default": "ViX app",          "alt": "TUDN Ch 464 · Univision Ch 402 · FOX Deportes Ch 465" },
-    "MLS":         { "default": "Apple TV",         "alt": "FOX Ch 2 · FS1 Ch 219 (select)" },
-    "NWSL":        { "default": "NWSL+",            "alt": "ION Ch 305 · CBS Ch 5 · Amazon Prime · ESPN Ch 206" },
-    "USL":         { "default": "ESPN+",            "alt": "CBS Sports Net Ch 221" },
-    "NHL":         { "default": "NBC Sports CA Ch 698", "alt": "ESPN Ch 206 · TNT Ch 245 · NHL Network Ch 215" },
-    "NBA":         { "default": "NBC Sports Bay Area Ch 696", "alt": "ESPN Ch 206 · ABC Ch 7 · NBA TV Ch 216 · Peacock" },
-    "WNBA":        { "default": "ION Ch 305",       "alt": "ESPN Ch 206 · ABC Ch 7 · CBS Ch 5 · Amazon Prime" },
-    "MLB":         { "default": "NBC Sports Bay Area Ch 696", "alt": "ESPN Ch 206 · FOX Ch 2 · MLB Network Ch 213" },
-    "NFL":         { "default": "Check Sunday Ticket", "alt": "FOX Ch 2 · CBS Ch 5 · NBC Ch 11 · ESPN Ch 206 · NFL Network Ch 212" },
-    "CFB":         { "default": "ESPN+",            "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPN Ch 206 · FOX Ch 2" },
-    "NCAA Men's":  { "default": "ESPN+",            "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208" },
-    "NCAA Women's":{ "default": "ESPN+",            "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208" },
-    "Pioneer Lg":  { "default": "Not carried",      "alt": "Ballers stream via league site" }
+    "EPL": {
+      "default": "Peacock",
+      "alt": "NBC Ch 11 · USA Network Ch 242 · Telemundo Ch 406"
+    },
+    "Bundesliga": {
+      "default": "Fandango (free)",
+      "alt": "USA Network Ch 242 · Telemundo Ch 406 · Universo Ch 410"
+    },
+    "La Liga": {
+      "default": "ESPN+",
+      "alt": "ESPN Deportes Ch 466 · ESPN Ch 206"
+    },
+    "Serie A": {
+      "default": "Paramount+",
+      "alt": "CBS Sports Net Ch 221"
+    },
+    "Ligue 1": {
+      "default": "beIN SPORTS Ch 620",
+      "alt": "beIN SPORTS en Espanol · beIN SPORTS XTRA Ch 4122 (free)"
+    },
+    "UCL": {
+      "default": "Paramount+",
+      "alt": "CBS Ch 5 · CBS Sports Net Ch 221"
+    },
+    "Liga MX": {
+      "default": "ViX app",
+      "alt": "TUDN Ch 464 · Univision Ch 402 · FOX Deportes Ch 465"
+    },
+    "MLS": {
+      "default": "Apple TV",
+      "alt": "FOX Ch 2 · FS1 Ch 219 (select)"
+    },
+    "NWSL": {
+      "default": "NWSL+",
+      "alt": "ION Ch 305 · CBS Ch 5 · Amazon Prime · ESPN Ch 206"
+    },
+    "USL": {
+      "default": "ESPN+",
+      "alt": "CBS Sports Net Ch 221"
+    },
+    "NHL": {
+      "default": "NBC Sports CA Ch 698",
+      "alt": "ESPN Ch 206 · TNT Ch 245 · NHL Network Ch 215"
+    },
+    "NBA": {
+      "default": "NBC Sports Bay Area Ch 696",
+      "alt": "ESPN Ch 206 · ABC Ch 7 · NBA TV Ch 216 · Peacock"
+    },
+    "WNBA": {
+      "default": "ION Ch 305",
+      "alt": "ESPN Ch 206 · ABC Ch 7 · CBS Ch 5 · Amazon Prime"
+    },
+    "MLB": {
+      "default": "NBC Sports Bay Area Ch 696",
+      "alt": "ESPN Ch 206 · FOX Ch 2 · MLB Network Ch 213"
+    },
+    "NFL": {
+      "default": "Check Sunday Ticket",
+      "alt": "FOX Ch 2 · CBS Ch 5 · NBC Ch 11 · ESPN Ch 206 · NFL Network Ch 212"
+    },
+    "CFB": {
+      "default": "ESPN+",
+      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPN Ch 206 · FOX Ch 2"
+    },
+    "NCAA Men's": {
+      "default": "ESPN+",
+      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208"
+    },
+    "NCAA Women's": {
+      "default": "ESPN+",
+      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208"
+    },
+    "Pioneer Lg": {
+      "default": "Not carried",
+      "alt": "Ballers stream via league site"
+    }
   }
 }

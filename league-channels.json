@@ -27,8 +27,8 @@
       "alt": "CBS Ch 5 · CBS Sports Net Ch 221"
     },
     "Liga MX": {
-      "default": "ViX app",
-      "alt": "TUDN Ch 464 · Univision Ch 402 · FOX Deportes Ch 465"
+      "default": "TUDN Ch 464",
+      "alt": "UniMas Ch 408 · Univision (local) · ViX Premium · CBS Sports Net Ch 221 (English)"
     },
     "MLS": {
       "default": "Apple TV",
@@ -78,5 +78,18 @@
       "default": "Not carried",
       "alt": "Ballers stream via league site"
     }
+  },
+  "homeTeamOverrides": {
+    "_note": "Checked before the league default when ESPN gives no broadcast. Key is matched against the HOME team name. Liga MX rights follow the home club.",
+    "Guadalajara": "Telemundo Ch 406",
+    "Chivas": "Telemundo Ch 406",
+    "Monterrey": "FOX Deportes Ch 465",
+    "Tijuana": "FOX Deportes Ch 465",
+    "Santos": "FOX Deportes Ch 465",
+    "Juarez": "FOX Deportes Ch 465",
+    "Pachuca": "FOX Deportes Ch 465",
+    "Leon": "FOX Deportes Ch 465",
+    "Necaxa": "FOX Deportes Ch 465",
+    "Queretaro": "FOX Deportes Ch 465"
   }
 }

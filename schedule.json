@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T03:45:43.408Z",
+  "generated": "2026-09-07T09:07:40.520Z",
   "days": {
     "2026-09-06": [
       {
@@ -551,10 +551,10 @@
         "away": "Nationals",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Washington Nationals",
-        "homeScore": 3,
-        "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Bot 5th",
+        "homeScore": 7,
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-07T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"

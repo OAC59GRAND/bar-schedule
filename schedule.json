@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-08T12:43:26.295Z",
+  "generated": "2026-09-08T17:08:25.116Z",
   "days": {
     "2026-09-07": [
       {
@@ -236,10 +236,10 @@
         "away": "LASK Linz",
         "homeFull": "AEK Athens",
         "awayFull": "LASK Linz",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "22'",
         "isoDate": "2026-09-08T16:45Z",
         "venue": "OPAP Arena",
         "broadcast": "Paramount+"
@@ -251,10 +251,10 @@
         "away": "Aston Villa",
         "homeFull": "Club Brugge",
         "awayFull": "Aston Villa",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "21'",
         "isoDate": "2026-09-08T16:45Z",
         "venue": "Jan Breydel Stadium",
         "broadcast": "CBSSN"
@@ -1282,6 +1282,21 @@
         "isoDate": "2026-09-11T03:05Z",
         "venue": "Estadio Olímpico Universitario",
         "broadcast": null
+      },
+      {
+        "league": "LPGA Tour",
+        "isWomen": true,
+        "home": "EUR",
+        "away": "USA",
+        "homeFull": "EUR",
+        "awayFull": "USA",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "",
+        "isoDate": "2026-09-11T04:00Z",
+        "venue": "",
+        "broadcast": "Golf Chnl"
       }
     ],
     "2026-09-11": [
@@ -2259,7 +2274,7 @@
         "status": "pre",
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-12T23:00Z",
-        "venue": "Protective Stadium",
+        "venue": "Dunnavant Valley Fields",
         "broadcast": "ESPN+"
       },
       {
@@ -3750,7 +3765,7 @@
         "status": "pre",
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-15T17:00Z",
-        "venue": "Estadio de Vallecas",
+        "venue": "Estadio Municipal de Butarque",
         "broadcast": "ESPN Deportes"
       },
       {
@@ -4520,7 +4535,7 @@
         "statusDetail": "9/17 - 7:30 PM EDT",
         "isoDate": "2026-09-17T23:30Z",
         "venue": "Gateway Center",
-        "broadcast": "Atlanta News First"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "MLB",
@@ -4550,7 +4565,7 @@
         "statusDetail": "9/17 - 8:00 PM EDT",
         "isoDate": "2026-09-18T00:00Z",
         "venue": "Wintrust Arena",
-        "broadcast": "CW26"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "WNBA",
@@ -4625,7 +4640,7 @@
         "statusDetail": "9/17 - 10:00 PM EDT",
         "isoDate": "2026-09-18T02:00Z",
         "venue": "Moda Center",
-        "broadcast": "Fox 12 Plus"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "WNBA",
@@ -6641,7 +6656,7 @@
         "statusDetail": "9/20 - 1:00 PM EDT",
         "isoDate": "2026-09-20T17:00Z",
         "venue": "Mohegan Sun Arena",
-        "broadcast": "NBC Sports BO"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "NHL",
@@ -6866,7 +6881,7 @@
         "statusDetail": "9/20 - 3:00 PM EDT",
         "isoDate": "2026-09-20T19:00Z",
         "venue": "Coca-Cola Coliseum",
-        "broadcast": "WWOR-TV"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "La Liga",
@@ -7770,7 +7785,7 @@
         "statusDetail": "9/22 - 7:30 PM EDT",
         "isoDate": "2026-09-22T23:30Z",
         "venue": "CareFirst Arena",
-        "broadcast": "NBC Sports BO"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "MLB",
@@ -7830,7 +7845,7 @@
         "statusDetail": "9/22 - 8:00 PM EDT",
         "isoDate": "2026-09-23T00:00Z",
         "venue": "Wintrust Arena",
-        "broadcast": "CW26"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "NHL",
@@ -7965,7 +7980,7 @@
         "statusDetail": "9/22 - 10:00 PM EDT",
         "isoDate": "2026-09-23T02:00Z",
         "venue": "Moda Center",
-        "broadcast": "Fox 12 Plus"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "NHL",

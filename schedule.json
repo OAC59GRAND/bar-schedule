@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-08T07:03:44.433Z",
+  "generated": "2026-09-08T12:43:26.295Z",
   "days": {
     "2026-09-07": [
       {
@@ -1279,7 +1279,7 @@
         "awayScore": 0,
         "status": "pre",
         "statusDetail": "Scheduled",
-        "isoDate": "2026-09-11T03:00Z",
+        "isoDate": "2026-09-11T03:05Z",
         "venue": "Estadio Olímpico Universitario",
         "broadcast": null
       }
@@ -2588,7 +2588,7 @@
         "awayScore": 0,
         "status": "pre",
         "statusDetail": "Scheduled",
-        "isoDate": "2026-09-13T01:00Z",
+        "isoDate": "2026-09-13T01:10Z",
         "venue": "Estadio BBVA",
         "broadcast": null
       },
@@ -2738,7 +2738,7 @@
         "awayScore": 0,
         "status": "pre",
         "statusDetail": "Scheduled",
-        "isoDate": "2026-09-13T03:00Z",
+        "isoDate": "2026-09-13T03:15Z",
         "venue": "Estadio Banorte",
         "broadcast": null
       }

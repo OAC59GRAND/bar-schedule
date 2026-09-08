@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-08T20:54:58.231Z",
+  "generated": "2026-09-08T23:15:42.905Z",
   "days": {
     "2026-09-07": [
       {
@@ -267,9 +267,9 @@
         "homeFull": "Borussia Dortmund",
         "awayFull": "Villarreal",
         "homeScore": 3,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "90'+3'",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-08T19:00Z",
         "venue": "Signal Iduna Park",
         "broadcast": "CBSSN"
@@ -283,8 +283,8 @@
         "awayFull": "Manchester City",
         "homeScore": 0,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "90'+3'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-08T19:00Z",
         "venue": "Estádio do Dragão",
         "broadcast": "Paramount+"
@@ -298,8 +298,8 @@
         "awayFull": "Real Betis",
         "homeScore": 2,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "90'+4'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-08T19:00Z",
         "venue": "Decathlon Arena - Stade Pierre-Mauroy",
         "broadcast": "Paramount+"
@@ -313,8 +313,8 @@
         "awayFull": "Internazionale",
         "homeScore": 2,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "90'+3'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-08T19:00Z",
         "venue": "Santiago Bernabéu",
         "broadcast": "Paramount+"
@@ -327,9 +327,9 @@
         "homeFull": "Baltimore Orioles",
         "awayFull": "Cleveland Guardians",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 6:35 PM EDT",
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Top 3rd",
         "isoDate": "2026-09-08T22:35Z",
         "venue": "Oriole Park at Camden Yards",
         "broadcast": "MLB.TV"
@@ -342,9 +342,9 @@
         "homeFull": "Philadelphia Phillies",
         "awayFull": "Houston Astros",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 6:40 PM EDT",
+        "awayScore": 4,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-09-08T22:40Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -357,9 +357,9 @@
         "homeFull": "Detroit Tigers",
         "awayFull": "Minnesota Twins",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 6:40 PM EDT",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-09-08T22:40Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -372,9 +372,9 @@
         "homeFull": "Miami Marlins",
         "awayFull": "New York Mets",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 6:40 PM EDT",
+        "awayScore": 5,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-09-08T22:40Z",
         "venue": "loanDepot park",
         "broadcast": "MLB.TV"
@@ -387,9 +387,9 @@
         "homeFull": "Boston Red Sox",
         "awayFull": "Los Angeles Angels",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 6:45 PM EDT",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-09-08T22:45Z",
         "venue": "Fenway Park",
         "broadcast": "MLB.TV"
@@ -403,8 +403,8 @@
         "awayFull": "Colorado Rockies",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/8 - 7:05 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 1st",
         "isoDate": "2026-09-08T23:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"

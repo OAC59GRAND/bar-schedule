@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-08T01:01:00.687Z",
+  "generated": "2026-09-08T07:03:44.433Z",
   "days": {
     "2026-09-07": [
       {
@@ -189,10 +189,10 @@
         "away": "Cardinals",
         "homeFull": "San Francisco Giants",
         "awayFull": "St. Louis Cardinals",
-        "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 3rd",
+        "homeScore": 5,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "Final/11",
         "isoDate": "2026-09-08T00:10Z",
         "venue": "Oracle Park",
         "broadcast": "NBC"
@@ -204,10 +204,10 @@
         "away": "Reds",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Cincinnati Reds",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/7 - 9:10 PM EDT",
+        "homeScore": 6,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-08T01:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
@@ -219,10 +219,10 @@
         "away": "Blue Jays",
         "homeFull": "Athletics",
         "awayFull": "Toronto Blue Jays",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/7 - 10:05 PM EDT",
+        "homeScore": 6,
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-08T02:05Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"

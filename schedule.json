@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T08:50:35.681Z",
+  "generated": "2026-09-09T13:34:54.798Z",
   "days": {
     "2026-09-08": [
       {
@@ -1523,7 +1523,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-12T13:30Z",
         "venue": "Signal Iduna Park",
-        "broadcast": null
+        "broadcast": "Fandango"
       },
       {
         "league": "Bundesliga",
@@ -1643,7 +1643,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-12T14:00Z",
         "venue": "Selhurst Park",
-        "broadcast": null
+        "broadcast": "Peacock"
       },
       {
         "league": "EPL",

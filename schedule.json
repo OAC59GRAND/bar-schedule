@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T13:34:54.798Z",
+  "generated": "2026-09-09T17:42:18.494Z",
   "days": {
     "2026-09-08": [
       {
@@ -326,10 +326,10 @@
         "away": "Feyenoord",
         "homeFull": "Barcelona",
         "awayFull": "Feyenoord Rotterdam",
-        "homeScore": 0,
+        "homeScore": 2,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "HT",
         "isoDate": "2026-09-09T16:45Z",
         "venue": "Spotify Camp Nou",
         "broadcast": "Paramount+"
@@ -341,10 +341,10 @@
         "away": "Viking FK",
         "homeFull": "VfB Stuttgart",
         "awayFull": "Viking FK",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "HT",
         "isoDate": "2026-09-09T16:45Z",
         "venue": "MHPArena",
         "broadcast": "CBSSN"
@@ -358,8 +358,8 @@
         "awayFull": "Minnesota Twins",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/9 - 1:10 PM EDT",
+        "status": "in",
+        "statusDetail": "Delayed, Top 1st",
         "isoDate": "2026-09-09T17:10Z",
         "venue": "Comerica Park",
         "broadcast": "MLB.TV"
@@ -4217,7 +4217,7 @@
         "status": "pre",
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-17T17:00Z",
-        "venue": "Estadio La Cartuja",
+        "venue": "Estadio Benito Villamarín",
         "broadcast": "ESPN Deportes"
       },
       {
@@ -12448,7 +12448,7 @@
         "statusDetail": "10/8 - 10:30 PM EDT",
         "isoDate": "2026-10-09T02:30Z",
         "venue": "crypto.com Arena",
-        "broadcast": null
+        "broadcast": "ESPN2"
       },
       {
         "league": "MLB",
@@ -13742,7 +13742,7 @@
         "statusDetail": "10/10 - 10:30 PM EDT",
         "isoDate": "2026-10-11T02:30Z",
         "venue": "Mortgage Matchup Center",
-        "broadcast": null
+        "broadcast": "ESPN2"
       },
       {
         "league": "MLS",
@@ -14344,7 +14344,7 @@
         "statusDetail": "10/11 - 6:30 PM EDT",
         "isoDate": "2026-10-11T22:30Z",
         "venue": "Rocket Arena",
-        "broadcast": null
+        "broadcast": "ESPN"
       },
       {
         "league": "NBA",
@@ -14449,7 +14449,7 @@
         "statusDetail": "10/11 - 9:00 PM EDT",
         "isoDate": "2026-10-12T01:00Z",
         "venue": "Ball Arena",
-        "broadcast": null
+        "broadcast": "ESPN"
       },
       {
         "league": "Liga MX",
@@ -14888,7 +14888,7 @@
         "statusDetail": "10/13 - 7:00 PM EDT",
         "isoDate": "2026-10-13T23:00Z",
         "venue": "Kia Center",
-        "broadcast": null
+        "broadcast": "Peacock"
       },
       {
         "league": "NBA",

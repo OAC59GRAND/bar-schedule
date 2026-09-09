@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T03:54:40.536Z",
+  "generated": "2026-09-09T08:50:35.681Z",
   "days": {
     "2026-09-08": [
       {
@@ -249,10 +249,10 @@
         "away": "Rangers",
         "homeFull": "Seattle Mariners",
         "awayFull": "Texas Rangers",
-        "homeScore": 3,
-        "awayScore": 9,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "homeScore": 5,
+        "awayScore": 10,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-09T01:40Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"
@@ -266,8 +266,8 @@
         "awayFull": "Toronto Blue Jays",
         "homeScore": 2,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-09T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -279,10 +279,10 @@
         "away": "Nationals",
         "homeFull": "San Diego Padres",
         "awayFull": "Washington Nationals",
-        "homeScore": 2,
+        "homeScore": 5,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Bot 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-09T01:40Z",
         "venue": "Petco Park",
         "broadcast": "ESPN Unlmtd"
@@ -295,9 +295,9 @@
         "homeFull": "San Francisco Giants",
         "awayFull": "St. Louis Cardinals",
         "homeScore": 2,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-09T01:45Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -311,8 +311,8 @@
         "awayFull": "Cincinnati Reds",
         "homeScore": 3,
         "awayScore": 2,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-09T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
@@ -1718,7 +1718,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-12T16:30Z",
         "venue": "Tottenham Hotspur Stadium",
-        "broadcast": null
+        "broadcast": "NBC"
       },
       {
         "league": "La Liga",

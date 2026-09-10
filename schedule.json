@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10T20:38:17.599Z",
+  "generated": "2026-09-10T23:00:27.297Z",
   "days": {
     "2026-09-09": [
       {
@@ -551,10 +551,10 @@
         "away": "Rays",
         "homeFull": "Atlanta Braves",
         "awayFull": "Tampa Bay Rays",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T16:15Z",
         "venue": "Truist Park",
         "broadcast": "ESPN Unlmtd"
@@ -566,10 +566,10 @@
         "away": "AS Roma",
         "homeFull": "Fenerbahce",
         "awayFull": "AS Roma",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "HT",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T16:45Z",
         "venue": "Ulker Stadyumu",
         "broadcast": "CBSSN"
@@ -581,10 +581,10 @@
         "away": "Shakhtar",
         "homeFull": "PSV Eindhoven",
         "awayFull": "Shakhtar Donetsk",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "HT",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T16:45Z",
         "venue": "Philips Stadion",
         "broadcast": "Paramount+"
@@ -596,10 +596,10 @@
         "away": "Astros",
         "homeFull": "Philadelphia Phillies",
         "awayFull": "Houston Astros",
-        "homeScore": 0,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 2nd",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T17:05Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -611,10 +611,10 @@
         "away": "Bodo/Glimt",
         "homeFull": "Bayern Munich",
         "awayFull": "Bodo/Glimt",
-        "homeScore": 0,
+        "homeScore": 5,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T19:00Z",
         "venue": "Allianz Arena",
         "broadcast": "Paramount+"
@@ -626,10 +626,10 @@
         "away": "RB Leipzig",
         "homeFull": "Como",
         "awayFull": "RB Leipzig",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 4,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T19:00Z",
         "venue": "Giuseppe Sinigaglia",
         "broadcast": "CBSSN"
@@ -641,10 +641,10 @@
         "away": "Sabah",
         "homeFull": "Manchester United",
         "awayFull": "Sabah FK",
-        "homeScore": 0,
+        "homeScore": 4,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T19:00Z",
         "venue": "Old Trafford",
         "broadcast": "Paramount+"
@@ -656,10 +656,10 @@
         "away": "Lens",
         "homeFull": "Slavia Prague",
         "awayFull": "Lens",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 2,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T19:00Z",
         "venue": "Fortuna Arena",
         "broadcast": "Paramount+"
@@ -671,10 +671,10 @@
         "away": "Rangers",
         "homeFull": "Seattle Mariners",
         "awayFull": "Texas Rangers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/10 - 4:10 PM EDT",
+        "homeScore": 4,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T20:10Z",
         "venue": "T-Mobile Park",
         "broadcast": "MLB.TV"
@@ -3252,7 +3252,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-15T19:30Z",
         "venue": "Estadio Martínez Valero",
-        "broadcast": "ESPN Deportes"
+        "broadcast": "ESPN2"
       },
       {
         "league": "MLB",
@@ -5887,7 +5887,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-20T14:15Z",
         "venue": "Riyadh Air Metropolitano",
-        "broadcast": "ESPN Deportes"
+        "broadcast": "ESPN2"
       },
       {
         "league": "Ligue 1",

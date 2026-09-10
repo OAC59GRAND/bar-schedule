@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10T13:26:38.340Z",
+  "generated": "2026-09-10T17:34:45.590Z",
   "days": {
     "2026-09-09": [
       {
@@ -553,8 +553,8 @@
         "awayFull": "Tampa Bay Rays",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/10 - 12:15 PM EDT",
+        "status": "in",
+        "statusDetail": "Bot 6th",
         "isoDate": "2026-09-10T16:15Z",
         "venue": "Truist Park",
         "broadcast": "ESPN Unlmtd"
@@ -567,9 +567,9 @@
         "homeFull": "Fenerbahce",
         "awayFull": "AS Roma",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "HT",
         "isoDate": "2026-09-10T16:45Z",
         "venue": "Ulker Stadyumu",
         "broadcast": "CBSSN"
@@ -582,9 +582,9 @@
         "homeFull": "PSV Eindhoven",
         "awayFull": "Shakhtar Donetsk",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "HT",
         "isoDate": "2026-09-10T16:45Z",
         "venue": "Philips Stadion",
         "broadcast": "Paramount+"
@@ -597,9 +597,9 @@
         "homeFull": "Philadelphia Phillies",
         "awayFull": "Houston Astros",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/10 - 1:05 PM EDT",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "Bot 2nd",
         "isoDate": "2026-09-10T17:05Z",
         "venue": "Citizens Bank Park",
         "broadcast": "MLB.TV"
@@ -6849,7 +6849,7 @@
         "statusDetail": "9/21 - 7:00 PM EDT",
         "isoDate": "2026-09-21T23:00Z",
         "venue": "Giant Center",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -8899,7 +8899,7 @@
         "statusDetail": "9/26 - 5:00 PM EDT",
         "isoDate": "2026-09-26T21:00Z",
         "venue": "Xfinity Mobile Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -10469,7 +10469,7 @@
         "statusDetail": "10/2 - 7:00 PM EDT",
         "isoDate": "2026-10-02T23:00Z",
         "venue": "Lenovo Center",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -10696,7 +10696,7 @@
         "statusDetail": "10/3 - 7:00 PM EDT",
         "isoDate": "2026-10-03T23:00Z",
         "venue": "Benchmark International Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -10786,21 +10786,6 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-10-03T23:00Z",
         "venue": "Keyworth Stadium",
-        "broadcast": null
-      },
-      {
-        "league": "USL",
-        "isWomen": false,
-        "home": "Hartford",
-        "away": "Charleston",
-        "homeFull": "Hartford Athletic",
-        "awayFull": "Charleston Battery",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-10-03T23:00Z",
-        "venue": "Trinity Health Stadium",
         "broadcast": null
       },
       {
@@ -12241,6 +12226,21 @@
         "broadcast": null
       },
       {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Dortmund",
+        "away": "Bremen",
+        "homeFull": "Borussia Dortmund",
+        "awayFull": "Werder Bremen",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-09T18:30Z",
+        "venue": "Signal Iduna Park",
+        "broadcast": null
+      },
+      {
         "league": "Ligue 1",
         "isWomen": false,
         "home": "Lens",
@@ -12298,7 +12298,7 @@
         "statusDetail": "10/9 - 7:00 PM EDT",
         "isoDate": "2026-10-09T23:00Z",
         "venue": "Capital One Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -12498,6 +12498,81 @@
         "broadcast": "Paramount+"
       },
       {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Union Berlin",
+        "away": "Elversberg",
+        "homeFull": "1. FC Union Berlin",
+        "awayFull": "SV Elversberg",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T13:30Z",
+        "venue": "Stadion An der Alten Försterei",
+        "broadcast": null
+      },
+      {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Augsburg",
+        "away": "Bayern",
+        "homeFull": "FC Augsburg",
+        "awayFull": "Bayern Munich",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T13:30Z",
+        "venue": "WWK Arena",
+        "broadcast": null
+      },
+      {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Mainz",
+        "away": "Leverkusen",
+        "homeFull": "Mainz",
+        "awayFull": "Bayer Leverkusen",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T13:30Z",
+        "venue": "MEWA ARENA",
+        "broadcast": null
+      },
+      {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Paderborn",
+        "away": "Stuttgart",
+        "homeFull": "SC Paderborn 07",
+        "awayFull": "VfB Stuttgart",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T13:30Z",
+        "venue": "Home Deluxe Arena",
+        "broadcast": null
+      },
+      {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Hoffenheim",
+        "away": "Hamburg",
+        "homeFull": "TSG Hoffenheim",
+        "awayFull": "Hamburg SV",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T13:30Z",
+        "venue": "PreZero Arena",
+        "broadcast": null
+      },
+      {
         "league": "EPL",
         "isWomen": false,
         "home": "Aston Villa",
@@ -12633,6 +12708,21 @@
         "broadcast": "ESPN+"
       },
       {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "RB Leipzig",
+        "away": "Frankfurt",
+        "homeFull": "RB Leipzig",
+        "awayFull": "Eintracht Frankfurt",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T16:30Z",
+        "venue": "Red Bull Arena",
+        "broadcast": null
+      },
+      {
         "league": "NHL",
         "isWomen": false,
         "home": "Bruins",
@@ -12661,141 +12751,6 @@
         "isoDate": "2026-10-10T17:00Z",
         "venue": "BMO Field",
         "broadcast": "Apple TV"
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Union Berlin",
-        "away": "Elversberg",
-        "homeFull": "1. FC Union Berlin",
-        "awayFull": "SV Elversberg",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "Stadion An der Alten Försterei",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Dortmund",
-        "away": "Bremen",
-        "homeFull": "Borussia Dortmund",
-        "awayFull": "Werder Bremen",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "Signal Iduna Park",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Augsburg",
-        "away": "Bayern",
-        "homeFull": "FC Augsburg",
-        "awayFull": "Bayern Munich",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "WWK Arena",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Cologne",
-        "away": "Gladbach",
-        "homeFull": "FC Cologne",
-        "awayFull": "Borussia Mönchengladbach",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "RheinEnergieStadion",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Mainz",
-        "away": "Leverkusen",
-        "homeFull": "Mainz",
-        "awayFull": "Bayer Leverkusen",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "MEWA ARENA",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "RB Leipzig",
-        "away": "Frankfurt",
-        "homeFull": "RB Leipzig",
-        "awayFull": "Eintracht Frankfurt",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "Red Bull Arena",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Freiburg",
-        "away": "Schalke",
-        "homeFull": "SC Freiburg",
-        "awayFull": "Schalke 04",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "Europa-Park Stadion",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Paderborn",
-        "away": "Stuttgart",
-        "homeFull": "SC Paderborn 07",
-        "awayFull": "VfB Stuttgart",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "Home Deluxe Arena",
-        "broadcast": null
-      },
-      {
-        "league": "Bundesliga",
-        "isWomen": false,
-        "home": "Hoffenheim",
-        "away": "Hamburg",
-        "homeFull": "TSG Hoffenheim",
-        "awayFull": "Hamburg SV",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T18:00Z",
-        "venue": "PreZero Arena",
-        "broadcast": null
       },
       {
         "league": "MLS",
@@ -13760,6 +13715,21 @@
         "broadcast": "NFL Net"
       },
       {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Cologne",
+        "away": "Gladbach",
+        "homeFull": "FC Cologne",
+        "awayFull": "Borussia Mönchengladbach",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T13:30Z",
+        "venue": "RheinEnergieStadion",
+        "broadcast": null
+      },
+      {
         "league": "La Liga",
         "isWomen": false,
         "home": "Real Sociedad",
@@ -13802,6 +13772,21 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-10-11T15:30Z",
         "venue": "Anfield",
+        "broadcast": null
+      },
+      {
+        "league": "Bundesliga",
+        "isWomen": false,
+        "home": "Freiburg",
+        "away": "Schalke",
+        "homeFull": "SC Freiburg",
+        "awayFull": "Schalke 04",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T15:30Z",
+        "venue": "Europa-Park Stadion",
         "broadcast": null
       },
       {
@@ -14057,7 +14042,7 @@
         "statusDetail": "10/11 - 5:00 PM EDT",
         "isoDate": "2026-10-11T21:00Z",
         "venue": "Capital One Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -14631,7 +14616,7 @@
         "statusDetail": "10/13 - 6:45 PM EDT",
         "isoDate": "2026-10-13T22:45Z",
         "venue": "Lenovo Center",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NBA",
@@ -15041,6 +15026,21 @@
         "broadcast": "Paramount+"
       },
       {
+        "league": "USL",
+        "isWomen": false,
+        "home": "Hartford",
+        "away": "Charleston",
+        "homeFull": "Hartford Athletic",
+        "awayFull": "Charleston Battery",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-14T23:00Z",
+        "venue": "Trinity Health Stadium",
+        "broadcast": null
+      },
+      {
         "league": "NBA",
         "isWomen": false,
         "home": "Heat",
@@ -15083,7 +15083,7 @@
         "statusDetail": "10/14 - 7:30 PM EDT",
         "isoDate": "2026-10-14T23:30Z",
         "venue": "Capital One Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "MLS",

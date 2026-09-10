@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10T03:54:20.394Z",
+  "generated": "2026-09-10T08:49:38.180Z",
   "days": {
     "2026-09-09": [
       {
@@ -474,10 +474,10 @@
         "away": "Reds",
         "homeFull": "Los Angeles Dodgers",
         "awayFull": "Cincinnati Reds",
-        "homeScore": 9,
+        "homeScore": 14,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T02:10Z",
         "venue": "Dodger Stadium",
         "broadcast": "MLB.TV"
@@ -489,10 +489,10 @@
         "away": "Red Bull NY",
         "homeFull": "LAFC",
         "awayFull": "Red Bull New York",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "48'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T02:30Z",
         "venue": "BMO Stadium",
         "broadcast": "Apple TV"
@@ -504,10 +504,10 @@
         "away": "St. Louis",
         "homeFull": "Portland Timbers",
         "awayFull": "St. Louis CITY SC",
-        "homeScore": 1,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "46'",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T02:30Z",
         "venue": "Providence Park",
         "broadcast": "Apple TV"
@@ -519,10 +519,10 @@
         "away": "San Jose",
         "homeFull": "San Diego FC",
         "awayFull": "San Jose Earthquakes",
-        "homeScore": 1,
+        "homeScore": 2,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "HT",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T02:30Z",
         "venue": "Snapdragon Stadium",
         "broadcast": "Apple TV"
@@ -534,10 +534,10 @@
         "away": "LA Galaxy",
         "homeFull": "Vancouver Whitecaps",
         "awayFull": "LA Galaxy",
-        "homeScore": 1,
+        "homeScore": 3,
         "awayScore": 0,
-        "status": "in",
-        "statusDetail": "51'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-10T02:30Z",
         "venue": "BC Place",
         "broadcast": "Apple TV"

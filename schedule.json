@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10T08:49:38.180Z",
+  "generated": "2026-09-10T13:26:38.340Z",
   "days": {
     "2026-09-09": [
       {
@@ -1157,7 +1157,7 @@
         "awayScore": 0,
         "status": "pre",
         "statusDetail": "Scheduled",
-        "isoDate": "2026-09-12T03:00Z",
+        "isoDate": "2026-09-12T03:10Z",
         "venue": "Estadio Caliente",
         "broadcast": null
       }
@@ -12256,6 +12256,21 @@
         "broadcast": null
       },
       {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Málaga",
+        "away": "Espanyol",
+        "homeFull": "Málaga",
+        "awayFull": "Espanyol",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-09T19:00Z",
+        "venue": "La Rosaleda",
+        "broadcast": "ESPN+"
+      },
+      {
         "league": "NHL",
         "isWomen": false,
         "home": "Red Wings",
@@ -12453,6 +12468,21 @@
         "broadcast": null
       },
       {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Rayo",
+        "away": "Athletic",
+        "homeFull": "Rayo Vallecano",
+        "awayFull": "Athletic Club",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T12:00Z",
+        "venue": "Estadio de Vallecas",
+        "broadcast": "ESPN+"
+      },
+      {
         "league": "Serie A",
         "isWomen": false,
         "home": "Genoa",
@@ -12528,6 +12558,21 @@
         "broadcast": null
       },
       {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Alavés",
+        "away": "Atlético",
+        "homeFull": "Alavés",
+        "awayFull": "Atlético Madrid",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T14:15Z",
+        "venue": "Mendizorrotza",
+        "broadcast": "ESPN+"
+      },
+      {
         "league": "Ligue 1",
         "isWomen": false,
         "home": "Lille",
@@ -12571,6 +12616,21 @@
         "isoDate": "2026-10-10T16:30Z",
         "venue": "Old Trafford",
         "broadcast": null
+      },
+      {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Barcelona",
+        "away": "Getafe",
+        "homeFull": "Barcelona",
+        "awayFull": "Getafe",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T16:30Z",
+        "venue": "Spotify Camp Nou",
+        "broadcast": "ESPN+"
       },
       {
         "league": "NHL",
@@ -12826,6 +12886,21 @@
         "isoDate": "2026-10-10T18:45Z",
         "venue": "Parc des Princes",
         "broadcast": null
+      },
+      {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Real Madrid",
+        "away": "Villarreal",
+        "homeFull": "Real Madrid",
+        "awayFull": "Villarreal",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-10T19:00Z",
+        "venue": "Santiago Bernabéu",
+        "broadcast": "ESPN+"
       },
       {
         "league": "NHL",
@@ -13580,6 +13655,21 @@
         "broadcast": "Paramount+"
       },
       {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Elche",
+        "away": "Celta Vigo",
+        "homeFull": "Elche",
+        "awayFull": "Celta Vigo",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T12:00Z",
+        "venue": "Estadio Martínez Valero",
+        "broadcast": "ESPN+"
+      },
+      {
         "league": "EPL",
         "isWomen": false,
         "home": "C Palace",
@@ -13670,6 +13760,21 @@
         "broadcast": "NFL Net"
       },
       {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Real Sociedad",
+        "away": "Deportivo",
+        "homeFull": "Real Sociedad",
+        "awayFull": "Deportivo",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T14:15Z",
+        "venue": "Reale Arena",
+        "broadcast": "ESPN+"
+      },
+      {
         "league": "Ligue 1",
         "isWomen": false,
         "home": "Rennes",
@@ -13713,6 +13818,21 @@
         "isoDate": "2026-10-11T16:00Z",
         "venue": "Mapei Stadium",
         "broadcast": "Paramount+"
+      },
+      {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Betis",
+        "away": "Osasuna",
+        "homeFull": "Real Betis",
+        "awayFull": "Osasuna",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T16:30Z",
+        "venue": "Estadio La Cartuja",
+        "broadcast": "ESPN+"
       },
       {
         "league": "NFL",
@@ -13820,156 +13940,6 @@
         "broadcast": "FOX"
       },
       {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Alavés",
-        "away": "Atlético",
-        "homeFull": "Alavés",
-        "awayFull": "Atlético Madrid",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Mendizorrotza",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Barcelona",
-        "away": "Getafe",
-        "homeFull": "Barcelona",
-        "awayFull": "Getafe",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Spotify Camp Nou",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Elche",
-        "away": "Celta Vigo",
-        "homeFull": "Elche",
-        "awayFull": "Celta Vigo",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Estadio Martínez Valero",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Levante",
-        "away": "Sevilla",
-        "homeFull": "Levante",
-        "awayFull": "Sevilla",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Estadi Ciutat de València",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Málaga",
-        "away": "Espanyol",
-        "homeFull": "Málaga",
-        "awayFull": "Espanyol",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "La Rosaleda",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Racing",
-        "away": "Valencia",
-        "homeFull": "Racing Santander",
-        "awayFull": "Valencia",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "El Sardineros",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Rayo",
-        "away": "Athletic",
-        "homeFull": "Rayo Vallecano",
-        "awayFull": "Athletic Club",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Estadio de Vallecas",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Betis",
-        "away": "Osasuna",
-        "homeFull": "Real Betis",
-        "awayFull": "Osasuna",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Estadio La Cartuja",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Real Madrid",
-        "away": "Villarreal",
-        "homeFull": "Real Madrid",
-        "awayFull": "Villarreal",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Santiago Bernabéu",
-        "broadcast": "ESPN+"
-      },
-      {
-        "league": "La Liga",
-        "isWomen": false,
-        "home": "Real Sociedad",
-        "away": "Deportivo",
-        "homeFull": "Real Sociedad",
-        "awayFull": "Deportivo",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-11T18:00Z",
-        "venue": "Reale Arena",
-        "broadcast": "ESPN+"
-      },
-      {
         "league": "Serie A",
         "isWomen": false,
         "home": "Cagliari",
@@ -13998,6 +13968,21 @@
         "isoDate": "2026-10-11T18:45Z",
         "venue": "Stade de l'Aube",
         "broadcast": null
+      },
+      {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Racing",
+        "away": "Valencia",
+        "homeFull": "Racing Santander",
+        "awayFull": "Valencia",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-11T19:00Z",
+        "venue": "El Sardineros",
+        "broadcast": "ESPN+"
       },
       {
         "league": "NFL",
@@ -14300,6 +14285,21 @@
         "isoDate": "2026-10-12T19:00Z",
         "venue": "Coventry Building Society Arena",
         "broadcast": null
+      },
+      {
+        "league": "La Liga",
+        "isWomen": false,
+        "home": "Levante",
+        "away": "Sevilla",
+        "homeFull": "Levante",
+        "awayFull": "Sevilla",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "pre",
+        "statusDetail": "Scheduled",
+        "isoDate": "2026-10-12T19:00Z",
+        "venue": "Estadi Ciutat de València",
+        "broadcast": "ESPN+"
       },
       {
         "league": "NBA",

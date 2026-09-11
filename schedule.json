@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T18:17:23.369Z",
+  "generated": "2026-09-11T21:36:26.941Z",
   "days": {
     "2026-09-10": [
       {
@@ -204,8 +204,8 @@
         "away": "USA",
         "homeFull": "EUR",
         "awayFull": "USA",
-        "homeScore": 2,
-        "awayScore": 2,
+        "homeScore": 4,
+        "awayScore": 4,
         "status": "in",
         "statusDetail": "",
         "isoDate": "2026-09-11T04:00Z",
@@ -221,10 +221,10 @@
         "away": "Pirates",
         "homeFull": "Chicago Cubs",
         "awayFull": "Pittsburgh Pirates",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/11 - 2:20 PM EDT",
+        "homeScore": 12,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-11T18:20Z",
         "venue": "Wrigley Field",
         "broadcast": "MLB.TV"
@@ -236,10 +236,10 @@
         "away": "Schalke",
         "homeFull": "1. FC Union Berlin",
         "awayFull": "Schalke 04",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-11T18:30Z",
         "venue": "Stadion An der Alten Försterei",
         "broadcast": "Fandango"
@@ -251,10 +251,10 @@
         "away": "Fiorentina",
         "homeFull": "Venezia",
         "awayFull": "Fiorentina",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 2,
+        "awayScore": 4,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-11T18:45Z",
         "venue": "Stadio Pier Luigi Penzo",
         "broadcast": "Paramount+"
@@ -266,10 +266,10 @@
         "away": "Marseille",
         "homeFull": "Stade Rennais",
         "awayFull": "Marseille",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-11T18:45Z",
         "venue": "Roazhon Park",
         "broadcast": null
@@ -281,10 +281,10 @@
         "away": "Valencia",
         "homeFull": "Sevilla",
         "awayFull": "Valencia",
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-11T19:00Z",
         "venue": "Ramón Sánchez Pizjuán Stadium",
         "broadcast": "ESPN+"
@@ -11544,7 +11544,7 @@
         "statusDetail": "10/8 - 7:30 PM EDT",
         "isoDate": "2026-10-08T23:30Z",
         "venue": "Madison Square Garden",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -12448,7 +12448,7 @@
         "statusDetail": "10/10 - 7:00 PM EDT",
         "isoDate": "2026-10-10T23:00Z",
         "venue": "Capital One Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -13787,7 +13787,7 @@
         "statusDetail": "10/12 - 7:00 PM EDT",
         "isoDate": "2026-10-12T23:00Z",
         "venue": "Capital One Arena",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NHL",
@@ -15447,7 +15447,7 @@
         "statusDetail": "10/16 - 8:00 PM EDT",
         "isoDate": "2026-10-17T00:00Z",
         "venue": "Smoothie King Center",
-        "broadcast": null
+        "broadcast": "MNMT"
       },
       {
         "league": "NBA",

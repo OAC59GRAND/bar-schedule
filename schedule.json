@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T10:54:43.348Z",
+  "generated": "2026-09-11T14:55:41.093Z",
   "days": {
     "2026-09-10": [
       {
@@ -1277,7 +1277,7 @@
         "awayScore": 0,
         "status": "pre",
         "statusDetail": "Scheduled",
-        "isoDate": "2026-09-12T23:00Z",
+        "isoDate": "2026-09-12T23:05Z",
         "venue": "Estadio Nemesio Díez Riega",
         "broadcast": null
       },

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T05:50:20.466Z",
+  "generated": "2026-09-11T10:54:43.348Z",
   "days": {
     "2026-09-10": [
       {
@@ -29,7 +29,7 @@
         "status": "post",
         "statusDetail": "FT",
         "isoDate": "2026-09-10T16:45Z",
-        "venue": "Ulker Stadyumu",
+        "venue": "Şükrü Saracoğlu Stadium",
         "broadcast": "CBSSN"
       },
       {
@@ -204,8 +204,8 @@
         "away": "USA",
         "homeFull": "EUR",
         "awayFull": "USA",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 2,
+        "awayScore": 2,
         "status": "in",
         "statusDetail": "",
         "isoDate": "2026-09-11T04:00Z",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-11T00:59:01.369Z",
+  "generated": "2026-09-11T05:50:20.466Z",
   "days": {
     "2026-09-10": [
       {
@@ -144,10 +144,10 @@
         "away": "Rockies",
         "homeFull": "New York Yankees",
         "awayFull": "Colorado Rockies",
-        "homeScore": 4,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 6th",
+        "homeScore": 10,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T23:05Z",
         "venue": "Yankee Stadium",
         "broadcast": "MLB.TV"
@@ -160,9 +160,9 @@
         "homeFull": "Chicago White Sox",
         "awayFull": "Pittsburgh Pirates",
         "homeScore": 0,
-        "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Bot 5th",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-10T23:40Z",
         "venue": "Rate Field",
         "broadcast": "MLB.TV"
@@ -174,10 +174,10 @@
         "away": "49ers",
         "homeFull": "Los Angeles Rams",
         "awayFull": "San Francisco 49ers",
-        "homeScore": 0,
-        "awayScore": 3,
-        "status": "in",
-        "statusDetail": "3:18 - 1st",
+        "homeScore": 7,
+        "awayScore": 27,
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-11T00:35Z",
         "venue": "Melbourne Cricket Ground",
         "broadcast": "Netflix"
@@ -189,10 +189,10 @@
         "away": "León",
         "homeFull": "Pumas UNAM",
         "awayFull": "León",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-11T03:05Z",
         "venue": "Estadio Olímpico Universitario",
         "broadcast": null
@@ -206,7 +206,7 @@
         "awayFull": "USA",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
+        "status": "in",
         "statusDetail": "",
         "isoDate": "2026-09-11T04:00Z",
         "venue": "",

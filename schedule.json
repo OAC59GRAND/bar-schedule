@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T09:07:07.426Z",
+  "generated": "2026-09-12T13:27:14.856Z",
   "days": {
     "2026-09-11": [
       {
@@ -416,10 +416,10 @@
         "away": "Alavés",
         "homeFull": "Racing Santander",
         "awayFull": "Alavés",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "69'",
         "isoDate": "2026-09-12T12:00Z",
         "venue": "El Sardineros",
         "broadcast": "ESPN Deportes"
@@ -432,9 +432,9 @@
         "homeFull": "Genoa",
         "awayFull": "Frosinone",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "19'",
         "isoDate": "2026-09-12T13:00Z",
         "venue": "Stadio Luigi Ferraris",
         "broadcast": "Paramount+"
@@ -16433,8 +16433,8 @@
         "away": "USA",
         "homeFull": "EUR",
         "awayFull": "USA",
-        "homeScore": 4,
-        "awayScore": 4,
+        "homeScore": 7,
+        "awayScore": 5,
         "status": "in",
         "statusDetail": "",
         "isoDate": "2026-09-11T04:00Z",

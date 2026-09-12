@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T04:24:42.949Z",
+  "generated": "2026-09-12T09:07:07.426Z",
   "days": {
     "2026-09-11": [
       {
@@ -309,10 +309,10 @@
         "away": "Mariners",
         "homeFull": "Athletics",
         "awayFull": "Seattle Mariners",
-        "homeScore": 4,
-        "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Top 9th",
+        "homeScore": 6,
+        "awayScore": 5,
+        "status": "post",
+        "statusDetail": "Final/10",
         "isoDate": "2026-09-12T01:40Z",
         "venue": "Sutter Health Park",
         "broadcast": "MLB.TV"
@@ -326,8 +326,8 @@
         "awayFull": "Texas Rangers",
         "homeScore": 9,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "Mid 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-12T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"
@@ -371,8 +371,8 @@
         "awayFull": "San Diego Padres",
         "homeScore": 5,
         "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Top 7th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-12T02:15Z",
         "venue": "Oracle Park",
         "broadcast": "MLB.TV"
@@ -386,8 +386,8 @@
         "awayFull": "Pachuca",
         "homeScore": 0,
         "awayScore": 3,
-        "status": "in",
-        "statusDetail": "63'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-12T03:00Z",
         "venue": "Estadio Banorte",
         "broadcast": null
@@ -401,8 +401,8 @@
         "awayFull": "Querétaro",
         "homeScore": 0,
         "awayScore": 1,
-        "status": "in",
-        "statusDetail": "53'",
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-12T03:10Z",
         "venue": "Estadio Caliente",
         "broadcast": null
@@ -3524,7 +3524,7 @@
         "statusDetail": "9/18 - 7:10 PM EDT",
         "isoDate": "2026-09-18T23:10Z",
         "venue": "Citi Field",
-        "broadcast": "MLB.TV"
+        "broadcast": "Apple TV"
       },
       {
         "league": "WNBA",
@@ -3749,7 +3749,7 @@
         "statusDetail": "9/18 - 10:10 PM EDT",
         "isoDate": "2026-09-19T02:10Z",
         "venue": "Dodger Stadium",
-        "broadcast": "MLB.TV"
+        "broadcast": "Apple TV"
       },
       {
         "league": "Liga MX",

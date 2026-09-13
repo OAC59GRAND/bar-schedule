@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13T21:17:30.517Z",
+  "generated": "2026-09-13T23:58:14.525Z",
   "days": {
     "2026-09-12": [
       {
@@ -1676,10 +1676,10 @@
         "away": "New England",
         "homeFull": "Chicago Fire FC",
         "awayFull": "New England Revolution",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-13T21:30Z",
         "venue": "Soldier Field",
         "broadcast": "Apple TV"
@@ -1692,9 +1692,9 @@
         "homeFull": "Vancouver Whitecaps",
         "awayFull": "Austin FC",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "awayScore": 1,
+        "status": "in",
+        "statusDetail": "HT",
         "isoDate": "2026-09-13T22:30Z",
         "venue": "BC Place",
         "broadcast": "Apple TV"
@@ -13310,7 +13310,7 @@
       {
         "league": "UCL",
         "isWomen": false,
-        "home": "Atl��tico",
+        "home": "Atlético",
         "away": "Man United",
         "homeFull": "Atlético Madrid",
         "awayFull": "Manchester United",

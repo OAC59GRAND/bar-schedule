@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T16:51:51.602Z",
+  "generated": "2026-09-14T20:48:06.593Z",
   "days": {
     "2026-09-13": [
       {
@@ -746,10 +746,10 @@
         "away": "Parma",
         "homeFull": "Como",
         "awayFull": "Parma",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "19'",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-14T16:30Z",
         "venue": "Giuseppe Sinigaglia",
         "broadcast": "Paramount+"
@@ -762,9 +762,9 @@
         "homeFull": "Torino",
         "awayFull": "AS Roma",
         "homeScore": 0,
-        "awayScore": 0,
-        "status": "in",
-        "statusDetail": "19'",
+        "awayScore": 2,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-14T16:30Z",
         "venue": "Stadio Olimpico Grande Torino",
         "broadcast": "Paramount+"
@@ -776,10 +776,10 @@
         "away": "Udinese",
         "homeFull": "Internazionale",
         "awayFull": "Udinese",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 5,
+        "awayScore": 3,
+        "status": "post",
+        "statusDetail": "FT",
         "isoDate": "2026-09-14T18:45Z",
         "venue": "San Siro",
         "broadcast": "Paramount+"
@@ -791,10 +791,10 @@
         "away": "Newcastle",
         "homeFull": "Leeds United",
         "awayFull": "Newcastle United",
-        "homeScore": 0,
+        "homeScore": 4,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "89'",
         "isoDate": "2026-09-14T19:00Z",
         "venue": "Elland Road",
         "broadcast": "USA Net"

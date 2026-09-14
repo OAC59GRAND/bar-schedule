@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T10:25:16.993Z",
+  "generated": "2026-09-14T16:51:51.602Z",
   "days": {
     "2026-09-13": [
       {
@@ -748,8 +748,8 @@
         "awayFull": "Parma",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "19'",
         "isoDate": "2026-09-14T16:30Z",
         "venue": "Giuseppe Sinigaglia",
         "broadcast": "Paramount+"
@@ -763,8 +763,8 @@
         "awayFull": "AS Roma",
         "homeScore": 0,
         "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "status": "in",
+        "statusDetail": "19'",
         "isoDate": "2026-09-14T16:30Z",
         "venue": "Stadio Olimpico Grande Torino",
         "broadcast": "Paramount+"
@@ -6144,7 +6144,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-25T23:00Z",
         "venue": "Trinity Health Stadium",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "MLB",
@@ -6234,7 +6234,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-25T23:30Z",
         "venue": "Hodges Stadium",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "MLB",
@@ -6791,7 +6791,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-26T23:00Z",
         "venue": "Ralph Lundy Field at Patriots Point",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "USL",
@@ -6821,7 +6821,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-26T23:00Z",
         "venue": "Michael A. Carroll Stadium",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "Liga MX",
@@ -7121,7 +7121,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-27T00:30Z",
         "venue": "Toyota Field",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "MLB",
@@ -7181,7 +7181,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-27T01:00Z",
         "venue": "Isotopes Park",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "Liga MX",
@@ -7301,7 +7301,7 @@
         "statusDetail": "Scheduled",
         "isoDate": "2026-09-27T02:00Z",
         "venue": "Oakland-Alameda County Coliseum",
-        "broadcast": null
+        "broadcast": "ESPN+"
       },
       {
         "league": "USL",

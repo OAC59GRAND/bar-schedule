@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T20:48:06.593Z",
+  "generated": "2026-09-14T23:44:59.173Z",
   "days": {
     "2026-09-13": [
       {
@@ -806,10 +806,10 @@
         "away": "Betis",
         "homeFull": "Villarreal",
         "awayFull": "Real Betis",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "in",
+        "statusDetail": "88'",
         "isoDate": "2026-09-14T19:00Z",
         "venue": "Estadio de la Cerámica",
         "broadcast": "ESPN Deportes"

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T04:09:11.515Z",
+  "generated": "2026-09-15T09:51:12.719Z",
   "days": {
     "2026-09-14": [
       {
@@ -236,8 +236,8 @@
         "awayFull": "Seattle Mariners",
         "homeScore": 6,
         "awayScore": 4,
-        "status": "in",
-        "statusDetail": "Top 9th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-15T01:38Z",
         "venue": "Angel Stadium",
         "broadcast": "MLB.TV"
@@ -249,10 +249,10 @@
         "away": "Marlins",
         "homeFull": "Arizona Diamondbacks",
         "awayFull": "Miami Marlins",
-        "homeScore": 4,
+        "homeScore": 8,
         "awayScore": 7,
-        "status": "in",
-        "statusDetail": "Top 8th",
+        "status": "post",
+        "statusDetail": "Final",
         "isoDate": "2026-09-15T01:40Z",
         "venue": "Chase Field",
         "broadcast": "MLB.TV"

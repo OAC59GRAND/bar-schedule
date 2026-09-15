@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T18:46:58.789Z",
+  "generated": "2026-09-15T21:59:21.215Z",
   "days": {
     "2026-09-10": [
       {
@@ -487,36 +487,6 @@
         "broadcast": "ESPN Deportes"
       },
       {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "California",
-        "away": "Wagner",
-        "homeFull": "California Golden Bears",
-        "awayFull": "Wagner Seahawks",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/19 - 3:30 PM EDT",
-        "isoDate": "2026-09-19T19:30Z",
-        "venue": "California Memorial Stadium",
-        "broadcast": "ACC Network"
-      },
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Duke",
-        "away": "Stanford",
-        "homeFull": "Duke Blue Devils",
-        "awayFull": "Stanford Cardinal",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/19 - 4:00 PM EDT",
-        "isoDate": "2026-09-19T20:00Z",
-        "venue": "Wallace Wade Stadium",
-        "broadcast": "CW"
-      },
-      {
         "league": "Liga MX",
         "isWomen": false,
         "home": "Atlas",
@@ -755,21 +725,6 @@
         "isoDate": "2026-09-20T02:30Z",
         "venue": "Providence Park",
         "broadcast": "Apple TV"
-      },
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "UCLA",
-        "away": "Purdue",
-        "homeFull": "UCLA Bruins",
-        "awayFull": "Purdue Boilermakers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/19 - 11:00 PM EDT",
-        "isoDate": "2026-09-20T03:00Z",
-        "venue": "Rose Bowl",
-        "broadcast": "BTN"
       },
       {
         "league": "Liga MX",
@@ -1269,7 +1224,7 @@
         "homeScore": 2,
         "awayScore": 1,
         "status": "in",
-        "statusDetail": "71'",
+        "statusDetail": "86'",
         "isoDate": "2026-09-15T17:00Z",
         "venue": "Estadio Municipal de Butarque",
         "broadcast": "ESPN Deportes"
@@ -1284,7 +1239,7 @@
         "homeScore": 0,
         "awayScore": 0,
         "status": "in",
-        "statusDetail": "29'",
+        "statusDetail": "44'",
         "isoDate": "2026-09-15T18:00Z",
         "venue": "Mendizorrotza",
         "broadcast": "ESPN+"
@@ -1431,21 +1386,6 @@
         "broadcast": null
       },
       {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "California",
-        "away": "Clemson",
-        "homeFull": "California Golden Bears",
-        "awayFull": "Clemson Tigers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/25 - 10:30 PM EDT",
-        "isoDate": "2026-09-26T02:30Z",
-        "venue": "California Memorial Stadium",
-        "broadcast": "ESPN"
-      },
-      {
         "league": "Liga MX",
         "isWomen": false,
         "home": "Tijuana",
@@ -1459,170 +1399,6 @@
         "isoDate": "2026-09-26T03:00Z",
         "venue": "Estadio Caliente",
         "broadcast": null
-      }
-    ],
-    "2026-09-26": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Maryland",
-        "away": "UCLA",
-        "homeFull": "Maryland Terrapins",
-        "awayFull": "UCLA Bruins",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/26 - 1:30 PM EDT",
-        "isoDate": "2026-09-26T17:30Z",
-        "venue": "SECU Stadium",
-        "broadcast": "BTN"
-      },
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Stanford",
-        "away": "Georgia Tech",
-        "homeFull": "Stanford Cardinal",
-        "awayFull": "Georgia Tech Yellow Jackets",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "9/26 - 10:30 PM EDT",
-        "isoDate": "2026-09-27T02:30Z",
-        "venue": "Stanford Stadium",
-        "broadcast": "ESPN"
-      }
-    ],
-    "2026-10-02": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Wake Forest",
-        "away": "Stanford",
-        "homeFull": "Wake Forest Demon Deacons",
-        "awayFull": "Stanford Cardinal",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-03T04:00Z",
-        "venue": "Allegacy Federal Credit Union Stadium",
-        "broadcast": null
-      }
-    ],
-    "2026-10-03": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "UNLV",
-        "away": "California",
-        "homeFull": "UNLV Rebels",
-        "awayFull": "California Golden Bears",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/3 - 3:30 PM EDT",
-        "isoDate": "2026-10-03T19:30Z",
-        "venue": "Allegiant Stadium",
-        "broadcast": "CBSSN"
-      }
-    ],
-    "2026-10-09": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Oregon",
-        "away": "UCLA",
-        "homeFull": "Oregon Ducks",
-        "awayFull": "UCLA Bruins",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T04:00Z",
-        "venue": "Autzen Stadium",
-        "broadcast": null
-      },
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "California",
-        "away": "Virginia Tech",
-        "homeFull": "California Golden Bears",
-        "awayFull": "Virginia Tech Hokies",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-10T04:00Z",
-        "venue": "California Memorial Stadium",
-        "broadcast": null
-      }
-    ],
-    "2026-10-10": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Notre Dame",
-        "away": "Stanford",
-        "homeFull": "Notre Dame Fighting Irish",
-        "awayFull": "Stanford Cardinal",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/10 - 3:30 PM EDT",
-        "isoDate": "2026-10-10T19:30Z",
-        "venue": "Notre Dame Stadium",
-        "broadcast": "NBC"
-      }
-    ],
-    "2026-10-16": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "California",
-        "away": "Wake Forest",
-        "homeFull": "California Golden Bears",
-        "awayFull": "Wake Forest Demon Deacons",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-17T04:00Z",
-        "venue": "California Memorial Stadium",
-        "broadcast": null
-      },
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "UCLA",
-        "away": "Wisconsin",
-        "homeFull": "UCLA Bruins",
-        "awayFull": "Wisconsin Badgers",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "TBD",
-        "isoDate": "2026-10-17T04:00Z",
-        "venue": "Rose Bowl",
-        "broadcast": null
-      }
-    ],
-    "2026-10-17": [
-      {
-        "league": "CFB",
-        "isWomen": false,
-        "home": "Stanford",
-        "away": "Elon",
-        "homeFull": "Stanford Cardinal",
-        "awayFull": "Elon Phoenix",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "10/17 - 7:30 PM EDT",
-        "isoDate": "2026-10-17T23:30Z",
-        "venue": "Stanford Stadium",
-        "broadcast": "ACCNX"
       }
     ]
   }

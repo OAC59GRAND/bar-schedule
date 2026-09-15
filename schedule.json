@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T09:51:12.719Z",
+  "generated": "2026-09-15T14:43:58.610Z",
   "days": {
     "2026-09-14": [
       {
@@ -5135,7 +5135,7 @@
         "statusDetail": "9/24 - 7:30 PM EDT",
         "isoDate": "2026-09-24T23:30Z",
         "venue": "Capital One Arena",
-        "broadcast": "CW26"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "WNBA",
@@ -5255,7 +5255,7 @@
         "statusDetail": "9/24 - 10:00 PM EDT",
         "isoDate": "2026-09-25T02:00Z",
         "venue": "crypto.com Arena",
-        "broadcast": "KPIX+"
+        "broadcast": "WNBA League Pass"
       },
       {
         "league": "WNBA",
@@ -8289,21 +8289,6 @@
         "isoDate": "2026-10-04T20:25Z",
         "venue": "Lumen Field",
         "broadcast": "CBS"
-      },
-      {
-        "league": "USL",
-        "isWomen": false,
-        "home": "Sporting JAX",
-        "away": "Louisville",
-        "homeFull": "Sporting JAX",
-        "awayFull": "Louisville City FC",
-        "homeScore": 0,
-        "awayScore": 0,
-        "status": "pre",
-        "statusDetail": "Scheduled",
-        "isoDate": "2026-10-04T21:00Z",
-        "venue": "Hodges Stadium",
-        "broadcast": null
       },
       {
         "league": "NHL",

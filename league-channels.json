@@ -56,23 +56,23 @@
     },
     "MLB": {
       "default": "NBC Sports Bay Area Ch 696",
-      "alt": "ESPN Ch 206 · FOX Ch 2 · MLB Network Ch 213"
+      "alt": "MLB Extra Innings Ch 725-769 · ESPN Ch 206 · FOX Ch 2 · MLB Network Ch 213"
     },
     "NFL": {
-      "default": "Check Sunday Ticket",
-      "alt": "FOX Ch 2 · CBS Ch 5 · NBC Ch 11 · ESPN Ch 206 · NFL Network Ch 212"
+      "default": "Sunday Ticket Ch 702-719",
+      "alt": "NFL RedZone Ch 9551 · FOX Ch 2 · CBS Ch 5 · NBC Ch 11 · ESPN Ch 206 · Prime TNF Ch 9550 · NFL Network Ch 212"
     },
     "CFB": {
       "default": "ESPN+",
-      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPN Ch 206 · FOX Ch 2"
+      "alt": "Big Ten Network Ch 610 · SEC Network Ch 611 · ACC Network Ch 612 · ESPN Ch 206 · FOX Ch 2"
     },
     "NCAA Men's": {
       "default": "ESPN+",
-      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208"
+      "alt": "Big Ten Network Ch 610 · SEC Network Ch 611 · ACC Network Ch 612 · ESPNU Ch 208"
     },
     "NCAA Women's": {
       "default": "ESPN+",
-      "alt": "ACC Network Ch 612 · Big Ten Network Ch 610 · ESPNU Ch 208"
+      "alt": "Big Ten Network Ch 610 · SEC Network Ch 611 · ACC Network Ch 612 · ESPNU Ch 208"
     },
     "Pioneer Lg": {
       "default": "Not carried",

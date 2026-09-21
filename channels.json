@@ -36,6 +36,7 @@
     { "ch": "217", "network": "Tennis Channel",      "sports": "Wimbledon, US Open, Australian Open, Roland Garros, WTA/ATP Tour" },
     { "ch": "218", "network": "Golf Channel",        "sports": "PGA Tour, LPGA Tour, LIV Golf, major championship coverage" },
     { "ch": "219", "network": "FS1",                 "sports": "NASCAR, NFL (NFC), College Football/Basketball, Liga MX, CONCACAF" },
+    { "ch": "618", "network": "FS2",                 "sports": "NASCAR (lower series), Liga MX, soccer, college sports, FS1 overflow" },
     { "ch": "221", "network": "CBS Sports Network",  "sports": "NWSL, College sports, MMA (note: ESPN API returns as CBSSN)" },
     { "ch": "242", "network": "USA Network",         "sports": "Bundesliga 2026-27 (30+ matches), NASCAR Cup Playoffs (10 races), WNBA select" },
     { "ch": "245", "network": "TNT",                 "sports": "NBA Playoffs/Finals, March Madness, NASCAR" },

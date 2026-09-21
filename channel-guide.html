@@ -231,6 +231,20 @@ async function loadAndRender() {
       ),
 
       buildTable(
+        '&#127944; Premium Sports Packages &mdash; DirecTV',
+        'Seasonal subscriptions on the DirecTV for Business account',
+        ['Ch','Package','Coverage'],
+        (d.sportsPackages||[]).map(c => [c.ch, c.network, c.sports])
+      ),
+
+      buildTable(
+        '&#127891; College Conference Networks',
+        null,
+        ['Ch','Network','Sports Coverage'],
+        (d.collegeNetworks||[]).map(c => [c.ch, c.network, c.sports])
+      ),
+
+      buildTable(
         '&#127466;&#127480; Spanish-Language Sports Channels',
         null,
         ['Ch','Network','Sports Coverage'],

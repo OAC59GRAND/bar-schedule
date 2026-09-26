@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26T16:57:13.414Z",
+  "generated": "2026-09-26T19:40:56.735Z",
   "days": {
     "2026-09-23": [
       {
@@ -9,8 +9,8 @@
         "away": "International",
         "homeFull": "USA",
         "awayFull": "INTL",
-        "homeScore": 3,
-        "awayScore": 7,
+        "homeScore": 5,
+        "awayScore": 8,
         "status": "in",
         "statusDetail": "",
         "isoDate": "2026-09-24T04:00Z",
